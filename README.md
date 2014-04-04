@@ -4,6 +4,20 @@
 
 This repository is used for the Mobile Web Services course, organized at the University of Applied Sciences of Western Switzerland in the COMEM Department.
 
+## Project «Gestion NRJ»
+
+* Capteurs
+    * Température
+    * Chauffage
+    * Etat (veille/on/off)
+    * Ouverture
+    * Présence
+* Alertes
+* Stats
+    * Consommation
+    * Coûts
+* Données en temps réel
+    * Consommation live → culcul des coûts/température
 ## References
 
 ### Git
