@@ -162,7 +162,7 @@
                 <HorzAlign>0</HorzAlign>
               </Para>
               <Text><cp IX="0"/><pp IX="0"/>Name
-Always_on</Text>
+AlwaysOn</Text>
             </Shape>
             <Shape ID="3" Type="Shape" Name="Rectangle Fill:Chalk.3">
               <XForm>
@@ -688,17 +688,17 @@ Always_on</Text>
           <XForm>
             <Angle>-0</Angle>
             <PinX>5.94488185511695</PinX>
-            <PinY>5.036236176760009</PinY>
+            <PinY>5.035268189210725</PinY>
             <Width>2.303149578306406</Width>
-            <Height>0.01465158617965696</Height>
+            <Height>0.01388888888888889</Height>
             <LocPinX>1.151574789153203</LocPinX>
-            <LocPinY>0.007325793089828479</LocPinY>
+            <LocPinY>0.006944444444444444</LocPinY>
           </XForm>
           <XForm1D>
             <BeginX>4.79331</BeginX>
             <BeginY>777.154</BeginY>
             <EndX>7.09646</EndX>
-            <EndY>777.169</EndY>
+            <EndY>777.167</EndY>
           </XForm1D>
           <Layout>
             <ConLineJumpCode>4</ConLineJumpCode>
@@ -711,7 +711,7 @@ Always_on</Text>
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
             <TxtWidth F="Width*1.000000">2.303149578306406</TxtWidth>
-            <TxtHeight F="Height*1.000000">0.01465158617965696</TxtHeight>
+            <TxtHeight F="Height*1.000000">0.01388888888888889</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
           </TextXForm>
@@ -742,11 +742,11 @@ Always_on</Text>
             <NoLine>0</NoLine>
             <MoveTo IX="1">
               <X F="Width*0.000000">0</X>
-              <Y F="Height*0.000000">0</Y>
+              <Y F="Height*0.021501">0.0002986293268223663</Y>
             </MoveTo>
             <LineTo IX="2">
               <X F="Width*1.000000">2.303149578306406</X>
-              <Y F="Height*1.000000">0.01465158617965696</Y>
+              <Y F="Height*1.000000">0.01388888888888889</Y>
             </LineTo>
           </Geom>
           <LayerMem>
@@ -756,8 +756,8 @@ Always_on</Text>
         <Shape ID="11" Type="Shape" Name="Rectangle No Fill No Fill.11">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>6.86258425323686</PinX>
-            <PinY>5.160186805889291</PinY>
+            <PinX>6.862638669925478</PinX>
+            <PinY>5.158945226431971</PinY>
             <Width>0.2361111111111111</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1180555555555556</LocPinX>
@@ -846,8 +846,8 @@ Always_on</Text>
         <Shape ID="12" Type="Shape" Name="Rectangle No Fill No Fill.12">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>5.001851377579361</PinX>
-            <PinY>4.833382671670012</PinY>
+            <PinX>5.001760680817791</PinX>
+            <PinY>4.832998582656763</PinY>
             <Width>0.2083333333333333</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1041666666666667</LocPinX>
@@ -937,7 +937,7 @@ Always_on</Text>
           <XForm>
             <Angle>-0</Angle>
             <PinX>9.867125923103751</PinX>
-            <PinY>5.039827849379417</PinY>
+            <PinY>5.038905590792369</PinY>
             <Width>3.041338557667198</Width>
             <Height>0.01388888888888889</Height>
             <LocPinX>1.520669278833599</LocPinX>
@@ -947,7 +947,7 @@ Always_on</Text>
             <BeginX>8.34646</BeginX>
             <BeginY>777.171</BeginY>
             <EndX>11.3878</EndX>
-            <EndY>777.172</EndY>
+            <EndY>777.171</EndY>
           </XForm1D>
           <Layout>
             <ConLineJumpCode>4</ConLineJumpCode>
@@ -991,7 +991,7 @@ Always_on</Text>
             <NoLine>0</NoLine>
             <MoveTo IX="1">
               <X F="Width*0.000000">0</X>
-              <Y F="Height*0.943268">0.01310095007390149</Y>
+              <Y F="Height*0.998351">0.01386599142423329</Y>
             </MoveTo>
             <LineTo IX="2">
               <X F="Width*1.000000">3.041338557667198</X>
@@ -1005,8 +1005,8 @@ Always_on</Text>
         <Shape ID="14" Type="Shape" Name="Rectangle No Fill No Fill.14">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>11.0799252237129</PinX>
-            <PinY>5.164802768848331</PinY>
+            <PinX>11.07995484239548</PinX>
+            <PinY>5.1639579504714</PinY>
             <Width>0.2361111111111111</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1180555555555556</LocPinX>
@@ -1095,8 +1095,8 @@ Always_on</Text>
         <Shape ID="15" Type="Shape" Name="Rectangle No Fill No Fill.15">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>8.620239482273327</PinX>
-            <PinY>4.849204886500354</PinY>
+            <PinX>8.620189955856659</PinX>
+            <PinY>4.848978806081536</PinY>
             <Width>0.2083333333333333</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1041666666666667</LocPinX>
@@ -1400,8 +1400,8 @@ kW</Text>
         <Shape ID="19" Type="Shape" Name="Rectangle Fill:Chalk.19">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>5.353950887729659</PinX>
-            <PinY>5.229331319423924</PinY>
+            <PinX>5.354041599453947</PinX>
+            <PinY>5.228784935692929</PinY>
             <Width>0.75</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.375</LocPinX>
@@ -1492,8 +1492,8 @@ kW</Text>
         <Shape ID="20" Type="Shape" Name="Rectangle Fill:Chalk.20">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>6.42800438033442</PinX>
-            <PinY>4.81708286295113</PinY>
+            <PinX>6.427902012136103</PinX>
+            <PinY>4.816041583593052</PinY>
             <Width>0.7638888888888888</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.3819444444444444</LocPinX>
@@ -1584,8 +1584,8 @@ kW</Text>
         <Shape ID="21" Type="Shape" Name="Rectangle Fill:Chalk.21">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>9.151478957573355</PinX>
-            <PinY>5.282304036265986</PinY>
+            <PinX>9.15153830741788</PinX>
+            <PinY>5.281944310145088</PinY>
             <Width>0.9027777777777778</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.4513888888888889</LocPinX>
@@ -1676,8 +1676,8 @@ kW</Text>
         <Shape ID="22" Type="Shape" Name="Rectangle Fill:Chalk.22">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>10.5848581448348</PinX>
-            <PinY>4.768786484742253</PinY>
+            <PinX>10.584788170568</PinX>
+            <PinY>4.768066211815411</PinY>
             <Width>1.263888888888889</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.6319444444444444</LocPinX>
@@ -1768,17 +1768,17 @@ kW</Text>
         <Shape ID="23" Type="Shape" Name="Graphic.23">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>5.214271122300001</PinX>
+            <PinX>5.214076711389836</PinX>
             <PinY>3.41076120005714</PinY>
-            <Width>1.713935408809837</Width>
+            <Width>1.713616843615582</Width>
             <Height>2.645013104544748</Height>
-            <LocPinX>0.8569677044049185</LocPinX>
+            <LocPinX>0.8568084218077909</LocPinX>
             <LocPinY>1.322506552272374</LocPinY>
           </XForm>
           <XForm1D>
-            <BeginX>4.3573</BeginX>
+            <BeginX>4.35727</BeginX>
             <BeginY>776.858</BeginY>
-            <EndX>6.07124</EndX>
+            <EndX>6.07089</EndX>
             <EndY>774.213</EndY>
           </XForm1D>
           <Layout>
@@ -1791,7 +1791,7 @@ kW</Text>
           <TextXForm>
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
-            <TxtWidth F="Width*1.000000">1.713935408809837</TxtWidth>
+            <TxtWidth F="Width*1.000000">1.713616843615582</TxtWidth>
             <TxtHeight F="Height*1.000000">2.645013104544748</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
@@ -1822,11 +1822,11 @@ kW</Text>
             <NoFill>1</NoFill>
             <NoLine>0</NoLine>
             <MoveTo IX="1">
-              <X F="Width*-0.000000">-7.894919286223335e-16</X>
+              <X F="Width*0.000000">0</X>
               <Y F="Height*1.000000">2.645013104544748</Y>
             </MoveTo>
             <LineTo IX="2">
-              <X F="Width*1.000000">1.713935408809836</X>
+              <X F="Width*1.000000">1.713616843615582</X>
               <Y F="Height*0.000000">0</Y>
             </LineTo>
           </Geom>
@@ -1837,8 +1837,8 @@ kW</Text>
         <Shape ID="24" Type="Shape" Name="Rectangle No Fill No Fill.24">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>5.996876820863506</PinX>
-            <PinY>2.420207090425031</PinY>
+            <PinX>5.996560884659916</PinX>
+            <PinY>2.420198582301541</PinY>
             <Width>0.2083333333333333</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1041666666666667</LocPinX>
@@ -1927,8 +1927,8 @@ kW</Text>
         <Shape ID="25" Type="Shape" Name="Rectangle No Fill No Fill.25">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>4.346364299039308</PinX>
-            <PinY>4.388159350109867</PinY>
+            <PinX>4.346291425098481</PinX>
+            <PinY>4.3881733541043</PinY>
             <Width>0.2361111111111111</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1180555555555556</LocPinX>
@@ -2017,8 +2017,8 @@ kW</Text>
         <Shape ID="26" Type="Shape" Name="Rectangle Fill:Chalk.26">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>5.376446835135713</PinX>
-            <PinY>4.118418230384957</PinY>
+            <PinX>5.376327578473759</PinX>
+            <PinY>4.118381115958302</PinY>
             <Width>0.8888888888888888</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.4444444444444444</LocPinX>
@@ -2109,8 +2109,8 @@ kW</Text>
         <Shape ID="27" Type="Shape" Name="Rectangle Fill:Chalk.27">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>4.946292259647586</PinX>
-            <PinY>2.802700343868688</PinY>
+            <PinX>4.94603544070301</PinX>
+            <PinY>2.802739791963444</PinY>
             <Width>1.125</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.5625</LocPinX>
@@ -2201,17 +2201,17 @@ kW</Text>
         <Shape ID="28" Type="Shape" Name="Graphic.28">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>7.012637032919585</PinX>
+            <PinX>7.012517221663945</PinX>
             <PinY>3.4698163178232</PinY>
-            <Width>1.242733764817666</Width>
-            <Height>2.763123340076872</Height>
-            <LocPinX>0.6213668824088331</LocPinX>
+            <Width>1.242943823188519</Width>
+            <Height>2.763123340076873</Height>
+            <LocPinX>0.6214719115942597</LocPinX>
             <LocPinY>1.381561670038436</LocPinY>
           </XForm>
           <XForm1D>
-            <BeginX>7.634</BeginX>
+            <BeginX>7.63399</BeginX>
             <BeginY>776.976</BeginY>
-            <EndX>6.39127</EndX>
+            <EndX>6.39105</EndX>
             <EndY>774.213</EndY>
           </XForm1D>
           <Layout>
@@ -2224,8 +2224,8 @@ kW</Text>
           <TextXForm>
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
-            <TxtWidth F="Width*1.000000">1.242733764817666</TxtWidth>
-            <TxtHeight F="Height*1.000000">2.763123340076872</TxtHeight>
+            <TxtWidth F="Width*1.000000">1.242943823188519</TxtWidth>
+            <TxtHeight F="Height*1.000000">2.763123340076873</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
           </TextXForm>
@@ -2255,11 +2255,11 @@ kW</Text>
             <NoFill>1</NoFill>
             <NoLine>0</NoLine>
             <MoveTo IX="1">
-              <X F="Width*1.000000">1.242733764817666</X>
-              <Y F="Height*1.000000">2.763123340076872</Y>
+              <X F="Width*1.000000">1.242943823188519</X>
+              <Y F="Height*1.000000">2.763123340076873</Y>
             </MoveTo>
             <LineTo IX="2">
-              <X F="Width*-0.000000">-7.894919286223335e-16</X>
+              <X F="Width*0.000000">0</X>
               <Y F="Height*0.000000">0</Y>
             </LineTo>
           </Geom>
@@ -2270,8 +2270,8 @@ kW</Text>
         <Shape ID="29" Type="Shape" Name="Rectangle No Fill No Fill.29">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>6.422532225309773</PinX>
-            <PinY>2.355416064635972</PinY>
+            <PinX>6.422327314834216</PinX>
+            <PinY>2.355420845264934</PinY>
             <Width>0.2083333333333333</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1041666666666667</LocPinX>
@@ -2360,8 +2360,8 @@ kW</Text>
         <Shape ID="30" Type="Shape" Name="Rectangle Fill:Chalk.30">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>7.645338045113805</PinX>
-            <PinY>4.447679533449728</PinY>
+            <PinX>7.64529350328573</PinX>
+            <PinY>4.447669394472199</PinY>
             <Width>0.2361111111111111</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.1180555555555556</LocPinX>
@@ -2452,8 +2452,8 @@ kW</Text>
         <Shape ID="31" Type="Shape" Name="Rectangle Fill:Chalk.31">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>6.748008248235791</PinX>
-            <PinY>3.987542492975116</PinY>
+            <PinX>6.747925403607561</PinX>
+            <PinY>3.98756867180895</PinY>
             <Width>0.9027777777777778</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.4513888888888889</LocPinX>
@@ -2544,8 +2544,8 @@ kW</Text>
         <Shape ID="32" Type="Shape" Name="Rectangle Fill:Chalk.32">
           <XForm>
             <Angle>-0</Angle>
-            <PinX>7.221559303899138</PinX>
-            <PinY>2.579921015052792</PinY>
+            <PinX>7.221374759422133</PinX>
+            <PinY>2.579888988705412</PinY>
             <Width>1.097222222222222</Width>
             <Height>0.3333333333333333</Height>
             <LocPinX>0.5486111111111112</LocPinX>
@@ -3122,9 +3122,9 @@ is inside</Text>
             <Angle>-0</Angle>
             <PinX>2.56397635936737</PinX>
             <PinY>2.387139158778721</PinY>
-            <Width>1.879921256171333</Width>
+            <Width>1.879921256171332</Width>
             <Height>0.5833333333333334</Height>
-            <LocPinX>0.9399606280856663</LocPinX>
+            <LocPinX>0.9399606280856661</LocPinX>
             <LocPinY>0.2916666666666667</LocPinY>
           </XForm>
           <Layout>
@@ -3137,7 +3137,7 @@ is inside</Text>
           <TextXForm>
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
-            <TxtWidth F="Width*1.000000">1.879921256171333</TxtWidth>
+            <TxtWidth F="Width*1.000000">1.879921256171332</TxtWidth>
             <TxtHeight F="Height*1.000000">0.5833333333333334</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
@@ -3152,7 +3152,7 @@ is inside</Text>
             <Shape ID="40" Type="Shape" Name="Rectangle Fill:Chalk.40">
               <XForm>
                 <Angle>-0</Angle>
-                <PinX>0.9399606280856663</PinX>
+                <PinX>0.9399606280856661</PinX>
                 <PinY>0.1944444444444444</PinY>
                 <Width>1.879921256171333</Width>
                 <Height>0.3888888888888889</Height>
@@ -3243,7 +3243,7 @@ Status</Text>
             <Shape ID="41" Type="Shape" Name="Rectangle Fill:Chalk.41">
               <XForm>
                 <Angle>-0</Angle>
-                <PinX>0.9399606280856663</PinX>
+                <PinX>0.9399606280856661</PinX>
                 <PinY>0.4861111111111111</PinY>
                 <Width>1.879921256171333</Width>
                 <Height>0.1944444444444444</Height>
@@ -4380,9 +4380,9 @@ AvgKW</Text>
             <Angle>-0</Angle>
             <PinX>7.795275545120238</PinX>
             <PinY>8.371391092406379</PinY>
-            <Width>1.889763768513997</Width>
+            <Width>1.889763768513998</Width>
             <Height>0.5833333333333334</Height>
-            <LocPinX>0.9448818842569986</LocPinX>
+            <LocPinX>0.944881884256999</LocPinX>
             <LocPinY>0.2916666666666667</LocPinY>
           </XForm>
           <Layout>
@@ -4395,7 +4395,7 @@ AvgKW</Text>
           <TextXForm>
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
-            <TxtWidth F="Width*1.000000">1.889763768513997</TxtWidth>
+            <TxtWidth F="Width*1.000000">1.889763768513998</TxtWidth>
             <TxtHeight F="Height*1.000000">0.5833333333333334</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
@@ -5325,7 +5325,7 @@ Message</Text>
     </Page>
   </Pages>
   <Windows>
-    <Window ID="0" WindowType="Drawing" ViewScale="1" WindowState="134217744" ContainerType="Page" Page="0" ViewCenterX="8.020833333333334" ViewCenterY="5.333333333333333">
+    <Window ID="0" WindowType="Drawing" ViewScale="1" WindowState="134217744" ContainerType="Page" Page="0" ViewCenterX="8.020833333333334" ViewCenterY="4.673611111111111">
       <ShowRulers>1</ShowRulers>
       <ShowGrid>1</ShowGrid>
       <ShowPageBreaks>0</ShowPageBreaks>
