@@ -1,10 +1,10 @@
-package ch.heigvd.skeleton.rest;
+package ch.heigvd.nrj.rest;
 
-import ch.heigvd.skeleton.exceptions.EntityNotFoundException;
-import ch.heigvd.skeleton.model.Employee;
-import ch.heigvd.skeleton.services.crud.EmployeesManagerLocal;
-import ch.heigvd.skeleton.services.to.EmployeesTOServiceLocal;
-import ch.heigvd.skeleton.to.PublicEmployeeTO;
+import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Employee;
+import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
+import ch.heigvd.nrj.services.to.EmployeesTOServiceLocal;
+import ch.heigvd.nrj.to.PublicEmployeeTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;

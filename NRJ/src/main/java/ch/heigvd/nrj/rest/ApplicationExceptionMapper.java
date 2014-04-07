@@ -1,6 +1,6 @@
-package ch.heigvd.skeleton.rest;
+package ch.heigvd.nrj.rest;
 
-import ch.heigvd.skeleton.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;

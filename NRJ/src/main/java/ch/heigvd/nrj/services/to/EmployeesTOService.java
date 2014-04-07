@@ -1,7 +1,7 @@
-package ch.heigvd.skeleton.services.to;
+package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.skeleton.model.Employee;
-import ch.heigvd.skeleton.to.PublicEmployeeTO;
+import ch.heigvd.nrj.model.Employee;
+import ch.heigvd.nrj.to.PublicEmployeeTO;
 import javax.ejb.Stateless;
 
 /**

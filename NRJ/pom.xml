@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ch.heigvd</groupId>
-    <artifactId>RESTBackEndSkeleton</artifactId>
+    <artifactId>NRJ</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>RESTBackEndSkeleton</name>
+    <name>NRJ</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

@@ -1,8 +1,8 @@
-package ch.heigvd.skeleton.rest;
+package ch.heigvd.nrj.rest;
 
 
-import ch.heigvd.skeleton.model.Employee;
-import ch.heigvd.skeleton.services.crud.EmployeesManagerLocal;
+import ch.heigvd.nrj.model.Employee;
+import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;

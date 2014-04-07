@@ -1,7 +1,7 @@
-package ch.heigvd.skeleton.services.crud;
+package ch.heigvd.nrj.services.crud;
 
-import ch.heigvd.skeleton.exceptions.EntityNotFoundException;
-import ch.heigvd.skeleton.model.Employee;
+import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Employee;
 import java.util.List;
 import javax.ejb.Local;
 

@@ -1,4 +1,4 @@
-package ch.heigvd.skeleton.to;
+package ch.heigvd.nrj.to;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

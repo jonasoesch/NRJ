@@ -1,4 +1,4 @@
-package ch.heigvd.skeleton.exceptions;
+package ch.heigvd.nrj.exceptions;
 
 import javax.ejb.ApplicationException;
 

@@ -1,4 +1,4 @@
-package ch.heigvd.skeleton.model;
+package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

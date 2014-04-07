@@ -1,4 +1,4 @@
-package ch.heigvd.skeleton.rest;
+package ch.heigvd.nrj.rest;
 
 import java.util.HashSet;
 import java.util.Set;

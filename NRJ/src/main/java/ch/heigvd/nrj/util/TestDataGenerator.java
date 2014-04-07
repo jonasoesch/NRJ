@@ -1,4 +1,4 @@
-package ch.heigvd.skeleton.util;
+package ch.heigvd.nrj.util;
 
 /**
  * This is a simple utility class that we use to generate test data.
