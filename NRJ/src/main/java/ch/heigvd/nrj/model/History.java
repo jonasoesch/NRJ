@@ -5,8 +5,6 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +17,7 @@ import javax.persistence.Temporal;
  * @author Robin
  */
 @Entity
-public class NewEntity implements Serializable {
+public class History implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,10 +56,10 @@ public class NewEntity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof NewEntity)) {
+        if (!(object instanceof History)) {
             return false;
         }
-        NewEntity other = (NewEntity) object;
+        History other = (History) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -70,6 +68,6 @@ public class NewEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.heigvd.nrj.model.NewEntity[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.History[ id=" + id + " ]";
     }
 }
