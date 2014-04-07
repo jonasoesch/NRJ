@@ -2,7 +2,9 @@ package ch.heigvd.nrj.rest;
 
 
 import ch.heigvd.nrj.model.Employee;
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
+import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,6 +24,9 @@ public class TestDataGeneratorResource {
 
 	@EJB
 	EmployeesManagerLocal employeesManager;
+        
+        @EJB
+	PlugsManagerLocal plugsManager;
 
 	@GET
   @Produces({"text/plain"})
@@ -32,6 +37,12 @@ public class TestDataGeneratorResource {
 		e.setEmail("john.doe@heig-vd.ch");
 		e.setSalary(80000);
 		employeesManager.create(e);
+                
+                Plug p = new Plug();
+                p.setName("frigo");
+                p.setAlwaysOn(true);
+                plugsManager.create(p);
+                
 		return "done";
 	}
 }

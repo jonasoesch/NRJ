@@ -5,20 +5,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Cette classe permet de gérer des prises murales, avec leur propriété alwaysOn.
  * @author nicolas
  */
 @Entity
+@XmlRootElement
 public class Plug implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToOne protected Room room;
+    
     private String name;
     private boolean alwaysOn;
 
+    public Plug() {
+        this.name = "UNDEF";
+        this.alwaysOn = false;
+    }
+            
+    public Plug (Plug plugData) {
+        this.name = plugData.name;
+        this.alwaysOn = plugData.alwaysOn;
+    }
+    
     public String getName() {
         return name;
     }
