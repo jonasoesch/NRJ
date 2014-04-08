@@ -50,7 +50,7 @@ public class ApartmentsManager implements ApartmentsManagerLocal {
 	@Override
 	public List<Apartment> findAll() {
 		// Note: the findAllApartments JPQL query is defined in the Apartment.java file
-		List apartments = em.createNamedQuery("findAllApartments").getResultList();
+		List apartments = em.createNamedQuery("Apartment.findAllApartments").getResultList();
 		return apartments;
 	}
 	

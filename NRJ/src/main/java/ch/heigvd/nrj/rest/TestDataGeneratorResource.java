@@ -41,21 +41,24 @@ public class TestDataGeneratorResource {
 	@GET
   @Produces({"text/plain"})
 	public String generateEmployees() {
-//		  Room m = new Room();
+		Apartment a = new Apartment();
+		a.setName("Appartement 511");
+		apartmentsManager.create(a);
+//		Room m = new Room();
 //                m.setName("Chambre de Barbie");
-//                roomsManager.create(m);
+//                m.setId(roomsManager.create(m));
 		
 		Employee e = new Employee();
 		e.setFirstName("John");
 		e.setLastName("Doe");
 		e.setEmail("john.doe@heig-vd.ch");
 		e.setSalary(80000);
-		employeesManager.create(e);
+		e.setId(employeesManager.create(e));
                 
 //                Plug p = new Plug();
 //                p.setName("frigo");
 //                p.setAlwaysOn(true);
-//		  p.setRoom(m);
+//		p.setRoom(m);
 //                plugsManager.create(p);
                 
 //                Apartment a = new Apartment();

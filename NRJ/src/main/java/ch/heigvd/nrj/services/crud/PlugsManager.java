@@ -50,7 +50,7 @@ public class PlugsManager implements PlugsManagerLocal {
 	@Override
 	public List<Plug> findAll() {
 		// Note: the findAllPlugs JPQL query is defined in the Plug.java file
-		List plugs = em.createNamedQuery("findAllPlugs").getResultList();
+		List plugs = em.createNamedQuery("Plug.findAllPlugs").getResultList();
 		return plugs;
 	}
 	

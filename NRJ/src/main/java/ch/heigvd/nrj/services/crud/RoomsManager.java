@@ -50,7 +50,7 @@ public class RoomsManager implements RoomsManagerLocal {
 	@Override
 	public List<Room> findAll() {
 		// Note: the findAllRooms JPQL query is defined in the Room.java file
-		List rooms = em.createNamedQuery("findAllRooms").getResultList();
+		List rooms = em.createNamedQuery("Room.findAllRooms").getResultList();
 		return rooms;
 	}
 	

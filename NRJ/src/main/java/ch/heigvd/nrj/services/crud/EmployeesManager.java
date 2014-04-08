@@ -50,7 +50,7 @@ public class EmployeesManager implements EmployeesManagerLocal {
 	@Override
 	public List<Employee> findAll() {
 		// Note: the findAllEmployees JPQL query is defined in the Employee.java file
-		List employees = em.createNamedQuery("findAllEmployees").getResultList();
+		List employees = em.createNamedQuery("Employee.findAllEmployees").getResultList();
 		return employees;
 	}
 	
