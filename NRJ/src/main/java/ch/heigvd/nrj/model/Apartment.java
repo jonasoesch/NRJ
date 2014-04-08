@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ public class Apartment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany protected Room room;
+    @OneToMany (mappedBy="apartment") protected Collection<Room> rooms;
     
     private String name;
 
