@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
@@ -14,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
+ * This class is a JPA entity for a Room Consumption.
  *
  * @author rschmutz
  */
 @Entity
 public class RoomConsumption implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +23,14 @@ public class RoomConsumption implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampHour;
     private Double avgKW;
+
+    public Long getId() {
+	return id;
+    }
+
+    public void setId(Long id) {
+	this.id = id;
+    }
 
     public Date getTimestampHour() {
 	return timestampHour;
@@ -41,14 +46,6 @@ public class RoomConsumption implements Serializable {
 
     public void setAvgKW(Double avgKW) {
 	this.avgKW = avgKW;
-    }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
     }
 
     @Override
@@ -75,5 +72,4 @@ public class RoomConsumption implements Serializable {
     public String toString() {
 	return "ch.heigvd.nrj.model.RoomConsumption[ id=" + id + " ]";
     }
-
 }

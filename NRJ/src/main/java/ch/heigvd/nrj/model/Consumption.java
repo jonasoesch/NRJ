@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
@@ -13,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
+ * This class is a JPA entity for a Consumption.
  *
  * @author Robin
  */
@@ -26,57 +23,53 @@ public class Consumption implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
     private Double kW;
-
-    public void setTimestampMinute(Date timestampMinute) {
-        this.timestampMinute = timestampMinute;
-    }
-
-    public void setkW(Double kW) {
-        this.kW = kW;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
-    public Date getTimestampMinute() {
-        return timestampMinute;
-    }
-
-    public Double getkW() {
-        return kW;
-    }
-
+    
     public Long getId() {
-        return id;
+	return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+	this.id = id;
+    }
+
+    public Date getTimestampMinute() {
+	return timestampMinute;
+    }
+
+    public void setTimestampMinute(Date timestampMinute) {
+	this.timestampMinute = timestampMinute;
+    }
+
+    public Double getkW() {
+	return kW;
+    }
+
+    public void setkW(Double kW) {
+	this.kW = kW;
     }
 
     @Override
     public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+	int hash = 0;
+	hash += (id != null ? id.hashCode() : 0);
+	return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Consumption)) {
-            return false;
-        }
-        Consumption other = (Consumption) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+	// TODO: Warning - this method won't work in the case the id fields are not set
+	if (!(object instanceof Consumption)) {
+	    return false;
+	}
+	Consumption other = (Consumption) object;
+	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+	    return false;
+	}
+	return true;
     }
 
     @Override
     public String toString() {
-        return "ch.heigvd.nrj.model.Consumption[ id=" + id + " ]";
+	return "ch.heigvd.nrj.model.Consumption[ id=" + id + " ]";
     }
 }

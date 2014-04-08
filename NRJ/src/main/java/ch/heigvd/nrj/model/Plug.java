@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Cette classe permet de gérer des prises murales, avec leur propriété alwaysOn.
+ * 
  * @author nicolas
  */
 @Entity
@@ -35,6 +36,14 @@ public class Plug implements Serializable {
         this.alwaysOn = plugData.alwaysOn;
     }
     
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getName() {
         return name;
     }
@@ -49,14 +58,6 @@ public class Plug implements Serializable {
 
     public void setAlwaysOn(boolean alwaysOn) {
         this.alwaysOn = alwaysOn;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override
