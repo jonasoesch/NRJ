@@ -25,6 +25,8 @@ public class History implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
+    
+    private Double kW;
 
     public void setTimestampMinute(Date timestampMinute) {
         this.timestampMinute = timestampMinute;
