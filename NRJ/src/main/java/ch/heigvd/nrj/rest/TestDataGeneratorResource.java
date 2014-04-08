@@ -41,6 +41,10 @@ public class TestDataGeneratorResource {
 	@GET
   @Produces({"text/plain"})
 	public String generateEmployees() {
+//		  Room m = new Room();
+//                m.setName("Chambre de Barbie");
+//                roomsManager.create(m);
+		
 		Employee e = new Employee();
 		e.setFirstName("John");
 		e.setLastName("Doe");
@@ -48,18 +52,15 @@ public class TestDataGeneratorResource {
 		e.setSalary(80000);
 		employeesManager.create(e);
                 
-                Plug p = new Plug();
-                p.setName("frigo");
-                p.setAlwaysOn(true);
-                plugsManager.create(p);
+//                Plug p = new Plug();
+//                p.setName("frigo");
+//                p.setAlwaysOn(true);
+//		  p.setRoom(m);
+//                plugsManager.create(p);
                 
-                Room m = new Room();
-                p.setName("Chambre de Barbie");
-                roomsManager.create(m);
-                
-                Apartment a = new Apartment();
-                p.setName("Chez Mc Cartney");
-                apartmentsManager.create(a);
+//                Apartment a = new Apartment();
+//                p.setName("Chez Mc Cartney");
+//                apartmentsManager.create(a);
                 
 		return "done";
 	}

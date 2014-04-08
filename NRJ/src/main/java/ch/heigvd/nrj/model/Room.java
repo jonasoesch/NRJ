@@ -17,10 +17,10 @@ import javax.persistence.OneToMany;
  *
  * @author rschmutz
  */
-@NamedQueries(
+/*@NamedQueries(
         @NamedQuery(
         name = "Room.findAllRoom",
-        query = "SELECT r FROM Room r"))
+        query = "SELECT r FROM Room r"))*/
 @Entity
 public class Room implements Serializable {
 

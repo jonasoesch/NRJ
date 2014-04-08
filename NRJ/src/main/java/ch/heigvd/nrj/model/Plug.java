@@ -32,6 +32,7 @@ public class Plug implements Serializable {
     private boolean alwaysOn;
     
     @ManyToOne protected Room room;
+    
     @OneToMany(mappedBy="plug") protected Collection<History> histories;
     @OneToMany(mappedBy="plug") protected Collection<PlugConsumptionObs> plugConsumptions;
     @OneToMany(mappedBy="plug") protected Collection<Consumption> consumptions;
@@ -68,6 +69,14 @@ public class Plug implements Serializable {
 
     public void setAlwaysOn(boolean alwaysOn) {
         this.alwaysOn = alwaysOn;
+    }
+    
+    public Room getRoom() {
+	return room;
+    }
+
+    public void setRoom(Room room) {
+	this.room = room;
     }
 
     @Override
