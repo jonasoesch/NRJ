@@ -24,15 +24,15 @@ public class RoomConsumption implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date timeStamp;
+    private Date timestampHour;
     private Double avgKW;
 
-    public Date getTimeStamp() {
-	return timeStamp;
+    public Date getTimestampHour() {
+	return timestampHour;
     }
 
-    public void setTimeStamp(Date timeStamp) {
-	this.timeStamp = timeStamp;
+    public void setTimestampHour(Date timestampHour) {
+	this.timestampHour = timestampHour;
     }
 
     public Double getAvgKW() {

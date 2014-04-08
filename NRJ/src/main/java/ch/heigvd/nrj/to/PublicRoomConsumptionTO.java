@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.nrj.to;
 
 import java.util.Date;
@@ -12,27 +8,27 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author rschmutz
  */
 @XmlRootElement
-public class PublicPlugConsumptionTO {
+public class PublicRoomConsumptionTO {
 
-    private Long plugConsumptionId;
+    private Long roomConsumptionId;
     private Date timestampHour;
     private Double avgKW;
 
-    public PublicPlugConsumptionTO() {
+    public PublicRoomConsumptionTO() {
     }
 
-    public PublicPlugConsumptionTO(long plugConsumptionId, Date timestampHour, Double avgKW) {
-	this.plugConsumptionId = plugConsumptionId;
+    public PublicRoomConsumptionTO(long roomConsumptionId, Date timestampHour, Double avgKW) {
+	this.roomConsumptionId = roomConsumptionId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
     }
 
-    public Long getPlugConsumptionId() {
-	return this.plugConsumptionId;
+    public Long getRoomConsumptionId() {
+	return this.roomConsumptionId;
     }
 
-    public void setPlugConsumptionId(Long plugConsumptionId) {
-	this.plugConsumptionId = plugConsumptionId;
+    public void setRoomConsumptionId(Long roomConsumptionId) {
+	this.roomConsumptionId = roomConsumptionId;
     }
 
     public Date getTimestampHour() {

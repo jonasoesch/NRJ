@@ -24,15 +24,15 @@ public class Warning implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date timeStamp;
+    private Date timestampMinute;
     private String message;
 
-    public Date getTimeStamp() {
-	return timeStamp;
+    public Date getTimeMinute() {
+	return timestampMinute;
     }
 
-    public void setTimeStamp(Date timeStamp) {
-	this.timeStamp = timeStamp;
+    public void setTimeStampMinute(Date timestampMinute) {
+	this.timestampMinute = timestampMinute;
     }
 
     public String getMessage() {
