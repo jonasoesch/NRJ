@@ -9,7 +9,7 @@ NRJ API
 	GET		overall consumption
 
 			
-/rooms			| 				|
+				| /rooms		|
 ----------------|---------------|
 GET				|	all rooms	|
 POST			|	new room	|
