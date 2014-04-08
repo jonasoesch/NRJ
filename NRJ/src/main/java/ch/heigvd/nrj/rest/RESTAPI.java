@@ -20,7 +20,6 @@ public class RESTAPI extends Application {
 		classes.add(ApplicationExceptionMapper.class);
 		classes.add(EmployeesResource.class);
 		classes.add(TestDataGeneratorResource.class);
-                classes.add(DataGeneratorPlugs.class);
 		return classes;
 	}
 }
