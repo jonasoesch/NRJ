@@ -1,10 +1,14 @@
 package ch.heigvd.nrj.rest;
 
 
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Employee;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.model.Room;
+import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
+import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -28,6 +32,12 @@ public class TestDataGeneratorResource {
         @EJB
 	PlugsManagerLocal plugsManager;
 
+        @EJB
+	RoomsManagerLocal roomsManager;
+        
+        @EJB
+	ApartmentsManagerLocal apartmentsManager;
+        
 	@GET
   @Produces({"text/plain"})
 	public String generateEmployees() {
@@ -42,6 +52,14 @@ public class TestDataGeneratorResource {
                 p.setName("frigo");
                 p.setAlwaysOn(true);
                 plugsManager.create(p);
+                
+                Room m = new Room();
+                p.setName("Chambre de Barbie");
+                roomsManager.create(m);
+                
+                Apartment a = new Apartment();
+                p.setName("Chez Mc Cartney");
+                apartmentsManager.create(a);
                 
 		return "done";
 	}
