@@ -1,15 +1,18 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Cette classe permet de gérer des prises murales, avec leur propriété alwaysOn.
+ * 
  * @author nicolas
  */
 @Entity
@@ -21,6 +24,8 @@ public class Plug implements Serializable {
     private Long id;
     
     @ManyToOne protected Room room;
+    @OneToMany(mappedBy="plug") protected Collection<History> histories;
+    @OneToMany(mappedBy="plug") protected Collection<PlugConsumption> plugConsumptions;
     
     private String name;
     private boolean alwaysOn;
@@ -33,6 +38,14 @@ public class Plug implements Serializable {
     public Plug (Plug plugData) {
         this.name = plugData.name;
         this.alwaysOn = plugData.alwaysOn;
+    }
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     public String getName() {
@@ -49,14 +62,6 @@ public class Plug implements Serializable {
 
     public void setAlwaysOn(boolean alwaysOn) {
         this.alwaysOn = alwaysOn;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

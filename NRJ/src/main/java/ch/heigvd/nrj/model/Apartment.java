@@ -10,19 +10,22 @@ import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * This class is a JPA entity for an Apartment.
  *
  * @author Chris
  */
 @Entity
 @XmlRootElement
 public class Apartment implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToMany (mappedBy="apartment") protected Collection<Room> rooms;
-    
+    @OneToMany(mappedBy = "apartment")
+    protected Collection<Room> rooms;
+
     private String name;
 
     public Apartment() {
@@ -73,5 +76,4 @@ public class Apartment implements Serializable {
     public String toString() {
         return "ch.heigvd.nrj.model.Apartment[ id=" + id + " ]";
     }
-
 }

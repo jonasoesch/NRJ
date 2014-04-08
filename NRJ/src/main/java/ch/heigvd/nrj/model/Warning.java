@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
@@ -14,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
+ * This class is a JPA entity for a Warning about a plug.
  *
  * @author rschmutz
  */
 @Entity
 public class Warning implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +23,14 @@ public class Warning implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
     private String message;
+
+    public Long getId() {
+	return id;
+    }
+
+    public void setId(Long id) {
+	this.id = id;
+    }
 
     public Date getTimeMinute() {
 	return timestampMinute;
@@ -41,14 +46,6 @@ public class Warning implements Serializable {
 
     public void setMessage(String message) {
 	this.message = message;
-    }
-
-    public Long getId() {
-	return id;
-    }
-
-    public void setId(Long id) {
-	this.id = id;
     }
 
     @Override
@@ -75,5 +72,4 @@ public class Warning implements Serializable {
     public String toString() {
 	return "ch.heigvd.nrj.model.Warning[ id=" + id + " ]";
     }
-
 }
