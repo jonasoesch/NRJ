@@ -25,6 +25,15 @@ public class History implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
+    private boolean status;
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
 
     public void setTimestampMinute(Date timestampMinute) {
         this.timestampMinute = timestampMinute;
