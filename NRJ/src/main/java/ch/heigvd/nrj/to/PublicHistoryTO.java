@@ -34,11 +34,11 @@ public class PublicHistoryTO {
 	this.historyId = historyId;
     }
 
-    public Date getTimeStamp() {
+    public Date getTimestampMinute() {
 	return timestampMinute;
     }
 
-    public void setTimeStamp(Date timestampMinute) {
+    public void setTimestampMinute(Date timestampMinute) {
 	this.timestampMinute = timestampMinute;
     }
 
