@@ -2,7 +2,7 @@
 
 ## API
 
-![API](schemas(api.png)
+![API](schemas/api.png)
 
 ## Class diagram
 
