@@ -8,8 +8,11 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
+ * This is the transferable object for a consumption of a plug.
  *
- * @author rschmutz
+ * @XmlRootElement annotation at the class level.
+ *
+ * @author Option40
  */
 @XmlRootElement
 public class PublicPlugConsumptionTO {

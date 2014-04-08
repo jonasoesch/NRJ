@@ -22,6 +22,9 @@ public class History implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
+    
+    private Double kW;
+    
     private boolean status;
 
     public Long getId() {
