@@ -25,11 +25,19 @@ public class History implements Serializable {
     private Date timestampMinute;
 
     @ManyToOne protected Plug plug;
-    
-    private Double kW;
-    
+        
     private boolean status;
 
+    public History() {
+        this.timestampMinute = new Date();
+	this.status = false;
+    }
+
+    public History(History historyData) {
+        this.timestampMinute = historyData.getTimestampMinute();
+	this.status = historyData.getStatus();
+    }
+    
     public Long getId() {
 	return id;
     }

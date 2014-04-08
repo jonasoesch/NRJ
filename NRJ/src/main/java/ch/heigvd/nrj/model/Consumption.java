@@ -28,6 +28,16 @@ public class Consumption implements Serializable {
     @ManyToOne protected Room room;
     @ManyToOne protected Plug plug;
 
+    public Consumption() {
+        this.timestampMinute = new Date();
+	this.kW = 0.0;
+    }
+
+    public Consumption(Consumption consumptionData) {
+        this.timestampMinute = consumptionData.getTimestampMinute();
+	this.kW = consumptionData.getkW();
+    }
+    
     public Long getId() {
         return id;
     }
