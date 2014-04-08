@@ -8,9 +8,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * This is an example for a DAO service, implementing CRUD operations on the
- * Apartment entity. The class uses the JPA entity manager to
- * interact with the DB. It returns JPA entities to its clients.
+ * DAO service, implementing CRUD operations on the Apartment entity. 
+ * The class uses the JPA entity manager to interact with the DB. It returns 
+ * JPA entities to its clients.
  * 
  * @author Olivier Liechti
  */
