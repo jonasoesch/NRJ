@@ -3,6 +3,7 @@
   <persistence-unit name="ch.heigvd_Skeleton_war_1.0-SNAPSHOTPU" transaction-type="JTA">
     <jta-data-source>jdbc/skeletonDS</jta-data-source>
     <class>ch.heigvd.nrj.model.History</class>
+    <class>ch.heigvd.nrj.model.Consumption</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

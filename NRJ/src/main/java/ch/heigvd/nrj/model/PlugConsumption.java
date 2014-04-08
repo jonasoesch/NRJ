@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
@@ -14,33 +9,19 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 /**
+ * This class is a JPA entity for a Plug Consumption.
  *
  * @author rschmutz
  */
 @Entity
 public class PlugConsumption implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date timeStamp;
-
-    public Date getTimeStamp() {
-	return timeStamp;
-    }
-
-    public void setTimeStamp(Date timeStamp) {
-	this.timeStamp = timeStamp;
-    }
-
-    public Double getAvgKW() {
-	return avgKW;
-    }
-
-    public void setAvgKW(Double avgKW) {
-	this.avgKW = avgKW;
-    }
+    private Date timestampHour;
     private Double avgKW;
 
     public Long getId() {
@@ -49,6 +30,22 @@ public class PlugConsumption implements Serializable {
 
     public void setId(Long id) {
 	this.id = id;
+    }
+
+    public Date getTimeStampHour() {
+	return timestampHour;
+    }
+
+    public void setTimeStampHour(Date timestampHour) {
+	this.timestampHour = timestampHour;
+    }
+
+    public Double getAvgKW() {
+	return avgKW;
+    }
+
+    public void setAvgKW(Double avgKW) {
+	this.avgKW = avgKW;
     }
 
     @Override
@@ -75,5 +72,4 @@ public class PlugConsumption implements Serializable {
     public String toString() {
 	return "ch.heigvd.nrj.model.PlugConsumption[ id=" + id + " ]";
     }
-
 }

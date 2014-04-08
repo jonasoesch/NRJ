@@ -6,6 +6,8 @@ This repository is used for the Mobile Web Services course, organized at the Uni
 
 ## Project «Gestion NRJ»
 
+![Classes](schemas/class_diagram.png)
+
 * Capteurs
     * Température
     * Chauffage
