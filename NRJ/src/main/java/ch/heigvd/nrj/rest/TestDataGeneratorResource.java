@@ -31,12 +31,12 @@ public class TestDataGeneratorResource {
 	@GET
   @Produces({"text/plain"})
 	public String generateEmployees() {
-//		Employee e = new Employee();
-//		e.setFirstName("John");
-//		e.setLastName("Doe");
-//		e.setEmail("john.doe@heig-vd.ch");
-//		e.setSalary(80000);
-//		employeesManager.create(e);
+		Employee e = new Employee();
+		e.setFirstName("John");
+		e.setLastName("Doe");
+		e.setEmail("john.doe@heig-vd.ch");
+		e.setSalary(80000);
+		employeesManager.create(e);
                 
                 Plug p = new Plug();
                 p.setName("frigo");

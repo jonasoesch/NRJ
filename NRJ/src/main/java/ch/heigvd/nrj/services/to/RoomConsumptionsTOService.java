@@ -1,6 +1,6 @@
 package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.nrj.model.RoomConsumption;
+import ch.heigvd.nrj.model.RoomConsumptionObs;
 import ch.heigvd.nrj.to.PublicRoomConsumptionTO;
 import javax.ejb.Stateless;
 
@@ -13,13 +13,13 @@ import javax.ejb.Stateless;
 public class RoomConsumptionsTOService implements RoomConsumptionsTOServiceLocal {
 
 	@Override
-	public PublicRoomConsumptionTO buildPublicRoomConsumptionTO(RoomConsumption source) {
+	public PublicRoomConsumptionTO buildPublicRoomConsumptionTO(RoomConsumptionObs source) {
 		PublicRoomConsumptionTO to = new PublicRoomConsumptionTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
 		return to;
 	}   
 
 	@Override
-	public void updateRoomConsumptionEntity(RoomConsumption existingEntity, PublicRoomConsumptionTO newState) {
+	public void updateRoomConsumptionEntity(RoomConsumptionObs existingEntity, PublicRoomConsumptionTO newState) {
 		existingEntity.setTimestampHour(newState.getTimestampHour());
 		existingEntity.setAvgKW(newState.getAvgKW());
 	}

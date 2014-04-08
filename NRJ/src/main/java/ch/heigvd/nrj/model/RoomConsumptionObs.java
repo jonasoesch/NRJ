@@ -15,7 +15,7 @@ import javax.persistence.Temporal;
  * @author rschmutz
  */
 @Entity
-public class RoomConsumption implements Serializable {
+public class RoomConsumptionObs implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -61,10 +61,10 @@ public class RoomConsumption implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RoomConsumption)) {
+        if (!(object instanceof RoomConsumptionObs)) {
             return false;
         }
-        RoomConsumption other = (RoomConsumption) object;
+        RoomConsumptionObs other = (RoomConsumptionObs) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

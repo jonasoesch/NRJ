@@ -8,8 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * DAO service, implementing CRUD operations on the Room entity. 
- * The class uses the JPA entity manager to interact with the DB. 
+ * DAO service, implementing CRUD operations on the Room entity.
+ * The class uses the JPA entity manager to interact with the DB.
  * It returns JPA entities to its clients.
  * 
  * @author nicolas
