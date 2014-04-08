@@ -1,11 +1,13 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -22,6 +24,8 @@ public class Plug implements Serializable {
     private Long id;
     
     @ManyToOne protected Room room;
+    @OneToMany(mappedBy="plug") protected Collection<History> histories;
+    @OneToMany(mappedBy="plug") protected Collection<Consumption> consumptions;
     
     private String name;
     private boolean alwaysOn;
