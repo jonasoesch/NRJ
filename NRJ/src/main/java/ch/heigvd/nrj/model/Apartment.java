@@ -5,18 +5,32 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Chris
  */
 @Entity
+@XmlRootElement
 public class Apartment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @OneToMany protected Room room;
+    
     private String name;
+
+    public Apartment() {
+        this.name = "UNDEF";
+    }
+
+    public Apartment(Apartment apartmentData) {
+        this.name = apartmentData.name;
+    }
 
     public String getName() {
         return name;
@@ -25,7 +39,7 @@ public class Apartment implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public Long getId() {
         return id;
     }
