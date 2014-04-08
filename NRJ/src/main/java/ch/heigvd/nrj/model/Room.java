@@ -2,6 +2,7 @@ package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,14 @@ public class Room implements Serializable {
     @OneToMany (mappedBy = "room")
     protected Collection<Plug> plugs;
 
+    public Room() {
+        this.name = "UNDEF";
+    }
+            
+    public Room (Room roomData) {
+        this.name = roomData.getName();
+    }
+    
     public Long getId() {
         return id;
     }

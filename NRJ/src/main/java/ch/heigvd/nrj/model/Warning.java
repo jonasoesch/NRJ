@@ -24,6 +24,16 @@ public class Warning implements Serializable {
     private Date timestampMinute;
     private String message;
 
+    public Warning() {
+        this.timestampMinute = new Date();
+        this.message = "UNDEF";
+    }
+            
+    public Warning (Warning warningData) {
+        this.timestampMinute = warningData.getTimestampMinute();
+        this.message = warningData.getMessage();
+    }
+    
     public Long getId() {
 	return id;
     }
