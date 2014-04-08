@@ -23,7 +23,6 @@ public class Apartment implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany
     protected Room room;
 
     public Apartment() {
