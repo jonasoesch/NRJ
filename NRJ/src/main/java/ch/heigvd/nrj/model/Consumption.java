@@ -1,54 +1,50 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Temporal;
 
 /**
- * Cette classe permet de gérer des prises murales, avec leur propriété alwaysOn.
- * @author nicolas
+ *
+ * @author Robin
  */
 @Entity
-@XmlRootElement
-public class Plug implements Serializable {
+public class Consumption implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @ManyToOne protected Room room;
-    
-    private String name;
-    private boolean alwaysOn;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date timestampMinute;
+    private Double kW;
 
-    public Plug() {
-        this.name = "UNDEF";
-        this.alwaysOn = false;
-    }
-            
-    public Plug (Plug plugData) {
-        this.name = plugData.name;
-        this.alwaysOn = plugData.alwaysOn;
-    }
-    
-    public String getName() {
-        return name;
+    public void setTimestampMinute(Date timestampMinute) {
+        this.timestampMinute = timestampMinute;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setkW(Double kW) {
+        this.kW = kW;
     }
 
-    public boolean isAlwaysOn() {
-        return alwaysOn;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setAlwaysOn(boolean alwaysOn) {
-        this.alwaysOn = alwaysOn;
+    public Date getTimestampMinute() {
+        return timestampMinute;
+    }
+
+    public Double getkW() {
+        return kW;
     }
 
     public Long getId() {
@@ -69,10 +65,10 @@ public class Plug implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Plug)) {
+        if (!(object instanceof Consumption)) {
             return false;
         }
-        Plug other = (Plug) object;
+        Consumption other = (Consumption) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -81,7 +77,6 @@ public class Plug implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.heigvd.nrj.model.Plug[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.Consumption[ id=" + id + " ]";
     }
-    
 }
