@@ -14,7 +14,7 @@ public class PlugsTOService implements PlugsTOServiceLocal {
 
 	@Override
 	public PublicPlugTO buildPublicPlugTO(Plug source) {
-		PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.isAlwaysOn());
+		PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn());
 		return to;
 	}
 
