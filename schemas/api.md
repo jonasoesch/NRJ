@@ -4,10 +4,11 @@ NRJ API
 
 
 
-/apartment/consumption
-	(changer apartment en home)
-	GET		overall consumption
+				|/apartment/consumption	|
+----------------|-----------------------|
+GET				| overall consumption	|
 
+(changer apartment en home)
 			
 				| /rooms		|
 ----------------|---------------|
@@ -16,31 +17,38 @@ POST			|	new room	|
 
 
 
-|	|/rooms/{id}		|
-------------------------------|
-GET	|room id			|
-PUT	|update room id		|
-DELETE|delete room id		|
+				| /rooms/{id}		|
+----------------|-------------------|
+GET				| room id			|
+PUT				| update room id	|
+DELETE 			| delete room id	|
 
-|	|/rooms/{id}/consumption								|
-------------------------------------------------------------------------|
-GET	|room id current (last minute average) consumption				|
 
-|	|/plugs			|
-------------------------------|
-GET	|all plugs			|
-POST	|new plug			|
+				| /rooms/{id}/consumption |
+----------------|-------------------------|
+GET				|room id current (last minute average) consumption |
 
-|	|/plugs/{id}			|
-------------------------------------|
-GET	|plug id				|
-PUT	|update plug id			|
-DELETE|delete plug id			|
 
-|	|/plugs/{id}/consumption								|
-------------------------------------------------------------------------|
-GET	|plug id current (last minute average) consumption				|
-POST	|New measure of plug ids consumption						|
+
+				| /plugs			|
+----------------|-------------------|
+GET				|all plugs			|
+POST			|new plug			|
+
+
+
+				|/plugs/{id}			|
+----------------|-----------------------|
+GET				|plug id				|
+PUT				|update plug id			|
+DELETE 			|delete plug id			|
+
+
+
+				|/plugs/{id}/consumption	|
+----------------|---------------------------|
+GET				|plug id current (last minute average) consumption			|
+POST			|New measure of plug ids consumption						|
 	
 
 /plugs/{id}/consumption?from={timestamp}&to={timestamp}

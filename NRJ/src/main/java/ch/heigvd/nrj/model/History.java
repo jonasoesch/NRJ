@@ -22,8 +22,9 @@ public class History implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    @ManyToOne protected Plug plug;
     private Date timestampMinute;
+
+    @ManyToOne protected Plug plug;
     
     private Double kW;
     
