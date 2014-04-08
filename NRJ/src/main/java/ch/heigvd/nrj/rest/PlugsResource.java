@@ -1,6 +1,5 @@
 package ch.heigvd.nrj.rest;
 
-<<<<<<< HEAD
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
@@ -37,22 +36,17 @@ import javax.ws.rs.core.Response;
  * receive requests from REST clients, we can delegate most of the work to DAOs
  * and Transfer Object services.
  *
- * @author Olivier Liechti
-=======
-import ch.heigvd.nrj.model.Plug;
-import javax.ejb.Stateless;
-import javax.ws.rs.Path;
-
-/**
+ * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Plug; import
+ * javax.ejb.Stateless; import javax.ws.rs.Path;
  *
- * @author nicolas
->>>>>>> 8466c0fc9af2e4e7adf8da0480ad6cf2077d4bae
+ * /**
+ *
+ * @author nicolas >>>>>>> 8466c0fc9af2e4e7adf8da0480ad6cf2077d4bae
  */
 @Stateless
 @Path("plugs")
 public class PlugsResource {
 
-<<<<<<< HEAD
     @Context
     private UriInfo context;
     @EJB
@@ -144,6 +138,4 @@ public class PlugsResource {
         plugsManager.delete(id);
         return Response.ok().build();
     }
-=======
->>>>>>> 8466c0fc9af2e4e7adf8da0480ad6cf2077d4bae
 }
