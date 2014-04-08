@@ -21,8 +21,9 @@ public class PlugConsumption implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Temporal(javax.persistence.TemporalType.DATE)
     @ManyToOne protected Plug plug;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampHour;
     private Double avgKW;
 
@@ -34,11 +35,11 @@ public class PlugConsumption implements Serializable {
 	this.id = id;
     }
 
-    public Date getTimeStampHour() {
+    public Date getTimestampHour() {
 	return timestampHour;
     }
 
-    public void setTimeStampHour(Date timestampHour) {
+    public void setTimestampHour(Date timestampHour) {
 	this.timestampHour = timestampHour;
     }
 
