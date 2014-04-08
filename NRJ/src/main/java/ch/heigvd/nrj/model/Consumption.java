@@ -26,6 +26,7 @@ public class Consumption implements Serializable {
     private Double kW;
 
     @ManyToOne protected Room room;
+    @ManyToOne protected Plug plug;
 
     public Long getId() {
         return id;
