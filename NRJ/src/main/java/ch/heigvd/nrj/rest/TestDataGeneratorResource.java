@@ -17,7 +17,7 @@ import javax.ws.rs.Produces;
  * @author Olivier Liechti
  */
 @Stateless
-@Path("testTest")
+@Path("test")
 public class TestDataGeneratorResource {
 
 	final static Logger LOG = Logger.getLogger(TestDataGeneratorResource.class.getName());
