@@ -25,6 +25,7 @@ public class Warning implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timeStamp;
+    private String message;
 
     public Date getTimeStamp() {
 	return timeStamp;
@@ -41,7 +42,6 @@ public class Warning implements Serializable {
     public void setMessage(String message) {
 	this.message = message;
     }
-    private String message;
 
     public Long getId() {
 	return id;

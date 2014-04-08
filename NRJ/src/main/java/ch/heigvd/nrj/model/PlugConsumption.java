@@ -25,6 +25,7 @@ public class PlugConsumption implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timeStamp;
+    private Double avgKW;
 
     public Date getTimeStamp() {
 	return timeStamp;
@@ -41,7 +42,6 @@ public class PlugConsumption implements Serializable {
     public void setAvgKW(Double avgKW) {
 	this.avgKW = avgKW;
     }
-    private Double avgKW;
 
     public Long getId() {
 	return id;
