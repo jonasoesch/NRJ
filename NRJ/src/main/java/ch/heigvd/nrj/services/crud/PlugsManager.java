@@ -8,11 +8,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * This is an example for a DAO service, implementing CRUD operations on the
+ * This is a DAO service, implementing CRUD operations on the
  * Plug entity. The class uses the JPA entity manager to
  * interact with the DB. It returns JPA entities to its clients.
  * 
- * @author Olivier Liechti
+ * @author nicolas
  */
 @Stateless
 public class PlugsManager implements PlugsManagerLocal {

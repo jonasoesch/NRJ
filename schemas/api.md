@@ -7,11 +7,14 @@ NRJ API
 /apartment/consumption
 	(changer apartment en home)
 	GET		overall consumption
+
 			
-|	|/rooms			|
-------------------------------|
-GET	|all rooms			|
-POST	|new room			|
+				| /rooms		|
+----------------|---------------|
+GET				|	all rooms	|
+POST			|	new room	|
+
+
 
 |	|/rooms/{id}		|
 ------------------------------|

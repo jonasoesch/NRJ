@@ -25,6 +25,7 @@ public class PlugConsumption implements Serializable {
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampHour;
+
     private Double avgKW;
 
     public Long getId() {
