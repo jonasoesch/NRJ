@@ -29,6 +29,8 @@ public class Room implements Serializable {
 
     @OneToMany (mappedBy = "room")
     protected Collection<Consumption> consumptions;
+    @OneToMany (mappedBy = "room")
+    protected Collection<RoomConsumption> roomConsumptions;
 
     public Long getId() {
         return id;
