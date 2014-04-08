@@ -25,7 +25,7 @@ public class Plug implements Serializable {
     
     @ManyToOne protected Room room;
     @OneToMany(mappedBy="plug") protected Collection<History> histories;
-    @OneToMany(mappedBy="plug") protected Collection<Consumption> consumptions;
+    @OneToMany(mappedBy="plug") protected Collection<PlugConsumption> plugConsumptions;
     
     private String name;
     private boolean alwaysOn;
