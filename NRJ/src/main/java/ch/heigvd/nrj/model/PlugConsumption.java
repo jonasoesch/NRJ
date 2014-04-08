@@ -28,6 +28,7 @@ public class PlugConsumption implements Serializable {
 
     private Double avgKW;
 
+    
     public Long getId() {
 	return id;
     }

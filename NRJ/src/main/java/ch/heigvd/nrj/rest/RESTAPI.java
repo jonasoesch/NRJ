@@ -19,6 +19,9 @@ public class RESTAPI extends Application {
 		// register root resources/providers
 		classes.add(ApplicationExceptionMapper.class);
 		classes.add(EmployeesResource.class);
+		classes.add(ApartmentsResource.class);
+		classes.add(RoomsResource.class);
+		classes.add(PlugsResource.class);
 		classes.add(TestDataGeneratorResource.class);
 		return classes;
 	}
