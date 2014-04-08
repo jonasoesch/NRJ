@@ -23,10 +23,9 @@ public class History implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
-
-    @ManyToOne protected Plug plug;
-        
     private boolean status;
+    
+    @ManyToOne protected Plug plug;
 
     public History() {
         this.timestampMinute = new Date();

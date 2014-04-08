@@ -24,9 +24,20 @@ public class RoomConsumptionObs implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampHour;
     private Double avgKW;
+    
     @ManyToOne
     protected Room room;
 
+    public RoomConsumptionObs() {
+        this.timestampHour = new Date();
+        this.avgKW = 0.0;
+    }
+            
+    public RoomConsumptionObs (RoomConsumptionObs roomConsumptionObsData) {
+        this.timestampHour = roomConsumptionObsData.getTimestampHour();
+        this.avgKW = roomConsumptionObsData.getAvgKW();
+    }
+    
     public Long getId() {
         return id;
     }

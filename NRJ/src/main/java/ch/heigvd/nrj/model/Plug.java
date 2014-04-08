@@ -28,14 +28,13 @@ public class Plug implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String name;
+    private boolean alwaysOn;
     
     @ManyToOne protected Room room;
     @OneToMany(mappedBy="plug") protected Collection<History> histories;
     @OneToMany(mappedBy="plug") protected Collection<PlugConsumptionObs> plugConsumptions;
     @OneToMany(mappedBy="plug") protected Collection<Consumption> consumptions;
-
-    private String name;
-    private boolean alwaysOn;
 
     public Plug() {
         this.name = "UNDEF";
@@ -43,8 +42,8 @@ public class Plug implements Serializable {
     }
             
     public Plug (Plug plugData) {
-        this.name = plugData.name;
-        this.alwaysOn = plugData.alwaysOn;
+        this.name = plugData.getName();
+        this.alwaysOn = plugData.getAlwaysOn();
     }
     
     public Long getId() {
@@ -63,7 +62,7 @@ public class Plug implements Serializable {
         this.name = name;
     }
 
-    public boolean isAlwaysOn() {
+    public boolean getAlwaysOn() {
         return alwaysOn;
     }
 
