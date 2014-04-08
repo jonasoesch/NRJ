@@ -28,6 +28,15 @@ public class PlugConsumption implements Serializable {
 
     private Double avgKW;
 
+    public PlugConsumption() {
+        this.timestampHour = new Date();
+        this.avgKW = 0.0;
+    }
+            
+    public PlugConsumption (PlugConsumption plugConsumptionData) {
+        this.timestampHour = plugConsumptionData.timestampHour;
+        this.avgKW = plugConsumptionData.getAvgKW();
+    }
     
     public Long getId() {
 	return id;
