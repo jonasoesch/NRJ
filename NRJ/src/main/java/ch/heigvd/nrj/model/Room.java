@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 /**
@@ -15,6 +17,10 @@ import javax.persistence.OneToMany;
  *
  * @author rschmutz
  */
+@NamedQueries(
+        @NamedQuery(
+        name = "Room.findAllRoom",
+        query = "SELECT r FROM Room r"))
 @Entity
 public class Room implements Serializable {
 

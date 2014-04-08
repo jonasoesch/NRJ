@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "findAllPlugs",
+        name = "Plug.findAllPlugs",
         query = "SELECT p FROM Plug p"))
 @Entity
 @XmlRootElement

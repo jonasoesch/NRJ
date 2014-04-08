@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "findAllEmployees",
+        name = "Employee.findAllEmployees",
         query = "SELECT e FROM Employee e"))
 @Entity
 public class Employee implements Serializable {
