@@ -23,7 +23,7 @@ public class PlugConsumption implements Serializable {
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     @ManyToOne protected Plug plug;
-    private Date timestampHour;
+    @Temporal(javax.persistence.TemporalType.DATE) private Date timestampHour;
     private Double avgKW;
 
     public Long getId() {
