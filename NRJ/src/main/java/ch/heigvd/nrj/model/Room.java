@@ -22,11 +22,10 @@ public class Room implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    private String name;
+    
     @ManyToOne
     protected Apartment apartment;
-    
-    private String name;
 
     @OneToMany (mappedBy = "room")
     protected Collection<Consumption> consumptions;

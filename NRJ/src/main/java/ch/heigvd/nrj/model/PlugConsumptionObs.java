@@ -21,21 +21,20 @@ public class PlugConsumptionObs implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne protected Plug plug;
-    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampHour;
-
     private Double avgKW;
+    
+    @ManyToOne protected Plug plug;
 
     public PlugConsumptionObs() {
         this.timestampHour = new Date();
         this.avgKW = 0.0;
     }
             
-    public PlugConsumptionObs (PlugConsumptionObs plugConsumptionData) {
-        this.timestampHour = plugConsumptionData.timestampHour;
-        this.avgKW = plugConsumptionData.getAvgKW();
+    public PlugConsumptionObs (PlugConsumptionObs plugConsumptionObsData) {
+        this.timestampHour = plugConsumptionObsData.getTimestampHour();
+        this.avgKW = plugConsumptionObsData.getAvgKW();
     }
     
     public Long getId() {

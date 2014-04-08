@@ -22,20 +22,17 @@ public class Apartment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    protected Room room;
+    private String name;
 
     @OneToMany(mappedBy = "apartment")
     protected Collection<Room> rooms;
-
-    private String name;
 
     public Apartment() {
         this.name = "UNDEF";
     }
 
     public Apartment(Apartment apartmentData) {
-        this.name = apartmentData.name;
+        this.name = apartmentData.getName();
     }
 
     public String getName() {
