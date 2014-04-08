@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,56 +22,60 @@ public class Apartment implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
 
     protected Room room;
 
+    @OneToMany(mappedBy = "apartment")
+    protected Collection<Room> rooms;
+
+    private String name;
+
     public Apartment() {
-	this.name = "UNDEF";
+        this.name = "UNDEF";
     }
 
     public Apartment(Apartment apartmentData) {
-	this.name = apartmentData.name;
+        this.name = apartmentData.name;
     }
 
     public String getName() {
-	return name;
+        return name;
     }
 
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
 
     public Long getId() {
-	return id;
+        return id;
     }
 
     public void setId(Long id) {
-	this.id = id;
+        this.id = id;
     }
 
     @Override
     public int hashCode() {
-	int hash = 0;
-	hash += (id != null ? id.hashCode() : 0);
-	return hash;
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-	// TODO: Warning - this method won't work in the case the id fields are not set
-	if (!(object instanceof Apartment)) {
-	    return false;
-	}
-	Apartment other = (Apartment) object;
-	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-	    return false;
-	}
-	return true;
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Apartment)) {
+            return false;
+        }
+        Apartment other = (Apartment) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-	return "ch.heigvd.nrj.model.Apartment[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.Apartment[ id=" + id + " ]";
     }
 }

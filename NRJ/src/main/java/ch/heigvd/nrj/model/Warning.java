@@ -32,11 +32,11 @@ public class Warning implements Serializable {
 	this.id = id;
     }
 
-    public Date getTimeMinute() {
+    public Date getTimestampMinute() {
 	return timestampMinute;
     }
 
-    public void setTimeStampMinute(Date timestampMinute) {
+    public void setTimestampMinute(Date timestampMinute) {
 	this.timestampMinute = timestampMinute;
     }
 
