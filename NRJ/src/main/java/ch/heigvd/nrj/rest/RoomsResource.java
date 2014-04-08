@@ -9,7 +9,6 @@ package ch.heigvd.nrj.rest;
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
-import ch.heigvd.nrj.services.crud.RoomsManager;
 import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicRoomTO;
 import java.net.URI;
