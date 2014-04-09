@@ -51,7 +51,7 @@ public class TestDataGeneratorResource {
                 m.setId(roomsManager.create(m));
 		
 		Room m2 = new Room();
-                m2.setName("Chambre de Barbie");
+                m2.setName("Cuisine");
 		m2.setApartment(a);
                 m2.setId(roomsManager.create(m2));
 		
@@ -67,7 +67,7 @@ public class TestDataGeneratorResource {
                 Plug p = new Plug();
                 p.setName("frigo");
                 p.setAlwaysOn(true);
-		p.setRoom(m);
+		p.setRoom(m2);
                 plugsManager.create(p);
                 
 
