@@ -100,7 +100,7 @@ public class ConsumptionsObsResource {
      */
     @GET
     @Path("{id}")
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         ConsumptionObs consumption = consumptionsManager.findById(id);
         PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);

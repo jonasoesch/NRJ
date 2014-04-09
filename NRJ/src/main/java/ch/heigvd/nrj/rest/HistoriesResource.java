@@ -69,7 +69,7 @@ public class HistoriesResource {
      * @return an instance of PublicHistoryTO
      */
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<PublicHistoryTO> getResourceList() {
         List<History> histories = historiesManager.findAll();
         List<PublicHistoryTO> result = new LinkedList<>();
@@ -88,7 +88,7 @@ public class HistoriesResource {
      */
     @GET
     @Path("{id}")
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public PublicHistoryTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         History history = historiesManager.findById(id);
         PublicHistoryTO historyTO = historiesTOService.buildPublicHistoryTO(history);

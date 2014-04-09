@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
@@ -87,7 +81,7 @@ public class RoomConsumptionsFactsResource {
      * @return an instance of PublicPlugTO
      */
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<PublicPlugTO> getResourceList() {
         List<Plug> plugs = plugsManager.findAll();
         List<PublicPlugTO> result = new LinkedList<>();
@@ -106,7 +100,7 @@ public class RoomConsumptionsFactsResource {
      */
     @GET
     @Path("{id}")
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public PublicPlugTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         Plug plug = plugsManager.findById(id);
         PublicPlugTO plugTO = plugsTOService.buildPublicPlugTO(plug);

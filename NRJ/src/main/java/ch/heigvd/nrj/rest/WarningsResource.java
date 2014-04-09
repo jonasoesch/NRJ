@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
@@ -69,7 +64,7 @@ public class WarningsResource {
      * @return an instance of PublicWarningTO
      */
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<PublicWarningTO> getResourceList() {
         List<Warning> warnings = warningsManager.findAll();
         List<PublicWarningTO> result = new LinkedList<>();
@@ -88,7 +83,7 @@ public class WarningsResource {
      */
     @GET
     @Path("{id}")
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public PublicWarningTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         Warning warning = warningsManager.findById(id);
         PublicWarningTO warningTO = warningsTOService.buildPublicWarningTO(warning);
