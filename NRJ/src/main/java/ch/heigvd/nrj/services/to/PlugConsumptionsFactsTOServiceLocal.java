@@ -1,16 +1,16 @@
 package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.nrj.model.Consumption;
-import ch.heigvd.nrj.to.PublicConsumptionTO;
+import ch.heigvd.nrj.model.PlugConsumptionFacts;
+import ch.heigvd.nrj.to.PublicPlugConsumptionFactsTO;
 import javax.ejb.Local;
 
 /**
- * This interface defines the contract fulfilled by the ConsumptionsTOService,
+ * This interface defines the contract fulfilled by the PlugConsumptionsTOService,
  * 
  * @author rschmutz
  */
 @Local
-public interface ConsumptionsTOServiceLocal {
+public interface PlugConsumptionsFactsTOServiceLocal {
 	
 	/**
 	 * This method builds a TO instance from a JPA entity instance. 
@@ -18,7 +18,7 @@ public interface ConsumptionsTOServiceLocal {
 	 * @param source the JPA entity
 	 * @return the TO
 	 */
-	public PublicConsumptionTO buildPublicConsumptionTO(Consumption source);
+	public PublicPlugConsumptionFactsTO buildPublicPlugConsumptionObsTO(PlugConsumptionFacts source);
 	
 	/**
 	 * This method updates an existing JPA entity by merging the state of the
@@ -27,5 +27,5 @@ public interface ConsumptionsTOServiceLocal {
 	 * @param existingEntity the existing entity that we want to update
 	 * @param newState a TO that contains new state (subset of the entity state)
 	 */
-	public void updateConsumptionEntity(Consumption existingEntity, PublicConsumptionTO newState);
+	public void updatePlugConsumptionObsEntity(PlugConsumptionFacts existingEntity, PublicPlugConsumptionFactsTO newState);
 }

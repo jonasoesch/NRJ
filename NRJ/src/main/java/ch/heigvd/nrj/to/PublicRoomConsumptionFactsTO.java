@@ -11,16 +11,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Option40
  */
 @XmlRootElement
-public class PublicRoomConsumptionObsTO {
+public class PublicRoomConsumptionFactsTO {
 
     private Long roomConsumptionObsId;
     private Date timestampHour;
     private Double avgKW;
 
-    public PublicRoomConsumptionObsTO() {
+    public PublicRoomConsumptionFactsTO() {
     }
 
-    public PublicRoomConsumptionObsTO(long roomConsumptionObsId, Date timestampHour, Double avgKW) {
+    public PublicRoomConsumptionFactsTO(long roomConsumptionObsId, Date timestampHour, Double avgKW) {
 	this.roomConsumptionObsId = roomConsumptionObsId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;

@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
@@ -12,15 +18,15 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * This is the REST API endpoint for the Plugs resource. When REST clients
@@ -41,11 +47,11 @@ import javax.ws.rs.core.Response;
  *
  * /**
  *
- * @author nicolas >>>>>>> 8466c0fc9af2e4e7adf8da0480ad6cf2077d4bae
+ * @author nicolas
  */
 @Stateless
-@Path("plugs")
-public class PlugsResource {
+@Path("roomConsumptions")
+public class RoomConsumptionsFactsResource {
 
     @Context
     private UriInfo context;
@@ -57,7 +63,7 @@ public class PlugsResource {
     /**
      * Creates a new instance of PlugsResource
      */
-    public PlugsResource() {
+    public RoomConsumptionsFactsResource() {
     }
 
     /**

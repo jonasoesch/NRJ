@@ -12,36 +12,36 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
- * This class is a JPA entity for a Consumption.
+ * This class is a JPA entity for a Room Consumption.
  *
- * @author Robin
+ * @author rschmutz
  */
 @NamedQueries(
         @NamedQuery(
-        name = "Consumption.findAllConsumptions",
-        query = "SELECT c FROM Consumption c"))
+        name = "RoomConsumption.findAllRoomConsumptions",
+        query = "SELECT rc FROM RoomConsumption rc"))
 @Entity
-public class Consumption implements Serializable {
+public class RoomConsumptionFacts implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date timestampMinute;
-    private Double kW;
+    private Date timestampHour;
+    private Double avgKW;
+    
+    @ManyToOne
+    protected Room room;
 
-    @ManyToOne protected Room room;
-    @ManyToOne protected Plug plug;
-
-    public Consumption() {
-        this.timestampMinute = new Date();
-	this.kW = 0.0;
+    public RoomConsumptionFacts() {
+        this.timestampHour = new Date();
+        this.avgKW = 0.0;
     }
-
-    public Consumption(Consumption consumptionData) {
-        this.timestampMinute = consumptionData.getTimestampMinute();
-	this.kW = consumptionData.getkW();
+            
+    public RoomConsumptionFacts (RoomConsumptionFacts roomConsumptionObsData) {
+        this.timestampHour = roomConsumptionObsData.getTimestampHour();
+        this.avgKW = roomConsumptionObsData.getAvgKW();
     }
     
     public Long getId() {
@@ -52,20 +52,20 @@ public class Consumption implements Serializable {
         this.id = id;
     }
 
-    public Date getTimestampMinute() {
-        return timestampMinute;
+    public Date getTimestampHour() {
+        return timestampHour;
     }
 
-    public void setTimestampMinute(Date timestampMinute) {
-        this.timestampMinute = timestampMinute;
+    public void setTimestampHour(Date timestampHour) {
+        this.timestampHour = timestampHour;
     }
 
-    public Double getkW() {
-        return kW;
+    public Double getAvgKW() {
+        return avgKW;
     }
 
-    public void setkW(Double kW) {
-        this.kW = kW;
+    public void setAvgKW(Double avgKW) {
+        this.avgKW = avgKW;
     }
 
     @Override
@@ -78,10 +78,10 @@ public class Consumption implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Consumption)) {
+        if (!(object instanceof RoomConsumptionFacts)) {
             return false;
         }
-        Consumption other = (Consumption) object;
+        RoomConsumptionFacts other = (RoomConsumptionFacts) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -90,6 +90,6 @@ public class Consumption implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.heigvd.nrj.model.Consumption[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.RoomConsumption[ id=" + id + " ]";
     }
 }

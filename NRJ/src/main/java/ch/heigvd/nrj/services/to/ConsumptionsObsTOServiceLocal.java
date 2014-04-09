@@ -1,16 +1,16 @@
 package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.nrj.model.RoomConsumption;
-import ch.heigvd.nrj.to.PublicRoomConsumptionObsTO;
+import ch.heigvd.nrj.model.ConsumptionObs;
+import ch.heigvd.nrj.to.PublicConsumptionObsTO;
 import javax.ejb.Local;
 
 /**
- * This interface defines the contract fulfilled by the RoomConsumptionsTOService,
+ * This interface defines the contract fulfilled by the ConsumptionsTOService,
  * 
  * @author rschmutz
  */
 @Local
-public interface RoomConsumptionsObsTOServiceLocal {
+public interface ConsumptionsObsTOServiceLocal {
 	
 	/**
 	 * This method builds a TO instance from a JPA entity instance. 
@@ -18,7 +18,7 @@ public interface RoomConsumptionsObsTOServiceLocal {
 	 * @param source the JPA entity
 	 * @return the TO
 	 */
-	public PublicRoomConsumptionObsTO buildPublicRoomConsumptionObsTO(RoomConsumption source);
+	public PublicConsumptionObsTO buildPublicConsumptionTO(ConsumptionObs source);
 	
 	/**
 	 * This method updates an existing JPA entity by merging the state of the
@@ -27,5 +27,5 @@ public interface RoomConsumptionsObsTOServiceLocal {
 	 * @param existingEntity the existing entity that we want to update
 	 * @param newState a TO that contains new state (subset of the entity state)
 	 */
-	public void updateRoomConsumptionObsEntity(RoomConsumption existingEntity, PublicRoomConsumptionObsTO newState);
+	public void updateConsumptionEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState);
 }

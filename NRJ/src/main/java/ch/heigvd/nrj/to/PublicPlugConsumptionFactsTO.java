@@ -15,16 +15,16 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Option40
  */
 @XmlRootElement
-public class PublicPlugConsumptionObsTO {
+public class PublicPlugConsumptionFactsTO {
 
     private Long plugConsumptionObsId;
     private Date timestampHour;
     private Double avgKW;
 
-    public PublicPlugConsumptionObsTO() {
+    public PublicPlugConsumptionFactsTO() {
     }
 
-    public PublicPlugConsumptionObsTO(long plugConsumptionObsId, Date timestampHour, Double avgKW) {
+    public PublicPlugConsumptionFactsTO(long plugConsumptionObsId, Date timestampHour, Double avgKW) {
 	this.plugConsumptionObsId = plugConsumptionObsId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;

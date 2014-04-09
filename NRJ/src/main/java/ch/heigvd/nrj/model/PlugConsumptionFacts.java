@@ -21,7 +21,7 @@ import javax.persistence.Temporal;
         name = "PlugConsumption.findAllPlugConsumptions",
         query = "SELECT pc FROM PlugConsumption pc"))
 @Entity
-public class PlugConsumption implements Serializable {
+public class PlugConsumptionFacts implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,12 +33,12 @@ public class PlugConsumption implements Serializable {
     
     @ManyToOne protected Plug plug;
 
-    public PlugConsumption() {
+    public PlugConsumptionFacts() {
         this.timestampHour = new Date();
         this.avgKW = 0.0;
     }
             
-    public PlugConsumption (PlugConsumption plugConsumptionObsData) {
+    public PlugConsumptionFacts (PlugConsumptionFacts plugConsumptionObsData) {
         this.timestampHour = plugConsumptionObsData.getTimestampHour();
         this.avgKW = plugConsumptionObsData.getAvgKW();
     }
@@ -77,10 +77,10 @@ public class PlugConsumption implements Serializable {
     @Override
     public boolean equals(Object object) {
 	// TODO: Warning - this method won't work in the case the id fields are not set
-	if (!(object instanceof PlugConsumption)) {
+	if (!(object instanceof PlugConsumptionFacts)) {
 	    return false;
 	}
-	PlugConsumption other = (PlugConsumption) object;
+	PlugConsumptionFacts other = (PlugConsumptionFacts) object;
 	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 	    return false;
 	}
