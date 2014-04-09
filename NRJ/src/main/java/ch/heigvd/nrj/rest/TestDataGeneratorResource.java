@@ -57,11 +57,11 @@ public class TestDataGeneratorResource {
 //                
 //                employeesManager.findAll();
                 
-//                Plug p = new Plug();
-//                p.setName("frigo");
-//                p.setAlwaysOn(true);
-//		p.setRoom(m);
-//                plugsManager.create(p);
+                Plug p = new Plug();
+                p.setName("frigo");
+                p.setAlwaysOn(true);
+		p.setRoom(m);
+                plugsManager.create(p);
                 
 //                Apartment a = new Apartment();
 //                p.setName("Chez Mc Cartney");
