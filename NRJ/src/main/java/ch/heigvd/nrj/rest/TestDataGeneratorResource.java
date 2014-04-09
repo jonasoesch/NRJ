@@ -63,6 +63,12 @@ public class TestDataGeneratorResource {
 		p.setRoom(m);
                 plugsManager.create(p);
                 
+                Plug p2 = new Plug();
+                p2.setName("television");
+                p2.setAlwaysOn(false);
+                p2.setRoom(m);
+                plugsManager.create(p);
+                
 //                Apartment a = new Apartment();
 //                p.setName("Chez Mc Cartney");
 //                apartmentsManager.create(a);
