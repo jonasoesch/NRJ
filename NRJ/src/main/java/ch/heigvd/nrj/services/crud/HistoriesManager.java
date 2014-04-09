@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * DAO service, implementing CRUD operations on the Historie entity. The class
+ * DAO service, implementing CRUD operations on the History entity. The class
  * uses the JPA entity manager to interact with the DB. It returns JPA entities
  * to its clients.
  *
