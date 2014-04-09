@@ -1,0 +1,141 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package ch.heigvd.nrj.rest;
+
+import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Consumption;
+import ch.heigvd.nrj.services.crud.ConsumptionsManagerLocal;
+import ch.heigvd.nrj.services.to.ConsumptionsTOServiceLocal;
+import ch.heigvd.nrj.to.PublicConsumptionTO;
+import java.net.URI;
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
+/**
+ * This is the REST API endpoint for the Consumptions resource. When REST clients
+ * send HTTP requests, they will be routed to this class (because of the
+ *
+ * @Path annotation). They will then be routed to the appropriate methods
+ * (because of the
+ * @GET,
+ * @POST and other annotations).
+ *
+ * This class is a stateless session bean, which allows us to inject other
+ * stateless session beans with annotations. That is practical, because when we
+ * receive requests from REST clients, we can delegate most of the work to DAOs
+ * and Transfer Object services.
+ *
+ * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Consumption; import
+ * javax.ejb.Stateless; import javax.ws.rs.Path;
+ *
+ * @author nicolas
+ */
+@Stateless
+@Path("consumptions")
+public class ConsumptionsObsResource {
+
+    @Context
+    private UriInfo context;
+    @EJB
+    ConsumptionsManagerLocal consumptionsManager;
+    @EJB
+    ConsumptionsTOServiceLocal consumptionsTOService;
+
+    /**
+     * Creates a new instance of ConsumptionsResource
+     */
+    public ConsumptionsObsResource() {
+    }
+
+    /**
+     * Creates a new Consumption resource from the provided representation
+     *
+     * @return an instance of PublicConsumptionTO
+     */
+    @POST
+    @Consumes({"application/json"})
+    public Response createResource(PublicConsumptionTO newConsumptionTO) {
+        Consumption newConsumption = new Consumption();
+        consumptionsTOService.updateConsumptionEntity(newConsumption, newConsumptionTO);
+        long newConsumptionId = consumptionsManager.create(newConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
+        return Response.created(createdURI).build();
+    }
+
+    /**
+     * Retrieves a representation of a list of Plug resources
+     *
+     * @return an instance of PublicPlugTO
+     */
+    /*@GET
+    @Produces({"application/json", "application/xml"})
+    public List<PublicPlugTO> getResourceList() {
+        List<Plug> plugs = plugsManager.findAll();
+        List<PublicPlugTO> result = new LinkedList<>();
+        for (Plug plug : plugs) {
+            result.add(plugsTOService.buildPublicPlugTO(plug));
+        }
+        return result;
+    }*/
+
+    /**
+     * Retrieves representation of an ConsumptionsObs resource
+     *
+     * @param id this id of the consumption
+     * @return an instance of PublicConsumptionTO
+     * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
+     */
+    @GET
+    @Path("{id}")
+    @Produces({"application/json", "application/xml"})
+    public PublicConsumptionTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
+        Consumption consumption = consumptionsManager.findById(id);
+        PublicConsumptionTO consumptionTO = consumptionsTOService.buildPublicConsumptionTO(consumption);
+        return consumptionTO;
+    }
+
+    /**
+     * Updates an ConsumptionsObs resource
+     *
+     * @param id this id of the consumption
+     * @param updatedConsumptionTO a TO containing the consumption data
+     * @return an instance of PublicConsumptionTO
+     * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
+     */
+    /*@PUT
+    @Path("{id}")
+    @Consumes({"application/json"})
+    public Response Resource(PublicPlugTO updatedPlugTO, @PathParam("id") long id) throws EntityNotFoundException {
+        Plug plugToUpdate = plugsManager.findById(id);
+        plugsTOService.updatePlugEntity(plugToUpdate, updatedPlugTO);
+        consumptionsManager.update(consumptionToUpdate);
+        return Response.ok().build();
+    }*/
+
+    /**
+     * Deletes an ConsumptionsObs resource
+     *
+     * @param id this id of the consumption
+     * @return an instance of PublicConsumptionTO
+     * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
+     */
+    /*@DELETE
+    @Path("{id}")
+    public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
+        consumptionsManager.delete(id);
+        return Response.ok().build();
+    }*/
+}
