@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
@@ -14,6 +16,10 @@ import javax.persistence.Temporal;
  *
  * @author rschmutz
  */
+@NamedQueries(
+        @NamedQuery(
+        name = "PlugConsumptionObs.findAllPlugConsumptionsObs",
+        query = "SELECT pco FROM PlugConsumptionObs pco"))
 @Entity
 public class PlugConsumptionObs implements Serializable {
 

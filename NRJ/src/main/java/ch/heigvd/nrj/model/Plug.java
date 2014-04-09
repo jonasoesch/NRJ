@@ -45,6 +45,7 @@ public class Plug implements Serializable {
     public Plug (Plug plugData) {
         this.name = plugData.getName();
         this.alwaysOn = plugData.getAlwaysOn();
+        this.room = plugData.getRoom();
     }
     
     public Long getId() {
