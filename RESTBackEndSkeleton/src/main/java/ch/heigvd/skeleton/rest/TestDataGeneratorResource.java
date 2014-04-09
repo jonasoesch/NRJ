@@ -32,6 +32,7 @@ public class TestDataGeneratorResource {
 		e.setEmail("john.doe@heig-vd.ch");
 		e.setSalary(80000);
 		employeesManager.create(e);
+                
 		return "done";
 	}
 }

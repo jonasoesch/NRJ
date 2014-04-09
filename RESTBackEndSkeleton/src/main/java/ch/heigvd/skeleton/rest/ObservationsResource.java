@@ -2,6 +2,7 @@ package ch.heigvd.skeleton.rest;
 
 import ch.heigvd.skeleton.exceptions.EntityNotFoundException;
 import ch.heigvd.skeleton.model.Observation;
+import ch.heigvd.skeleton.services.business.StreamProcessorLocal;
 import ch.heigvd.skeleton.services.crud.ObservationsManagerLocal;
 import ch.heigvd.skeleton.services.to.ObservationsTOServiceLocal;
 import ch.heigvd.skeleton.to.PublicObservationTO;
@@ -12,15 +13,15 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * This is the REST API endpoint for the Observations resource. When REST clients
@@ -47,6 +48,9 @@ public class ObservationsResource {
 	
 	@EJB
 	ObservationsTOServiceLocal observationsTOService;
+        
+        @EJB
+        StreamProcessorLocal streamProcessor;
 
 	/**
 	 * Creates a new instance of ObservationsResource
@@ -61,11 +65,10 @@ public class ObservationsResource {
 	@POST
 	@Consumes({"application/json"})
 	public Response createResource(PublicObservationTO newObservationTO) {
-			Observation newObservation = new Observation();
-			observationsTOService.updateObservationEntity(newObservation,newObservationTO);
-			long newObservationId = observationsManager.create(newObservation);
-			URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newObservationId)).build();
-			return Response.created(createdURI).build();
+                Observation newObservation = new Observation();
+                observationsTOService.updateObservationEntity(newObservation,newObservationTO);
+                streamProcessor.onObservation(newObservation);
+                return Response.ok().build();
 	}
 
 	/**
@@ -73,7 +76,7 @@ public class ObservationsResource {
 	 * @return an instance of PublicObservationTO
 	 */
 	@GET
-  @Produces({"application/json", "application/xml"})
+        @Produces({"application/json", "application/xml"})
 	public List<PublicObservationTO> getResourceList() {
 		List<Observation> observations = observationsManager.findAll();
 		List<PublicObservationTO> result = new LinkedList<>();

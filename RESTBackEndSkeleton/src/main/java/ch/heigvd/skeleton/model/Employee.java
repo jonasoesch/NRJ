@@ -17,10 +17,7 @@ import javax.persistence.NamedQuery;
  * @author Olivier Liechti
  */
 @NamedQueries(
-				@NamedQuery(
-								name = "findAllEmployees",
-								query = "SELECT e FROM Employee e"
-				)
+	@NamedQuery(name = "Employee.findAllEmployees", query = "SELECT e FROM Employee e")
 )
 
 @Entity

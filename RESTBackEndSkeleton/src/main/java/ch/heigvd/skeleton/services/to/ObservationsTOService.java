@@ -14,7 +14,6 @@ public class ObservationsTOService implements ObservationsTOServiceLocal {
 
 	@Override
 	public PublicObservationTO buildPublicObservationTO(Observation source) {
-            System.out.println("SALUT!!");
 		PublicObservationTO to = new PublicObservationTO(source.getId(), source.getValue(), source.getTimestamp());
 		return to;
 	}
