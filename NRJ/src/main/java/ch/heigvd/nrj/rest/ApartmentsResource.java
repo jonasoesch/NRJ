@@ -9,6 +9,7 @@ package ch.heigvd.nrj.rest;
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
+import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import ch.heigvd.nrj.services.to.ApartmentsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicApartmentTO;
 import java.net.URI;
@@ -40,7 +41,8 @@ public class ApartmentsResource {
 	
 	@EJB
 	ApartmentsManagerLocal apartmentsManager;
-	
+	@EJB
+	RoomsManagerLocal roomsManager;
 	@EJB
 	ApartmentsTOServiceLocal apartmentsTOService;
 
@@ -69,9 +71,13 @@ public class ApartmentsResource {
 	 * @return an instance of PublicApartmentTO
 	 */
 	@GET
-  @Produces({"application/json"})
+	@Produces({"application/json"})
 	public List<PublicApartmentTO> getResourceList() {
 		List<Apartment> apartments = apartmentsManager.findAll();
+		/*for(Apartment a : apartments){
+		    a.setRooms(roomsManager.findAllByApartment(a));
+		}*/
+		
 		List<PublicApartmentTO> result = new LinkedList<>();
 		for(Apartment apartment : apartments) {
 			result.add(apartmentsTOService.buildPublicApartmentTO(apartment));

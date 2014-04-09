@@ -4,9 +4,11 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -17,10 +19,13 @@ import javax.persistence.OneToMany;
  *
  * @author rschmutz
  */
-@NamedQueries(
+@NamedQueries({
         @NamedQuery(
         name = "Room.findAllRooms",
-        query = "SELECT r FROM Room r"))
+        query = "SELECT r FROM Room r"),
+	@NamedQuery(
+        name = "Room.findAllByApartment",
+        query = "SELECT r FROM Room r WHERE r.apartment.id = :apartment_id")})
 @Entity
 public class Room implements Serializable {
 
@@ -46,7 +51,7 @@ public class Room implements Serializable {
             
     public Room (Room roomData) {
         this.name = roomData.getName();
-	this.apartment = roomData.getApartment();
+	// this.apartment = roomData.getApartment();
     }
     
     public Long getId() {

@@ -14,13 +14,14 @@ public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 
 	@Override
 	public PublicApartmentTO buildPublicApartmentTO(Apartment source) {
-		PublicApartmentTO to = new PublicApartmentTO(source.getId(), source.getName());
+		PublicApartmentTO to = new PublicApartmentTO(source.getId(), source.getName(), source.getRooms());
 		return to;
 	}
 
 	@Override
 	public void updateApartmentEntity(Apartment existingEntity, PublicApartmentTO newState) {
-		existingEntity.setName(newState.getName());		
+		existingEntity.setName(newState.getName());	
+		existingEntity.setRooms(newState.getRooms());
 	}
 	
 }

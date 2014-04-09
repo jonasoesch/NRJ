@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Room;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -51,6 +52,14 @@ public class RoomsManager implements RoomsManagerLocal {
 	public List<Room> findAll() {
 		// Note: the findAllRooms JPQL query is defined in the Room.java file
 		List rooms = em.createNamedQuery("Room.findAllRooms").getResultList();
+		return rooms;
+	}
+	
+	@Override
+	public List<Room> findAllByApartment(Apartment a) {
+		// Note: the findAllRooms JPQL query is defined in the Room.java file
+		List rooms = em.createQuery("Room.findAllByApartment").setParameter("apartment_id", a.getId()).getResultList();
+
 		return rooms;
 	}
 	
