@@ -47,8 +47,8 @@ public class TestDataGeneratorResource {
 		
 		Room m = new Room();
                 m.setName("Chambre de Barbie");
-                m.setId(roomsManager.create(m));
 		m.setApartment(a);
+                m.setId(roomsManager.create(m));
 		
 		Employee e = new Employee();
 		e.setFirstName("Elisa");
