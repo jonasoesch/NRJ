@@ -14,12 +14,16 @@ import javax.persistence.Temporal;
 /**
  * This class is a JPA entity for a Plug Consumption.
  *
- * @author rschmutz
+ * @author Ralf
  */
-@NamedQueries(
-        @NamedQuery(
-        name = "PlugConsumptionFact.findAllPlugConsumptionsFacts",
-        query = "SELECT pc FROM PlugConsumptionFact pc"))
+
+@NamedQueries({
+    @NamedQuery(name = "PlugConsumptionFact.findAllPlugConsumptionsFacts",
+        query = "SELECT pc FROM PlugConsumptionFact pc"),
+    @NamedQuery(name = "PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod",
+        query = "SELECT pcp FROM PlugConsumptionFact pcp WHERE pcp.timestampHour BETWEEN :debut AND :fin")
+})
+
 @Entity
 public class PlugConsumptionFact implements Serializable {
 

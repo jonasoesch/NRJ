@@ -16,10 +16,10 @@ import javax.persistence.Temporal;
  *
  * @author Robin
  */
-@NamedQueries(
-        @NamedQuery(
-        name = "ConsumptionObs.findAllConsumptionsObs",
-        query = "SELECT c FROM ConsumptionObs c"))
+
+@NamedQueries({
+    @NamedQuery(name = "ConsumptionObs.findAllConsumptionsObs",
+        query = "SELECT c FROM ConsumptionObs c")})
 @Entity
 public class ConsumptionObs implements Serializable {
 
@@ -28,19 +28,19 @@ public class ConsumptionObs implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date timestampMinute;
+    private Date timestampHour;
     private Double kW;
 
     @ManyToOne protected Room room;
     @ManyToOne protected Plug plug;
 
     public ConsumptionObs() {
-        this.timestampMinute = new Date();
+        this.timestampHour = new Date();
 	this.kW = 0.0;
     }
 
     public ConsumptionObs(ConsumptionObs consumptionObsData) {
-        this.timestampMinute = consumptionObsData.getTimestampMinute();
+        this.timestampHour = consumptionObsData.getTimestampMinute();
 	this.kW = consumptionObsData.getkW();
     }
     
@@ -53,11 +53,11 @@ public class ConsumptionObs implements Serializable {
     }
 
     public Date getTimestampMinute() {
-        return timestampMinute;
+        return timestampHour;
     }
 
     public void setTimestampMinute(Date timestampMinute) {
-        this.timestampMinute = timestampMinute;
+        this.timestampHour = timestampMinute;
     }
 
     public Double getkW() {

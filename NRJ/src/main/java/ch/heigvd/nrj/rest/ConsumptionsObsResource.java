@@ -89,7 +89,7 @@ public class ConsumptionsObsResource {
             result.add(plugsTOService.buildPublicPlugTO(plug));
         }
         return result;
-    }*/
+    }
 
     /**
      * Retrieves representation of an ConsumptionsObs resource
@@ -106,7 +106,7 @@ public class ConsumptionsObsResource {
         PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
         return consumptionTO;
     }
-
+    
     /**
      * Updates an ConsumptionsObs resource
      *

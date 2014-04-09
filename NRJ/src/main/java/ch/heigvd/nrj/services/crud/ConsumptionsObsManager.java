@@ -2,6 +2,8 @@ package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
+import ch.heigvd.nrj.model.PlugConsumptionFact;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
