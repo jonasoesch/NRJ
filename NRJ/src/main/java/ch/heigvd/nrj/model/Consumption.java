@@ -16,6 +16,10 @@ import javax.persistence.Temporal;
  *
  * @author Robin
  */
+@NamedQueries(
+        @NamedQuery(
+        name = "Consumption.findAllConsumptions",
+        query = "SELECT c FROM Consumption c"))
 @Entity
 public class Consumption implements Serializable {
 
