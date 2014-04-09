@@ -50,7 +50,7 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
     @Override
     public List<ConsumptionObs> findAll() {
 // Note: the findAllConsumptions JPQL query is defined in the ConsumptionObs.java file
-        List apartments = em.createNamedQuery("Consumption.findAllConsumptions").getResultList();
+        List apartments = em.createNamedQuery("ConsumptionObs.findAllConsumptionsObs").getResultList();
         return apartments;
     }
 }

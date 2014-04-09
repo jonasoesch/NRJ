@@ -1,7 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.PlugConsumptionFacts;
+import ch.heigvd.nrj.model.PlugConsumptionFact;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -13,15 +13,15 @@ import javax.ejb.Local;
 @Local
 public interface PlugConsumptionsFactsManagerLocal {
 
-	long create(PlugConsumptionFacts plugConsumptionObsData);
+	long create(PlugConsumptionFact plugConsumptionFactData);
 
-	void update(PlugConsumptionFacts newState) throws EntityNotFoundException;
+	void update(PlugConsumptionFact newState) throws EntityNotFoundException;
 
 	void delete(long id) throws EntityNotFoundException;
 
-	PlugConsumptionFacts findById(long id) throws EntityNotFoundException;
+	PlugConsumptionFact findById(long id) throws EntityNotFoundException;
 
-	List<PlugConsumptionFacts> findAll();
+	List<PlugConsumptionFact> findAll();
 
 	
 }

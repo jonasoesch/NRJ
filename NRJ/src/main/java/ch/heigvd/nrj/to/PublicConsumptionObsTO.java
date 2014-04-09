@@ -13,25 +13,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class PublicConsumptionObsTO {
 
-    private long consumptionId;
+    private long consumptionObsId;
     private Date timestampMinute;
     private Double kW;
 
     public PublicConsumptionObsTO() {
     }
 
-    public PublicConsumptionObsTO(long consumptionId, Date timestampMinute, Double kW) {
-	this.consumptionId = consumptionId;
+    public PublicConsumptionObsTO(long consumptionObsId, Date timestampMinute, Double kW) {
+	this.consumptionObsId = consumptionObsId;
 	this.timestampMinute = timestampMinute;
 	this.kW = kW;
     }
 
-    public long getConsumptionId() {
-	return consumptionId;
+    public long getConsumptionObsId() {
+	return consumptionObsId;
     }
 
-    public void setConsumptionId(long consumptionId) {
-	this.consumptionId = consumptionId;
+    public void setConsumptionObsId(long consumptionObsId) {
+	this.consumptionObsId = consumptionObsId;
     }
 
     public Date getTimestampMinute() {

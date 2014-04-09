@@ -69,7 +69,7 @@ public class ConsumptionsObsResource {
     @Consumes({"application/json"})
     public Response createResource(PublicConsumptionObsTO newConsumptionTO) {
         ConsumptionObs newConsumption = new ConsumptionObs();
-        consumptionsTOService.updateConsumptionEntity(newConsumption, newConsumptionTO);
+        consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         long newConsumptionId = consumptionsManager.create(newConsumption);
         URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
         return Response.created(createdURI).build();
@@ -103,7 +103,7 @@ public class ConsumptionsObsResource {
     @Produces({"application/json", "application/xml"})
     public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         ConsumptionObs consumption = consumptionsManager.findById(id);
-        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionTO(consumption);
+        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
         return consumptionTO;
     }
 

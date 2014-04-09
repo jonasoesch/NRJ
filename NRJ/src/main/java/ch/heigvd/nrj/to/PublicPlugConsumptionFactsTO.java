@@ -17,25 +17,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class PublicPlugConsumptionFactsTO {
 
-    private Long plugConsumptionObsId;
+    private Long plugConsumptionFactId;
     private Date timestampHour;
     private Double avgKW;
 
     public PublicPlugConsumptionFactsTO() {
     }
 
-    public PublicPlugConsumptionFactsTO(long plugConsumptionObsId, Date timestampHour, Double avgKW) {
-	this.plugConsumptionObsId = plugConsumptionObsId;
+    public PublicPlugConsumptionFactsTO(long plugConsumptionFactId, Date timestampHour, Double avgKW) {
+	this.plugConsumptionFactId = plugConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
     }
 
-    public Long getPlugConsumptionObsId() {
-	return this.plugConsumptionObsId;
+    public Long getPlugConsumptionFactId() {
+	return this.plugConsumptionFactId;
     }
 
-    public void setPlugConsumptionObsId(Long plugConsumptionObsId) {
-	this.plugConsumptionObsId = plugConsumptionObsId;
+    public void setPlugConsumptionFactId(Long plugConsumptionFactId) {
+	this.plugConsumptionFactId = plugConsumptionFactId;
     }
 
     public Date getTimestampHour() {

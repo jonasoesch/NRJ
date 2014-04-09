@@ -34,7 +34,7 @@ public class Plug implements Serializable {
     @ManyToOne protected Room room;
     
     @OneToMany(mappedBy="plug") protected Collection<History> histories;
-    @OneToMany(mappedBy="plug") protected Collection<PlugConsumptionFacts> plugConsumptions;
+    @OneToMany(mappedBy="plug") protected Collection<PlugConsumptionFact> plugConsumptions;
     @OneToMany(mappedBy="plug") protected Collection<ConsumptionObs> consumptions;
 
     public Plug() {

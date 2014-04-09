@@ -18,10 +18,10 @@ import javax.persistence.Temporal;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "RoomConsumption.findAllRoomConsumptions",
-        query = "SELECT rc FROM RoomConsumption rc"))
+        name = "RoomConsumptionFact.findAllRoomConsumptionsFacts",
+        query = "SELECT rc FROM RoomConsumptionFact rc"))
 @Entity
-public class RoomConsumptionFacts implements Serializable {
+public class RoomConsumptionFact implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,14 +34,14 @@ public class RoomConsumptionFacts implements Serializable {
     @ManyToOne
     protected Room room;
 
-    public RoomConsumptionFacts() {
+    public RoomConsumptionFact() {
         this.timestampHour = new Date();
         this.avgKW = 0.0;
     }
             
-    public RoomConsumptionFacts (RoomConsumptionFacts roomConsumptionObsData) {
-        this.timestampHour = roomConsumptionObsData.getTimestampHour();
-        this.avgKW = roomConsumptionObsData.getAvgKW();
+    public RoomConsumptionFact (RoomConsumptionFact roomConsumptionFactData) {
+        this.timestampHour = roomConsumptionFactData.getTimestampHour();
+        this.avgKW = roomConsumptionFactData.getAvgKW();
     }
     
     public Long getId() {
@@ -78,10 +78,10 @@ public class RoomConsumptionFacts implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RoomConsumptionFacts)) {
+        if (!(object instanceof RoomConsumptionFact)) {
             return false;
         }
-        RoomConsumptionFacts other = (RoomConsumptionFacts) object;
+        RoomConsumptionFact other = (RoomConsumptionFact) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -90,6 +90,6 @@ public class RoomConsumptionFacts implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.heigvd.nrj.model.RoomConsumption[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.RoomConsumptionFact[ id=" + id + " ]";
     }
 }

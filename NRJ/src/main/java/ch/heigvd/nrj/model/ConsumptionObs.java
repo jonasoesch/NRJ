@@ -18,8 +18,8 @@ import javax.persistence.Temporal;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "Consumption.findAllConsumptions",
-        query = "SELECT c FROM Consumption c"))
+        name = "ConsumptionObs.findAllConsumptionsObs",
+        query = "SELECT c FROM ConsumptionObs c"))
 @Entity
 public class ConsumptionObs implements Serializable {
 
@@ -39,9 +39,9 @@ public class ConsumptionObs implements Serializable {
 	this.kW = 0.0;
     }
 
-    public ConsumptionObs(ConsumptionObs consumptionData) {
-        this.timestampMinute = consumptionData.getTimestampMinute();
-	this.kW = consumptionData.getkW();
+    public ConsumptionObs(ConsumptionObs consumptionObsData) {
+        this.timestampMinute = consumptionObsData.getTimestampMinute();
+	this.kW = consumptionObsData.getkW();
     }
     
     public Long getId() {
@@ -90,6 +90,6 @@ public class ConsumptionObs implements Serializable {
 
     @Override
     public String toString() {
-        return "ch.heigvd.nrj.model.Consumption[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.ConsumptionObs[ id=" + id + " ]";
     }
 }

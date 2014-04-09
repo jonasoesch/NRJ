@@ -18,7 +18,7 @@ public interface ConsumptionsObsTOServiceLocal {
 	 * @param source the JPA entity
 	 * @return the TO
 	 */
-	public PublicConsumptionObsTO buildPublicConsumptionTO(ConsumptionObs source);
+	public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source);
 	
 	/**
 	 * This method updates an existing JPA entity by merging the state of the
@@ -27,5 +27,5 @@ public interface ConsumptionsObsTOServiceLocal {
 	 * @param existingEntity the existing entity that we want to update
 	 * @param newState a TO that contains new state (subset of the entity state)
 	 */
-	public void updateConsumptionEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState);
+	public void updateConsumptionObsEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState);
 }

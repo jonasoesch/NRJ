@@ -1,14 +1,14 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.PlugConsumptionFacts;
+import ch.heigvd.nrj.model.PlugConsumptionFact;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * DAO service, implementing CRUD operations on the PlugConsumptionFacts entity. 
+ * DAO service, implementing CRUD operations on the PlugConsumptionFact entity. 
  * The class uses the JPA entity manager to interact with the DB. 
  * It returns JPA entities to its clients.
  * 
@@ -21,37 +21,37 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
 	private EntityManager em;
 
 	@Override
-	public long create(PlugConsumptionFacts plugConsumptionObsData) {
-		PlugConsumptionFacts newPlugConsumptionObs = new PlugConsumptionFacts(plugConsumptionObsData);
-		em.persist(newPlugConsumptionObs);
-		return newPlugConsumptionObs.getId();
+	public long create(PlugConsumptionFact plugConsumptionFactData) {
+		PlugConsumptionFact newPlugConsumptionFact = new PlugConsumptionFact(plugConsumptionFactData);
+		em.persist(newPlugConsumptionFact);
+		return newPlugConsumptionFact.getId();
 	}
 
 	@Override
-	public void update(PlugConsumptionFacts newState) throws EntityNotFoundException {
+	public void update(PlugConsumptionFact newState) throws EntityNotFoundException {
 		em.merge(newState);
 	}
 
 	@Override
 	public void delete(long id) throws EntityNotFoundException {
-		PlugConsumptionFacts plugConsumptionObsToDelete = findById(id);
-		em.remove(plugConsumptionObsToDelete);
+		PlugConsumptionFact plugConsumptionFactToDelete = findById(id);
+		em.remove(plugConsumptionFactToDelete);
 	}
 
 	@Override
-	public PlugConsumptionFacts findById(long id) throws EntityNotFoundException {
-		PlugConsumptionFacts existingPlugConsumptionObs = em.find(PlugConsumptionFacts.class, id);
-		if (existingPlugConsumptionObs == null) {
+	public PlugConsumptionFact findById(long id) throws EntityNotFoundException {
+		PlugConsumptionFact existingPlugConsumptionFact = em.find(PlugConsumptionFact.class, id);
+		if (existingPlugConsumptionFact == null) {
 			throw new EntityNotFoundException();
 		}
-		return existingPlugConsumptionObs;
+		return existingPlugConsumptionFact;
 	}
 
 	@Override
-	public List<PlugConsumptionFacts> findAll() {
-		// Note: the findAllPlugConsumptionsObs JPQL query is defined in the PlugConsumptionFacts.java file
-		List plugConsumptionsObs = em.createNamedQuery("PlugConsumptionObs.findAllPlugConsumptionsObs").getResultList();
-		return plugConsumptionsObs;
+	public List<PlugConsumptionFact> findAll() {
+		// Note: the findAllPlugConsumptionsObs JPQL query is defined in the PlugConsumptionFact.java file
+		List plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFacts").getResultList();
+		return plugConsumptionsFacts;
 	}
 	
 }

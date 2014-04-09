@@ -13,13 +13,13 @@ import javax.ejb.Stateless;
 public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
 
 	@Override
-	public PublicConsumptionObsTO buildPublicConsumptionTO(ConsumptionObs source) {
+	public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
 		PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getTimestampMinute(), source.getkW());
 		return to;
 	}
 
 	@Override
-	public void updateConsumptionEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState) {
+	public void updateConsumptionObsEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState) {
 		existingEntity.setTimestampMinute(newState.getTimestampMinute());
 		existingEntity.setkW(newState.getKW());
 	}

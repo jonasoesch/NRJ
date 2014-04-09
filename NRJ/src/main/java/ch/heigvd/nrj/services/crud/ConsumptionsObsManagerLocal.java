@@ -13,7 +13,7 @@ import javax.ejb.Local;
 @Local
 public interface ConsumptionsObsManagerLocal {
 
-	long create(ConsumptionObs consumptionData);
+	long create(ConsumptionObs consumptionObsData);
 
 	void update(ConsumptionObs newState) throws EntityNotFoundException;
 
