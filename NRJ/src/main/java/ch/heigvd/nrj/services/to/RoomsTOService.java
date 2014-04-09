@@ -14,13 +14,14 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 
 	@Override
 	public PublicRoomTO buildPublicRoomTO(Room source) {
-		PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName());
+		PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName(), source.getApartment());
 		return to;
 	}
 
 	@Override
 	public void updateRoomEntity(Room existingEntity, PublicRoomTO newState) {
 		existingEntity.setName(newState.getName());
+		existingEntity.setApartment(newState.getApartment());
 	}
 	
 }

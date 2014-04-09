@@ -46,6 +46,7 @@ public class Room implements Serializable {
             
     public Room (Room roomData) {
         this.name = roomData.getName();
+	this.apartment = roomData.getApartment();
     }
     
     public Long getId() {
@@ -62,6 +63,14 @@ public class Room implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public Apartment getApartment() {
+	return apartment;
+    }
+
+    public void setApartment(Apartment apartment) {
+	this.apartment = apartment;
     }
 
     @Override
