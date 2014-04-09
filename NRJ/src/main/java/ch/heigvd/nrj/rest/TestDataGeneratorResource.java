@@ -44,6 +44,7 @@ public class TestDataGeneratorResource {
 		Apartment a = new Apartment();
 		a.setName("Appartement 511");
 		apartmentsManager.create(a);
+                apartmentsManager.findAll();
 //		Room m = new Room();
 //                m.setName("Chambre de Barbie");
 //                m.setId(roomsManager.create(m));
@@ -54,6 +55,8 @@ public class TestDataGeneratorResource {
 		e.setEmail("john.doe@heig-vd.ch");
 		e.setSalary(80000);
 		e.setId(employeesManager.create(e));
+                
+                employeesManager.findAll();
                 
 //                Plug p = new Plug();
 //                p.setName("frigo");
