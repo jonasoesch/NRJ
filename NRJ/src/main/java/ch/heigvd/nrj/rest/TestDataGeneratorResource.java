@@ -47,8 +47,13 @@ public class TestDataGeneratorResource {
 		
 		Room m = new Room();
                 m.setName("Chambre de Barbie");
-                m.setId(roomsManager.create(m));
 		m.setApartment(a);
+                m.setId(roomsManager.create(m));
+		
+		Room m2 = new Room();
+                m2.setName("Chambre de Barbie");
+		m2.setApartment(a);
+                m2.setId(roomsManager.create(m2));
 		
 		Employee e = new Employee();
 		e.setFirstName("Elisa");
@@ -70,7 +75,7 @@ public class TestDataGeneratorResource {
                 p2.setName("television");
                 p2.setAlwaysOn(false);
                 p2.setRoom(m);
-                plugsManager.create(p);
+                plugsManager.create(p2);
                 
 //                Apartment a = new Apartment();
 //                p.setName("Chez Mc Cartney");

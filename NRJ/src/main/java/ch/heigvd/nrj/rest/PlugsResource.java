@@ -81,7 +81,7 @@ public class PlugsResource {
      * @return an instance of PublicPlugTO
      */
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<PublicPlugTO> getResourceList() {
         List<Plug> plugs = plugsManager.findAll();
         List<PublicPlugTO> result = new LinkedList<>();
@@ -100,7 +100,7 @@ public class PlugsResource {
      */
     @GET
     @Path("{id}")
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public PublicPlugTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         Plug plug = plugsManager.findById(id);
         PublicPlugTO plugTO = plugsTOService.buildPublicPlugTO(plug);

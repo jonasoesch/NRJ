@@ -18,10 +18,10 @@ import javax.persistence.Temporal;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "PlugConsumption.findAllPlugConsumptions",
-        query = "SELECT pc FROM PlugConsumption pc"))
+        name = "PlugConsumptionFact.findAllPlugConsumptionsFacts",
+        query = "SELECT pc FROM PlugConsumptionFact pc"))
 @Entity
-public class PlugConsumptionFacts implements Serializable {
+public class PlugConsumptionFact implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,14 +33,14 @@ public class PlugConsumptionFacts implements Serializable {
     
     @ManyToOne protected Plug plug;
 
-    public PlugConsumptionFacts() {
+    public PlugConsumptionFact() {
         this.timestampHour = new Date();
         this.avgKW = 0.0;
     }
             
-    public PlugConsumptionFacts (PlugConsumptionFacts plugConsumptionObsData) {
-        this.timestampHour = plugConsumptionObsData.getTimestampHour();
-        this.avgKW = plugConsumptionObsData.getAvgKW();
+    public PlugConsumptionFact (PlugConsumptionFact plugConsumptionFactData) {
+        this.timestampHour = plugConsumptionFactData.getTimestampHour();
+        this.avgKW = plugConsumptionFactData.getAvgKW();
     }
     
     public Long getId() {
@@ -77,10 +77,10 @@ public class PlugConsumptionFacts implements Serializable {
     @Override
     public boolean equals(Object object) {
 	// TODO: Warning - this method won't work in the case the id fields are not set
-	if (!(object instanceof PlugConsumptionFacts)) {
+	if (!(object instanceof PlugConsumptionFact)) {
 	    return false;
 	}
-	PlugConsumptionFacts other = (PlugConsumptionFacts) object;
+	PlugConsumptionFact other = (PlugConsumptionFact) object;
 	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
 	    return false;
 	}
@@ -89,6 +89,6 @@ public class PlugConsumptionFacts implements Serializable {
 
     @Override
     public String toString() {
-	return "ch.heigvd.nrj.model.PlugConsumption[ id=" + id + " ]";
+	return "ch.heigvd.nrj.model.PlugConsumptionFact[ id=" + id + " ]";
     }
 }

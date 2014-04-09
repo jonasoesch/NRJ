@@ -69,7 +69,7 @@ public class ApartmentsResource {
 	 * @return an instance of PublicApartmentTO
 	 */
 	@GET
-  @Produces({"application/json", "application/xml"})
+  @Produces({"application/json"})
 	public List<PublicApartmentTO> getResourceList() {
 		List<Apartment> apartments = apartmentsManager.findAll();
 		List<PublicApartmentTO> result = new LinkedList<>();
@@ -87,7 +87,7 @@ public class ApartmentsResource {
 	 */
 	@GET
 	@Path("{id}")
-  @Produces({"application/json", "application/xml"})
+  @Produces({"application/json"})
 	public PublicApartmentTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
 		Apartment apartment = apartmentsManager.findById(id);
 		PublicApartmentTO apartmentTO = apartmentsTOService.buildPublicApartmentTO(apartment);

@@ -7,21 +7,17 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.ConsumptionObs;
-import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
-import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
-import ch.heigvd.nrj.to.PublicConsumptionObsTO;
-import java.net.URI;
+import ch.heigvd.nrj.model.PlugConsumptionFact;
+import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
+import ch.heigvd.nrj.services.to.PlugConsumptionsFactsTOServiceLocal;
+import ch.heigvd.nrj.to.PublicPlugConsumptionFactsTO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -38,43 +34,46 @@ import javax.ws.rs.core.UriInfo;
  * receive requests from REST clients, we can delegate most of the work to DAOs
  * and Transfer Object services.
  *
- * @author Olivier Liechti ======= import ch.heigvd.nrj.model.ConsumptionObs; import
- javax.ejb.Stateless; import javax.ws.rs.Path;
+ * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Consumption; import
+ * javax.ejb.Stateless; import javax.ws.rs.Path;
  *
  * @author nicolas
  */
 @Stateless
-@Path("consumptions")
-public class ConsumptionsObsResource {
+@Path("plugconsumptions")
+public class PlugConsumptionsFactResource {
 
     @Context
     private UriInfo context;
     @EJB
-    ConsumptionsObsManagerLocal consumptionsManager;
+    PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
     @EJB
-    ConsumptionsObsTOServiceLocal consumptionsTOService;
+    PlugConsumptionsFactsTOServiceLocal plugConsumptionsFactsTOService;
 
     /**
      * Creates a new instance of ConsumptionsResource
      */
-    public ConsumptionsObsResource() {
+    public PlugConsumptionsFactResource() {
     }
 
     /**
-     * Creates a new ConsumptionObs resource from the provided representation
+     * Creates a new Consumption resource from the provided representation
      *
-     * @return an instance of PublicConsumptionObsTO
+     * @param newPlugConsumptionObsTO
+     * @return an instance of PublicPlugConsumptionObsTO
+     * 
      */
+    /*
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicConsumptionObsTO newConsumptionTO) {
-        ConsumptionObs newConsumption = new ConsumptionObs();
-        consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
-        long newConsumptionId = consumptionsManager.create(newConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
+    public Response createResource(PublicPlugConsumptionObsTO newPlugConsumptionObsTO) {
+        PlugConsumption newPlugConsumption = new PlugConsumption();
+        plugConsumptionsFactsTOService.updatePlugConsumptionObsEntity(newPlugConsumption, newPlugConsumptionObsTO);
+        long newPlugConsumptionId = plugConsumptionsFactsManager.create(newPlugConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugConsumptionId)).build();
         return Response.created(createdURI).build();
     }
-
+*/
     /**
      * Retrieves a representation of a list of Plug resources
      *
@@ -95,16 +94,16 @@ public class ConsumptionsObsResource {
      * Retrieves representation of an ConsumptionsObs resource
      *
      * @param id this id of the consumption
-     * @return an instance of PublicConsumptionObsTO
-     * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
+     * @return an instance of PublicPlugConsumptionTO
+     * @throws ch.heigvd.nrj.exceptions.EntityNotFoundException
      */
     @GET
     @Path("{id}")
-    @Produces({"application/json"})
-    public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        ConsumptionObs consumption = consumptionsManager.findById(id);
-        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
-        return consumptionTO;
+    @Produces({"application/json", "application/xml"})
+    public PublicPlugConsumptionFactsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
+        PlugConsumptionFact plugConsumptionFacts = plugConsumptionsFactsManager.findById(id);
+        PublicPlugConsumptionFactsTO plugConsumptionTO = plugConsumptionsFactsTOService.buildPublicPlugConsumptionFactTO(plugConsumptionFacts);
+        return plugConsumptionTO;
     }
 
     /**
