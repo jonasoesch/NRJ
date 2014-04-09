@@ -18,8 +18,8 @@ import javax.persistence.Temporal;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "RoomConsumptionObs.findAllRoomConsumptionsObs",
-        query = "SELECT rco FROM RoomConsumptionObs rco"))
+        name = "RoomConsumption.findAllRoomConsumptions",
+        query = "SELECT rc FROM RoomConsumption rc"))
 @Entity
 public class RoomConsumption implements Serializable {
 
