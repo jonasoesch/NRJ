@@ -40,7 +40,7 @@ import javax.ws.rs.core.UriInfo;
  * @author nicolas
  */
 @Stateless
-@Path("consumptions")
+@Path("plugconsumptions")
 public class PlugConsumptionsFactResource {
 
     @Context
