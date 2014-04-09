@@ -48,12 +48,12 @@ public class TestDataGeneratorResource {
                 m.setName("Chambre de Barbie");
                 m.setId(roomsManager.create(m));
 		
-//		Employee e = new Employee();
-//		e.setFirstName("John");
-//		e.setLastName("Doe");
-//		e.setEmail("john.doe@heig-vd.ch");
-//		e.setSalary(80000);
-//		e.setId(employeesManager.create(e));
+		Employee e = new Employee();
+		e.setFirstName("Elisa");
+		e.setLastName("Touvomi");
+		e.setEmail("elisa.touvomi@heig-vd.ch");
+		e.setSalary(80000);
+		e.setId(employeesManager.create(e));
 //                
 //                employeesManager.findAll();
                 
