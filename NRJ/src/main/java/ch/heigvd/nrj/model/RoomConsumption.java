@@ -12,16 +12,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 
 /**
- * This class is a JPA entity for a Plug Consumption.
+ * This class is a JPA entity for a Room Consumption.
  *
  * @author rschmutz
  */
 @NamedQueries(
         @NamedQuery(
-        name = "PlugConsumptionObs.findAllPlugConsumptionsObs",
-        query = "SELECT pco FROM PlugConsumptionObs pco"))
+        name = "RoomConsumptionObs.findAllRoomConsumptionsObs",
+        query = "SELECT rco FROM RoomConsumptionObs rco"))
 @Entity
-public class PlugConsumptionObs implements Serializable {
+public class RoomConsumption implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,64 +31,65 @@ public class PlugConsumptionObs implements Serializable {
     private Date timestampHour;
     private Double avgKW;
     
-    @ManyToOne protected Plug plug;
+    @ManyToOne
+    protected Room room;
 
-    public PlugConsumptionObs() {
+    public RoomConsumption() {
         this.timestampHour = new Date();
         this.avgKW = 0.0;
     }
             
-    public PlugConsumptionObs (PlugConsumptionObs plugConsumptionObsData) {
-        this.timestampHour = plugConsumptionObsData.getTimestampHour();
-        this.avgKW = plugConsumptionObsData.getAvgKW();
+    public RoomConsumption (RoomConsumption roomConsumptionObsData) {
+        this.timestampHour = roomConsumptionObsData.getTimestampHour();
+        this.avgKW = roomConsumptionObsData.getAvgKW();
     }
     
     public Long getId() {
-	return id;
+        return id;
     }
 
     public void setId(Long id) {
-	this.id = id;
+        this.id = id;
     }
 
     public Date getTimestampHour() {
-	return timestampHour;
+        return timestampHour;
     }
 
     public void setTimestampHour(Date timestampHour) {
-	this.timestampHour = timestampHour;
+        this.timestampHour = timestampHour;
     }
 
     public Double getAvgKW() {
-	return avgKW;
+        return avgKW;
     }
 
     public void setAvgKW(Double avgKW) {
-	this.avgKW = avgKW;
+        this.avgKW = avgKW;
     }
 
     @Override
     public int hashCode() {
-	int hash = 0;
-	hash += (id != null ? id.hashCode() : 0);
-	return hash;
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-	// TODO: Warning - this method won't work in the case the id fields are not set
-	if (!(object instanceof PlugConsumptionObs)) {
-	    return false;
-	}
-	PlugConsumptionObs other = (PlugConsumptionObs) object;
-	if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-	    return false;
-	}
-	return true;
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof RoomConsumption)) {
+            return false;
+        }
+        RoomConsumption other = (RoomConsumption) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-	return "ch.heigvd.nrj.model.PlugConsumption[ id=" + id + " ]";
+        return "ch.heigvd.nrj.model.RoomConsumption[ id=" + id + " ]";
     }
 }

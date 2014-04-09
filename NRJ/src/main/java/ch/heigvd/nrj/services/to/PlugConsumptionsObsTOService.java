@@ -1,6 +1,6 @@
 package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.nrj.model.PlugConsumptionObs;
+import ch.heigvd.nrj.model.PlugConsumption;
 import ch.heigvd.nrj.to.PublicPlugConsumptionObsTO;
 import javax.ejb.Stateless;
 
@@ -13,13 +13,13 @@ import javax.ejb.Stateless;
 public class PlugConsumptionsObsTOService implements PlugConsumptionsObsTOServiceLocal {
 
 	@Override
-	public PublicPlugConsumptionObsTO buildPublicPlugConsumptionObsTO(PlugConsumptionObs source) {
+	public PublicPlugConsumptionObsTO buildPublicPlugConsumptionObsTO(PlugConsumption source) {
 		PublicPlugConsumptionObsTO to = new PublicPlugConsumptionObsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
 		return to;
 	}   
 
 	@Override
-	public void updatePlugConsumptionObsEntity(PlugConsumptionObs existingEntity, PublicPlugConsumptionObsTO newState) {
+	public void updatePlugConsumptionObsEntity(PlugConsumption existingEntity, PublicPlugConsumptionObsTO newState) {
 		existingEntity.setTimestampHour(newState.getTimestampHour());
 		existingEntity.setAvgKW(newState.getAvgKW());
 	}

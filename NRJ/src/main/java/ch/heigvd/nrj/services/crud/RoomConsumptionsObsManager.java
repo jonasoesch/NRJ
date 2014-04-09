@@ -1,14 +1,14 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.RoomConsumptionObs;
+import ch.heigvd.nrj.model.RoomConsumption;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * DAO service, implementing CRUD operations on the RoomConsumptionObs entity. 
+ * DAO service, implementing CRUD operations on the RoomConsumption entity. 
  * The class uses the JPA entity manager to interact with the DB. 
  * It returns JPA entities to its clients.
  * 
@@ -21,26 +21,26 @@ public class RoomConsumptionsObsManager implements RoomConsumptionsObsManagerLoc
 	private EntityManager em;
 
 	@Override
-	public long create(RoomConsumptionObs roomConsumptionObsData) {
-		RoomConsumptionObs newRoomConsumptionObs = new RoomConsumptionObs(roomConsumptionObsData);
+	public long create(RoomConsumption roomConsumptionObsData) {
+		RoomConsumption newRoomConsumptionObs = new RoomConsumption(roomConsumptionObsData);
 		em.persist(newRoomConsumptionObs);
 		return newRoomConsumptionObs.getId();
 	}
 
 	@Override
-	public void update(RoomConsumptionObs newState) throws EntityNotFoundException {
+	public void update(RoomConsumption newState) throws EntityNotFoundException {
 		em.merge(newState);
 	}
 
 	@Override
 	public void delete(long id) throws EntityNotFoundException {
-		RoomConsumptionObs roomConsumptionObsToDelete = findById(id);
+		RoomConsumption roomConsumptionObsToDelete = findById(id);
 		em.remove(roomConsumptionObsToDelete);
 	}
 
 	@Override
-	public RoomConsumptionObs findById(long id) throws EntityNotFoundException {
-		RoomConsumptionObs existingRoomConsumptionObs = em.find(RoomConsumptionObs.class, id);
+	public RoomConsumption findById(long id) throws EntityNotFoundException {
+		RoomConsumption existingRoomConsumptionObs = em.find(RoomConsumption.class, id);
 		if (existingRoomConsumptionObs == null) {
 			throw new EntityNotFoundException();
 		}
@@ -48,8 +48,8 @@ public class RoomConsumptionsObsManager implements RoomConsumptionsObsManagerLoc
 	}
 
 	@Override
-	public List<RoomConsumptionObs> findAll() {
-		// Note: the findAllRoomConsumptionsObs JPQL query is defined in the RoomConsumptionObs.java file
+	public List<RoomConsumption> findAll() {
+		// Note: the findAllRoomConsumptionsObs JPQL query is defined in the RoomConsumption.java file
 		List roomConsumptionsObs = em.createNamedQuery("RoomConsumptionObs.findAllRoomConsumptionsObs").getResultList();
 		return roomConsumptionsObs;
 	}

@@ -1,6 +1,6 @@
 package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.nrj.model.PlugConsumptionObs;
+import ch.heigvd.nrj.model.PlugConsumption;
 import ch.heigvd.nrj.to.PublicPlugConsumptionObsTO;
 import javax.ejb.Local;
 
@@ -18,7 +18,7 @@ public interface PlugConsumptionsObsTOServiceLocal {
 	 * @param source the JPA entity
 	 * @return the TO
 	 */
-	public PublicPlugConsumptionObsTO buildPublicPlugConsumptionObsTO(PlugConsumptionObs source);
+	public PublicPlugConsumptionObsTO buildPublicPlugConsumptionObsTO(PlugConsumption source);
 	
 	/**
 	 * This method updates an existing JPA entity by merging the state of the
@@ -27,5 +27,5 @@ public interface PlugConsumptionsObsTOServiceLocal {
 	 * @param existingEntity the existing entity that we want to update
 	 * @param newState a TO that contains new state (subset of the entity state)
 	 */
-	public void updatePlugConsumptionObsEntity(PlugConsumptionObs existingEntity, PublicPlugConsumptionObsTO newState);
+	public void updatePlugConsumptionObsEntity(PlugConsumption existingEntity, PublicPlugConsumptionObsTO newState);
 }

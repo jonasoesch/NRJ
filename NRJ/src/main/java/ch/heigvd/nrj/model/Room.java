@@ -36,7 +36,7 @@ public class Room implements Serializable {
     @OneToMany (mappedBy = "room")
     protected Collection<Consumption> consumptions;
     @OneToMany (mappedBy = "room")
-    protected Collection<RoomConsumptionObs> roomConsumptions;
+    protected Collection<RoomConsumption> roomConsumptions;
     @OneToMany (mappedBy = "room")
     protected Collection<Plug> plugs;
 

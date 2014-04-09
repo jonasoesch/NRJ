@@ -1,7 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.PlugConsumptionObs;
+import ch.heigvd.nrj.model.PlugConsumption;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -13,15 +13,15 @@ import javax.ejb.Local;
 @Local
 public interface PlugConsumptionsObsManagerLocal {
 
-	long create(PlugConsumptionObs plugConsumptionObsData);
+	long create(PlugConsumption plugConsumptionObsData);
 
-	void update(PlugConsumptionObs newState) throws EntityNotFoundException;
+	void update(PlugConsumption newState) throws EntityNotFoundException;
 
 	void delete(long id) throws EntityNotFoundException;
 
-	PlugConsumptionObs findById(long id) throws EntityNotFoundException;
+	PlugConsumption findById(long id) throws EntityNotFoundException;
 
-	List<PlugConsumptionObs> findAll();
+	List<PlugConsumption> findAll();
 
 	
 }

@@ -1,14 +1,14 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.PlugConsumptionObs;
+import ch.heigvd.nrj.model.PlugConsumption;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
- * DAO service, implementing CRUD operations on the PlugConsumptionObs entity. 
+ * DAO service, implementing CRUD operations on the PlugConsumption entity. 
  * The class uses the JPA entity manager to interact with the DB. 
  * It returns JPA entities to its clients.
  * 
@@ -21,26 +21,26 @@ public class PlugConsumptionsObsManager implements PlugConsumptionsObsManagerLoc
 	private EntityManager em;
 
 	@Override
-	public long create(PlugConsumptionObs plugConsumptionObsData) {
-		PlugConsumptionObs newPlugConsumptionObs = new PlugConsumptionObs(plugConsumptionObsData);
+	public long create(PlugConsumption plugConsumptionObsData) {
+		PlugConsumption newPlugConsumptionObs = new PlugConsumption(plugConsumptionObsData);
 		em.persist(newPlugConsumptionObs);
 		return newPlugConsumptionObs.getId();
 	}
 
 	@Override
-	public void update(PlugConsumptionObs newState) throws EntityNotFoundException {
+	public void update(PlugConsumption newState) throws EntityNotFoundException {
 		em.merge(newState);
 	}
 
 	@Override
 	public void delete(long id) throws EntityNotFoundException {
-		PlugConsumptionObs plugConsumptionObsToDelete = findById(id);
+		PlugConsumption plugConsumptionObsToDelete = findById(id);
 		em.remove(plugConsumptionObsToDelete);
 	}
 
 	@Override
-	public PlugConsumptionObs findById(long id) throws EntityNotFoundException {
-		PlugConsumptionObs existingPlugConsumptionObs = em.find(PlugConsumptionObs.class, id);
+	public PlugConsumption findById(long id) throws EntityNotFoundException {
+		PlugConsumption existingPlugConsumptionObs = em.find(PlugConsumption.class, id);
 		if (existingPlugConsumptionObs == null) {
 			throw new EntityNotFoundException();
 		}
@@ -48,8 +48,8 @@ public class PlugConsumptionsObsManager implements PlugConsumptionsObsManagerLoc
 	}
 
 	@Override
-	public List<PlugConsumptionObs> findAll() {
-		// Note: the findAllPlugConsumptionsObs JPQL query is defined in the PlugConsumptionObs.java file
+	public List<PlugConsumption> findAll() {
+		// Note: the findAllPlugConsumptionsObs JPQL query is defined in the PlugConsumption.java file
 		List plugConsumptionsObs = em.createNamedQuery("PlugConsumptionObs.findAllPlugConsumptionsObs").getResultList();
 		return plugConsumptionsObs;
 	}
