@@ -1,0 +1,52 @@
+Rapport d'assemblage
+
+-----------------------------------------------------------------------------
+Document :
+Nom : maquette.ai
+Mode : Couleurs RVB
+Profil colorimétrique : sRGB IEC61966-2.1
+Unité : pixels
+Dimensions : 1019,8251 px x 1025,7026 px
+Afficher les images en mode Tracés : INACTIF
+Mettre en évidence les polices substituées : INACTIF
+Mettre en évidence les glyphes substitués : INACTIF
+Conserver le caractère modifiable du texte
+Simuler le papier couleur : INACTIF
+
+-----------------------------------------------------------------------------
+Objets en tons directs :
+
+-----------------------------------------------------------------------------
+Polices manquantes :SANS
+
+-----------------------------------------------------------------------------
+Polices protégées non assemblées :SANS
+
+-----------------------------------------------------------------------------
+Polices :
+Roboto Bold (TrueType)
+Roboto Medium Italic (TrueType)
+Roboto Light (TrueType)
+Roboto Thin Italic (TrueType)
+Roboto Thin (TrueType)
+Roboto Black (TrueType)
+
+-----------------------------------------------------------------------------
+Polices incorporées :
+SANS
+
+-----------------------------------------------------------------------------
+Liens manquants :
+
+D:\school\CMO3136 Mobile Webservices\NRJ\design\graphLine.psd
+Type : RVB transparent
+Bits par pixel : 32
+Couches : 4
+Taille : 9134K, 2581 x 906 pixels
+Dimensions : 215,817 x 75,758 points 
+Résolution : 861,061 x 861,061 pixels par pouce
+
+
+-----------------------------------------------------------------------------
+Images liées :
+SANS
