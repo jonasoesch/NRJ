@@ -2,20 +2,27 @@
  * This script simulate a sensor object and send observations to the platform
  */
 
+// Setup
 var http = require('http');
 var REST_API_HOST = 'localhost';
 var REST_API_PORT = 8080;
 
-// Setting an interval
-var count = 0;
 setInterval(function() {
-    var observation = {"timestamp": (new Date()).getTime(), "value": count};
-    postObservationToPlatform('/RESTBackEndSkeleton/api/observations', observation, function() {
-       // En cas de succès
+
+    // Generate Plug Id
+    var plug_id = numberBetween(0,10);
+
+    // Generate kW
+    var kW = numberBetween(1,1000);
+
+    var observation = {"timestamp": (new Date()).getTime(), "kW": kW};
+
+    postObservationToPlatform('/NRJ/api/plugs/'+plug_id+'/consumption', observation, function() {
+       // Success 
     }, function() {
-       // En cas d'erreur
+       // Error 
     });
-    count++;
+
 }, 5000); // every 5 secondes
 
 /**
@@ -62,4 +69,9 @@ function postObservationToPlatform(endpoint, observation, successCallback, error
 
     req.write(post_data); // writing data
     req.end(); // ending request
+}
+
+// Random number generator
+function numberBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
