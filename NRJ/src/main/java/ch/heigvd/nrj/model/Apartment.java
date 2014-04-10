@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
         @NamedQuery(
         name = "Apartment.findAllApartments",
         query = "SELECT a FROM Apartment a")
-        // query = "SELECT a, r FROM Apartment a JOIN a.rooms r")
 )
 @Entity
 public class Apartment implements Serializable {
