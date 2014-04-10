@@ -82,9 +82,17 @@ public class TestDataGeneratorResource {
         p3.setAlwaysOn(true);
         p3.setRoom(m1);
         plugsManager.create(p3);
-
-
-
+        
+        //Current day time
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	Date nowDate = new Date();
+        
+        PlugConsumptionFact pc1 = new PlugConsumptionFact();
+        pc1.setTimestampHour(nowDate);
+        pc1.setAvgKW(23.00);
+        pc1.setPlug(p1);
+        plugsManager.create(p3);
+        
 
 
         return "done";
