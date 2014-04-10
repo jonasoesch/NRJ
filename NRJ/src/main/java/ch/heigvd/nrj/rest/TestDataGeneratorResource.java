@@ -153,12 +153,12 @@ public class TestDataGeneratorResource {
         rc1.setId(roomConsumptionsFactsManager.create(rc1));
         m1.addRoomConsumptionFact(rc1);
 
-        //Création de la consommation du plug 1
-        ConsumptionObs co = new ConsumptionObs();
-        co.setTimestampHour(new Date());
-        co.setkW(50.00);
-        co.setId(consumptionObsManager.create(co));
-        p1.addConsumptionObs(co);
+//        //Création de la consommation du plug 1
+//        ConsumptionObs co = new ConsumptionObs();
+//        co.setTimestampHour(new Date());
+//        co.setkW(50.00);
+//        co.setId(consumptionObsManager.create(co));
+//        p1.addConsumptionObs(co);
 
         
         return "Maman, j'ai finiiii!!! <3 LMAO - LMAO";
