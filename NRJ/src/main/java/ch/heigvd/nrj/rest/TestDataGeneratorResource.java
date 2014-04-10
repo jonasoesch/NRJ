@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.model.Apartment;
+import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
@@ -8,6 +9,7 @@ import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.model.Warning;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
+import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
@@ -50,12 +52,14 @@ public class TestDataGeneratorResource {
     @EJB
     RoomConsumptionsFactsManagerLocal roomConsumptionsFactsManager;
     @EJB
+    ConsumptionsObsManagerLocal consumptionObsManager;
+    @EJB
     WarningsManagerLocal warningManager;
 
     @GET
     @Produces({"text/plain"})
     public String generateEmployees() throws ParseException {
-        
+
         //Création de l'appartement
         Apartment a = new Apartment();
         a.setName("Appartement 511");
@@ -67,14 +71,14 @@ public class TestDataGeneratorResource {
         m1.setName("Chambre de Barbie");
         m1.setId(roomsManager.create(m1));
         a.addRoom(m1);
-        
+
         //Création de la pièce 2: Cuisine
         //Et l'ajoute à l'appartement
         Room m2 = new Room();
         m2.setName("Cuisine");
         m2.setId(roomsManager.create(m2));
         a.addRoom(m2);
-        
+
         //Création du plug 1: Frigo
         //Et l'ajoute à la pièce 1
         Plug p1 = new Plug();
@@ -94,7 +98,7 @@ public class TestDataGeneratorResource {
         warningp1.setTimestampMinute(new Date());
         warningp1.setId(warningManager.create(warningp1));
         p1.addWarnings(warningp1);
-        
+
         //Création du plug 2: Télévision
         //Et l'ajoute à la pièce 1
         Plug p2 = new Plug();
@@ -134,12 +138,11 @@ public class TestDataGeneratorResource {
         h3.setStatus(true);
         h3.setId(historiesManager.create(h3));
         p3.addHistory(h3);
-        
-        //Création de la consommation du plug 1
+
+        //Création du fonctionnement du plug 1
         PlugConsumptionFact pc1 = new PlugConsumptionFact();
         pc1.setTimestampHour(new Date());
         pc1.setAvgKW(23.00);
-        pc1.setPlug(p1);
         pc1.setId(plugConsumptionsFactsManager.create(pc1));
         p1.addPlugConsumptionFact(pc1);
 
@@ -147,10 +150,19 @@ public class TestDataGeneratorResource {
         RoomConsumptionFact rc1 = new RoomConsumptionFact();
         rc1.setAvgKW(1000.34);
         rc1.setTimestampHour(new Date());
-        rc1.setRoom(m1);
         rc1.setId(roomConsumptionsFactsManager.create(rc1));
         m1.addRoomConsumptionFact(rc1);
 
-        return "done";
+        //Création de la consommation du plug 1
+        ConsumptionObs co = new ConsumptionObs();
+        co.setTimestampHour(new Date());
+        co.setkW(50.00);
+        co.setId(consumptionObsManager.create(co));
+        p1.addConsumptionObs(co);
+
+
+
+
+        return "Maman, j'ai finiiii!!!";
     }
 }

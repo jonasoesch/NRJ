@@ -57,7 +57,7 @@ public class ConsumptionObs implements Serializable {
         return timestampMinute;
     }
 
-    public void setTimestampMinute(Date timestampMinute) {
+    public void setTimestampHour(Date timestampMinute) {
         this.timestampMinute = timestampMinute;
     }
 
