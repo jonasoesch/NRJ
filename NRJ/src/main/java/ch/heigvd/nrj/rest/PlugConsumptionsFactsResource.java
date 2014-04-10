@@ -7,10 +7,14 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.to.PlugConsumptionsFactsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugConsumptionFactsTO;
+import ch.heigvd.nrj.to.PublicPlugTO;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.GET;
@@ -33,10 +37,7 @@ import javax.ws.rs.core.UriInfo;
  * stateless session beans with annotations. That is practical, because when we
  * receive requests from REST clients, we can delegate most of the work to DAOs
  * and Transfer Object services.
- *
- * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Consumption; import
- * javax.ejb.Stateless; import javax.ws.rs.Path;
- *
+ * 
  * @author nicolas
  */
 @Stateless
@@ -79,16 +80,16 @@ public class PlugConsumptionsFactsResource {
      *
      * @return an instance of PublicPlugTO
      */
-    /*@GET
+    @GET
     @Produces({"application/json", "application/xml"})
-    public List<PublicPlugTO> getResourceList() {
-        List<Plug> plugs = plugsManager.findAll();
-        List<PublicPlugTO> result = new LinkedList<>();
-        for (Plug plug : plugs) {
-            result.add(plugsTOService.buildPublicPlugTO(plug));
+    public List<PublicPlugConsumptionFactsTO> getResourceList() {
+        List<PlugConsumptionFact> plugConsumptionsFacts = plugConsumptionsFactsManager.findAll();
+        List<PublicPlugConsumptionFactsTO> result = new LinkedList<>();
+        for (PlugConsumptionFact plugConsumptionFact : plugConsumptionsFacts) {
+            result.add(plugConsumptionsFactsTOService.buildPublicPlugConsumptionFactTO(plugConsumptionFact));
         }
         return result;
-    }*/
+    }
 
     /**
      * Retrieves representation of an ConsumptionsObs resource
