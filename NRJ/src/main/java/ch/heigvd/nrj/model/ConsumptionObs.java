@@ -28,18 +28,18 @@ public class ConsumptionObs implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date timestampHour;
+    private Date timestampMinute;
     private Double kW;
 
     @ManyToOne protected Plug plug;
 
     public ConsumptionObs() {
-        this.timestampHour = new Date();
+        this.timestampMinute = new Date();
 	this.kW = 0.0;
     }
 
     public ConsumptionObs(ConsumptionObs consumptionObsData) {
-        this.timestampHour = consumptionObsData.getTimestampHour();
+        this.timestampMinute = consumptionObsData.getTimestampHour();
 	this.kW = consumptionObsData.getkW();
     }
     
@@ -52,11 +52,11 @@ public class ConsumptionObs implements Serializable {
     }
 
     public Date getTimestampHour() {
-        return timestampHour;
+        return timestampMinute;
     }
 
     public void setTimestampMinute(Date timestampMinute) {
-        this.timestampHour = timestampMinute;
+        this.timestampMinute = timestampMinute;
     }
 
     public Double getkW() {
