@@ -47,10 +47,10 @@ public class TestDataGeneratorResource {
         a.setName("Appartement 511");
         a.setId(apartmentsManager.create(a));
 
-        Room m = new Room();
-        m.setName("Chambre de Barbie");
-        m.setApartment(a);
-        m.setId(roomsManager.create(m));
+        Room m1 = new Room();
+        m1.setName("Chambre de Barbie");
+        m1.setApartment(a);
+        m1.setId(roomsManager.create(m1));
 
         Room m2 = new Room();
         m2.setName("Cuisine");
@@ -64,16 +64,16 @@ public class TestDataGeneratorResource {
 //		e.setSalary(80000);
 //		e.setId(employeesManager.create(e));
 
-        Plug p = new Plug();
-        p.setName("frigo");
-        p.setAlwaysOn(true);
-        p.setRoom(m2);
-        plugsManager.create(p);
+        Plug p1 = new Plug();
+        p1.setName("frigo");
+        p1.setAlwaysOn(true);
+        p1.setRoom(m2);
+        plugsManager.create(p1);
 
         Plug p2 = new Plug();
         p2.setName("television");
         p2.setAlwaysOn(false);
-        p2.setRoom(m);
+        p2.setRoom(m1);
         plugsManager.create(p2);
         
         Plug p3 = new Plug();
@@ -84,15 +84,15 @@ public class TestDataGeneratorResource {
 
 
 
-//        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-//        String dateInString = "31-08-1982 10:20:56";
-//        Date date = sdf.parse(dateInString);
-//
-//        PlugConsumptionFact pcf1 = new PlugConsumptionFact();
-//        pcf1.setPlug(p2);
-//        pcf1.setTimestampHour(date);
-//        pcf1.setAvgKW(23.00);
-//        plugConsumptionsFactsManager.create(pcf1);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        String dateInString = "31-08-1982 10:20:56";
+        Date date = sdf.parse(dateInString);
+
+        PlugConsumptionFact pcf1 = new PlugConsumptionFact();
+        pcf1.setPlug(p2);
+        pcf1.setTimestampHour(date);
+        pcf1.setAvgKW(23.00);
+        plugConsumptionsFactsManager.create(pcf1);
 
         return "done";
     }
