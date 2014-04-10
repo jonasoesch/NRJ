@@ -79,7 +79,7 @@ public class TestDataGeneratorResource {
         Plug p3 = new Plug();
         p3.setName("lumiere");
         p3.setAlwaysOn(true);
-        p3.setRoom(m);
+        p3.setRoom(m1);
         plugsManager.create(p3);
 
 
