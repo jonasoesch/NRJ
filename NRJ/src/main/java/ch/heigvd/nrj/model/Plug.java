@@ -45,6 +45,7 @@ public class Plug implements Serializable {
         this.histories = new ArrayList<>();
         this.plugConsumptions = new ArrayList<>();
         this.consumptions = new ArrayList<>();
+        this.warnings = new ArrayList<>();
     }
             
     public Plug (Plug plugData) {
