@@ -42,6 +42,7 @@ public class RoomConsumptionFact implements Serializable {
     public RoomConsumptionFact (RoomConsumptionFact roomConsumptionFactData) {
         this.timestampHour = roomConsumptionFactData.getTimestampHour();
         this.avgKW = roomConsumptionFactData.getAvgKW();
+	this.room = roomConsumptionFactData.getRoom();
     }
     
     public Long getId() {
