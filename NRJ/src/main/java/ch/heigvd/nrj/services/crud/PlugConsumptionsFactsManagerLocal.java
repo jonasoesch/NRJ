@@ -24,7 +24,5 @@ public interface PlugConsumptionsFactsManagerLocal {
         
         List<PlugConsumptionFact> findByPeriod(Date debut, Date fin) throws EntityNotFoundException;
 
-	List<PlugConsumptionFact> findAll();
-
-	
+	List<PlugConsumptionFact> findAll();	
 }

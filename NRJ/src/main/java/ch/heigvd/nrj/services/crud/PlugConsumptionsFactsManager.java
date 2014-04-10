@@ -57,9 +57,9 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
 
     @Override
     public List<PlugConsumptionFact> findByPeriod(Date debut, Date fin) throws EntityNotFoundException {
-        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("period", debut).getResultList();
+        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("debut", debut).setParameter("fin", fin).getResultList();
      
         
-        return null;
+        return plugConsumptionsFacts;
     }
 }
