@@ -14,7 +14,7 @@ public class WarningsTOService implements WarningsTOServiceLocal {
 
 	@Override
 	public PublicWarningTO buildPublicWarningTO(Warning source) {
-		PublicWarningTO to = new PublicWarningTO(source.getId(), source.getTimestampMinute(), source.getMessage());
+		PublicWarningTO to = new PublicWarningTO(source.getId(), source.getTimestampMinute(), source.getMessage(), source.getPlug());
 		return to;
 	}
 
@@ -22,6 +22,7 @@ public class WarningsTOService implements WarningsTOServiceLocal {
 	public void updateWarningEntity(Warning existingEntity, PublicWarningTO newState) {
 		existingEntity.setTimestampMinute(newState.getTimestampMinute());
 		existingEntity.setMessage(newState.getMessage());
+                existingEntity.setPlug(newState.getPlug());
 	}
 	
 }

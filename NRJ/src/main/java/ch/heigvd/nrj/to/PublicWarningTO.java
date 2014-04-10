@@ -1,5 +1,6 @@
 package ch.heigvd.nrj.to;
 
+import ch.heigvd.nrj.model.Plug;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -16,6 +17,7 @@ public class PublicWarningTO {
     private Long warningId;
     private Date timestampMinute;
     private String message;
+    private Plug plug;
 
     public PublicWarningTO() {
     }
@@ -28,10 +30,11 @@ public class PublicWarningTO {
 	this.warningId = warningId;
     }
 
-    public PublicWarningTO(long warningId, Date timestampMinute, String message) {
+    public PublicWarningTO(long warningId, Date timestampMinute, String message, Plug plug) {
 	this.warningId = warningId;
 	this.timestampMinute = timestampMinute;
 	this.message = message;
+        this.plug = plug;
     }
 
     public Date getTimestampMinute() {
@@ -48,5 +51,13 @@ public class PublicWarningTO {
 
     public void setMessage(String message) {
 	this.message = message;
+    }
+    
+    public Plug getPlug() {
+        return plug;
+    }
+
+    public void setPlug(Plug plug) {
+        this.plug = plug;
     }
 }
