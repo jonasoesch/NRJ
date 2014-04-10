@@ -40,7 +40,7 @@ public class ConsumptionObs implements Serializable {
     }
 
     public ConsumptionObs(ConsumptionObs consumptionObsData) {
-        this.timestampHour = consumptionObsData.getTimestampMinute();
+        this.timestampHour = consumptionObsData.getTimestampHour();
 	this.kW = consumptionObsData.getkW();
     }
     
@@ -52,7 +52,7 @@ public class ConsumptionObs implements Serializable {
         this.id = id;
     }
 
-    public Date getTimestampMinute() {
+    public Date getTimestampHour() {
         return timestampHour;
     }
 
