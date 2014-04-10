@@ -11,6 +11,7 @@ import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
+import ch.heigvd.nrj.services.business.StreamProcessorLocal;
 import java.net.URI;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -23,6 +24,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+
 
 /**
  * This is the REST API endpoint for the Consumptions resource. When REST clients
@@ -53,6 +55,9 @@ public class ConsumptionsObsResource {
     ConsumptionsObsManagerLocal consumptionsManager;
     @EJB
     ConsumptionsObsTOServiceLocal consumptionsTOService;
+    
+    @EJB
+    StreamProcessorLocal streamProcessor;
 
     /**
      * Creates a new instance of ConsumptionsResource
@@ -68,11 +73,10 @@ public class ConsumptionsObsResource {
     @POST
     @Consumes({"application/json"})
     public Response createResource(PublicConsumptionObsTO newConsumptionTO) {
-        ConsumptionObs newConsumption = new ConsumptionObs();
+        /*ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
-        long newConsumptionId = consumptionsManager.create(newConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
-        return Response.created(createdURI).build();
+        streamProcessor.onConsumption(newConsumption);*/
+        return Response.ok("Test").build();
     }
 
     /**

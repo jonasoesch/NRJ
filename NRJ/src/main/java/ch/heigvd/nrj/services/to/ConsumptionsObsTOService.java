@@ -1,7 +1,13 @@
 package ch.heigvd.nrj.services.to;
 
+import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
+import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -11,18 +17,34 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
+    
+    @EJB
+    PlugsManagerLocal plugsManager;
 
 	@Override
 	public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
-		PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getTimestampHour(), source.getkW(), source.getPlug());
+
+            
+            PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getkW(), source.getPlug().getId());
 		return to;
 	}
 
 	@Override
 	public void updateConsumptionObsEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState) {
+                
+                Plug plug;
+                try {
+                       plug = plugsManager.findById(newState.getPlugId());
+                } catch (EntityNotFoundException ex) {
+                        plug = null;
+                        Logger.getLogger(ConsumptionsObsTOService.class.getName()).log(Level.SEVERE, null, ex);
+                }
+          
 		existingEntity.setTimestampMinute(newState.getTimestampMinute());
 		existingEntity.setkW(newState.getkW());
-		existingEntity.setPlug(newState.getPlug());
+		existingEntity.setPlug(plug);
 	}
+        
+        
 	
 }

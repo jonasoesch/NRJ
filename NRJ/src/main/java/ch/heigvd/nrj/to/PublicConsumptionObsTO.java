@@ -19,16 +19,16 @@ public class PublicConsumptionObsTO {
     private long consumptionObsId;
     private Date timestampMinute;
     private Double kW;
-    private Plug plug;
+    private long plugId;
 
     public PublicConsumptionObsTO() {
     }
 
-    public PublicConsumptionObsTO(long consumptionObsId, Date timestampMinute, Double kW, Plug plug) {
+    public PublicConsumptionObsTO(long consumptionObsId, Double kW, long plugId) {
 	this.consumptionObsId = consumptionObsId;
-	this.timestampMinute = timestampMinute;
+	this.timestampMinute = new Date();
 	this.kW = kW;
-	this.plug = plug;
+	this.plugId = plugId;
     }
 
     public long getConsumptionObsId() {
@@ -55,11 +55,15 @@ public class PublicConsumptionObsTO {
 	this.kW = kW;
     }
 
-    public Plug getPlug() {
-	return plug;
+    public long getPlugId() {
+	return this.plugId;
     }
 
-    public void setPlug(Plug plug) {
-	this.plug = plug;
+    public void setPlugId(long plugId) {
+	this.plugId = plugId;
+    }
+    
+    public String toString() {
+       return "Time:"+this.timestampMinute.toString()+" - kW"+this.kW.toString();
     }
 }
