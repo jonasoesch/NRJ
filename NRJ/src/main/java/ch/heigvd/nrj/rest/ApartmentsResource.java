@@ -74,10 +74,6 @@ public class ApartmentsResource {
 	@Produces({"application/json"})
 	public List<PublicApartmentTO> getResourceList() {
 		List<Apartment> apartments = apartmentsManager.findAll();
-		/*for(Apartment a : apartments){
-		    a.setRooms(roomsManager.findAllByApartment(a));
-		}*/
-		
 		List<PublicApartmentTO> result = new LinkedList<>();
 		for(Apartment apartment : apartments) {
 			result.add(apartmentsTOService.buildPublicApartmentTO(apartment));
