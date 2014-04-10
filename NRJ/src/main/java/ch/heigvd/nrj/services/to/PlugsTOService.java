@@ -14,7 +14,7 @@ public class PlugsTOService implements PlugsTOServiceLocal {
 
 	@Override
 	public PublicPlugTO buildPublicPlugTO(Plug source) {
-		PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn(), source.getRoom());
+		PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn(), source.getRoom(), source.getHistories(), source.getPlugConsumptions(), source.getConsumptions(), source.getWarnings());
 		return to;
 	}
 
@@ -23,6 +23,10 @@ public class PlugsTOService implements PlugsTOServiceLocal {
 		existingEntity.setName(newState.getName());
 		existingEntity.setAlwaysOn(newState.getAlwaysOn());	
 		existingEntity.setRoom(newState.getRoom());
+		existingEntity.setHistories(newState.getHistories());
+		existingEntity.setConsumptions(newState.getConsumptions());	
+		existingEntity.setPlugConsumptions(newState.getPlugConsumptions());
+		existingEntity.setWarnings(newState.getWarnings());
 	}
 	
 }

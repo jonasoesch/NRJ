@@ -67,6 +67,10 @@ public class History implements Serializable {
     public void setStatus(boolean status) {
 	this.status = status;
     }
+
+    public Plug getPlug() {
+	return plug;
+    }
     
     public void setPlug(Plug plug){
         this.plug = plug;
