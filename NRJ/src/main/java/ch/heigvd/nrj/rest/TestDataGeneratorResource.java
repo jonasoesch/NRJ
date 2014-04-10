@@ -75,17 +75,17 @@ public class TestDataGeneratorResource {
         p2.setRoom(m);
         plugsManager.create(p2);
 
-              
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        String dateInString = "31-08-1982 10:20:56";
-        Date date = sdf.parse(dateInString);
 
-        PlugConsumptionFact pcf1 = new PlugConsumptionFact();
-        pcf1.setPlug(p2);
-        pcf1.setTimestampHour(date);
-        pcf1.setAvgKW(23.00);
-        plugConsumptionsFactsManager.create(pcf1);
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+//        String dateInString = "31-08-1982 10:20:56";
+//        Date date = sdf.parse(dateInString);
+//
+//        PlugConsumptionFact pcf1 = new PlugConsumptionFact();
+//        pcf1.setPlug(p2);
+//        pcf1.setTimestampHour(date);
+//        pcf1.setAvgKW(23.00);
+//        plugConsumptionsFactsManager.create(pcf1);
 
         return "done";
     }
