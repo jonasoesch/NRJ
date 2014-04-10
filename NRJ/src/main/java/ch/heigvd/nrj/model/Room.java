@@ -1,14 +1,12 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -19,13 +17,11 @@ import javax.persistence.OneToMany;
  *
  * @author rschmutz
  */
-@NamedQueries({
+@NamedQueries(
         @NamedQuery(
         name = "Room.findAllRooms",
-        query = "SELECT r FROM Room r"),
-	@NamedQuery(
-        name = "Room.findAllByApartment",
-        query = "SELECT r FROM Room r WHERE r.apartment.id = :apartment_id")})
+        query = "SELECT r FROM Room r")
+	)
 @Entity
 public class Room implements Serializable {
 
@@ -39,14 +35,14 @@ public class Room implements Serializable {
     protected Apartment apartment;
 
     @OneToMany (mappedBy = "room")
-    protected Collection<ConsumptionObs> consumptions;
+    protected List<RoomConsumptionFact> roomConsumptionsFacts;
     @OneToMany (mappedBy = "room")
-    protected Collection<RoomConsumptionFact> roomConsumptions;
-    @OneToMany (mappedBy = "room")
-    protected Collection<Plug> plugs;
+    protected List<Plug> plugs;
 
     public Room() {
         this.name = "UNDEF";
+	this.roomConsumptionsFacts = new ArrayList<>();
+	this.plugs = new ArrayList<>();
     }
             
     public Room (Room roomData) {
@@ -78,6 +74,30 @@ public class Room implements Serializable {
 	this.apartment = apartment;
     }
 
+    public List<RoomConsumptionFact> getRoomConsumptions() {
+	return roomConsumptionsFacts;
+    }
+
+    public void setRoomConsumptionsFacts(List<RoomConsumptionFact> roomConsumptions) {
+	this.roomConsumptionsFacts = roomConsumptions;
+    }
+   
+    public void addRoomConsumptionFact(RoomConsumptionFact rcf){
+	this.roomConsumptionsFacts.add(rcf);
+    }
+
+    public List<Plug> getPlugs() {
+	return plugs;
+    }
+
+    public void setPlugs(List<Plug> plugs) {
+	this.plugs = plugs;
+    }
+    
+    public void addPlug(Plug p){
+	this.plugs.add(p);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
