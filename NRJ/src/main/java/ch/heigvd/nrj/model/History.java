@@ -36,6 +36,7 @@ public class History implements Serializable {
     public History() {
         this.timestampMinute = new Date();
 	this.status = false;
+        
     }
 
     public History(History historyData) {
@@ -65,6 +66,10 @@ public class History implements Serializable {
 
     public void setStatus(boolean status) {
 	this.status = status;
+    }
+    
+    public void setPlug(Plug plug){
+        this.plug = plug;
     }
 
     @Override

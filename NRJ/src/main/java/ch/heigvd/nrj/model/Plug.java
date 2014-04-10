@@ -1,7 +1,8 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,13 +34,16 @@ public class Plug implements Serializable {
     
     @ManyToOne protected Room room;
     
-    @OneToMany(mappedBy="plug") protected Collection<History> histories;
-    @OneToMany(mappedBy="plug") protected Collection<PlugConsumptionFact> plugConsumptions;
-    @OneToMany(mappedBy="plug") protected Collection<ConsumptionObs> consumptions;
+    @OneToMany(mappedBy="plug") protected List<History> histories;
+    @OneToMany(mappedBy="plug") protected List<PlugConsumptionFact> plugConsumptions;
+    @OneToMany(mappedBy="plug") protected List<ConsumptionObs> consumptions;
 
     public Plug() {
         this.name = "UNDEF";
         this.alwaysOn = false;
+        this.histories = new ArrayList<>();
+        this.plugConsumptions = new ArrayList<>();
+        this.consumptions = new ArrayList<>();
     }
             
     public Plug (Plug plugData) {
@@ -80,6 +84,19 @@ public class Plug implements Serializable {
 	this.room = room;
     }
 
+    public List<History> getHistories(){
+        return this.histories;
+    }
+    
+    public void setHistories(List<History> histories){
+        this.histories = histories;
+    }
+    
+    public void addHistory(History history){
+        this.histories.add(history);
+        history.setPlug(this);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
