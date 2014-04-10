@@ -1,7 +1,10 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/* TODO
+- Au chargement de la page
+-- Menu latéral :
+--- Récupération des pièces, et de leur prises
+-- Home :
+--- Récupération de l'appartment, de ses données totales et append du bloc 'timegraph'
+- Fonctions 
+-- ???
 
-
+*/
