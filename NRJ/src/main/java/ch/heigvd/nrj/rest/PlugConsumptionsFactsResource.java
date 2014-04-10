@@ -13,15 +13,19 @@ import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.to.PlugConsumptionsFactsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugConsumptionFactsTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -64,17 +68,17 @@ public class PlugConsumptionsFactsResource {
      * @return an instance of PublicPlugConsumptionObsTO
      * 
      */
-    /*
+    
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicPlugConsumptionObsTO newPlugConsumptionObsTO) {
-        PlugConsumption newPlugConsumption = new PlugConsumption();
-        plugConsumptionsFactsTOService.updatePlugConsumptionObsEntity(newPlugConsumption, newPlugConsumptionObsTO);
-        long newPlugConsumptionId = plugConsumptionsFactsManager.create(newPlugConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugConsumptionId)).build();
+    public Response createResource(PublicPlugConsumptionFactsTO newPlugConsumptionFactTO) {
+        PlugConsumptionFact newPlugConsumptionFact = new PlugConsumptionFact();
+        plugConsumptionsFactsTOService.updatePlugConsumptionFactEntity(newPlugConsumptionFact, newPlugConsumptionFactTO);
+        long newPlugConsumptionFactId = plugConsumptionsFactsManager.create(newPlugConsumptionFact);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugConsumptionFactId)).build();
         return Response.created(createdURI).build();
     }
-*/
+
     /**
      * Retrieves a representation of a list of Plug resources
      *
