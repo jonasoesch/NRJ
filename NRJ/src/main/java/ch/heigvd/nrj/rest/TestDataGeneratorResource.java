@@ -91,8 +91,9 @@ public class TestDataGeneratorResource {
         pc1.setTimestampHour(nowDate);
         pc1.setAvgKW(23.00);
         pc1.setPlug(p1);
-        plugsManager.create(p3);
-        
+        pc1.setId(plugConsumptionsFactsManager.create(pc1));
+        System.out.println(pc1.getId());
+        p1.addPlugConsumption(pc1);
 
 
         return "done";
