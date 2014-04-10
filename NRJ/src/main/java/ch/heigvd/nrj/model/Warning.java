@@ -67,6 +67,14 @@ public class Warning implements Serializable {
     public void setMessage(String message) {
 	this.message = message;
     }
+    
+    public Plug getPlug() {
+        return plug;
+    }
+
+    public void setPlug(Plug plug) {
+        this.plug = plug;
+    }
 
     @Override
     public int hashCode() {
