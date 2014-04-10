@@ -34,7 +34,7 @@ public class Room implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    
+        
     @ManyToOne
     protected Apartment apartment;
 
@@ -51,7 +51,7 @@ public class Room implements Serializable {
             
     public Room (Room roomData) {
         this.name = roomData.getName();
-	// this.apartment = roomData.getApartment();
+	this.apartment = roomData.getApartment();
     }
     
     public Long getId() {
