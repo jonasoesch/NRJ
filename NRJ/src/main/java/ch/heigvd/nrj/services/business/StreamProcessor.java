@@ -19,6 +19,7 @@ public class StreamProcessor implements StreamProcessorLocal {
     @Override
     public void onConsumption(ConsumptionObs o) {
         
+        
         // Recording observation
         consumptionObsManager.create(o);
         
