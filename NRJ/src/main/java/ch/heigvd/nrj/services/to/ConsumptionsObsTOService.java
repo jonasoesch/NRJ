@@ -14,14 +14,15 @@ public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
 
 	@Override
 	public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
-		PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getTimestampHour(), source.getkW());
+		PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getTimestampHour(), source.getkW(), source.getPlug());
 		return to;
 	}
 
 	@Override
 	public void updateConsumptionObsEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState) {
 		existingEntity.setTimestampMinute(newState.getTimestampMinute());
-		existingEntity.setkW(newState.getKW());
+		existingEntity.setkW(newState.getkW());
+		existingEntity.setPlug(newState.getPlug());
 	}
 	
 }

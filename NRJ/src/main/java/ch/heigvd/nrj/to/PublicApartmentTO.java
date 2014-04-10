@@ -52,8 +52,4 @@ public class PublicApartmentTO {
     public void setRooms(List<Room> rooms) {
 	this.rooms = rooms;
     }
-    
-    public void addRoom(Room room) {
-	this.rooms.add(room);
-    }
 }

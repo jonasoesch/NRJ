@@ -37,6 +37,7 @@ public class Plug implements Serializable {
     @OneToMany(mappedBy="plug") protected List<History> histories;
     @OneToMany(mappedBy="plug") protected List<PlugConsumptionFact> plugConsumptions;
     @OneToMany(mappedBy="plug") protected List<ConsumptionObs> consumptions;
+    @OneToMany(mappedBy="plug") protected List<Warning> warnings;
 
     public Plug() {
         this.name = "UNDEF";
@@ -93,8 +94,47 @@ public class Plug implements Serializable {
     }
     
     public void addHistory(History history){
-        this.histories.add(history);
         history.setPlug(this);
+        this.histories.add(history);
+    }
+    
+    public List<Warning> getWarnings() {
+        return warnings;
+    }
+
+    public void setWarnings(List<Warning> warnings) {
+        this.warnings = warnings;
+    }
+    
+    public void addWarnings(Warning warning) {
+        warning.setPlug(this);
+        this.warnings.add(warning);
+    }
+    
+    public List<PlugConsumptionFact> getPlugConsumptions(){
+        return this.plugConsumptions;
+    }
+    
+    public void setPlugConsumptions(List<PlugConsumptionFact> plugConsumptions){
+        this.plugConsumptions = plugConsumptions;
+    }
+    
+    public void addPlugConsumption(PlugConsumptionFact plugConsumption){
+        this.plugConsumptions.add(plugConsumption);
+        plugConsumption.setPlug(this);
+    }
+    
+    public List<ConsumptionObs> getConsumptions(){
+        return this.consumptions;
+    }
+    
+    public void setConsumptions(List<ConsumptionObs> consumptions){
+        this.consumptions = consumptions;
+    }
+    
+    public void addConsumption(ConsumptionObs consumption){
+        this.consumptions.add(consumption);
+        consumption.setPlug(this);
     }
     
     @Override

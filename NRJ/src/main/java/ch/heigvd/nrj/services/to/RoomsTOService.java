@@ -14,7 +14,7 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 
 	@Override
 	public PublicRoomTO buildPublicRoomTO(Room source) {
-		PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName(), source.getApartment());
+		PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName(), source.getApartment(), source.getRoomConsumptionsFacts(), source.getPlugs());
 		return to;
 	}
 
@@ -22,6 +22,8 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 	public void updateRoomEntity(Room existingEntity, PublicRoomTO newState) {
 		existingEntity.setName(newState.getName());
 		existingEntity.setApartment(newState.getApartment());
+		existingEntity.setRoomConsumptionsFacts(newState.getRoomConsumptionsFacts());
+		existingEntity.setPlugs(newState.getPlugs());
 	}
 	
 }
