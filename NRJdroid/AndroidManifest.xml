@@ -30,6 +30,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ch.comem.nrjdroid.ItemListActivity" />
         </activity>
+        <activity
+            android:name="ch.comem.nrjdroid.SimpleXYPlotActivity"
+            android:label="@string/title_activity_simple_xyplot" >
+        </activity>
     </application>
 
 </manifest>
