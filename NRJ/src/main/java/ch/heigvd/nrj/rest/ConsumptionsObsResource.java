@@ -44,7 +44,7 @@ import javax.ws.rs.core.UriInfo;
  * @author nicolas
  */
 @Stateless
-@Path("consumptions")
+@Path("consumptionsObs")
 public class ConsumptionsObsResource {
 
     @Context

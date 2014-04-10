@@ -50,14 +50,14 @@ public class TestDataGeneratorResource {
 
         Room m1 = new Room();
         m1.setName("Chambre de Barbie");
-        m1.setApartment(a);
         m1.setId(roomsManager.create(m1));
-
+	a.addRoom(m1);
+	
         Room m2 = new Room();
         m2.setName("Cuisine");
-        m2.setApartment(a);
         m2.setId(roomsManager.create(m2));
-
+	a.addRoom(m2);
+	
 //		Employee e = new Employee();
 //		e.setFirstName("Elisa");
 //		e.setLastName("Touvomi");
@@ -68,21 +68,21 @@ public class TestDataGeneratorResource {
         Plug p1 = new Plug();
         p1.setName("frigo");
         p1.setAlwaysOn(true);
-        p1.setRoom(m2);
-        plugsManager.create(p1);
-
+        p1.setId(plugsManager.create(p1));
+	m1.addPlug(p1);
+	
         Plug p2 = new Plug();
         p2.setName("television");
         p2.setAlwaysOn(false);
-        p2.setRoom(m1);
-        plugsManager.create(p2);
+        p2.setId(plugsManager.create(p2));
+        m2.addPlug(p2);
         
         Plug p3 = new Plug();
         p3.setName("lumiere");
         p3.setAlwaysOn(true);
-        p3.setRoom(m1);
-        plugsManager.create(p3);
-        
+        p3.setId(plugsManager.create(p3));
+        m1.addPlug(p3);
+	
         //Current day time
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 	Date nowDate = new Date();
