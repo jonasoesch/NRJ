@@ -42,7 +42,8 @@ public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
                         Logger.getLogger(ConsumptionsObsTOService.class.getName()).log(Level.SEVERE, null, ex);
                 }
           
-		existingEntity.setTimestampMinute(new Date());
+
+		existingEntity.setTimestampHour(newState.getTimestampMinute());
 		existingEntity.setkW(newState.getkW());
                 existingEntity.setPlug(plug);
 	}
