@@ -99,6 +99,7 @@ public class TestDataGeneratorResource {
         warningp2.setMessage("Attention warning du plug2!");
         warningp2.setTimestampMinute(new Date());
         warningp2.setId(warningManager.create(warningp2));
+        p2.addWarnings(warningp2);
         m2.addPlug(p2);
 	
 	History h2 = new History();
@@ -115,6 +116,7 @@ public class TestDataGeneratorResource {
         warningp3.setMessage("Attention warning du plug3!");
         warningp3.setTimestampMinute(new Date());
         warningp3.setId(warningManager.create(warningp3));
+        p3.addWarnings(warningp3);
         m1.addPlug(p3);
 	
 	History h3 = new History();
