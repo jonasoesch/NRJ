@@ -26,7 +26,7 @@ import org.apache.http.protocol.HTTP;
  * @author nicolas
  *
  * Pour utiliser :
- RestClient client = new RestClient(LOGIN_URL);
+RestClient client = new RestClient(LOGIN_URL);
 client.AddParam("accountType", "GOOGLE");
 client.AddParam("source", "tboda-widgalytics-0.1");
 client.AddParam("Email", _username);
@@ -68,25 +68,21 @@ public class RESTClient {
         return responseCode;
     }
 
-    public RESTClient(String url)
-    {
+    public RESTClient(String url) {
         this.url = url;
         params = new ArrayList<NameValuePair>();
         headers = new ArrayList<NameValuePair>();
     }
 
-    public void AddParam(String name, String value)
-    {
+    public void AddParam(String name, String value) {
         params.add(new BasicNameValuePair(name, value));
     }
 
-    public void AddHeader(String name, String value)
-    {
+    public void AddHeader(String name, String value) {
         headers.add(new BasicNameValuePair(name, value));
     }
 
-    public void Execute(RequestMethod method) throws Exception
-    {
+    public void Execute(RequestMethod method) throws Exception {
         switch(method) {
             case GET:
             {
@@ -139,8 +135,7 @@ public class RESTClient {
         }
     }
 
-    private void executeRequest(HttpUriRequest request, String url)
-    {
+    private void executeRequest(HttpUriRequest request, String url) {
         HttpClient client = new DefaultHttpClient();
 
         HttpResponse httpResponse;

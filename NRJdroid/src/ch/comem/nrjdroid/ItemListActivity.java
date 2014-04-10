@@ -3,6 +3,12 @@ package ch.comem.nrjdroid;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 /**
  * An activity representing a list of Items. This activity has different
@@ -33,6 +39,25 @@ public class ItemListActivity extends FragmentActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_item_list);
 
+		/*LinearLayout layout = (LinearLayout) findViewById(R.id.item_detail_container);
+	    Button but = new Button(this);
+	    but.setText("Go !");
+	    but.setLayoutParams(new LayoutParams(
+	        ViewGroup.LayoutParams.WRAP_CONTENT,
+	            ViewGroup.LayoutParams.WRAP_CONTENT));
+	    layout.addView(but);
+	    but.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(ItemListActivity.this, SimpleXYPlotActivity.class);
+				startActivity(intent);
+			}
+	    	
+	    });*/
+		
+		
 		if (findViewById(R.id.item_detail_container) != null) {
 			// The detail container view will be present only in the
 			// large-screen layouts (res/values-large and
