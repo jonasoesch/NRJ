@@ -48,6 +48,8 @@ public class Room implements Serializable {
     public Room (Room roomData) {
         this.name = roomData.getName();
 	this.apartment = roomData.getApartment();
+	this.roomConsumptionsFacts = roomData.getRoomConsumptionsFacts();
+	this.plugs = roomData.getPlugs();
     }
     
     public Long getId() {
@@ -96,6 +98,7 @@ public class Room implements Serializable {
     
     public void addPlug(Plug p){
 	this.plugs.add(p);
+	p.setRoom(this);
     }
     
     @Override

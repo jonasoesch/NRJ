@@ -32,6 +32,7 @@ public class ConsumptionObs implements Serializable {
     private Double kW;
 
     @ManyToOne protected Plug plug;
+    
 
     public ConsumptionObs() {
         this.timestampMinute = new Date();
@@ -39,8 +40,9 @@ public class ConsumptionObs implements Serializable {
     }
 
     public ConsumptionObs(ConsumptionObs consumptionObsData) {
-        this.timestampMinute = consumptionObsData.getTimestampHour();
+        this.timestampMinute = consumptionObsData.getTimestampMinute();
 	this.kW = consumptionObsData.getkW();
+	this.plug = consumptionObsData.getPlug();
     }
     
     public Long getId() {
@@ -51,11 +53,11 @@ public class ConsumptionObs implements Serializable {
         this.id = id;
     }
 
-    public Date getTimestampHour() {
+    public Date getTimestampMinute() {
         return timestampMinute;
     }
 
-    public void setTimestampMinute(Date timestampMinute) {
+    public void setTimestampHour(Date timestampMinute) {
         this.timestampMinute = timestampMinute;
     }
 

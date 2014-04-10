@@ -42,6 +42,7 @@ public class Warning implements Serializable {
     public Warning (Warning warningData) {
         this.timestampMinute = warningData.getTimestampMinute();
         this.message = warningData.getMessage();
+	this.plug = warningData.getPlug();
     }
     
     public Long getId() {

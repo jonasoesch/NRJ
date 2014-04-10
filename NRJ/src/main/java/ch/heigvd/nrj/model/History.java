@@ -42,6 +42,7 @@ public class History implements Serializable {
     public History(History historyData) {
         this.timestampMinute = historyData.getTimestampMinute();
 	this.status = historyData.getStatus();
+	this.plug = historyData.getPlug();
     }
     
     public Long getId() {
