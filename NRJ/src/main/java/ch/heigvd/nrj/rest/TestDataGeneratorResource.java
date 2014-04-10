@@ -160,9 +160,7 @@ public class TestDataGeneratorResource {
         co.setId(consumptionObsManager.create(co));
         p1.addConsumptionObs(co);
 
-
-
-
-        return "Maman, j'ai finiiii!!!";
+        
+        return "Maman, j'ai finiiii!!! <3 LMAO - LMAO";
     }
 }
