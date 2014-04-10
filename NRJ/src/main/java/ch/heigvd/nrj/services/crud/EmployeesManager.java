@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  * This is an example for a DAO service, implementing CRUD operations on the
@@ -50,7 +51,9 @@ public class EmployeesManager implements EmployeesManagerLocal {
 	@Override
 	public List<Employee> findAll() {
 		// Note: the findAllEmployees JPQL query is defined in the Employee.java file
-		List employees = em.createNamedQuery("Employee.findAllEmployees").getResultList();
+        Query query = em.createNamedQuery("Employee.findAllEmployees");
+		List employees = query.getResultList();
+
 		return employees;
 	}
 	

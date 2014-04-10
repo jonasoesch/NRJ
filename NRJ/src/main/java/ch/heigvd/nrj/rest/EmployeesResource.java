@@ -12,15 +12,16 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * This is the REST API endpoint for the Employees resource. When REST clients
@@ -73,7 +74,7 @@ public class EmployeesResource {
 	 * @return an instance of PublicEmployeeTO
 	 */
 	@GET
-  @Produces({"application/json", "application/xml"})
+    @Produces({"application/json", "application/xml"})
 	public List<PublicEmployeeTO> getResourceList() {
 		List<Employee> employees = employeesManager.findAll();
 		List<PublicEmployeeTO> result = new LinkedList<>();
@@ -91,7 +92,7 @@ public class EmployeesResource {
 	 */
 	@GET
 	@Path("{id}")
-  @Produces({"application/json", "application/xml"})
+        @Produces({"application/json", "application/xml"})
 	public PublicEmployeeTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
 		Employee employee = employeesManager.findById(id);
 		PublicEmployeeTO employeeTO = employeesTOService.buildPublicEmployeeTO(employee);
