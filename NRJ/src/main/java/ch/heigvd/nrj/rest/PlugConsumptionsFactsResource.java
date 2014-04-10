@@ -7,12 +7,10 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.to.PlugConsumptionsFactsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugConsumptionFactsTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;

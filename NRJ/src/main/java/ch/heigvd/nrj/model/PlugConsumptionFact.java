@@ -45,6 +45,7 @@ public class PlugConsumptionFact implements Serializable {
     public PlugConsumptionFact (PlugConsumptionFact plugConsumptionFactData) {
         this.timestampHour = plugConsumptionFactData.getTimestampHour();
         this.avgKW = plugConsumptionFactData.getAvgKW();
+	this.plug = plugConsumptionFactData.getPlug();
     }
     
     public Long getId() {

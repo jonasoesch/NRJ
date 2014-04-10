@@ -112,8 +112,8 @@ public class Plug implements Serializable {
     }
     
     public void addWarnings(Warning warning) {
-        warning.setPlug(this);
         this.warnings.add(warning);
+        warning.setPlug(this);
     }
     
     public List<PlugConsumptionFact> getPlugConsumptionsFacts(){
