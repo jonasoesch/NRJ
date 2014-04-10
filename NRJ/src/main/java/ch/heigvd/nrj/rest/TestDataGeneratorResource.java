@@ -105,7 +105,7 @@ public class TestDataGeneratorResource {
         h2.setTimestampMinute(new Date());
         h2.setStatus(false);
         h2.setId(historiesManager.create(h2));
-	
+	p2.addHistory(h2);
         
         Plug p3 = new Plug();
         p3.setName("lumiere");
