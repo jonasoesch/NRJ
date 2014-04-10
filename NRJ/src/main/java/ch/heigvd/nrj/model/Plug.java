@@ -35,16 +35,16 @@ public class Plug implements Serializable {
     @ManyToOne protected Room room;
     
     @OneToMany(mappedBy="plug") protected List<History> histories;
-    @OneToMany(mappedBy="plug") protected List<PlugConsumptionFact> plugConsumptions;
-    @OneToMany(mappedBy="plug") protected List<ConsumptionObs> consumptions;
+    @OneToMany(mappedBy="plug") protected List<PlugConsumptionFact> plugConsumptionsFacts;
+    @OneToMany(mappedBy="plug") protected List<ConsumptionObs> consumptionsObs;
     @OneToMany(mappedBy="plug") protected List<Warning> warnings;
 
     public Plug() {
         this.name = "UNDEF";
         this.alwaysOn = false;
         this.histories = new ArrayList<>();
-        this.plugConsumptions = new ArrayList<>();
-        this.consumptions = new ArrayList<>();
+        this.plugConsumptionsFacts = new ArrayList<>();
+        this.consumptionsObs = new ArrayList<>();
         this.warnings = new ArrayList<>();
     }
             
@@ -52,6 +52,10 @@ public class Plug implements Serializable {
         this.name = plugData.getName();
         this.alwaysOn = plugData.getAlwaysOn();
         this.room = plugData.getRoom();
+	this.histories = plugData.getHistories();
+        this.plugConsumptionsFacts = plugData.getPlugConsumptionsFacts();
+        this.consumptionsObs = plugData.getConsumptionsObs();
+        this.warnings = plugData.getWarnings();
     }
     
     public Long getId() {
@@ -112,29 +116,29 @@ public class Plug implements Serializable {
         this.warnings.add(warning);
     }
     
-    public List<PlugConsumptionFact> getPlugConsumptions(){
-        return this.plugConsumptions;
+    public List<PlugConsumptionFact> getPlugConsumptionsFacts(){
+        return this.plugConsumptionsFacts;
     }
     
-    public void setPlugConsumptions(List<PlugConsumptionFact> plugConsumptions){
-        this.plugConsumptions = plugConsumptions;
+    public void setPlugConsumptionsFacts(List<PlugConsumptionFact> plugConsumptions){
+        this.plugConsumptionsFacts = plugConsumptions;
     }
     
-    public void addPlugConsumption(PlugConsumptionFact plugConsumption){
-        this.plugConsumptions.add(plugConsumption);
-        plugConsumption.setPlug(this);
+    public void addPlugConsumptionFact(PlugConsumptionFact plugConsumptionFact){
+        this.plugConsumptionsFacts.add(plugConsumptionFact);
+        plugConsumptionFact.setPlug(this);
     }
     
-    public List<ConsumptionObs> getConsumptions(){
-        return this.consumptions;
+    public List<ConsumptionObs> getConsumptionsObs(){
+        return this.consumptionsObs;
     }
     
-    public void setConsumptions(List<ConsumptionObs> consumptions){
-        this.consumptions = consumptions;
+    public void setConsumptionsObs(List<ConsumptionObs> consumptions){
+        this.consumptionsObs = consumptions;
     }
     
-    public void addConsumption(ConsumptionObs consumption){
-        this.consumptions.add(consumption);
+    public void addConsumptionObs(ConsumptionObs consumption){
+        this.consumptionsObs.add(consumption);
         consumption.setPlug(this);
     }
     
