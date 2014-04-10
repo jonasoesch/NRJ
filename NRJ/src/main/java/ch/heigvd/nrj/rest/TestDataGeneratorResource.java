@@ -93,7 +93,7 @@ public class TestDataGeneratorResource {
         pc1.setPlug(p1);
         pc1.setId(plugConsumptionsFactsManager.create(pc1));
         System.out.println(pc1.getId());
-        p1.addPlugConsumption(pc1);
+        p1.addPlugConsumptionFact(pc1);
 
 
         return "done";
