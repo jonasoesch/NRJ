@@ -19,8 +19,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -68,7 +70,6 @@ public class PlugConsumptionsFactsResource {
      * @return an instance of PublicPlugConsumptionObsTO
      * 
      */
-    
     @POST
     @Consumes({"application/json"})
     public Response createResource(PublicPlugConsumptionFactsTO newPlugConsumptionFactTO) {
@@ -119,15 +120,15 @@ public class PlugConsumptionsFactsResource {
      * @return an instance of PublicConsumptionTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@PUT
+    @PUT
     @Path("{id}")
     @Consumes({"application/json"})
-    public Response Resource(PublicPlugTO updatedPlugTO, @PathParam("id") long id) throws EntityNotFoundException {
-        Plug plugToUpdate = plugsManager.findById(id);
-        plugsTOService.updatePlugEntity(plugToUpdate, updatedPlugTO);
-        consumptionsManager.update(consumptionToUpdate);
+    public Response Resource(PublicPlugConsumptionFactsTO updatedPlugConsumptionFactTO, @PathParam("id") long id) throws EntityNotFoundException {
+        PlugConsumptionFact plugConsumptionFactToUpdate = plugConsumptionsFactsManager.findById(id);
+        plugConsumptionsFactsTOService.updatePlugConsumptionFactEntity(plugConsumptionFactToUpdate, updatedPlugConsumptionFactTO);
+        plugConsumptionsFactsManager.update(plugConsumptionFactToUpdate);
         return Response.ok().build();
-    }*/
+    }
 
     /**
      * Deletes an ConsumptionsObs resource
@@ -136,10 +137,11 @@ public class PlugConsumptionsFactsResource {
      * @return an instance of PublicConsumptionTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@DELETE
+    
+    @DELETE
     @Path("{id}")
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
-        consumptionsManager.delete(id);
+        plugConsumptionsFactsManager.delete(id);
         return Response.ok().build();
-    }*/
+    }
 }
