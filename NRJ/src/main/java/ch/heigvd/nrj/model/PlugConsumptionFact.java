@@ -70,14 +70,6 @@ public class PlugConsumptionFact implements Serializable {
     public void setAvgKW(Double avgKW) {
 	this.avgKW = avgKW;
     }
-    
-    public void setPlug(Plug plug){
-        this.plug = plug;
-    }
-    
-    public Plug getPlug(){
-        return this.plug;
-    }
 
     @Override
     public int hashCode() {
