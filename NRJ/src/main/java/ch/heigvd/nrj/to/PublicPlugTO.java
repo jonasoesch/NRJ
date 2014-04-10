@@ -26,20 +26,18 @@ public class PublicPlugTO {
     private Room room;
     private List<History> histories;
     private List<PlugConsumptionFact> plugConsumptions;
-    private List<ConsumptionObs> consumptions;
     private List<Warning> warnings;
 
     public PublicPlugTO() {
     }
 
-    public PublicPlugTO(long plugId, String name, boolean alwaysOn, Room room, List<History> histories, List<PlugConsumptionFact> plugConsumptions, List<ConsumptionObs> consumptions, List<Warning> warnings) {
+    public PublicPlugTO(long plugId, String name, boolean alwaysOn, Room room, List<History> histories, List<PlugConsumptionFact> plugConsumptionsFact, List<Warning> warnings) {
         this.plugId = plugId;
         this.name = name;
         this.alwaysOn = alwaysOn;
 	this.room = room;
 	this.histories = histories;
-	this.plugConsumptions = plugConsumptions;
-	this.consumptions = consumptions;
+	this.plugConsumptions = plugConsumptionsFact;
 	this.warnings = warnings;
     }
 
@@ -89,14 +87,6 @@ public class PublicPlugTO {
 
     public void setPlugConsumptions(List<PlugConsumptionFact> plugConsumptions) {
 	this.plugConsumptions = plugConsumptions;
-    }
-
-    public List<ConsumptionObs> getConsumptions() {
-	return consumptions;
-    }
-
-    public void setConsumptions(List<ConsumptionObs> consumptions) {
-	this.consumptions = consumptions;
     }
 
     public List<Warning> getWarnings() {

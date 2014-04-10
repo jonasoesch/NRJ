@@ -2,7 +2,9 @@ package ch.heigvd.nrj.to;
 
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -19,19 +21,18 @@ public class PublicRoomTO {
 
     private long roomId;
     private String name;
-    private Apartment apartment;
     private List<RoomConsumptionFact> roomConsumptionsFacts;
-    private List<Plug> plugs;
+    private List<PublicPlugTO> plugs;
     
     public PublicRoomTO() {
+	this.plugs = new ArrayList<>();
     }
 
-    public PublicRoomTO(long roomId, String name, Apartment apartment, List<RoomConsumptionFact> roomConsumptionsFacts, List<Plug> plugs) {
+    public PublicRoomTO(long roomId, String name, List<RoomConsumptionFact> roomConsumptionsFacts) {
+	this.plugs = new ArrayList<>();
         this.roomId = roomId;
         this.name = name;
-	this.apartment = apartment;
 	this.roomConsumptionsFacts = roomConsumptionsFacts;
-	this.plugs = plugs;
     }
 
     public long getRoomId() {
@@ -50,14 +51,6 @@ public class PublicRoomTO {
         this.name = name;
     }
     
-    public Apartment getApartment() {
-	return apartment;
-    }
-
-    public void setApartment(Apartment apartment) {
-	this.apartment = apartment;
-    }
-    
     public List<RoomConsumptionFact> getRoomConsumptionsFacts() {
 	return roomConsumptionsFacts;
     }
@@ -66,11 +59,15 @@ public class PublicRoomTO {
 	this.roomConsumptionsFacts = roomConsumptionsFacts;
     }
 
-    public List<Plug> getPlugs() {
+    public List<PublicPlugTO> getPlugs() {
 	return plugs;
     }
     
-    public void setPlugs(List<Plug> plugs) {
+    public void setPlugs(List<PublicPlugTO> plugs) {
 	this.plugs = plugs;
+    }
+    
+    public void addPlug(PublicPlugTO plug) {
+	this.plugs.add(plug);
     }
 }
