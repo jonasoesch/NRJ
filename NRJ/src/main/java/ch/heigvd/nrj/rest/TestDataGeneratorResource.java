@@ -69,15 +69,15 @@ public class TestDataGeneratorResource {
         //Et l'ajoute à l'appartement
         Room m1 = new Room();
         m1.setName("Chambre de Barbie");
-        m1.setId(roomsManager.create(m1));
-        a.addRoom(m1);
+	m1.setApartment(a);
+	m1.setId(roomsManager.create(m1));
 
         //Création de la pièce 2: Cuisine
         //Et l'ajoute à l'appartement
         Room m2 = new Room();
         m2.setName("Cuisine");
-        m2.setId(roomsManager.create(m2));
-        a.addRoom(m2);
+	m2.setApartment(a);
+	m2.setId(roomsManager.create(m2));
 
         //Création du plug 1: Frigo
         //Et l'ajoute à la pièce 1
