@@ -68,15 +68,16 @@ public class ConsumptionsObsResource {
     /**
      * Creates a new ConsumptionObs resource from the provided representation
      *
+     *   
      * @return an instance of PublicConsumptionObsTO
      */
     @POST
     @Consumes({"application/json"})
     public Response createResource(PublicConsumptionObsTO newConsumptionTO) {
-        /*ConsumptionObs newConsumption = new ConsumptionObs();
+        ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
-        streamProcessor.onConsumption(newConsumption);*/
-        return Response.ok("Test").build();
+        streamProcessor.onConsumption(newConsumption);
+        return Response.ok().build();
     }
 
     /**

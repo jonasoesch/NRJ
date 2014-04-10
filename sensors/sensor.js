@@ -15,9 +15,9 @@ setInterval(function() {
     // Generate kW
     var kW = numberBetween(1,1000);
 
-    var observation = {"timestamp": (new Date()).getTime(), "kW": kW};
+    var observation = {"kW": 13, "plugId": 5};
 
-    postObservationToPlatform('/NRJ/api/plugs/'+plug_id+'/consumption', observation, function() {
+    postObservationToPlatform('/NRJ/api/consumptionsObs', observation, function() {
        // Success 
     }, function() {
        // Error 
@@ -57,7 +57,7 @@ function postObservationToPlatform(endpoint, observation, successCallback, error
       });
 
       res.on('end', function() { // When the request has been successfully completed
-        console.log((new Date()).toJSON() + ' : Observation successfully published <' + endpoint + '>');
+        console.log((new Date()).toJSON() + ' : Observation successfully published <' + endpoint + '>'+JSON.stringify(observation));
         if (successCallback) successCallback.call(null, responseString);
       });
     });

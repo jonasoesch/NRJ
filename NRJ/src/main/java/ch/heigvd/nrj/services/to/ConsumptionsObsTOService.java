@@ -5,6 +5,7 @@ import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -34,15 +35,16 @@ public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
                 
                 Plug plug;
                 try {
-                       plug = plugsManager.findById(newState.getPlugId());
+                        long plugId = newState.getPlugId();
+                       plug = plugsManager.findById(plugId);
                 } catch (EntityNotFoundException ex) {
                         plug = null;
                         Logger.getLogger(ConsumptionsObsTOService.class.getName()).log(Level.SEVERE, null, ex);
                 }
           
-		existingEntity.setTimestampMinute(newState.getTimestampMinute());
+		existingEntity.setTimestampMinute(new Date());
 		existingEntity.setkW(newState.getkW());
-		existingEntity.setPlug(plug);
+                existingEntity.setPlug(plug);
 	}
         
         

@@ -2,8 +2,7 @@ package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
-import ch.heigvd.nrj.model.PlugConsumptionFact;
-import java.util.Date;
+import ch.heigvd.nrj.model.Plug;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -25,7 +24,12 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
     @Override
     public long create(ConsumptionObs consumptionData) {
         ConsumptionObs newConsumption = new ConsumptionObs(consumptionData);
+
+        Plug plug = consumptionData.getPlug();
+        
+
         em.persist(newConsumption);
+        plug.getConsumptionsObs().add(newConsumption);
         return newConsumption.getId();
     }
 
