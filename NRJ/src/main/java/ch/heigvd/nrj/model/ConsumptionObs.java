@@ -31,7 +31,6 @@ public class ConsumptionObs implements Serializable {
     private Date timestampHour;
     private Double kW;
 
-    @ManyToOne protected Room room;
     @ManyToOne protected Plug plug;
 
     public ConsumptionObs() {
@@ -68,6 +67,14 @@ public class ConsumptionObs implements Serializable {
         this.kW = kW;
     }
 
+    public Plug getPlug() {
+	return plug;
+    }
+
+    public void setPlug(Plug plug) {
+	this.plug = plug;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

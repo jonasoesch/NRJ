@@ -4,6 +4,7 @@
  */
 package ch.heigvd.nrj.to;
 
+import ch.heigvd.nrj.model.Plug;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -20,14 +21,16 @@ public class PublicPlugConsumptionFactsTO {
     private Long plugConsumptionFactId;
     private Date timestampHour;
     private Double avgKW;
-
+    private Plug plug;
+    
     public PublicPlugConsumptionFactsTO() {
     }
 
-    public PublicPlugConsumptionFactsTO(long plugConsumptionFactId, Date timestampHour, Double avgKW) {
+    public PublicPlugConsumptionFactsTO(long plugConsumptionFactId, Date timestampHour, Double avgKW, Plug plug) {
 	this.plugConsumptionFactId = plugConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
+	this.plug = plug;
     }
 
     public Long getPlugConsumptionFactId() {
@@ -52,5 +55,13 @@ public class PublicPlugConsumptionFactsTO {
 
     public void setAvgKW(Double avgKW) {
 	this.avgKW = avgKW;
+    }
+    
+    public Plug getPlug() {
+	return plug;
+    }
+
+    public void setPlug(Plug plug) {
+	this.plug = plug;
     }
 }

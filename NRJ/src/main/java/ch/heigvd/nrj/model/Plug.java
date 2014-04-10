@@ -111,6 +111,34 @@ public class Plug implements Serializable {
         this.warnings.add(warning);
     }
     
+    public List<PlugConsumptionFact> getPlugConsumptions(){
+        return this.plugConsumptions;
+    }
+    
+    public void setPlugConsumptions(List<PlugConsumptionFact> plugConsumptions){
+        this.plugConsumptions = plugConsumptions;
+    }
+    
+    public void addPlugConsumption(PlugConsumptionFact plugConsumption){
+        this.plugConsumptions.add(plugConsumption);
+        plugConsumption.setPlug(this);
+    }
+    
+    public List<ConsumptionObs> getConsumptions(){
+        return this.consumptions;
+    }
+    
+    public void setConsumptions(List<ConsumptionObs> consumptions){
+        this.consumptions = consumptions;
+    }
+    
+    public void addConsumption(ConsumptionObs consumption){
+        this.consumptions.add(consumption);
+        
+        
+        //---------------------------
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
