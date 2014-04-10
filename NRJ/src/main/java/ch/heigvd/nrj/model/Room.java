@@ -74,7 +74,7 @@ public class Room implements Serializable {
 	this.apartment = apartment;
     }
 
-    public List<RoomConsumptionFact> getRoomConsumptions() {
+    public List<RoomConsumptionFact> getRoomConsumptionsFacts() {
 	return roomConsumptionsFacts;
     }
 

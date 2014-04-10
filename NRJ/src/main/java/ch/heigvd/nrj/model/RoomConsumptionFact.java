@@ -67,7 +67,15 @@ public class RoomConsumptionFact implements Serializable {
     public void setAvgKW(Double avgKW) {
         this.avgKW = avgKW;
     }
+    
+    public Room getRoom() {
+	return room;
+    }
 
+    public void setRoom(Room room) {
+	this.room = room;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

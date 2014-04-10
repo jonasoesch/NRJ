@@ -1,5 +1,6 @@
 package ch.heigvd.nrj.to;
 
+import ch.heigvd.nrj.model.Room;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -16,14 +17,16 @@ public class PublicRoomConsumptionFactsTO {
     private Long roomConsumptionFactId;
     private Date timestampHour;
     private Double avgKW;
+    private Room room;
 
     public PublicRoomConsumptionFactsTO() {
     }
 
-    public PublicRoomConsumptionFactsTO(long roomConsumptionFactId, Date timestampHour, Double avgKW) {
+    public PublicRoomConsumptionFactsTO(long roomConsumptionFactId, Date timestampHour, Double avgKW, Room room) {
 	this.roomConsumptionFactId = roomConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
+	this.room = room;
     }
 
     public Long getRoomConsumptionFactId() {
@@ -48,5 +51,13 @@ public class PublicRoomConsumptionFactsTO {
 
     public void setAvgKW(Double avgKW) {
 	this.avgKW = avgKW;
+    }
+    
+    public Room getRoom() {
+	return room;
+    }
+
+    public void setRoom(Room room) {
+	this.room = room;
     }
 }
