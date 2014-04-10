@@ -134,9 +134,7 @@ public class Plug implements Serializable {
     
     public void addConsumption(ConsumptionObs consumption){
         this.consumptions.add(consumption);
-        
-        
-        //---------------------------
+        consumption.setPlug(this);
     }
     
     @Override
