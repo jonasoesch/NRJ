@@ -1,7 +1,9 @@
 package ch.heigvd.nrj.to;
 
 import ch.heigvd.nrj.model.Room;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -16,12 +18,12 @@ public class PublicApartmentTO {
 
     private long apartmentId;
     private String name;
-    private Collection<Room> rooms;
+    private List<Room> rooms;
 
     public PublicApartmentTO() {
     }
 
-    public PublicApartmentTO(long apartmentId, String name, Collection<Room> rooms) {
+    public PublicApartmentTO(long apartmentId, String name, List<Room> rooms) {
         this.apartmentId = apartmentId;
         this.name = name;
 	this.rooms = rooms;
@@ -43,11 +45,15 @@ public class PublicApartmentTO {
         this.name = name;
     }
     
-    public Collection<Room> getRooms() {
+    public List<Room> getRooms() {
 	return rooms;
     }
 
-    public void setRooms(Collection<Room> rooms) {
+    public void setRooms(List<Room> rooms) {
 	this.rooms = rooms;
+    }
+    
+    public void addRoom(Room room) {
+	this.rooms.add(room);
     }
 }

@@ -1,13 +1,17 @@
 package ch.heigvd.nrj.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -20,7 +24,9 @@ import javax.persistence.OneToMany;
 @NamedQueries(
         @NamedQuery(
         name = "Apartment.findAllApartments",
-        query = "SELECT a FROM Apartment a"))
+        query = "SELECT a FROM Apartment a")
+        // query = "SELECT a, r FROM Apartment a JOIN a.rooms r")
+)
 @Entity
 public class Apartment implements Serializable {
 
@@ -30,11 +36,13 @@ public class Apartment implements Serializable {
     private Long id;
     private String name;
 
-    @OneToMany
-    protected Collection<Room> rooms;
+    
+    @OneToMany(mappedBy="apartment")
+    protected List<Room> rooms;
 
     public Apartment() {
         this.name = "UNDEF";
+	this.rooms = new ArrayList<>();
     }
 
     public Apartment(Apartment apartmentData) {
@@ -58,13 +66,18 @@ public class Apartment implements Serializable {
         this.name = name;
     }
     
-    public Collection<Room> getRooms() {
+    public List<Room> getRooms() {
 	return rooms;
     }
 
-    public void setRooms(Collection<Room> rooms) {
+    public void setRooms(List<Room> rooms) {
 	this.rooms = rooms;
     }
+    public void addRoom(Room room) {
+	this.rooms.add(room);
+	room.setApartment(this);
+    }
+    
 
     @Override
     public int hashCode() {

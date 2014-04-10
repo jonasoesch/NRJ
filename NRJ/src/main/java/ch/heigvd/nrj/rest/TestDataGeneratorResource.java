@@ -74,7 +74,8 @@ public class TestDataGeneratorResource {
         p2.setAlwaysOn(false);
         p2.setRoom(m);
         plugsManager.create(p2);
-        
+
+              
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         String dateInString = "31-08-1982 10:20:56";
