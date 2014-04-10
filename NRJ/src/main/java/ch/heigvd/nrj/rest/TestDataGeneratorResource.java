@@ -7,6 +7,7 @@ import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
+import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import java.text.ParseException;
@@ -37,7 +38,7 @@ public class TestDataGeneratorResource {
     @EJB
     ApartmentsManagerLocal apartmentsManager;
     @EJB
-    PlugConsumptionsFactsManager plugConsumptionsFactsManager;
+    PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
 
     @GET
     @Produces({"text/plain"})
