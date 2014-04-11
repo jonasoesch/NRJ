@@ -8,6 +8,8 @@ package ch.heigvd.skeleton.services.business;
 
 import ch.heigvd.skeleton.model.Observation;
 import ch.heigvd.skeleton.services.crud.ObservationsManagerLocal;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -28,7 +30,12 @@ public class StreamProcessor implements StreamProcessorLocal {
         // Recording observation
         observationsManager.create(o);
         
-        // Then implement your logic to create facts
+        try {
+            // Then implement your logic to create facts
+            Thread.sleep(10000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(StreamProcessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
