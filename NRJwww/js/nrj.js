@@ -8,3 +8,18 @@
 -- ???
 
 */
+$(function() {
+    /* actions au démarrage */
+    
+    
+    /* surveillants */
+    /* $('...').on("click", function () {
+    
+    }) */
+    
+    
+    /* fonctions générales */
+    /* function getAllPlugs() {
+    
+    } */
+})
