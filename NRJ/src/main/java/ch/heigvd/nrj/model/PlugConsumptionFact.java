@@ -23,7 +23,7 @@ import javax.persistence.Temporal;
     @NamedQuery(name = "PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod",
         query = "SELECT pcp FROM PlugConsumptionFact pcp WHERE pcp.timestampHour BETWEEN :debut AND :fin"),
     @NamedQuery(name = "PlugConsumptionFact.getLastFact",
-        query = "SELECT lpc FROM PlugConsumptionFact lpc WHERE lpc.plug = :plug ORDER BY lpc.timestampHour DESC LIMIT 1" )
+        query = "SELECT lpcf FROM PlugConsumptionFact lpcf WHERE lpcf.plug = :plug ORDER BY lpcf.timestampHour DESC" )
 })
 
 @Entity

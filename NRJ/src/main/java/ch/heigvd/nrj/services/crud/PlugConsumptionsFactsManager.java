@@ -66,7 +66,7 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
 
     @Override
     public PlugConsumptionFact getlastFact(Plug plug) {
-        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("plug", plug).getResultList();
+        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("plug", plug).setMaxResults(1).getResultList();
 
         if (plugConsumptionsFacts.isEmpty()){
             return null;
