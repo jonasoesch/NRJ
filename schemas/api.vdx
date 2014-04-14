@@ -45,11 +45,11 @@
           <XForm>
             <Angle>-0</Angle>
             <PinX>6.161417286925846</PinX>
-            <PinY>9.460192481676737</PinY>
-            <Width>3.031496045324537</Width>
-            <Height>0.8611111111111112</Height>
-            <LocPinX>1.515748022662268</LocPinX>
-            <LocPinY>0.4305555555555556</LocPinY>
+            <PinY>9.362970259454515</PinY>
+            <Width>3.031496045324538</Width>
+            <Height>1.055555555555556</Height>
+            <LocPinX>1.515748022662269</LocPinX>
+            <LocPinY>0.5277777777777778</LocPinY>
           </XForm>
           <Layout>
             <ConLineJumpCode>4</ConLineJumpCode>
@@ -61,8 +61,8 @@
           <TextXForm>
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
-            <TxtWidth F="Width*1.000000">3.031496045324537</TxtWidth>
-            <TxtHeight F="Height*1.000000">0.8611111111111112</TxtHeight>
+            <TxtWidth F="Width*1.000000">3.031496045324538</TxtWidth>
+            <TxtHeight F="Height*1.000000">1.055555555555556</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
           </TextXForm>
@@ -221,17 +221,17 @@
               <XForm>
                 <Angle>-0</Angle>
                 <PinX>1.515748022662268</PinX>
-                <PinY>0.6944444444444444</PinY>
+                <PinY>0.7916666666666666</PinY>
                 <Width>3.031496045324538</Width>
-                <Height>0.3333333333333333</Height>
+                <Height>0.5277777777777778</Height>
                 <LocPinX>1.515748022662269</LocPinX>
-                <LocPinY>0.1666666666666667</LocPinY>
+                <LocPinY>0.2638888888888889</LocPinY>
               </XForm>
               <TextXForm>
                 <TxtPinX F="Width*0.000000">0</TxtPinX>
                 <TxtPinY F="Height*0.000000">0</TxtPinY>
                 <TxtWidth F="Width*1.000000">3.031496045324538</TxtWidth>
-                <TxtHeight F="Height*1.000000">0.3333333333333333</TxtHeight>
+                <TxtHeight F="Height*1.000000">0.5277777777777778</TxtHeight>
                 <TxtLocPinX>0</TxtLocPinX>
                 <TxtLocPinY>0</TxtLocPinY>
               </TextXForm>
@@ -262,11 +262,11 @@
                 <NoLine>0</NoLine>
                 <MoveTo IX="1">
                   <X F="Width*0.000000">0</X>
-                  <Y F="Height*1.000000">0.3333333333333333</Y>
+                  <Y F="Height*1.000000">0.5277777777777778</Y>
                 </MoveTo>
                 <LineTo IX="2">
                   <X F="Width*1.000000">3.031496045324537</X>
-                  <Y F="Height*1.000000">0.3333333333333333</Y>
+                  <Y F="Height*1.000000">0.5277777777777778</Y>
                 </LineTo>
                 <LineTo IX="3">
                   <X F="Width*1.000000">3.031496045324537</X>
@@ -278,7 +278,7 @@
                 </LineTo>
                 <LineTo IX="5">
                   <X F="Width*0.000000">0</X>
-                  <Y F="Height*1.000000">0.3333333333333333</Y>
+                  <Y F="Height*1.000000">0.5277777777777778</Y>
                 </LineTo>
               </Geom>
               <LayerMem>
@@ -312,7 +312,7 @@
                 <SpBefore>0</SpBefore>
                 <HorzAlign>0</HorzAlign>
               </Para>
-              <Text><cp IX="0"/><pp IX="0"/>/apartment/consumption<cp IX="1"/>?{period}</Text>
+              <Text><cp IX="0"/><pp IX="0"/>/apartments/{id}/consumption<cp IX="1"/>?{period}</Text>
             </Shape>
           </Shapes>
         </Shape>
@@ -2977,15 +2977,15 @@ POST	New measure of plug
           <XForm>
             <Angle>-0</Angle>
             <PinX>4.173228322135078</PinX>
-            <PinY>8.180664930078718</PinY>
+            <PinY>8.132053818967607</PinY>
             <Width>3.976377929581536</Width>
-            <Height>2.559055103196038</Height>
+            <Height>2.461832880973816</Height>
             <LocPinX>1.988188964790768</LocPinX>
-            <LocPinY>1.279527551598019</LocPinY>
+            <LocPinY>1.230916440486908</LocPinY>
           </XForm>
           <XForm1D>
             <BeginX>6.16142</BeginX>
-            <BeginY>781.585</BeginY>
+            <BeginY>781.488</BeginY>
             <EndX>2.18504</EndX>
             <EndY>779.026</EndY>
           </XForm1D>
@@ -3000,7 +3000,7 @@ POST	New measure of plug
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
             <TxtWidth F="Width*1.000000">3.976377929581536</TxtWidth>
-            <TxtHeight F="Height*1.000000">2.559055103196038</TxtHeight>
+            <TxtHeight F="Height*1.000000">2.461832880973816</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
           </TextXForm>
@@ -3031,7 +3031,7 @@ POST	New measure of plug
             <NoLine>0</NoLine>
             <MoveTo IX="1">
               <X F="Width*1.000000">3.976377929581537</X>
-              <Y F="Height*1.000000">2.559055103196038</Y>
+              <Y F="Height*1.000000">2.461832880973816</Y>
             </MoveTo>
             <LineTo IX="2">
               <X F="Width*0.000000">3.947459643111667e-16</X>
@@ -3184,15 +3184,15 @@ POST	New measure of plug
           <XForm>
             <Angle>-0</Angle>
             <PinX>4.340551155805588</PinX>
-            <PinY>7.452318477630616</PinY>
+            <PinY>7.403707366519504</PinY>
             <Width>3.641732262240517</Width>
-            <Height>4.015748008092245</Height>
+            <Height>3.918525785870022</Height>
             <LocPinX>1.820866131120258</LocPinX>
-            <LocPinY>2.007874004046122</LocPinY>
+            <LocPinY>1.959262892935011</LocPinY>
           </XForm>
           <XForm1D>
             <BeginX>6.16142</BeginX>
-            <BeginY>781.585</BeginY>
+            <BeginY>781.488</BeginY>
             <EndX>2.51969</EndX>
             <EndY>777.569</EndY>
           </XForm1D>
@@ -3207,7 +3207,7 @@ POST	New measure of plug
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
             <TxtWidth F="Width*1.000000">3.641732262240517</TxtWidth>
-            <TxtHeight F="Height*1.000000">4.015748008092245</TxtHeight>
+            <TxtHeight F="Height*1.000000">3.918525785870022</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
           </TextXForm>
@@ -3238,7 +3238,7 @@ POST	New measure of plug
             <NoLine>0</NoLine>
             <MoveTo IX="1">
               <X F="Width*1.000000">3.641732262240516</X>
-              <Y F="Height*1.000000">4.015748008092245</Y>
+              <Y F="Height*1.000000">3.918525785870022</Y>
             </MoveTo>
             <LineTo IX="2">
               <X F="Width*-0.000000">-3.947459643111667e-16</X>
@@ -3651,15 +3651,15 @@ POST	New measure of plug
           <XForm>
             <Angle>-0</Angle>
             <PinX>4.173228322135078</PinX>
-            <PinY>9.015365277396308</PinY>
+            <PinY>8.966754166285197</PinY>
             <Width>3.976377929581536</Width>
-            <Height>0.889654408560859</Height>
+            <Height>0.7924321863386368</Height>
             <LocPinX>1.988188964790768</LocPinX>
-            <LocPinY>0.4448272042804295</LocPinY>
+            <LocPinY>0.3962160931693184</LocPinY>
           </XForm>
           <XForm1D>
             <BeginX>6.16142</BeginX>
-            <BeginY>781.585</BeginY>
+            <BeginY>781.488</BeginY>
             <EndX>2.18504</EndX>
             <EndY>780.696</EndY>
           </XForm1D>
@@ -3674,7 +3674,7 @@ POST	New measure of plug
             <TxtPinX F="Width*0.000000">0</TxtPinX>
             <TxtPinY F="Height*0.000000">0</TxtPinY>
             <TxtWidth F="Width*1.000000">3.976377929581536</TxtWidth>
-            <TxtHeight F="Height*1.000000">0.889654408560859</TxtHeight>
+            <TxtHeight F="Height*1.000000">0.7924321863386368</TxtHeight>
             <TxtLocPinX>0</TxtLocPinX>
             <TxtLocPinY>0</TxtLocPinY>
           </TextXForm>
@@ -3705,7 +3705,7 @@ POST	New measure of plug
             <NoLine>0</NoLine>
             <MoveTo IX="1">
               <X F="Width*1.000000">3.976377929581536</X>
-              <Y F="Height*1.000000">0.889654408560859</Y>
+              <Y F="Height*1.000000">0.7924321863386368</Y>
             </MoveTo>
             <LineTo IX="2">
               <X F="Width*0.000000">3.947459643111667e-16</X>
@@ -4670,7 +4670,7 @@ POST	add a new plug to
             <LayerMember>0</LayerMember>
           </LayerMem>
           <Shapes>
-            <Shape ID="56" Type="Shape" Name="Rectangle Fill:Marble.56">
+            <Shape ID="56" Type="Shape" Name="Rectangle No Fill No Fill.56">
               <XForm>
                 <Angle>-0</Angle>
                 <PinX>1.377952747874788</PinX>
@@ -4700,7 +4700,7 @@ POST	add a new plug to
                 <LineCap>0</LineCap>
               </Line>
               <Fill>
-                <FillPattern>1</FillPattern>
+                <FillPattern>0</FillPattern>
                 <FillForegnd>#eaeaea</FillForegnd>
                 <FillForegndTrans>0</FillForegndTrans>
                 <ShdwPattern>0</ShdwPattern>
@@ -4808,7 +4808,7 @@ POST	add a new plug to
 POST	create new 
 	apartment</Text>
             </Shape>
-            <Shape ID="57" Type="Shape" Name="Rectangle Fill:Marble.57">
+            <Shape ID="57" Type="Shape" Name="Rectangle No Fill No Fill.57">
               <XForm>
                 <Angle>-0</Angle>
                 <PinX>1.377952747874788</PinX>
@@ -4838,7 +4838,7 @@ POST	create new
                 <LineCap>0</LineCap>
               </Line>
               <Fill>
-                <FillPattern>1</FillPattern>
+                <FillPattern>0</FillPattern>
                 <FillForegnd>#eaeaea</FillForegnd>
                 <FillForegndTrans>0</FillForegndTrans>
                 <ShdwPattern>0</ShdwPattern>
