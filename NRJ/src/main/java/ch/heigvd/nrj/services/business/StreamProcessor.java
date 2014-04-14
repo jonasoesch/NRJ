@@ -35,7 +35,6 @@ public class StreamProcessor implements StreamProcessorLocal {
         // Recording observation
         consumptionObsManager.create(o);
         
-        
         // Retrieve info from plug
         Plug plug = o.getPlug();
         Room room = plug.getRoom();
@@ -75,8 +74,8 @@ public class StreamProcessor implements StreamProcessorLocal {
         
         // Check number of obs for this plug
         
-        
-        
+        // Consommation moyenne de cette pièce
+        // Récupération du dernier fait et ajout de la consommation courante à cette table
     }
     
     /*@Override
