@@ -12,6 +12,8 @@ $(function () {
     /* actions au démarrage */
     createMenu();
 
+    graphApartment('.home .overall', 'apartments', '')
+
     /* surveillants */
     /* $('...').on("click", function () {
 
@@ -20,35 +22,31 @@ $(function () {
 
     /************* fonctions générales *******************/
     // retrieves the json from the API
-    function getApi(thing, id) {
-        /* Déplacé dans proxy.php
-        var url = "http://localhost:8080/NRJ/api/" + thing + "/"
-        if (id !== "") {
-            url += id
-        }*/
+    //needs the selector where to trigger, the entity to get and his optionnal ID
+    function getApi(selector, thing, id) {
 
         $.get('src/proxy.php', {
             thing: thing,
             id: id
         }, function (json) {
-            $('.menu').trigger('getApi', [json])
+            $(selector).trigger('getApi', [json])
         });
 
     }
     // retrieves the dom of the timegraph.html
-    function getTimegraph() {
+    function getTimegraph(selector, json) {
         var url = "src/timegraph.html"
-        var responseDOM = $.get(url, function (html) {
+        $.get(url, function (html) {
             var dom = $(html);
-            return dom
+            $(selector).trigger('getGraph', [dom, json])
         });
-        return responseDOM
     }
 
 
-    /* Foncitons de calcul */
+    /* Fonctions de calcul */
+    //Peuple le menu de navigation
     function createMenu() {
-        getApi('rooms', '');
+        getApi('.menu', 'rooms', '');
         $('.menu').on('getApi', function (event, rooms) {
             var ul = $('<ul>')
             $.each(rooms, function (index, room) {
@@ -62,6 +60,19 @@ $(function () {
                 li.appendTo(ul)
             })
             $('.menu').append(ul)
+        })
+
+    }
+
+    //Attache le graphe de l'appartement
+    function graphApartment(selector, thing, id) {
+        getApi(selector, thing, id);
+        $(selector).on('getApi', function (event, json) {
+            getTimegraph(selector, json)
+        })
+        $(selector).on('getGraph', function (event, dom, json) {
+            console.log(dom)
+            console.log(json)
         })
 
     }

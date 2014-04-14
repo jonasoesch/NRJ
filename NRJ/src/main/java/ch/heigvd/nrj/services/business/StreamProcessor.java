@@ -61,7 +61,6 @@ public class StreamProcessor implements StreamProcessorLocal {
         
         historiesManager.create(history);
         
-        
         // Check last fact for this plug
         PlugConsumptionFact plugConsumptionFact = plugConsumptionsFactsManager.getlastFact(plug);
         
@@ -70,22 +69,17 @@ public class StreamProcessor implements StreamProcessorLocal {
             Date lastFactHour = plugConsumptionFact.getTimestampHour();
             
             
+        } else { // no consumptionFact found, let's prepare a new one
+            
         }
         
         // Check number of obs for this plug
         
         // Consommation moyenne de cette pièce
+        
         // Récupération du dernier fait et ajout de la consommation courante à cette table
     }
     
-    /*@Override
-    public void onObservation(ObservationType2 o) {
-        
-        // Recording observation
-        observationsType2Manager.create(o);
-        
-        // Then implement your logic to create facts
-        
-    }*/
+    
     
 }
