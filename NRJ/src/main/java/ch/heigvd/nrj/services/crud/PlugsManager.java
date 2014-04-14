@@ -24,9 +24,7 @@ public class PlugsManager implements PlugsManagerLocal {
 	@Override
 	public long create(Plug plugData) {
 		Plug newPlug = new Plug(plugData);
-                Room room = newPlug.getRoom();
 		em.persist(newPlug);
-                room.addPlug(newPlug);
 		return newPlug.getId();
 	}
 
