@@ -24,7 +24,9 @@ public class RoomsManager implements RoomsManagerLocal {
 	@Override
 	public long create(Room roomData) {
 		Room newRoom = new Room(roomData);
+		Apartment a = newRoom.getApartment();
 		em.persist(newRoom);
+		a.addRoom(newRoom);
 		return newRoom.getId();
 	}
 

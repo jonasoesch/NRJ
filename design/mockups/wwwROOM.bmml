@@ -14,6 +14,8 @@
     <control controlID="3" controlTypeID="com.balsamiq.mockups::Title" x="83" y="110" w="-1" h="-1" measuredW="115" measuredH="43" zOrder="2" locked="false" isInGroup="-1">
       <controlProperties>
         <align>left</align>
+        <href>wwwAPART%26bm%3BwwwAPART.bmml%26bm%3BwwwAPART.bmml%26bm%3BwwwAPART.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2239%2C98%2C154%2C141%22%20href%3D%22wwwAPART.bmml%22%20alt%3D%22wwwAPART%22%20id%3D%223%22/%3E</map>
         <text>HOME</text>
       </controlProperties>
     </control>

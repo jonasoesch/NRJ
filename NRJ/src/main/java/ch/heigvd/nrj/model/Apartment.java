@@ -69,7 +69,6 @@ public class Apartment implements Serializable {
     }
     public void addRoom(Room room) {
 	this.rooms.add(room);
-	room.setApartment(this);
     }
     
 

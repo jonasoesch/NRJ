@@ -1,0 +1,189 @@
+!SESSION 2014-04-11 08:37:45.316 -----------------------------------------------
+eclipse.buildId=
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_CH
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.jface 2 0 2014-04-11 08:38:11.857
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-11 08:38:11.857
+!MESSAGE A conflict occurred for ALT+SHIFT+X P:
+Binding(ALT+SHIFT+X P,
+	ParameterizedCommand(Command(net.sf.simpletest.eclipse.puShortcut.run,Run PHPUnit2,
+		Run PHPUnit2,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+X P,
+	ParameterizedCommand(Command(org.eclipse.pde.ui.junitWorkbenchShortcut.run,Run JUnit Plug-in Test,
+		Run JUnit Plug-in Test,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.core.net 4 0 2014-04-11 08:42:05.259
+!MESSAGE WinHttp.GetProxyForUrl for pac failed with error 'LURL nutilise pas un protocole reconnu' #12006.
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:43:14.932
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:43:14.932
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.932
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.932
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:43:14.935
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:43:14.935
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.935
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.935
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:43:14.940
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:43:14.941
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.941
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.941
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:43:14.983
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:43:14.983
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.983
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:14.983
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:43:31.282
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:43:31.282
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:31.282
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:43:31.282
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+!SESSION 2014-04-11 08:46:22.974 -----------------------------------------------
+eclipse.buildId=
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_CH
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.jface 2 0 2014-04-11 08:46:27.964
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-11 08:46:27.964
+!MESSAGE A conflict occurred for ALT+SHIFT+X P:
+Binding(ALT+SHIFT+X P,
+	ParameterizedCommand(Command(net.sf.simpletest.eclipse.puShortcut.run,Run PHPUnit2,
+		Run PHPUnit2,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+X P,
+	ParameterizedCommand(Command(org.eclipse.pde.ui.junitWorkbenchShortcut.run,Run JUnit Plug-in Test,
+		Run JUnit Plug-in Test,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.core.net 4 0 2014-04-11 08:46:58.977
+!MESSAGE WinHttp.GetProxyForUrl for pac failed with error 'LURL nutilise pas un protocole reconnu' #12006.
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:52:08.872
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:52:08.872
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.872
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.872
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:52:08.875
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:52:08.875
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.875
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.875
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:52:08.900
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:52:08.900
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.900
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.900
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:52:08.919
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:52:08.919
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.919
+!MESSAGE Software being installed: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:52:08.919
+!MESSAGE Missing requirement: Android Traceview 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.traceview.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.ui 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:53:07.299
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:53:07.299
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:53:07.299
+!MESSAGE Software being installed: Android Development Tools 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.adt.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:53:07.299
+!MESSAGE Missing requirement: Android Development Tools 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.adt.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.core.runtime 3.7.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.ui 4 0 2014-04-11 08:53:07.304
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2014-04-11 08:53:07.304
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:53:07.304
+!MESSAGE Software being installed: Android Development Tools 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.adt.feature.group 22.6.2.v201403212031-1085508)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2014-04-11 08:53:07.304
+!MESSAGE Missing requirement: Android Development Tools 22.6.2.v201403212031-1085508 (com.android.ide.eclipse.adt.feature.group 22.6.2.v201403212031-1085508) requires 'org.eclipse.core.runtime 3.7.0' but it could not be found
+!SESSION 2014-04-11 08:56:52.042 -----------------------------------------------
+eclipse.buildId=
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=fr_CH
+Framework arguments:  -product org.eclipse.epp.package.modeling.product C:\Users\Robin\Downloads\org.eclipse.core.runtime-3.7.0.v20110110.jar
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.modeling.product C:\Users\Robin\Downloads\org.eclipse.core.runtime-3.7.0.v20110110.jar
+
+!ENTRY org.eclipse.jface 2 0 2014-04-11 08:56:57.363
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2014-04-11 08:56:57.363
+!MESSAGE A conflict occurred for ALT+SHIFT+X P:
+Binding(ALT+SHIFT+X P,
+	ParameterizedCommand(Command(net.sf.simpletest.eclipse.puShortcut.run,Run PHPUnit2,
+		Run PHPUnit2,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+SHIFT+X P,
+	ParameterizedCommand(Command(org.eclipse.pde.ui.junitWorkbenchShortcut.run,Run JUnit Plug-in Test,
+		Run JUnit Plug-in Test,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
