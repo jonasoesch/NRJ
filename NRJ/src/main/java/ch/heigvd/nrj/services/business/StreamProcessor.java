@@ -62,14 +62,40 @@ public class StreamProcessor implements StreamProcessorLocal {
         historiesManager.create(history);
         
         // Check last fact for this plug
-        PlugConsumptionFact plugConsumptionFact = plugConsumptionsFactsManager.getlastFact(plug);
+        PlugConsumptionFact lastPlugConsumptionFact = plugConsumptionsFactsManager.getlastFact(plug);
         
         // We found a fact
-        if (plugConsumptionFact != null){
-            Date lastFactHour = plugConsumptionFact.getTimestampHour();
+        if (lastPlugConsumptionFact != null){
+            
+            // Récupération de l'heure de la derière Fact pour ce Plug
+            Date lastFactHour = lastPlugConsumptionFact.getTimestampHour();
+            
+            // Si l'heure de l'obs est inférieure à l'heure du dernier Fact, on update le Fact en ajoutant les kw de cette Obs
+            if ( o.getTimestampMinute().compareTo(lastFactHour) < 0){
+                
+                // La date de l'Obs est inférieure à la date de la Fact
+                
+            } else { // La date de l'obs est supérieure à la Last Fact, on crée un nouveau Fact.
+                
+            }
+            
+            //List<PlugConsumptionFact> consumptionList = plugConsumptionsFactsManager.getConsumptionFactsAfterTime(plug, lastFactHour);
+            
             
             
         } else { // no consumptionFact found, let's prepare a new one
+            
+            PlugConsumptionFact plugConsumptionFactData = new PlugConsumptionFact();
+            
+            plug.addPlugConsumptionFact(plugConsumptionFactData);
+            plugConsumptionFactData.setAvgKW(o.getkW());
+            
+            // Ajoute une heure à la première plugConsumption détectée
+            Date endDate = new Date( o.getTimestampMinute().getTime() + 3600000 );
+            plugConsumptionFactData.setTimestampHour(endDate);
+            
+            // Création du Fact
+            long createdId = plugConsumptionsFactsManager.create(plugConsumptionFactData);
             
         }
         
