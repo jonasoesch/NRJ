@@ -18,7 +18,7 @@ import javax.persistence.Temporal;
  */
 @NamedQueries(
         @NamedQuery(
-        name = "History.findAllHistories",
+        name = "Histories.findAllHistories",
         query = "SELECT h FROM History h"))
 @Entity
 public class History implements Serializable {
