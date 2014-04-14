@@ -77,7 +77,11 @@ public class ConsumptionsObsResource {
         ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         streamProcessor.onConsumption(newConsumption);
-        return Response.ok().build();
+        if(newConsumption.getPlug() == null) {
+            return Response.status(500).build();
+        } else {
+            return Response.ok().build();
+        }
     }
 
     /**
