@@ -1,9 +1,13 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
+import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
+import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
+import ch.heigvd.nrj.to.PublicPlugTO;
 import ch.heigvd.nrj.to.PublicRoomTO;
 import java.net.URI;
 import java.util.LinkedList;
@@ -35,6 +39,26 @@ public class RoomsResource {
     RoomsManagerLocal roomsManager;
     @EJB
     RoomsTOServiceLocal roomsTOService;
+    @EJB
+    PlugsManagerLocal plugsManager;
+    @EJB
+    PlugsTOServiceLocal plugsTOService;
+    
+        /**
+     * Retrieves a representation of a list of Room resources
+     *
+     * @return an instance of PublicRoomTO
+     */
+    @GET
+    @Produces({"application/json"})
+    public List<PublicRoomTO> getResourceList() {
+        List<Room> rooms = roomsManager.findAll();
+        List<PublicRoomTO> result = new LinkedList<>();
+        for (Room room : rooms) {
+            result.add(roomsTOService.buildPublicRoomTO(room));
+        }
+        return result;
+    }
 
     /**
      * Creates a new instance of RoomsResource
@@ -57,22 +81,7 @@ public class RoomsResource {
         return Response.created(createdURI).build();
     }
 
-    /**
-     * Retrieves a representation of a list of Room resources
-     *
-     * @return an instance of PublicRoomTO
-     */
-    @GET
-    @Produces({"application/json"})
-    public List<PublicRoomTO> getResourceList() {
-        List<Room> rooms = roomsManager.findAll();
-        List<PublicRoomTO> result = new LinkedList<>();
-        for (Room room : rooms) {
-            result.add(roomsTOService.buildPublicRoomTO(room));
-        }
-        return result;
-    }
-
+    
     /**
      * Retrieves representation of an Employee resource
      *
@@ -119,5 +128,25 @@ public class RoomsResource {
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
         roomsManager.delete(id);
         return Response.ok().build();
+    }
+    
+    
+    
+        /**
+     * Retrieves a representation of a list of Room resources
+     *
+     * @return an instance of PublicRoomTO
+     */
+    @GET
+    @Path("{id}/plugs")
+    @Produces({"application/json"})
+    public List<PublicPlugTO> getRoomPlugs(@PathParam("id") long id) throws EntityNotFoundException {
+        Room room = roomsManager.findById(id);
+        List<Plug> plugs = room.getPlugs();
+        List<PublicPlugTO> result = new LinkedList<>();
+        for (Plug plug : plugs) {
+            result.add(plugsTOService.buildPublicPlugTO(plug));
+        }
+        return result;
     }
 }
