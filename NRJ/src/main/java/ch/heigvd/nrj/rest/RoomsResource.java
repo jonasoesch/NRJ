@@ -132,11 +132,7 @@ public class RoomsResource {
     
     
     
-        /**
-     * Retrieves a representation of a list of Room resources
-     *
-     * @return an instance of PublicRoomTO
-     */
+
     @GET
     @Path("{id}/plugs")
     @Produces({"application/json"})
@@ -148,5 +144,16 @@ public class RoomsResource {
             result.add(plugsTOService.buildPublicPlugTO(plug));
         }
         return result;
+    }
+    
+    @POST
+    @Path("{id}/plugs")
+    @Consumes({"application/json"})
+    public Response createPlugInRoom(@PathParam("id") long id, PublicPlugTO newPlugTO) {
+        Plug newPlug = new Plug();
+        plugsTOService.updatePlugEntity(newPlug, newPlugTO);
+        long newPlugId = this.plugsManager.create(newPlug);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
+        return Response.created(createdURI).build();
     }
 }
