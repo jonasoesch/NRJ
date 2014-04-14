@@ -66,3 +66,7 @@ NRJwww/nbproject/project.xml
 NRJwww/nbproject/private/private.properties
 NRJwww/nbproject/private/config.properties
 NRJwww/nbproject/private/private.xml
+
+#NRJdroid
+Android\MWSProject\gen\com\example\mwsproject\BuildConfig.java
+Android\MWSProject\project.properties
