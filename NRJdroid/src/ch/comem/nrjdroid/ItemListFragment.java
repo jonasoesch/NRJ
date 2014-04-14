@@ -76,6 +76,7 @@ public class ItemListFragment extends ListFragment {
 				android.R.id.text1, DummyContent.ITEMS));
 	}
 
+	/*
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
@@ -87,6 +88,7 @@ public class ItemListFragment extends ListFragment {
 					.getInt(STATE_ACTIVATED_POSITION));
 		}
 	}
+	*/
 
 	@Override
 	public void onAttach(Activity activity) {
