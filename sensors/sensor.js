@@ -10,12 +10,13 @@ var REST_API_PORT = 8080;
 setInterval(function() {
 
     // Generate Plug Id
-    var plug_id = numberBetween(0,10);
+    var plug_i = numberBetween(0,2);
+    var plugs = [3,7,10];
 
     // Generate kW
-    var kW = numberBetween(1,1000);
+    var kW = numberBetween(1,20);
 
-    var observation = {"kW": 13, "plugId": 5};
+    var observation = {"kW": kW, "plugId": plugs[plug_i]};
 
     postObservationToPlatform('/NRJ/api/consumptionsObs', observation, function() {
        // Success 
