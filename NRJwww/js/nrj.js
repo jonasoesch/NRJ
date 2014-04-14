@@ -12,17 +12,24 @@ $(function () {
     /* actions au démarrage */
     createMenu();
 
-    graphApartment('.home .overall', 'apartments', '')
+    attachGraph('.home .overall', 'apartments', '1')
+    attachGraph('.room .overall', 'rooms', '2')
+    attachGraph('.room .plug', 'plugs', '4')
+    attachGraph('.room .plug', 'plugs', '10')
 
     /* surveillants */
-    /* $('...').on("click", function () {
+    /* 
+    $('...').on("click", function () {
 
-    }) */
+    })
+    */
 
 
     /************* fonctions générales *******************/
+    /*****************************************************/
     // retrieves the json from the API
-    //needs the selector where to trigger, the entity to get and his optionnal ID
+    //@param selector The jQuery element where the trigger is set
+
     function getApi(selector, thing, id) {
 
         $.get('src/proxy.php', {
@@ -34,6 +41,7 @@ $(function () {
 
     }
     // retrieves the dom of the timegraph.html
+    //@param selector The jQuery element where the trigger is set
     function getTimegraph(selector, json) {
         var url = "src/timegraph.html"
         $.get(url, function (html) {
@@ -43,7 +51,9 @@ $(function () {
     }
 
 
-    /* Fonctions de calcul */
+    /************** Fonctions de calcul ******************/
+    /*****************************************************/
+
     //Peuple le menu de navigation
     function createMenu() {
         getApi('.menu', 'rooms', '');
@@ -64,18 +74,19 @@ $(function () {
 
     }
 
-    //Attache le graphe de l'appartement
-    function graphApartment(selector, thing, id) {
+    //Attache le graphe 
+    // WARNING: The ID has to be specified by the request
+    //@param selector The jQuery element where the graph has to be attached and where the trigger is set
+    function attachGraph(selector, thing, id) {
         getApi(selector, thing, id);
         $(selector).on('getApi', function (event, json) {
             getTimegraph(selector, json)
         })
         $(selector).on('getGraph', function (event, dom, json) {
-            console.log(dom)
-            console.log(json)
+            dom.find('h2').text(json.name)
+            $(selector).append(dom)
         })
 
     }
-
 
 })
