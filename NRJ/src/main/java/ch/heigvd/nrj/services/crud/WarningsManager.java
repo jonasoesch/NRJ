@@ -50,7 +50,7 @@ public class WarningsManager implements WarningsManagerLocal {
 	@Override
 	public List<Warning> findAll() {
 		// Note: the findAllPlugs JPQL query is defined in the Plug.java file
-		List warning = em.createNamedQuery("findAllWarnings").getResultList();
+		List warning = em.createNamedQuery("Warning.findAllWarnings").getResultList();
 		return warning;
 	}
 	

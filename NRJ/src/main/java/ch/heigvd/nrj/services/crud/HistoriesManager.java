@@ -50,7 +50,7 @@ public class HistoriesManager implements HistoriesManagerLocal {
     @Override
     public List<History> findAll() {
 // Note: the findAllHistories JPQL query is defined in the Historie.java file
-        List apartments = em.createNamedQuery("Historie.findAllHistories").getResultList();
+        List apartments = em.createNamedQuery("Histories.findAllHistories").getResultList();
         return apartments;
     }
 }
