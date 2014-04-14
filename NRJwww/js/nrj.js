@@ -12,43 +12,51 @@ $(function () {
     /* actions au démarrage */
     createMenu();
 
-    /* surveillants */
-    /* $('...').on("click", function () {
+    attachGraph('.home .overall', 'apartments', '1')
+    attachGraph('.room .overall', 'rooms', '2')
+    attachGraph('.room .plug', 'plugs', '4')
+    attachGraph('.room .plug', 'plugs', '10')
 
-    }) */
+    /* surveillants */
+    /* 
+    $('...').on("click", function () {
+
+    })
+    */
 
 
     /************* fonctions générales *******************/
+    /*****************************************************/
     // retrieves the json from the API
-    function getApi(thing, id) {
-        /* Déplacé dans proxy.php
-        var url = "http://localhost:8080/NRJ/api/" + thing + "/"
-        if (id !== "") {
-            url += id
-        }*/
+    //@param selector The jQuery element where the trigger is set
+
+    function getApi(selector, thing, id) {
 
         $.get('src/proxy.php', {
             thing: thing,
             id: id
         }, function (json) {
-            $('.menu').trigger('getApi', [json])
+            $(selector).trigger('getApi', [json])
         });
 
     }
     // retrieves the dom of the timegraph.html
-    function getTimegraph() {
+    //@param selector The jQuery element where the trigger is set
+    function getTimegraph(selector, json) {
         var url = "src/timegraph.html"
-        var responseDOM = $.get(url, function (html) {
+        $.get(url, function (html) {
             var dom = $(html);
-            return dom
+            $(selector).trigger('getGraph', [dom, json])
         });
-        return responseDOM
     }
 
 
-    /* Foncitons de calcul */
+    /************** Fonctions de calcul ******************/
+    /*****************************************************/
+
+    //Peuple le menu de navigation
     function createMenu() {
-        getApi('rooms', '');
+        getApi('.menu', 'rooms', '');
         $('.menu').on('getApi', function (event, rooms) {
             var ul = $('<ul>')
             $.each(rooms, function (index, room) {
@@ -66,5 +74,19 @@ $(function () {
 
     }
 
+    //Attache le graphe 
+    // WARNING: The ID has to be specified by the request
+    //@param selector The jQuery element where the graph has to be attached and where the trigger is set
+    function attachGraph(selector, thing, id) {
+        getApi(selector, thing, id);
+        $(selector).on('getApi', function (event, json) {
+            getTimegraph(selector, json)
+        })
+        $(selector).on('getGraph', function (event, dom, json) {
+            dom.find('h2').text(json.name)
+            $(selector).append(dom)
+        })
+
+    }
 
 })

@@ -10,4 +10,4 @@
         <article class="map"></article>
     </section>
 </section>
-<?php include 'src/foot.php'; ?>
+<?php include 'src/foot.php';

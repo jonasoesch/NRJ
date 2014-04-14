@@ -2,6 +2,7 @@ package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.model.Room;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,7 +24,9 @@ public class PlugsManager implements PlugsManagerLocal {
 	@Override
 	public long create(Plug plugData) {
 		Plug newPlug = new Plug(plugData);
+                Room room = newPlug.getRoom();
 		em.persist(newPlug);
+                room.addPlug(newPlug);
 		return newPlug.getId();
 	}
 
