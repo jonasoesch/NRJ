@@ -21,18 +21,19 @@ $(function () {
     /************* fonctions générales *******************/
     // retrieves the json from the API
     function getApi(thing, id) {
+        /* Déplacé dans proxy.php
         var url = "http://localhost:8080/NRJ/api/" + thing + "/"
         if (id !== "") {
             url += id
-        }
+        }*/
 
-        var responseJSON = $.get('src/proxy.php', {
+        $.get('src/proxy.php', {
             thing: thing,
             id: id
         }, function (json) {
-            return json
+            $('.menu').trigger('getApi', [json])
         });
-        return responseJSON
+
     }
     // retrieves the dom of the timegraph.html
     function getTimegraph() {
@@ -47,19 +48,22 @@ $(function () {
 
     /* Foncitons de calcul */
     function createMenu() {
-        var rooms = getApi('rooms', '');
-        var ul = $('<ul>')
-        $.each(rooms, function (index, room) {
-            var li = $('<li>')
-            $('<h2>').text(room.name).appendTo(li)
-            var ul2 = $('<ul>')
-            $.each(room.plugs, function (i, plug) {
-                ul2 .append($('<li>').text(plug.name))
+        getApi('rooms', '');
+        $('.menu').on('getApi', function (event, rooms) {
+            var ul = $('<ul>')
+            $.each(rooms, function (index, room) {
+                var li = $('<li>')
+                $('<h2>').text(room.name).appendTo(li)
+                var ul2 = $('<ul>')
+                $.each(room.plugs, function (i, plug) {
+                    ul2.append($('<li>').text(plug.name))
+                })
+                ul2.appendTo(li)
+                li.appendTo(ul)
             })
-            ul2.appendTo(li)
-            li.appendTo(ul)
+            $('.menu').append(ul)
         })
-        $('.menu').append(ul)
+
     }
 
 
