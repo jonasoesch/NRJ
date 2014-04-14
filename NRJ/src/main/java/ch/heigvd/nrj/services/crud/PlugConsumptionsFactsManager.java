@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import java.util.Date;
 import java.util.List;
@@ -61,5 +62,17 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
      
         
         return plugConsumptionsFacts;
+    }
+
+    @Override
+    public PlugConsumptionFact getlastFact(Plug plug) {
+        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("plug", plug).getResultList();
+
+        if (plugConsumptionsFacts.isEmpty()){
+            return null;
+        } else {
+            return plugConsumptionsFacts.get(0);
+        }
+        
     }
 }

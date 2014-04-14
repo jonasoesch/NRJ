@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import java.util.Date;
 import java.util.List;
@@ -24,5 +25,7 @@ public interface PlugConsumptionsFactsManagerLocal {
         
         List<PlugConsumptionFact> findByPeriod(Date debut, Date fin) throws EntityNotFoundException;
 
-	List<PlugConsumptionFact> findAll();	
+	List<PlugConsumptionFact> findAll();
+        
+        PlugConsumptionFact getlastFact(Plug plug);
 }
