@@ -1,5 +1,6 @@
 package ch.heigvd.nrj.services.business;
 
+import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
@@ -11,6 +12,8 @@ import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.WarningsManagerLocal;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -44,7 +47,7 @@ public class StreamProcessor implements StreamProcessorLocal {
         plug.addHistory(history);
         
         // KW positif, l'appareil est utilisé
-        if(o.getkW() > 0){
+        if( o.getkW() > 0 ){
             history.setStatus(true);
         } 
         else { // pas de consommation sur l'appareil
@@ -73,39 +76,49 @@ public class StreamProcessor implements StreamProcessorLocal {
             // Si l'heure de l'obs est inférieure à l'heure du dernier Fact, on update le Fact en ajoutant les kw de cette Obs
             if ( o.getTimestampMinute().compareTo(lastFactHour) < 0){
                 
-                // La date de l'Obs est inférieure à la date de la Fact
+                // Update du lastFact
+                PlugConsumptionFact newPlugConsumptionFact = new PlugConsumptionFact();
+                
+                double avgKw = lastPlugConsumptionFact.getAvgKW() + o.getkW();
+                
+                newPlugConsumptionFact.setAvgKW(avgKw);
+                
+                // Try to update lastFact with new KW
+                try {
+                    plugConsumptionsFactsManager.update(newPlugConsumptionFact);
+                } catch (EntityNotFoundException ex) {
+                    Logger.getLogger(StreamProcessor.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             } else { // La date de l'obs est supérieure à la Last Fact, on crée un nouveau Fact.
-                
+                createNewPlugConsumptionFact(o);
             }
             
-            //List<PlugConsumptionFact> consumptionList = plugConsumptionsFactsManager.getConsumptionFactsAfterTime(plug, lastFactHour);
-            
-            
-            
-        } else { // no consumptionFact found, let's prepare a new one
-            
-            PlugConsumptionFact plugConsumptionFactData = new PlugConsumptionFact();
-            
-            plug.addPlugConsumptionFact(plugConsumptionFactData);
-            plugConsumptionFactData.setAvgKW(o.getkW());
-            
-            // Ajoute une heure à la première plugConsumption détectée
-            Date endDate = new Date( o.getTimestampMinute().getTime() + 3600000 );
-            plugConsumptionFactData.setTimestampHour(endDate);
-            
-            // Création du Fact
-            long createdId = plugConsumptionsFactsManager.create(plugConsumptionFactData);
-            
+        } else { // no consumptionFact found, let's crete a new one
+            createNewPlugConsumptionFact(o);
         }
         
-        // Check number of obs for this plug
+    } // onConsumption
+    
+    /**
+     * Create a new ConsumptionFact
+     */
+    public void createNewPlugConsumptionFact( ConsumptionObs o ){
+        PlugConsumptionFact plugConsumptionFactData = new PlugConsumptionFact();
         
-        // Consommation moyenne de cette pièce
+        Plug plug = o.getPlug();
         
-        // Récupération du dernier fait et ajout de la consommation courante à cette table
-    }
+        plug.addPlugConsumptionFact(plugConsumptionFactData);
+        plugConsumptionFactData.setAvgKW(o.getkW());
+
+        // Ajoute une heure à la première plugConsumption détectée
+        Date endDate = new Date( o.getTimestampMinute().getTime() + 3600000 );
+        plugConsumptionFactData.setTimestampHour(endDate);
+
+        // Création du Fact
+        long createdId = plugConsumptionsFactsManager.create(plugConsumptionFactData);
+    
+    } // createConsumptionFact
     
     
-    
-}
+} // class
