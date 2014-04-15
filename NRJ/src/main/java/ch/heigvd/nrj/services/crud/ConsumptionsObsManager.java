@@ -36,6 +36,7 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
             // Rechercher la plug de cette consumption
             plug = plugsManager.findById(plug.getId());
         } catch (EntityNotFoundException ex) {
+            System.out.println("ERREUR DANS CONSUMPTIONOBSMANAGER.CREATE(consumption)");
             Logger.getLogger(ConsumptionsObsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         // TODO ? em.persist(plug);

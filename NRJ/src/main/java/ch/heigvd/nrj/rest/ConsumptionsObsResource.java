@@ -92,19 +92,19 @@ public class ConsumptionsObsResource {
         ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         
-       /* streamProcessor.onConsumption(newConsumption);
+        streamProcessor.onConsumption(newConsumption);
         
-        //em.flush();
+        long newConsId = this.consumptionsManager.create(newConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
         
         // Si la plug pour cette Consommation n'existe pas en BD
         if(newConsumption.getPlug() == null) {
             return Response.status(500).build();
         } else {
-            return Response.ok().build();
-        }*/
-        long newConsId = this.consumptionsManager.create(newConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
-        return Response.created(createdURI).build();
+            //return Response.ok().build();
+            return Response.created(createdURI).build();
+        }
+        
     }
 
     /**
