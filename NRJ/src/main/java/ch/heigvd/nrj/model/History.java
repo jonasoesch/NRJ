@@ -20,6 +20,11 @@ import javax.persistence.Temporal;
         @NamedQuery(
         name = "Histories.findAllHistories",
         query = "SELECT h FROM History h"))
+        @NamedQuery(
+        name = "Histories.findLast",
+        query = "SELECT h from History h where h.id=(SELECT MAX(h2.id) from History h2)" 
+        )
+
 @Entity
 public class History implements Serializable {
 

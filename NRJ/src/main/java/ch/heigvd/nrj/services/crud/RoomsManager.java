@@ -28,6 +28,7 @@ public class RoomsManager implements RoomsManagerLocal {
 		Apartment a = newRoom.getApartment();
 		em.persist(newRoom);
 		a.addRoom(newRoom);
+                em.flush();
 		return newRoom.getId();
 	}
 

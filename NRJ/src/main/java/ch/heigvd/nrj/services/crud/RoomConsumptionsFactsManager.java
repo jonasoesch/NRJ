@@ -24,6 +24,7 @@ public class RoomConsumptionsFactsManager implements RoomConsumptionsFactsManage
 	public long create(RoomConsumptionFact roomConsumptionFactData) {
 		RoomConsumptionFact newRoomConsumptionFact = new RoomConsumptionFact(roomConsumptionFactData);
 		em.persist(newRoomConsumptionFact);
+                em.flush();
 		return newRoomConsumptionFact.getId();
 	}
 

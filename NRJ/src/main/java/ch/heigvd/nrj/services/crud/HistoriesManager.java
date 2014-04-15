@@ -24,6 +24,7 @@ public class HistoriesManager implements HistoriesManagerLocal {
     public long create(History historyData) {
         History newHistory = new History(historyData);
         em.persist(newHistory);
+        em.flush();
         return newHistory.getId();
     }
 
@@ -52,5 +53,11 @@ public class HistoriesManager implements HistoriesManagerLocal {
 // Note: the findAllHistories JPQL query is defined in the Historie.java file
         List apartments = em.createNamedQuery("Histories.findAllHistories").getResultList();
         return apartments;
+    }
+    
+
+    public History findLast() {
+        List<History> last = em.createNamedQuery("Histories.findLast").getResultList();
+        return last.get(0);
     }
 }
