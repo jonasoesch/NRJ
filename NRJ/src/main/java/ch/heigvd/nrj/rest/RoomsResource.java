@@ -13,6 +13,7 @@ import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugTO;
 import ch.heigvd.nrj.to.PublicRoomTOEntree;
 import ch.heigvd.nrj.to.PublicRoomTOSortie;
+
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
