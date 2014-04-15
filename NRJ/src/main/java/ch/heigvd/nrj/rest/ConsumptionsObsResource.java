@@ -115,7 +115,7 @@ public class ConsumptionsObsResource {
      * @return an instance of PublicPlugTO
      */
     @GET
-    @Produces({"application/json", "application/xml"})
+    @Produces({"application/json"})
     public List<PublicConsumptionObsTO> getResourceList() {
         List<ConsumptionObs> consumptionsObs = consumptionsManager.findAll();
         List<PublicConsumptionObsTO> result = new LinkedList<>();

@@ -2,10 +2,11 @@ package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
-import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
-import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.model.RoomConsumptionFact;
+import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
+import ch.heigvd.nrj.services.to.RoomConsumptionsFactsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugTOSortie;
+import ch.heigvd.nrj.to.PublicRoomConsumptionFactsTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -37,12 +39,8 @@ import javax.ws.rs.core.UriInfo;
  * receive requests from REST clients, we can delegate most of the work to DAOs
  * and Transfer Object services.
  *
- * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Plug; import
- * javax.ejb.Stateless; import javax.ws.rs.Path;
+ * @author Olivier Liechti 
  *
- * /**
- *
- * @author nicolas
  */
 @Stateless
 @Path("roomConsumptionsFacts")
@@ -50,93 +48,98 @@ public class RoomConsumptionsFactsResource {
 
     @Context
     private UriInfo context;
-    @EJB
+    /*@EJB
     PlugsManagerLocal plugsManager;
     @EJB
-    PlugsTOServiceLocal plugsTOService;
+    PlugsTOServiceLocal plugsTOService;*/
+    @EJB
+    RoomConsumptionsFactsManagerLocal roomConsumptionsFactsManager;
+    @EJB
+    RoomConsumptionsFactsTOServiceLocal roomConsumptionsFactsTOService;
 
     /**
-     * Creates a new instance of PlugsResource
+     * Creates a new instance of RoomConsumptionsFactsResource
      */
     public RoomConsumptionsFactsResource() {
     }
 
     /**
-     * Creates a new Plug resource from the provided representation
+     * Creates a new RoomConsumptionFacts resource from the provided representation
      *
-     * @return an instance of PublicPlugTO
+     * @return an instance of PublicRoomConsumptionFactsTO
      */
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicPlugTO newPlugTO) {
-        Plug newPlug = new Plug();
-        plugsTOService.updatePlugEntity(newPlug, newPlugTO);
-        long newPlugId = plugsManager.create(newPlug);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
+    public Response createResource(PublicRoomConsumptionFactsTO newConsumptionTO) { // roomConsFact
+        RoomConsumptionFact newConsumption = new RoomConsumptionFact();
+        roomConsumptionsFactsTOService.updateRoomConsumptionFactEntity(newConsumption, newConsumptionTO);
+        long newConsumptionId = roomConsumptionsFactsManager.create(newConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
         return Response.created(createdURI).build();
     }
 
     /**
-     * Retrieves a representation of a list of Plug resources
+     * Retrieves a representation of a list of RoomConsumptionFact resources
      *
-     * @return an instance of PublicPlugTO
+     * @return a List of PublicRoomConsumptionFactsTO
      */
     @GET
     @Produces({"application/json"})
-    public List<PublicPlugTOSortie> getResourceList() {
-        List<Plug> plugs = plugsManager.findAll();
-        List<PublicPlugTOSortie> result = new LinkedList<>();
-        for (Plug plug : plugs) {
-            result.add(plugsTOService.buildPublicPlugTO(plug));
+
+    public List<PublicRoomConsumptionFactsTO> getResourceList() {       // list roomconsoFacts
+        List<RoomConsumptionFact> consumptions = roomConsumptionsFactsManager.findAll();
+        List<PublicRoomConsumptionFactsTO> result = new LinkedList<>();
+        for (RoomConsumptionFact consumption : consumptions) {
+            result.add(roomConsumptionsFactsTOService.buildPublicRoomConsumptionFactTO(consumption));
         }
         return result;
     }
 
     /**
-     * Retrieves representation of an Plug resource
+     * Retrieves representation of a RoomConsumptionFact
      *
-     * @param id this id of the plug
-     * @return an instance of PublicPlugTO
+     * @param id this id of the RoomConsumptionFacts
+     * @return an instance of PublicRoomConsumptionFactsTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
     @GET
     @Path("{id}")
     @Produces({"application/json"})
-    public PublicPlugTOSortie getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        Plug plug = plugsManager.findById(id);
-        PublicPlugTOSortie plugTO = plugsTOService.buildPublicPlugTO(plug);
-        return plugTO;
+    public PublicRoomConsumptionFactsTO getResource(@PathParam("id") long id) throws EntityNotFoundException { 
+        RoomConsumptionFact consumption = roomConsumptionsFactsManager.findById(id);
+        PublicRoomConsumptionFactsTO consumptionTO = roomConsumptionsFactsTOService.buildPublicRoomConsumptionFactTO(consumption);
+        return consumptionTO;
     }
 
     /**
-     * Updates an Plug resource
+     * Updates a RoomConsumptionFact resource
      *
-     * @param id this id of the Plug
-     * @param updatedPlugTO a TO containing the Plug data
-     * @return an instance of PublicPlugTO
+     * @param id this id of the RoomConsumptionFact
+     * @param updatedRoomConsumptionFactTO a TO containing the RoomConsumptionFact data
+     * @return an instance of PublicRoomConsumptionFactTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
     @PUT
     @Path("{id}")
     @Consumes({"application/json"})
-    public Response Resource(PublicPlugTO updatedPlugTO, @PathParam("id") long id) throws EntityNotFoundException {
-        Plug plugToUpdate = plugsManager.findById(id);
-        plugsTOService.updatePlugEntity(plugToUpdate, updatedPlugTO);
-        plugsManager.update(plugToUpdate);
+    public Response Resource(PublicRoomConsumptionFactsTO updatedRoomConsumptionFactTO, @PathParam("id") long id) throws EntityNotFoundException {
+        RoomConsumptionFact roomConsumptionFactToUpdate = roomConsumptionsFactsManager.findById(id);
+        roomConsumptionsFactsTOService.updateRoomConsumptionFactEntity(roomConsumptionFactToUpdate, updatedRoomConsumptionFactTO);
+        roomConsumptionsFactsManager.update(roomConsumptionFactToUpdate);
         return Response.ok().build();
     }
 
     /**
-     * Deletes an Plug resource
+     * Deletes an RoomConsumptionFact resource
      *
-     * @param id this id of the plug
-     * @return an instance of PublicPlugTO
+     * @param id this id of the roomConsumptionFact
+     * @return an instance of PublicRoomConsumptionFactTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
     @DELETE
     @Path("{id}")
-    public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
-        plugsManager.delete(id);
+    public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {           
+        roomConsumptionsFactsManager.delete(id);
         return Response.ok().build();
     }
 }
