@@ -29,6 +29,7 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
         
 
         em.persist(newConsumption);
+        em.flush();
         plug.getConsumptionsObs().add(newConsumption);
         return newConsumption.getId();
     }

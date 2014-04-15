@@ -24,6 +24,7 @@ public class ApartmentsManager implements ApartmentsManagerLocal {
 	public long create(Apartment apartmentData) {
 		Apartment newApartment = new Apartment(apartmentData);
 		em.persist(newApartment);
+                em.flush();
 		return newApartment.getId();
 	}
 
