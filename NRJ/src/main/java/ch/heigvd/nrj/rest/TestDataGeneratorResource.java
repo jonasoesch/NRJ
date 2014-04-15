@@ -2,6 +2,7 @@ package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ApartmentConsumptionFact;
+import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
@@ -162,7 +163,7 @@ public class TestDataGeneratorResource {
         ac1.setId(apartmentConsumptionsFactsManager.create(ac1));
         a.addApartmentConsumptionFact(ac1);
 
-//        //Création de la consommation du plug 1
+        //Création de la consommation du plug 1
 //        ConsumptionObs co = new ConsumptionObs();
 //        co.setTimestampHour(new Date());
 //        co.setkW(50.00);
