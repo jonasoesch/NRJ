@@ -18,6 +18,8 @@ import java.util.logging.Logger;
 import javax.ejb.Asynchronous;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
@@ -32,6 +34,7 @@ public class StreamProcessor implements StreamProcessorLocal {
     @EJB HistoriesManagerLocal historiesManager;
     @EJB PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
     @EJB ConsumptionsObsManagerLocal consumptionsObsManager;
+    @PersistenceContext private EntityManager em;
 
     
     @Override
@@ -51,7 +54,7 @@ public class StreamProcessor implements StreamProcessorLocal {
         // KW positif, l'appareil est utilisé
         if( o.getkW() > 0 ){
             history.setStatus(true);
-        } 
+        }
         else { // pas de consommation sur l'appareil
             
             if( plug.getAlwaysOn() ){ // si l'appareil doit rester allumé, on envoie une alerte

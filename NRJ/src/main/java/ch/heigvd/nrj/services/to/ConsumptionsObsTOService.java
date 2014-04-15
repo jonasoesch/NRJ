@@ -13,41 +13,36 @@ import javax.ejb.Stateless;
 
 /**
  * This class converts JPA entities into POJO transfer objects, and vice versa
- * 
+ *
  * @author rschmutz
  */
 @Stateless
 public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
-    
+
     @EJB
     PlugsManagerLocal plugsManager;
 
-	@Override
-	public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
+    @Override
+    public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
 
-            
-            PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getkW(), source.getPlug().getId());
-		return to;
-	}
+        PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getkW(), source.getPlug().getId());
+        return to;
+    }
 
-	@Override
-	public void updateConsumptionObsEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState) {
-                
-                Plug plug;
-                try {
-                        long plugId = newState.getPlugId();
-                       plug = plugsManager.findById(plugId);
-                } catch (EntityNotFoundException ex) {
-                        plug = null;
-                        Logger.getLogger(ConsumptionsObsTOService.class.getName()).log(Level.SEVERE, null, ex);
-                }
-          
+    @Override
+    public void updateConsumptionObsEntity(ConsumptionObs existingEntity, PublicConsumptionObsTO newState) {
+        Plug plug;
+        try {
+            long plugId = newState.getPlugId();
+            plug = plugsManager.findById(plugId);
+        } catch (EntityNotFoundException ex) {
+            plug = null;
+            Logger.getLogger(ConsumptionsObsTOService.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-		existingEntity.setTimestampHour(newState.getTimestampMinute());
-		existingEntity.setkW(newState.getkW());
-                existingEntity.setPlug(plug);
-	}
-        
-        
-	
+        existingEntity.setTimestampHour(newState.getTimestampMinute());
+        existingEntity.setkW(newState.getkW());
+        existingEntity.setPlug(plug);
+    }
+
 }

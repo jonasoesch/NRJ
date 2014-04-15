@@ -2,7 +2,6 @@ package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.model.Room;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -42,11 +41,14 @@ public class PlugsManager implements PlugsManagerLocal {
 
 	@Override
 	public Plug findById(long id) throws EntityNotFoundException {
-		Plug existingPlug = em.find(Plug.class, id);
-		if (existingPlug == null) {
-			throw new EntityNotFoundException();
-		}
-		return existingPlug;
+            if(id == 0)
+                throw new NullPointerException();
+            
+            Plug existingPlug = em.find(Plug.class, id);
+            if (existingPlug == null) {
+                    throw new EntityNotFoundException();
+            }
+            return existingPlug;
 	}
 
 	@Override

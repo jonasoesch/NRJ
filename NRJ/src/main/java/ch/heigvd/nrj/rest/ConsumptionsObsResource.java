@@ -11,15 +11,23 @@ import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.services.business.StreamProcessorLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
-import ch.heigvd.nrj.services.crud.PlugsManager;
+import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
+import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
+import ch.heigvd.nrj.to.PublicPlugTO;
 import java.net.URI;
+import java.util.LinkedList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -54,12 +62,13 @@ public class ConsumptionsObsResource {
     ConsumptionsObsManagerLocal consumptionsManager;
     @EJB
     ConsumptionsObsTOServiceLocal consumptionsTOService;
-    
     @EJB
-    PlugsManager plugsManager;
-    
+    PlugsManagerLocal plugsManager;
     @EJB
     StreamProcessorLocal streamProcessor;
+    @EJB
+    PlugsTOServiceLocal plugsTOService;
+    @PersistenceContext private EntityManager em;
 
     /**
      * Creates a new instance of ConsumptionsResource
@@ -77,15 +86,22 @@ public class ConsumptionsObsResource {
     @Consumes({"application/json"})
     public Response createResource(PublicConsumptionObsTO newConsumptionTO) throws EntityNotFoundException {
         ConsumptionObs newConsumption = new ConsumptionObs();
+        consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
+
         // Recherche la plug liée et la lie à la consumption
         Plug p = newConsumption.getPlug();
+
         p = plugsManager.findById(p.getId());
+        if(p == null)
+            throw new EntityNotFoundException();
         newConsumption.setPlug(p);
         long newPlugId = this.plugsManager.create(p);
         URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
         
-        consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         streamProcessor.onConsumption(newConsumption);
+        
+        //em.flush();
+        
         if(newConsumption.getPlug() == null) {
             return Response.status(500).build();
         } else {
@@ -98,13 +114,13 @@ public class ConsumptionsObsResource {
      *
      * @return an instance of PublicPlugTO
      */
-    /*@GET
+    @GET
     @Produces({"application/json", "application/xml"})
-    public List<PublicPlugTO> getResourceList() {
-        List<Plug> plugs = plugsManager.findAll();
-        List<PublicPlugTO> result = new LinkedList<>();
-        for (Plug plug : plugs) {
-            result.add(plugsTOService.buildPublicPlugTO(plug));
+    public List<PublicConsumptionObsTO> getResourceList() {
+        List<ConsumptionObs> consumptionsObs = consumptionsManager.findAll();
+        List<PublicConsumptionObsTO> result = new LinkedList<>();
+        for (ConsumptionObs co : consumptionsObs) {
+            result.add(consumptionsTOService.buildPublicConsumptionObsTO(co));
         }
         return result;
     }

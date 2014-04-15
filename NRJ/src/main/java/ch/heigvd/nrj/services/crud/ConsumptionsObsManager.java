@@ -24,12 +24,15 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
     @Override
     public long create(ConsumptionObs consumptionData) {
         ConsumptionObs newConsumption = new ConsumptionObs(consumptionData);
-        em.persist(newConsumption);
         
+        // Add la consommation à la plug
         Plug plug = consumptionData.getPlug();
         plug.getConsumptionsObs().add(newConsumption);
-        em.persist(plug);
+        // TODO ? em.persist(plug);
         
+        // Add la plug à cette consommation
+        newConsumption.setPlug(plug);
+        em.persist(newConsumption);
         em.flush();
         return newConsumption.getId();
     }
