@@ -1,8 +1,8 @@
 package ch.heigvd.nrj.services.to;
 
 import ch.heigvd.nrj.model.Room;
-import ch.heigvd.nrj.to.PublicRoomTOEntree;
-import ch.heigvd.nrj.to.PublicRoomTOSortie;
+import ch.heigvd.nrj.to.PublicRoomTO;
+import ch.heigvd.nrj.to.PublicRoomTO;
 import javax.ejb.Local;
 
 /**
@@ -19,7 +19,7 @@ public interface RoomsTOServiceLocal {
 	 * @param source the JPA entity
 	 * @return the TO
 	 */
-	public PublicRoomTOSortie buildPublicRoomTO(Room source);
+	public PublicRoomTO buildPublicRoomTO(Room source);
 	
 	/**
 	 * This method updates an existing JPA entity by merging the state of the
@@ -28,5 +28,5 @@ public interface RoomsTOServiceLocal {
 	 * @param existingEntity the existing entity that we want to update
 	 * @param newState a TO that contains new state (subset of the entity state)
 	 */
-	public void updateRoomEntity(Room existingEntity, PublicRoomTOEntree newState);
+	public void updateRoomEntity(Room existingEntity, PublicRoomTO newState);
 }

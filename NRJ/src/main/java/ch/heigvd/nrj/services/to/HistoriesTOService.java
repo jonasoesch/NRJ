@@ -14,7 +14,7 @@ public class HistoriesTOService implements HistoriesTOServiceLocal {
 
 	@Override
 	public PublicHistoryTO buildPublicHistoryTO(History source) {
-		PublicHistoryTO to = new PublicHistoryTO(source.getId(), source.getTimestampMinute(), source.getStatus(), source.getPlug());
+		PublicHistoryTO to = new PublicHistoryTO(source.getId(), source.getTimestampMinute(), source.getStatus());
 		return to;
 	}
 
@@ -22,7 +22,7 @@ public class HistoriesTOService implements HistoriesTOServiceLocal {
 	public void updateHistoryEntity(History existingEntity, PublicHistoryTO newState) {
 		existingEntity.setTimestampMinute(newState.getTimestampMinute());
 		existingEntity.setStatus(newState.getStatus());
-		existingEntity.setPlug(newState.getPlug());
+		// existingEntity.setPlug(newState.getPlug());
 	}
 	
 }

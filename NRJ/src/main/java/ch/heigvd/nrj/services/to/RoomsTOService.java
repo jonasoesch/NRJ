@@ -1,11 +1,11 @@
 package ch.heigvd.nrj.services.to;
 
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTOSortie;
-import ch.heigvd.nrj.to.PublicRoomTOEntree;
-import ch.heigvd.nrj.to.PublicRoomTOSortie;
+import ch.heigvd.nrj.to.PublicRoomTO;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -15,20 +15,31 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class RoomsTOService implements RoomsTOServiceLocal {
-
+    
+    @EJB
+    ApartmentsTOServiceLocal apartmentsTOService;
+    
+    @EJB
+    PlugsTOServiceLocal plugsTOService;
+    
     @Override
-    public PublicRoomTOSortie buildPublicRoomTO(Room source) {
-	PublicRoomTOSortie to = new PublicRoomTOSortie(source.getId(), source.getName(), source.getRoomConsumptionsFacts());
+    public PublicRoomTO buildPublicRoomTO(Room source) {
+	PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName());
 	for (Plug plug : source.getPlugs()) {
-	    PublicPlugTOSortie plugTO = new PublicPlugTOSortie(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
-	    to.addPlug(plugTO);
+	    PublicPlugTO ppt = plugsTOService.buildPublicPlugTO(plug);
+	    System.out.println(ppt.getName() + " " + ppt.getAlwaysOn());
+	    to.addPlug(ppt);
 	}
 	return to;
     }
     
     @Override
-    public void updateRoomEntity(Room existingEntity, PublicRoomTOEntree newState) {
+    public void updateRoomEntity(Room existingEntity, PublicRoomTO newState) {
 	    existingEntity.setName(newState.getName());
-	    existingEntity.setApartment(newState.getApartment());
+	    if(newState.getApartment() != null){
+		Apartment a = new Apartment();
+		apartmentsTOService.updateApartmentEntity(a, newState.getApartment());
+		existingEntity.setApartment(a);
+	    }
     }
 }

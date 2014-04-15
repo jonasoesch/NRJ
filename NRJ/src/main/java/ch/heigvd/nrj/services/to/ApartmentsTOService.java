@@ -5,8 +5,9 @@ import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicApartmentTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTOSortie;
-import ch.heigvd.nrj.to.PublicRoomTOSortie;
+import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicRoomTO;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -17,6 +18,8 @@ import javax.ejb.Stateless;
 @Stateless
 public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 
+	@EJB
+	RoomsTOServiceLocal roomsTOService;
 	/*@Override
 	public PublicApartmentTO buildPublicApartmentTO(Apartment source, boolean convertChilds) {
 	    PublicApartmentTO to = new PublicApartmentTO(source.getId(), source.getName());
@@ -31,16 +34,10 @@ public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 	@Override
 	public PublicApartmentTO buildPublicApartmentTO(Apartment source) {
 	    PublicApartmentTO to = new PublicApartmentTO(source.getId(), source.getName());
-		    for (Room room : source.getRooms()) {
-			PublicRoomTOSortie roomTO = new PublicRoomTOSortie(room.getId(), room.getName(), room.getRoomConsumptionsFacts());
-			System.out.println("Robin VS Grizzly : " + roomTO);
-			to.addRoom(roomTO);
-			for (Plug plug : room.getPlugs()) {
-			    PublicPlugTOSortie plugTO = new PublicPlugTOSortie(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
-			    roomTO.addPlug(plugTO);
-			}
-		    }
-		return to;
+	    for (Room room : source.getRooms()) {			
+		to.addRoom(roomsTOService.buildPublicRoomTO(room));
+	    }
+	    return to;
 	}
 
 	@Override

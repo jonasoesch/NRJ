@@ -14,7 +14,7 @@ public class PlugConsumptionsFactsTOService implements PlugConsumptionsFactsTOSe
 
 	@Override
 	public PublicPlugConsumptionFactsTO buildPublicPlugConsumptionFactTO(PlugConsumptionFact source) {
-		PublicPlugConsumptionFactsTO to = new PublicPlugConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW(), source.getPlug());
+		PublicPlugConsumptionFactsTO to = new PublicPlugConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
 		return to;
 	}   
 
@@ -22,7 +22,7 @@ public class PlugConsumptionsFactsTOService implements PlugConsumptionsFactsTOSe
 	public void updatePlugConsumptionFactEntity(PlugConsumptionFact existingEntity, PublicPlugConsumptionFactsTO newState) {
 		existingEntity.setTimestampHour(newState.getTimestampHour());
 		existingEntity.setAvgKW(newState.getAvgKW());
-		existingEntity.setPlug(newState.getPlug());
+		// existingEntity.setPlug(newState.getPlug());
 	}
 	
 }

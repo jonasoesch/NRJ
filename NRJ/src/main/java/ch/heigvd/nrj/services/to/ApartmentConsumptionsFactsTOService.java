@@ -14,7 +14,7 @@ public class ApartmentConsumptionsFactsTOService implements ApartmentConsumption
 
 	@Override
 	public PublicApartmentConsumptionFactsTO buildPublicApartmentConsumptionFactTO(ApartmentConsumptionFact source) {
-		PublicApartmentConsumptionFactsTO to = new PublicApartmentConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW(), source.getApartment());
+		PublicApartmentConsumptionFactsTO to = new PublicApartmentConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
 		return to;
 	}   
 
@@ -22,7 +22,7 @@ public class ApartmentConsumptionsFactsTOService implements ApartmentConsumption
 	public void updateApartmentConsumptionFactEntity(ApartmentConsumptionFact existingEntity, PublicApartmentConsumptionFactsTO newState) {
 		existingEntity.setTimestampHour(newState.getTimestampHour());
 		existingEntity.setAvgKW(newState.getAvgKW());
-		existingEntity.setApartment(newState.getApartment());
+		// existingEntity.setApartment(newState.getApartment());
 	}
 	
 }

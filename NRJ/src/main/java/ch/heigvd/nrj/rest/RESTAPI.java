@@ -29,6 +29,7 @@ public class RESTAPI extends Application {
 		classes.add(RoomsResource.class);
 		classes.add(WarningsResource.class);
 		classes.add(TestDataGeneratorResource.class);
+		classes.add(TestDataGenerator2Resource.class);
                 classes.add(TestDataGenerator3Resource.class);
 		return classes;
 	}

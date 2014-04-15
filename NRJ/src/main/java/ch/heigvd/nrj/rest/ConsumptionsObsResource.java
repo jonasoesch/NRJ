@@ -17,7 +17,7 @@ import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicRoomTOSortie;
+import ch.heigvd.nrj.to.PublicRoomTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -119,10 +119,14 @@ public class ConsumptionsObsResource {
         List<PublicConsumptionObsTO> result = new LinkedList<>();
 	for (ConsumptionObs co : consumptionsObs) {
 	    PublicConsumptionObsTO o = consumptionsTOService.buildPublicConsumptionObsTO(co);
+	    // PublicConsumptionObsTO o = new PublicConsumptionObsTO();
+
 	    result.add(o);
         }
-	System.out.println(result);
-
+	/*System.out.println(result);*/
+	/*List<PublicConsumptionObsTO> result2 = new LinkedList<PublicConsumptionObsTO>();
+	PublicConsumptionObsTO o = new PublicConsumptionObsTO();
+	result.add(o);*/
         return result;
     }
     

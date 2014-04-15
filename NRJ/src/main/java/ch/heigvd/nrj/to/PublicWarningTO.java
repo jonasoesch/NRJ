@@ -17,7 +17,7 @@ public class PublicWarningTO {
     private Long warningId;
     private Date timestampMinute;
     private String message;
-    private Plug plug;
+    private PublicPlugTO plug;
 
     public PublicWarningTO() {
     }
@@ -30,11 +30,10 @@ public class PublicWarningTO {
 	this.warningId = warningId;
     }
 
-    public PublicWarningTO(long warningId, Date timestampMinute, String message, Plug plug) {
+    public PublicWarningTO(long warningId, Date timestampMinute, String message) {
 	this.warningId = warningId;
 	this.timestampMinute = timestampMinute;
 	this.message = message;
-        this.plug = plug;
     }
 
     public Date getTimestampMinute() {
@@ -53,11 +52,11 @@ public class PublicWarningTO {
 	this.message = message;
     }
     
-    public Plug getPlug() {
+    public PublicPlugTO getPlug() {
         return plug;
     }
 
-    public void setPlug(Plug plug) {
+    public void setPlug(PublicPlugTO plug) {
         this.plug = plug;
     }
 }

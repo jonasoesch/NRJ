@@ -11,9 +11,9 @@ import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTOSortie;
-import ch.heigvd.nrj.to.PublicRoomTOEntree;
-import ch.heigvd.nrj.to.PublicRoomTOSortie;
+import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicRoomTO;
+import ch.heigvd.nrj.to.PublicRoomTO;
 
 import java.net.URI;
 import java.util.LinkedList;
@@ -64,7 +64,7 @@ public class RoomsResource {
      */
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicRoomTOEntree newRoomTO) {
+    public Response createResource(PublicRoomTO newRoomTO) {
         Room newRoom = new Room();
         roomsTOService.updateRoomEntity(newRoom, newRoomTO);
         long newRoomId = this.roomsManager.create(newRoom);
@@ -75,13 +75,13 @@ public class RoomsResource {
     /**
      * Retrieves a representation of a list of Room resources
      *
-     * @return an instance of PublicRoomTOSortie
+     * @return an instance of PublicRoomTO
      */
     @GET
     @Produces({"application/json"})
-    public List<PublicRoomTOSortie> getResourceList() {
+    public List<PublicRoomTO> getResourceList() {
         List<Room> rooms = roomsManager.findAll();
-        List<PublicRoomTOSortie> result = new LinkedList<>();
+        List<PublicRoomTO> result = new LinkedList<>();
         for (Room room : rooms) {
             result.add(roomsTOService.buildPublicRoomTO(room));
         }
@@ -98,9 +98,9 @@ public class RoomsResource {
     @GET
     @Path("{id}")
     @Produces({"application/json"})
-    public PublicRoomTOSortie getResource(@PathParam("id") long id) throws EntityNotFoundException {
+    public PublicRoomTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         Room room = roomsManager.findById(id);
-        PublicRoomTOSortie roomTO = roomsTOService.buildPublicRoomTO(room);
+        PublicRoomTO roomTO = roomsTOService.buildPublicRoomTO(room);
         return roomTO;
     }
 
@@ -115,7 +115,7 @@ public class RoomsResource {
     @PUT
     @Path("{id}")
     @Consumes({"application/json"})
-    public Response Resource(PublicRoomTOEntree updatedRoomTO, @PathParam("id") long id) throws EntityNotFoundException {
+    public Response Resource(PublicRoomTO updatedRoomTO, @PathParam("id") long id) throws EntityNotFoundException {
         Room roomToUpdate = roomsManager.findById(id);
         roomsTOService.updateRoomEntity(roomToUpdate, updatedRoomTO);
         roomsManager.update(roomToUpdate);
@@ -142,10 +142,10 @@ public class RoomsResource {
     @GET
     @Path("{id}/plugs")
     @Produces({"application/json"})
-    public List<PublicPlugTOSortie> getRoomPlugs(@PathParam("id") long id) throws EntityNotFoundException {
+    public List<PublicPlugTO> getRoomPlugs(@PathParam("id") long id) throws EntityNotFoundException {
         Room room = roomsManager.findById(id);
         List<Plug> plugs = room.getPlugs();
-        List<PublicPlugTOSortie> result = new LinkedList<>();
+        List<PublicPlugTO> result = new LinkedList<>();
         for (Plug plug : plugs) {
             result.add(plugsTOService.buildPublicPlugTO(plug));
         }
