@@ -23,7 +23,7 @@ public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
 
     @Override
     public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
-        PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getkW(), source.getPlug());
+        PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getkW(), source.getTimestampMinute(), source.getPlug());
         return to;
     }
 
