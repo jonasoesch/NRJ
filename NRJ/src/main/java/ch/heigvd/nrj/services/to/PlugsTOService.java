@@ -2,6 +2,7 @@ package ch.heigvd.nrj.services.to;
 
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicPlugTOSortie;
 import javax.ejb.Stateless;
 
 /**
@@ -13,8 +14,8 @@ import javax.ejb.Stateless;
 public class PlugsTOService implements PlugsTOServiceLocal {
 
 	@Override
-	public PublicPlugTO buildPublicPlugTO(Plug source) {
-		PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn(), source.getRoom(), source.getHistories(), source.getPlugConsumptionsFacts(), source.getWarnings());
+	public PublicPlugTOSortie buildPublicPlugTO(Plug source) {
+		PublicPlugTOSortie to = new PublicPlugTOSortie(source.getId(), source.getName(), source.getAlwaysOn(), source.getHistories(), source.getPlugConsumptionsFacts(), source.getWarnings());
 		return to;
 	}
 

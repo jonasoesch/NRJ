@@ -5,6 +5,7 @@ import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicApartmentTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicPlugTOSortie;
 import ch.heigvd.nrj.to.PublicRoomTOSortie;
 import javax.ejb.Stateless;
 
@@ -35,7 +36,7 @@ public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 			System.out.println("Robin VS Grizzly : " + roomTO);
 			to.addRoom(roomTO);
 			for (Plug plug : room.getPlugs()) {
-			    PublicPlugTO plugTO = new PublicPlugTO(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getRoom(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
+			    PublicPlugTOSortie plugTO = new PublicPlugTOSortie(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
 			    roomTO.addPlug(plugTO);
 			}
 		    }

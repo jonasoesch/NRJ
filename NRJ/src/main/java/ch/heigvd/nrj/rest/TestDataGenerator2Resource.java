@@ -69,7 +69,8 @@ public class TestDataGenerator2Resource {
         Plug p1 = new Plug();
         p1.setName("frigo");
         p1.setAlwaysOn(true);
-        p1.setId(plugsManager.create(p1));
+        
+	p1.setId(plugsManager.create(p1));
         m2.addPlug(p1);
 
 	

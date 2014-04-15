@@ -98,7 +98,6 @@ public class Room implements Serializable {
     
     public void addPlug(Plug p){
 	this.plugs.add(p);
-	p.setRoom(this);
     }
     
     @Override

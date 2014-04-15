@@ -11,6 +11,7 @@ import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicPlugTOSortie;
 import ch.heigvd.nrj.to.PublicRoomTOEntree;
 import ch.heigvd.nrj.to.PublicRoomTOSortie;
 
@@ -141,10 +142,10 @@ public class RoomsResource {
     @GET
     @Path("{id}/plugs")
     @Produces({"application/json"})
-    public List<PublicPlugTO> getRoomPlugs(@PathParam("id") long id) throws EntityNotFoundException {
+    public List<PublicPlugTOSortie> getRoomPlugs(@PathParam("id") long id) throws EntityNotFoundException {
         Room room = roomsManager.findById(id);
         List<Plug> plugs = room.getPlugs();
-        List<PublicPlugTO> result = new LinkedList<>();
+        List<PublicPlugTOSortie> result = new LinkedList<>();
         for (Plug plug : plugs) {
             result.add(plugsTOService.buildPublicPlugTO(plug));
         }

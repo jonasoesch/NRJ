@@ -3,6 +3,7 @@ package ch.heigvd.nrj.services.to;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicPlugTOSortie;
 import ch.heigvd.nrj.to.PublicRoomTOEntree;
 import ch.heigvd.nrj.to.PublicRoomTOSortie;
 import javax.ejb.Stateless;
@@ -19,7 +20,7 @@ public class RoomsTOService implements RoomsTOServiceLocal {
     public PublicRoomTOSortie buildPublicRoomTO(Room source) {
 	PublicRoomTOSortie to = new PublicRoomTOSortie(source.getId(), source.getName(), source.getRoomConsumptionsFacts());
 	for (Plug plug : source.getPlugs()) {
-	    PublicPlugTO plugTO = new PublicPlugTO(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getRoom(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
+	    PublicPlugTOSortie plugTO = new PublicPlugTOSortie(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
 	    to.addPlug(plugTO);
 	}
 	return to;

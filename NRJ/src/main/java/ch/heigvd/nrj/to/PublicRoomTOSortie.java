@@ -22,17 +22,17 @@ public class PublicRoomTOSortie {
     private long roomId;
     private String name;
     private List<RoomConsumptionFact> roomConsumptionsFacts;
-    private List<PublicPlugTO> plugs;
+    private List<PublicPlugTOSortie> plugs;
     
     public PublicRoomTOSortie() {
 	this.plugs = new ArrayList<>();
     }
 
     public PublicRoomTOSortie(long roomId, String name, List<RoomConsumptionFact> roomConsumptionsFacts) {
-	this.plugs = new ArrayList<>();
         this.roomId = roomId;
         this.name = name;
 	this.roomConsumptionsFacts = roomConsumptionsFacts;
+	this.plugs = new ArrayList<>();
     }
 
     public long getRoomId() {
@@ -59,15 +59,15 @@ public class PublicRoomTOSortie {
 	this.roomConsumptionsFacts = roomConsumptionsFacts;
     }
 
-    public List<PublicPlugTO> getPlugs() {
+    public List<PublicPlugTOSortie> getPlugs() {
 	return plugs;
     }
     
-    public void setPlugs(List<PublicPlugTO> plugs) {
+    public void setPlugs(List<PublicPlugTOSortie> plugs) {
 	this.plugs = plugs;
     }
     
-    public void addPlug(PublicPlugTO plug) {
+    public void addPlug(PublicPlugTOSortie plug) {
 	this.plugs.add(plug);
     }
 }

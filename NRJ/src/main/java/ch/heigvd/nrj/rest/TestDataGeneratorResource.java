@@ -86,8 +86,8 @@ public class TestDataGeneratorResource {
         Plug p1 = new Plug();
         p1.setName("Frigo");
         p1.setAlwaysOn(true);
+	p1.setRoom(m1);
         p1.setId(plugsManager.create(p1));
-        m1.addPlug(p1);
         //Ajout history
         History h1 = new History();
         h1.setTimestampMinute(new Date());
@@ -106,8 +106,8 @@ public class TestDataGeneratorResource {
         Plug p2 = new Plug();
         p2.setName("Télévision");
         p2.setAlwaysOn(false);
+	p2.setRoom(m1);
         p2.setId(plugsManager.create(p2));
-        m1.addPlug(p2);
         //Ajout warning
         Warning warningp2 = new Warning();
         warningp2.setMessage("Attention warning du plug2!");
@@ -127,8 +127,8 @@ public class TestDataGeneratorResource {
         Plug p3 = new Plug();
         p3.setName("Lumière principale");
         p3.setAlwaysOn(true);
+	p3.setRoom(m2);
         p3.setId(plugsManager.create(p3));
-        m2.addPlug(p3);
         //Ajout warning
         Warning warningp3 = new Warning();
         warningp3.setMessage("Attention warning du plug3!");

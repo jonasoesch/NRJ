@@ -9,6 +9,7 @@ import ch.heigvd.nrj.services.to.HistoriesTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicHistoryTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicPlugTOSortie;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -90,9 +91,9 @@ public class PlugsResource {
      */
     @GET
     @Produces({"application/json"})
-    public List<PublicPlugTO> getResourceList() {
+    public List<PublicPlugTOSortie> getResourceList() {
         List<Plug> plugs = plugsManager.findAll();
-        List<PublicPlugTO> result = new LinkedList<>();
+        List<PublicPlugTOSortie> result = new LinkedList<>();
         for (Plug plug : plugs) {
             result.add(plugsTOService.buildPublicPlugTO(plug));
         }
@@ -109,9 +110,9 @@ public class PlugsResource {
     @GET
     @Path("{id}")
     @Produces({"application/json"})
-    public PublicPlugTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
+    public PublicPlugTOSortie getResource(@PathParam("id") long id) throws EntityNotFoundException {
         Plug plug = plugsManager.findById(id);
-        PublicPlugTO plugTO = plugsTOService.buildPublicPlugTO(plug);
+        PublicPlugTOSortie plugTO = plugsTOService.buildPublicPlugTO(plug);
         return plugTO;
     }
 

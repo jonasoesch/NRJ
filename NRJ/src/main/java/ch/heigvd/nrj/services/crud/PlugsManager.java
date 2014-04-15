@@ -1,8 +1,13 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.model.Room;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,13 +22,25 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class PlugsManager implements PlugsManagerLocal {
 
+	@EJB
+	RoomsManagerLocal roomsManager;
+	
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
 	public long create(Plug plugData) {
 		Plug newPlug = new Plug(plugData);
+		Room r = newPlug.getRoom();
+		try {	
+		    // Rechercher la piece
+		    r = roomsManager.findById(r.getId());
+		} catch (EntityNotFoundException ex) {
+		    Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		newPlug.setRoom(r);
 		em.persist(newPlug);
+		r.addPlug(newPlug);
                 em.flush();
 		return newPlug.getId();
 	}
