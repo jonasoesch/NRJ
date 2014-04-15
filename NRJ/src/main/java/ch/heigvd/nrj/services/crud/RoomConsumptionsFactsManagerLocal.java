@@ -24,7 +24,7 @@ public interface RoomConsumptionsFactsManagerLocal {
 
 	List<RoomConsumptionFact> findAll();
         
-        RoomConsumptionFact getlastRoomFact(Room room);
+        RoomConsumptionFact getLastRoomFact(Room room);
 
 	
 }

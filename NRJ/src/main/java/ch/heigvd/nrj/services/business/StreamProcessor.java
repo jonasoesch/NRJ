@@ -1,6 +1,8 @@
 package ch.heigvd.nrj.services.business;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
+import ch.heigvd.nrj.model.ApartmentConsumptionFact;
 import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
@@ -8,9 +10,11 @@ import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.model.Warning;
+import ch.heigvd.nrj.services.crud.ApartmentConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
+import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.WarningsManagerLocal;
 import java.util.Date;
 import java.util.logging.Level;
@@ -33,6 +37,8 @@ public class StreamProcessor implements StreamProcessorLocal {
     @EJB WarningsManagerLocal warningsManager;
     @EJB HistoriesManagerLocal historiesManager;
     @EJB PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
+    @EJB RoomConsumptionsFactsManagerLocal roomConsumptionsFactsManager;
+    @EJB ApartmentConsumptionsFactsManagerLocal apartmentConsumptionsFactsManager;
     @EJB ConsumptionsObsManagerLocal consumptionsObsManager;
     @PersistenceContext private EntityManager em;
 
@@ -70,8 +76,10 @@ public class StreamProcessor implements StreamProcessorLocal {
         historiesManager.create(history);
         
         // Check last fact for this plug
-        PlugConsumptionFact lastPlugConsumptionFact = plugConsumptionsFactsManager.getlastPlugFact(plug);
+        PlugConsumptionFact lastPlugConsumptionFact = plugConsumptionsFactsManager.getLastPlugFact(plug);
         
+        
+        /*                  PLUG consumption                     */
         // We found a fact
         if (lastPlugConsumptionFact != null){
             
@@ -99,14 +107,107 @@ public class StreamProcessor implements StreamProcessorLocal {
                 createNewPlugConsumptionFact(o);
             }
             
-            updateRoomConsumptionFact(o);
-            
         } else { // no consumptionFact found, let's crete a new one
             createNewPlugConsumptionFact(o);
-        }
+        } // if lastPlugFact
+        
+        /*                  ROOM consumption                     */
+        // Check last fact for this room
+        RoomConsumptionFact lastRoomConsumptionFact = roomConsumptionsFactsManager.getLastRoomFact(room);
+        
+        // We found a fact for this room
+        if (lastRoomConsumptionFact != null){
+            
+            // Récupération de l'heure de la derière Fact pour ce Plug
+            Date lastFactHour = lastRoomConsumptionFact.getTimestampHour();
+            
+            // Si l'heure de l'obs est inférieure à l'heure du dernier Fact, on update le Fact en ajoutant les kw de cette Obs
+            if ( o.getTimestampMinute().compareTo(lastFactHour) < 0){
+                
+                // Update du lastFact
+                RoomConsumptionFact newRoomConsumptionFact = new RoomConsumptionFact();
+                
+                double avgKw = lastRoomConsumptionFact.getAvgKW() + o.getkW();
+                
+                newRoomConsumptionFact.setAvgKW(avgKw);
+                
+                // Try to update lastFact with new KW
+                try {
+                    roomConsumptionsFactsManager.update(newRoomConsumptionFact);
+                } catch (EntityNotFoundException ex) {
+                    Logger.getLogger(StreamProcessor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } else { // La date de l'obs est supérieure à la Last Fact, on crée un nouveau Fact.
+                createNewRoomConsumptionFact(o);
+            }
+            
+        } else { // no roomConsumptionFact found, let's crete a new one
+            createNewRoomConsumptionFact(o);
+        } // if lastRoomFact
+        
+        /*                  APARTMENT consumption                     */
+        // Check last fact for this apartment
+        Apartment apartment = room.getApartment();
+        ApartmentConsumptionFact lastApartmentConsumptionFact = apartmentConsumptionsFactsManager.getLastApartmentFact(apartment);
+        
+        // We found a fact for this room
+        if (lastApartmentConsumptionFact != null){
+            
+            // Récupération de l'heure de la derière Fact pour ce Plug
+            Date lastFactHour = lastApartmentConsumptionFact.getTimestampHour();
+            
+            // Si l'heure de l'obs est inférieure à l'heure du dernier Fact, on update le Fact en ajoutant les kw de cette Obs
+            if ( o.getTimestampMinute().compareTo(lastFactHour) < 0){
+                
+                // Update du lastFact
+                ApartmentConsumptionFact newApartmentConsumptionFact = new ApartmentConsumptionFact();
+                
+                double avgKw = lastApartmentConsumptionFact.getAvgKW() + o.getkW();
+                
+                newApartmentConsumptionFact.setAvgKW(avgKw);
+                
+                // Try to update lastFact with new KW
+                try {
+                    apartmentConsumptionsFactsManager.update(newApartmentConsumptionFact);
+                } catch (EntityNotFoundException ex) {
+                    Logger.getLogger(StreamProcessor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } else { // La date de l'obs est supérieure à la Last Fact, on crée un nouveau Fact.
+                createNewApartmentConsumptionFact(o);
+            }
+            
+        } else { // no roomConsumptionFact found, let's crete a new one
+            createNewApartmentConsumptionFact(o);
+        } // if lastRoomFact
         
     } // onConsumption
     
+    
+    
+    public void createNewApartmentConsumptionFact(ConsumptionObs o){
+        Plug plug = o.getPlug();
+        Room room = plug.getRoom();
+        Apartment apartment = room.getApartment();
+        
+        // Séquence ?! add empty roomConsoFact ?
+        ApartmentConsumptionFact newApartmentConsumptionFact = new ApartmentConsumptionFact();
+        apartment.addApartmentConsumptionFact(newApartmentConsumptionFact);
+        
+        Date endDate = new Date(o.getTimestampMinute().getTime() + 3600000);
+        newApartmentConsumptionFact.setTimestampHour(endDate);
+        
+        newApartmentConsumptionFact.setAvgKW(o.getkW());
+        
+        apartmentConsumptionsFactsManager.create(newApartmentConsumptionFact);
+    }
+    
+    
+    /**
+     * A réaliser..
+     * @param o 
+     */
     public void updateRoomConsumptionFact(ConsumptionObs o){
         Room room = o.getPlug().getRoom();
         
@@ -120,6 +221,7 @@ public class StreamProcessor implements StreamProcessorLocal {
         Plug plug = o.getPlug();
         Room room = plug.getRoom();
         
+        // Séquence ?! add empty roomConsoFact ?
         RoomConsumptionFact newRoomConsumptionFact = new RoomConsumptionFact();
         room.addRoomConsumptionFact(newRoomConsumptionFact);
         
@@ -127,6 +229,8 @@ public class StreamProcessor implements StreamProcessorLocal {
         newRoomConsumptionFact.setTimestampHour(endDate);
         
         newRoomConsumptionFact.setAvgKW(o.getkW());
+        
+        roomConsumptionsFactsManager.create(newRoomConsumptionFact);
     }
     
     /**
