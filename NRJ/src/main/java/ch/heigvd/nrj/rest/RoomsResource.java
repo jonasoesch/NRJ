@@ -44,8 +44,6 @@ public class RoomsResource {
     @EJB
     RoomsManagerLocal roomsManager;
     @EJB
-    ApartmentsManagerLocal apartmentsManager;
-    @EJB
     RoomsTOServiceLocal roomsTOService;
     @EJB
     PlugsManagerLocal plugsManager;
@@ -68,10 +66,6 @@ public class RoomsResource {
     public Response createResource(PublicRoomTOEntree newRoomTO) throws EntityNotFoundException {
         Room newRoom = new Room();
         roomsTOService.updateRoomEntity(newRoom, newRoomTO);
-	// Rechercher l'appartement
-	Apartment a = newRoom.getApartment();
-	a = apartmentsManager.findById(a.getId());
-	newRoom.setApartment(a);
         long newRoomId = this.roomsManager.create(newRoom);
         URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newRoomId)).build();
         return Response.created(createdURI).build();
