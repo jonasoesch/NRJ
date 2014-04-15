@@ -17,7 +17,7 @@ public class PublicApartmentTO {
 
     private long apartmentId;
     private String name;
-    private List<PublicRoomTO> rooms;
+    private List<PublicRoomTOSortie> rooms;
 
     public PublicApartmentTO() {
 	this.rooms = new ArrayList<>();
@@ -45,15 +45,15 @@ public class PublicApartmentTO {
         this.name = name;
     }
     
-    public List<PublicRoomTO> getRooms() {
+    public List<PublicRoomTOSortie> getRooms() {
 	return rooms;
     }
 
-    public void setRooms(List<PublicRoomTO> rooms) {
+    public void setRooms(List<PublicRoomTOSortie> rooms) {
 	this.rooms = rooms;
     }
     
-    public void addRoom(PublicRoomTO room) {
+    public void addRoom(PublicRoomTOSortie room) {
 	this.rooms.add(room);
     }
     

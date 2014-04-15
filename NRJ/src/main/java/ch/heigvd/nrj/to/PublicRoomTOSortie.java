@@ -17,18 +17,18 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Option40
  */
 @XmlRootElement
-public class PublicRoomTO {
+public class PublicRoomTOSortie {
 
     private long roomId;
     private String name;
     private List<RoomConsumptionFact> roomConsumptionsFacts;
     private List<PublicPlugTO> plugs;
     
-    public PublicRoomTO() {
+    public PublicRoomTOSortie() {
 	this.plugs = new ArrayList<>();
     }
 
-    public PublicRoomTO(long roomId, String name, List<RoomConsumptionFact> roomConsumptionsFacts) {
+    public PublicRoomTOSortie(long roomId, String name, List<RoomConsumptionFact> roomConsumptionsFacts) {
 	this.plugs = new ArrayList<>();
         this.roomId = roomId;
         this.name = name;

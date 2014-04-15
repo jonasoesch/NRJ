@@ -3,7 +3,8 @@ package ch.heigvd.nrj.services.to;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicRoomTO;
+import ch.heigvd.nrj.to.PublicRoomTOEntree;
+import ch.heigvd.nrj.to.PublicRoomTOSortie;
 import javax.ejb.Stateless;
 
 /**
@@ -14,21 +15,19 @@ import javax.ejb.Stateless;
 @Stateless
 public class RoomsTOService implements RoomsTOServiceLocal {
 
-	@Override
-	public PublicRoomTO buildPublicRoomTO(Room source) {
-		PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName(), source.getRoomConsumptionsFacts());
-		for (Plug plug : source.getPlugs()) {
-		    PublicPlugTO plugTO = new PublicPlugTO(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getRoom(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
-		    to.addPlug(plugTO);
-		}
-		
-		return to;
+    @Override
+    public PublicRoomTOSortie buildPublicRoomTO(Room source) {
+	PublicRoomTOSortie to = new PublicRoomTOSortie(source.getId(), source.getName(), source.getRoomConsumptionsFacts());
+	for (Plug plug : source.getPlugs()) {
+	    PublicPlugTO plugTO = new PublicPlugTO(plug.getId(), plug.getName(), plug.getAlwaysOn(), plug.getRoom(), plug.getHistories(), plug.getPlugConsumptionsFacts(), plug.getWarnings());
+	    to.addPlug(plugTO);
 	}
-
-	@Override
-	public void updateRoomEntity(Room existingEntity, PublicRoomTO newState) {
-		existingEntity.setName(newState.getName());
-		existingEntity.setRoomConsumptionsFacts(newState.getRoomConsumptionsFacts());
-	}
-	
+	return to;
+    }
+    
+    @Override
+    public void updateRoomEntity(Room existingEntity, PublicRoomTOEntree newState) {
+	    existingEntity.setName(newState.getName());
+	    existingEntity.setApartment(newState.getApartment());
+    }
 }
