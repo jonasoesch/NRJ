@@ -1,9 +1,13 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
+import ch.heigvd.nrj.services.to.HistoriesTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
+import ch.heigvd.nrj.to.PublicHistoryTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
 import java.net.URI;
 import java.util.LinkedList;
@@ -12,15 +16,15 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.Path;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  * This is the REST API endpoint for the Plugs resource. When REST clients
@@ -53,6 +57,10 @@ public class PlugsResource {
     PlugsManagerLocal plugsManager;
     @EJB
     PlugsTOServiceLocal plugsTOService;
+    @EJB
+    HistoriesManagerLocal historiesManager;
+    @EJB
+    HistoriesTOServiceLocal historiesTOService;
 
     /**
      * Creates a new instance of PlugsResource
@@ -137,5 +145,28 @@ public class PlugsResource {
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
         plugsManager.delete(id);
         return Response.ok().build();
+    }
+    
+    
+    @GET
+    @Path("{id}/status")
+    @Produces({"application/json"})
+    public PublicHistoryTO getStatus(@PathParam("id") long id) throws EntityNotFoundException {
+        History history = historiesManager.findLast();
+        PublicHistoryTO historyTO = historiesTOService.buildPublicHistoryTO(history);
+        return historyTO;
+    }
+    
+    @POST
+    @Path("{id}/status")
+    @Consumes({"application/json"})
+    public Response setStatus(@PathParam("id") long id, PublicHistoryTO newHistoryTO) throws EntityNotFoundException {
+        Plug plug = plugsManager.findById(id);
+        History newHistory = new History();
+        historiesTOService.updateHistoryEntity(newHistory, newHistoryTO);
+        newHistory.setPlug(plug);
+        long newHistoryId = historiesManager.create(newHistory);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newHistoryId)).build();
+        return Response.created(createdURI).build();
     }
 }

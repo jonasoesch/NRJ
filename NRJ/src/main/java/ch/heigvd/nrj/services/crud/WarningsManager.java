@@ -24,6 +24,7 @@ public class WarningsManager implements WarningsManagerLocal {
 	public long create(Warning warningData) {
 		Warning newWarning = new Warning(warningData);
 		em.persist(newWarning);
+                em.flush();
 		return newWarning.getId();
 	}
 

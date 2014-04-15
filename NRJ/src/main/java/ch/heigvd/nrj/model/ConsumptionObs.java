@@ -41,7 +41,7 @@ public class ConsumptionObs implements Serializable {
 
     public ConsumptionObs(ConsumptionObs consumptionObsData) {
         this.timestampMinute = consumptionObsData.getTimestampMinute();
-	   this.kW = consumptionObsData.getkW();
+        this.kW = consumptionObsData.getkW();
         this.plug = consumptionObsData.getPlug();
     }
     

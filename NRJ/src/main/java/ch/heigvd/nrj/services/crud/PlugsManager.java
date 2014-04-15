@@ -25,6 +25,7 @@ public class PlugsManager implements PlugsManagerLocal {
 	public long create(Plug plugData) {
 		Plug newPlug = new Plug(plugData);
 		em.persist(newPlug);
+                em.flush();
 		return newPlug.getId();
 	}
 

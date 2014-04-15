@@ -27,6 +27,7 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
     public long create(PlugConsumptionFact plugConsumptionFactData) {
         PlugConsumptionFact newPlugConsumptionFact = new PlugConsumptionFact(plugConsumptionFactData);
         em.persist(newPlugConsumptionFact);
+        em.flush();
         return newPlugConsumptionFact.getId();
     }
 

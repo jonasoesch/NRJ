@@ -24,6 +24,7 @@ public class ApartmentConsumptionsFactsManager implements ApartmentConsumptionsF
 	public long create(ApartmentConsumptionFact apartmentConsumptionFactData) {
 		ApartmentConsumptionFact newApartmentConsumptionFact = new ApartmentConsumptionFact(apartmentConsumptionFactData);
 		em.persist(newApartmentConsumptionFact);
+                em.flush();
 		return newApartmentConsumptionFact.getId();
 	}
 

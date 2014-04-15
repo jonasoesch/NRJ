@@ -8,19 +8,18 @@ package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
+import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.services.business.StreamProcessorLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
+import ch.heigvd.nrj.services.crud.PlugsManager;
 import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
-import ch.heigvd.nrj.services.business.StreamProcessorLocal;
 import java.net.URI;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -57,6 +56,9 @@ public class ConsumptionsObsResource {
     ConsumptionsObsTOServiceLocal consumptionsTOService;
     
     @EJB
+    PlugsManager plugsManager;
+    
+    @EJB
     StreamProcessorLocal streamProcessor;
 
     /**
@@ -73,8 +75,15 @@ public class ConsumptionsObsResource {
      */
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicConsumptionObsTO newConsumptionTO) {
+    public Response createResource(PublicConsumptionObsTO newConsumptionTO) throws EntityNotFoundException {
         ConsumptionObs newConsumption = new ConsumptionObs();
+        // Recherche la plug liée et la lie à la consumption
+        Plug p = newConsumption.getPlug();
+        p = plugsManager.findById(p.getId());
+        newConsumption.setPlug(p);
+        long newPlugId = this.plugsManager.create(p);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
+        
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         streamProcessor.onConsumption(newConsumption);
         if(newConsumption.getPlug() == null) {
@@ -107,14 +116,14 @@ public class ConsumptionsObsResource {
      * @return an instance of PublicConsumptionObsTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    @GET
-    @Path("{id}")
-    @Produces({"application/json"})
-    public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        ConsumptionObs consumption = consumptionsManager.findById(id);
-        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
-        return consumptionTO;
-    }
+//    @GET
+//    @Path("{id}")
+//    @Produces({"application/json"})
+//    public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
+//        ConsumptionObs consumption = consumptionsManager.findById(id);
+//        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
+//        return consumptionTO;
+//    }
     
     /**
      * Updates an ConsumptionsObs resource

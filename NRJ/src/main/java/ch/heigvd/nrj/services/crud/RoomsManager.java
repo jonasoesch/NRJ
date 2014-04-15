@@ -4,6 +4,8 @@ import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Room;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,17 +20,27 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class RoomsManager implements RoomsManagerLocal {
-
+	@EJB
+	ApartmentsManagerLocal apartmentsManager;
+	
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
 	public long create(Room roomData) {
-		Room newRoom = new Room(roomData);
-		Apartment a = newRoom.getApartment();
-		em.persist(newRoom);
-		a.addRoom(newRoom);
-		return newRoom.getId();
+	    Room newRoom = new Room(roomData);
+	    Apartment a = newRoom.getApartment();
+	    try {	
+		// Rechercher l'appartement
+		a = apartmentsManager.findById(a.getId());
+	    } catch (EntityNotFoundException ex) {
+		Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	    newRoom.setApartment(a);
+	    em.persist(newRoom);
+	    a.addRoom(newRoom);
+	    em.flush();
+	    return newRoom.getId();
 	}
 
 	@Override

@@ -65,4 +65,5 @@ public class RoomConsumptionsFactsManager implements RoomConsumptionsFactsManage
         }
     }
 	
+	
 }

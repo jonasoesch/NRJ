@@ -22,6 +22,8 @@ public interface HistoriesManagerLocal {
 	History findById(long id) throws EntityNotFoundException;
 
 	List<History> findAll();
+    
+        public History findLast();
 
 	
 }

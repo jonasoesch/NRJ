@@ -59,11 +59,11 @@ public class ApartmentsResource {
 	@POST
 	@Consumes({"application/json"})
 	public Response createResource(PublicApartmentTO newApartmentTO) {
-			Apartment newApartment = new Apartment();
-			apartmentsTOService.updateApartmentEntity(newApartment,newApartmentTO);
-			long newApartmentId = apartmentsManager.create(newApartment);
-			URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newApartmentId)).build();
-			return Response.created(createdURI).build();
+	    Apartment newApartment = new Apartment();
+	    apartmentsTOService.updateApartmentEntity(newApartment,newApartmentTO);
+	    long newApartmentId = apartmentsManager.create(newApartment);
+	    URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newApartmentId)).build();
+	    return Response.created(createdURI).build();
 	}
 
 	/**
