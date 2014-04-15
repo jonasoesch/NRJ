@@ -72,6 +72,7 @@ public class PlugsResource {
     /**
      * Creates a new Plug resource from the provided representation
      *
+     * @param newPlugTO
      * @return an instance of PublicPlugTO
      */
     @POST
