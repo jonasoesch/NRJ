@@ -67,7 +67,7 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
     }
 
     @Override
-    public PlugConsumptionFact getlastPlugFact(Plug plug) {
+    public PlugConsumptionFact getLastPlugFact(Plug plug) {
         List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.getLastFact").setParameter("plug", plug).setMaxResults(1).getResultList();
 
         if (plugConsumptionsFacts.isEmpty()){
@@ -78,6 +78,7 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
         
     } //getLastFact
     
+    @Override
     public List<PlugConsumptionFact> getConsumptionFactsAfterTime(Plug plug, Date timestamp){
         List<PlugConsumptionFact> factsList = new ArrayList<>();
         

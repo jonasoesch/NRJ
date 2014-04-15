@@ -24,9 +24,9 @@ public class PublicConsumptionObsTO {
     public PublicConsumptionObsTO() {
     }
 
-    public PublicConsumptionObsTO(long consumptionObsId, Double kW, Plug plug) {
+    public PublicConsumptionObsTO(long consumptionObsId, Double kW, Date timestampMinute, Plug plug) {
 	this.consumptionObsId = consumptionObsId;
-	this.timestampMinute = new Date();
+	this.timestampMinute = timestampMinute;
 	this.kW = kW;
 	this.plug = plug;
     }
@@ -61,10 +61,5 @@ public class PublicConsumptionObsTO {
 
     public void setPlug(Plug plug) {
 	this.plug = plug;
-    }
-    
-    @Override
-    public String toString() {
-       return "Time:"+this.timestampMinute.toString()+" - kW"+this.kW.toString();
     }
 }
