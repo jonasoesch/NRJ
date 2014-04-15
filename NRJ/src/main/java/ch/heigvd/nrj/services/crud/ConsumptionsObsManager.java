@@ -1,9 +1,14 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.model.Room;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,23 +23,30 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
 
+    @EJB
+    PlugsManagerLocal plugsManager;
     @PersistenceContext
     private EntityManager em;
 
     @Override
-    public long create(ConsumptionObs consumptionData) {
-        ConsumptionObs newConsumption = new ConsumptionObs(consumptionData);
-        
+    public long create(ConsumptionObs consumption) {
         // Add la consommation à la plug
-        Plug plug = consumptionData.getPlug();
-        plug.getConsumptionsObs().add(newConsumption);
+        Plug plug = consumption.getPlug();
+        try {
+            // Rechercher l'appartement
+            plug = plugsManager.findById(plug.getId());
+        } catch (EntityNotFoundException ex) {
+            Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         // TODO ? em.persist(plug);
-        
+
         // Add la plug à cette consommation
-        newConsumption.setPlug(plug);
-        em.persist(newConsumption);
+        //consumption.setPlug(plug);
+        consumption.setPlug(plug);
+        em.persist(consumption);
+        plug.addConsumptionObs(consumption);
         em.flush();
-        return newConsumption.getId();
+        return consumption.getId();
     }
 
     @Override

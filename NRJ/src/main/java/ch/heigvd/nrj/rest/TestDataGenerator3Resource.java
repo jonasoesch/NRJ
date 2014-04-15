@@ -1,17 +1,16 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.model.Apartment;
+import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
+import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
-import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -36,6 +35,8 @@ public class TestDataGenerator3Resource {
     @EJB
     RoomsManagerLocal roomsManager;
     @EJB
+    ConsumptionsObsManagerLocal consumptionsManager;
+    @EJB
     ApartmentsManagerLocal apartmentsManager;
     @EJB
     PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
@@ -49,14 +50,13 @@ public class TestDataGenerator3Resource {
 	
 	Room m1 = new Room();
         m1.setName("Chambre de Barbie");
-        m1.setId(roomsManager.create(m1));
-	a.addRoom(m1);
+	m1.setApartment(a);
+	m1.setId(roomsManager.create(m1));
 
         Room m2 = new Room();
         m2.setName("Cuisine");
-        m2.setId(roomsManager.create(m2));
-	
-	a.addRoom(m2);
+	m2.setApartment(a);
+	m2.setId(roomsManager.create(m2));
         
 
 //		Employee e = new Employee();
@@ -69,23 +69,29 @@ public class TestDataGenerator3Resource {
         Plug p1 = new Plug();
         p1.setName("frigo");
         p1.setAlwaysOn(true);
+        p1.setRoom(m2);
         p1.setId(plugsManager.create(p1));
-        m2.addPlug(p1);
 
 	
         Plug p2 = new Plug();
         p2.setName("television");
         p2.setAlwaysOn(false);
+        p2.setRoom(m1);
         p2.setId(plugsManager.create(p2));
-        m1.addPlug(p2);
 
 	
         Plug p3 = new Plug();
         p3.setName("lumiere");
         p3.setAlwaysOn(true);
+        p3.setRoom(m1);
         p3.setId(plugsManager.create(p3));
-        m1.addPlug(p3);
-
+        
+        ConsumptionObs c = new ConsumptionObs();
+        c.setPlug(p3);
+        c.setkW(2.2);
+        c.setTimestampMinute(new Date());
+        c.setId(consumptionsManager.create(c));
+        
         return "done";
     }
 }

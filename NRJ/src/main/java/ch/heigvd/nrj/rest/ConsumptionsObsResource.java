@@ -84,29 +84,23 @@ public class ConsumptionsObsResource {
      */
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicConsumptionObsTO newConsumptionTO) throws EntityNotFoundException {
+    public Response createResource(PublicConsumptionObsTO newConsumptionTO){
         ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
-
-        // Recherche la plug liée et la lie à la consumption
-        Plug p = newConsumption.getPlug();
-
-        p = plugsManager.findById(p.getId());
-        if(p == null)
-            throw new EntityNotFoundException();
-        newConsumption.setPlug(p);
-        long newPlugId = this.plugsManager.create(p);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
         
-        streamProcessor.onConsumption(newConsumption);
+       /* streamProcessor.onConsumption(newConsumption);
         
         //em.flush();
         
+        // Si la plug pour cette Consommation n'existe pas en BD
         if(newConsumption.getPlug() == null) {
             return Response.status(500).build();
         } else {
             return Response.ok().build();
-        }
+        }*/
+        long newConsId = this.consumptionsManager.create(newConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
+        return Response.created(createdURI).build();
     }
 
     /**
