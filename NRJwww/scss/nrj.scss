@@ -96,10 +96,43 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+header{
+background-image: url(../img/logo.png);
+border-bottom: solid 2px #93C92C;
+background-position: center left;
+background-repeat: no-repeat;
+height: 90px;
+background-color: #333333;
+}
 
+nav h1{
+    margin-left: 40px;
+    padding-top: 30px;
+}
+.menu{
+    position:absolute;
+    top:92px;
+    left: 0%;
+    background-color: #999999;
+    height: 100%;
+    width: 20%;
+}
 
+#whiteArrow{
+    position: absolute;
+    top: 95px;
+    right: 80%;
+}
+.menu ul li{
+    cursor: pointer;
+}
 
-
+.home{
+position: absolute;
+margin-top: 30px;
+width:70%;
+right:0;
+}
 
 
 

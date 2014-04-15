@@ -114,5 +114,27 @@ $(function () {
             })
 
         })
+
+
+
+        /*-------------------------------------*/
+        /*Gestion de l'interaction Menu - Début*/
+        /*-------------------------------------*/
+            //Flèche sur sous menu
+          $('.menu').on('click', 'li', function(){
+            var liPosition=$(this).position();
+            var liHeight=$(this).height();
+            $("#whiteArrow").css("top", liPosition.top+liHeight*1.2);
+          } );
+          //Flèche sur home
+          $('.menu').on('click', 'h1', function(){
+            $("#whiteArrow").css("top", '95px');
+          } );
+
+        /*-------------------------------------*/
+        /*Gestion de l'interaction Menu - Fin*/
+        /*-------------------------------------*/
+
+
     }
 })

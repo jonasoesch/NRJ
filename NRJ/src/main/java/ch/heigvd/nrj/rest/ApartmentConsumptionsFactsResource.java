@@ -1,9 +1,10 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.Room;
-import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
-import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
+import ch.heigvd.nrj.model.ApartmentConsumptionFact;
+import ch.heigvd.nrj.services.crud.ApartmentConsumptionsFactsManagerLocal;
+import ch.heigvd.nrj.services.to.ApartmentConsumptionsFactsTOServiceLocal;
+import ch.heigvd.nrj.to.PublicApartmentConsumptionFactsTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -49,12 +50,12 @@ public class ApartmentConsumptionsFactsResource {
     @Context
     private UriInfo context;
     @EJB
-    RoomsManagerLocal roomsManager;
+    ApartmentConsumptionsFactsManagerLocal apartmentConsumptionFactsManager;
     @EJB
-    RoomsTOServiceLocal roomsTOService;
+    ApartmentConsumptionsFactsTOServiceLocal apartmentConsumptionFactsTOService;
 
     /**
-     * Creates a new instance of RoomsResource
+     * Creates a new instance of ApartmentConsumptionFactsResource
      */
     public ApartmentConsumptionsFactsResource() {
     }
@@ -64,31 +65,31 @@ public class ApartmentConsumptionsFactsResource {
      *
      * @return an instance of PublicRoomTO
      */
-    /*@POST
+    @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicRoomTO newRoomTO) {
-        Room newRoom = new Room();
-        roomsTOService.updateRoomEntity(newRoom, newRoomTO);
-        long newRoomId = roomsManager.create(newRoom);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newRoomId)).build();
+    public Response createResource(PublicApartmentConsumptionFactsTO newApartmentConsumptionFactsTO) {
+        ApartmentConsumptionFact newConsumption = new ApartmentConsumptionFact();
+        apartmentConsumptionFactsTOService.updateApartmentConsumptionFactEntity(newConsumption, newApartmentConsumptionFactsTO);
+        long newConsumptionId = apartmentConsumptionFactsManager.create(newConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
         return Response.created(createdURI).build();
-    }*/
+    }
 
     /**
      * Retrieves a representation of a list of Room resources
      *
      * @return an instance of PublicRoomTO
      */
-    /*@GET
+    @GET
     @Produces({"application/json"})
-    public List<PublicRoomTO> getResourceList() {
-        List<Room> rooms = roomsManager.findAll();
-        List<PublicRoomTO> result = new LinkedList<>();
-        for (Room room : rooms) {
-            result.add(roomsTOService.buildPublicRoomTO(room));
+    public List<PublicApartmentConsumptionFactsTO> getResourceList() {
+        List<ApartmentConsumptionFact> consumptions = apartmentConsumptionFactsManager.findAll();
+        List<PublicApartmentConsumptionFactsTO> result = new LinkedList<>();
+        for (ApartmentConsumptionFact consumption : consumptions) {
+            result.add(apartmentConsumptionFactsTOService.buildPublicApartmentConsumptionFactTO(consumption));
         }
         return result;
-    }*/
+    }
 
     /**
      * Retrieves representation of an Room resource
@@ -97,14 +98,14 @@ public class ApartmentConsumptionsFactsResource {
      * @return an instance of PublicRoomTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@GET
+    @GET
     @Path("{id}")
     @Produces({"application/json"})
-    public PublicRoomTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        Room room = roomsManager.findById(id);
-        PublicRoomTO roomTO = roomsTOService.buildPublicRoomTO(room);
-        return roomTO;
-    }*/
+    public PublicApartmentConsumptionFactsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
+        ApartmentConsumptionFact consumption = apartmentConsumptionFactsManager.findById(id);
+        PublicApartmentConsumptionFactsTO consumptionTO = apartmentConsumptionFactsTOService.buildPublicApartmentConsumptionFactTO(consumption);
+        return consumptionTO;
+    }
 
     /**
      * Updates an Room resource
@@ -114,15 +115,15 @@ public class ApartmentConsumptionsFactsResource {
      * @return an instance of PublicRoomTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@PUT
+    @PUT
     @Path("{id}")
     @Consumes({"application/json"})
-    public Response Resource(PublicRoomTO updatedRoomTO, @PathParam("id") long id) throws EntityNotFoundException {
-        Room roomToUpdate = roomsManager.findById(id);
-        roomsTOService.updateRoomEntity(roomToUpdate, updatedRoomTO);
-        roomsManager.update(roomToUpdate);
+    public Response Resource(PublicApartmentConsumptionFactsTO updatedRoomTO, @PathParam("id") long id) throws EntityNotFoundException {
+        ApartmentConsumptionFact consumptionToUpdate = apartmentConsumptionFactsManager.findById(id);
+        apartmentConsumptionFactsTOService.updateApartmentConsumptionFactEntity(consumptionToUpdate, updatedRoomTO);
+        apartmentConsumptionFactsManager.update(consumptionToUpdate);
         return Response.ok().build();
-    }*/
+    }
 
     /**
      * Deletes an Room resource
@@ -131,10 +132,10 @@ public class ApartmentConsumptionsFactsResource {
      * @return an instance of PublicRoomTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@DELETE
+    @DELETE
     @Path("{id}")
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
-        roomsManager.delete(id);
+        apartmentConsumptionFactsManager.delete(id);
         return Response.ok().build();
-    }*/
+    }
 }

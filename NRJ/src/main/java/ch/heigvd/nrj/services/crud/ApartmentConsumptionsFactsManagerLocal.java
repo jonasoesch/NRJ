@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ApartmentConsumptionFact;
 import java.util.List;
 import javax.ejb.Local;
@@ -23,5 +24,5 @@ public interface ApartmentConsumptionsFactsManagerLocal {
 
 	List<ApartmentConsumptionFact> findAll();
 
-	
+	ApartmentConsumptionFact getLastApartmentFact(Apartment apartment);
 }

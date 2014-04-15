@@ -64,7 +64,7 @@ public class RoomsResource {
      */
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicRoomTOEntree newRoomTO) throws EntityNotFoundException {
+    public Response createResource(PublicRoomTOEntree newRoomTO) {
         Room newRoom = new Room();
         roomsTOService.updateRoomEntity(newRoom, newRoomTO);
         long newRoomId = this.roomsManager.create(newRoom);

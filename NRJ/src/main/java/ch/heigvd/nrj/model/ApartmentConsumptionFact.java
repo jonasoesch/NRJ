@@ -16,10 +16,15 @@ import javax.persistence.Temporal;
  *
  * @author rschmutz
  */
-@NamedQueries(
-        @NamedQuery(
+@NamedQueries({
+    @NamedQuery(
         name = "ApartmentConsumptionFact.findAllApartmentConsumptionsFacts",
-        query = "SELECT rc FROM ApartmentConsumptionFact rc"))
+        query = "SELECT rc FROM ApartmentConsumptionFact rc"),
+    @NamedQuery(
+        name = "ApartmentConsumptionFact.getLastApartmentFact",
+        query = "SELECT lac FROM ApartmentConsumptionFact lac WHERE lac.apartment = :apartment ORDER BY lac.timestampHour DESC"
+        )
+})
 @Entity
 public class ApartmentConsumptionFact implements Serializable {
 
