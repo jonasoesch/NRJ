@@ -1,25 +1,24 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.model.Apartment;
-import ch.heigvd.nrj.model.ConsumptionObs;
+import ch.heigvd.nrj.model.ApartmentConsumptionFact;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.model.Warning;
+import ch.heigvd.nrj.services.crud.ApartmentConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
-import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import ch.heigvd.nrj.services.crud.WarningsManagerLocal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -47,6 +46,8 @@ public class TestDataGeneratorResource {
     RoomsManagerLocal roomsManager;
     @EJB
     ApartmentsManagerLocal apartmentsManager;
+    @EJB
+    ApartmentConsumptionsFactsManagerLocal apartmentConsumptionsFactsManager;
     @EJB
     PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
     @EJB
@@ -105,6 +106,7 @@ public class TestDataGeneratorResource {
         p2.setName("Télévision");
         p2.setAlwaysOn(false);
         p2.setId(plugsManager.create(p2));
+        m1.addPlug(p2);
         //Ajout warning
         Warning warningp2 = new Warning();
         warningp2.setMessage("Attention warning du plug2!");
@@ -125,6 +127,7 @@ public class TestDataGeneratorResource {
         p3.setName("Lumière principale");
         p3.setAlwaysOn(true);
         p3.setId(plugsManager.create(p3));
+        m2.addPlug(p3);
         //Ajout warning
         Warning warningp3 = new Warning();
         warningp3.setMessage("Attention warning du plug3!");
@@ -152,6 +155,12 @@ public class TestDataGeneratorResource {
         rc1.setTimestampHour(new Date());
         rc1.setId(roomConsumptionsFactsManager.create(rc1));
         m1.addRoomConsumptionFact(rc1);
+        
+        ApartmentConsumptionFact ac1 = new ApartmentConsumptionFact();
+        ac1.setAvgKW(1000.34);
+        ac1.setTimestampHour(new Date());
+        ac1.setId(apartmentConsumptionsFactsManager.create(ac1));
+        a.addApartmentConsumptionFact(ac1);
 
 //        //Création de la consommation du plug 1
 //        ConsumptionObs co = new ConsumptionObs();

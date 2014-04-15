@@ -19,8 +19,7 @@ import javax.persistence.OneToMany;
 @NamedQueries(
         @NamedQuery(
         name = "Apartment.findAllApartments",
-        query = "SELECT a FROM Apartment a")
-)
+        query = "SELECT a FROM Apartment a"))
 @Entity
 public class Apartment implements Serializable {
 
@@ -29,21 +28,23 @@ public class Apartment implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
-    
-    @OneToMany(mappedBy="apartment")
+    @OneToMany(mappedBy = "apartment")
+    protected List<ApartmentConsumptionFact> apartmentConsumptionsFacts;
+    @OneToMany(mappedBy = "apartment")
     protected List<Room> rooms;
 
     public Apartment() {
         this.name = "UNDEF";
-	this.rooms = new ArrayList<>();
+        this.apartmentConsumptionsFacts = new ArrayList<>();
+        this.rooms = new ArrayList<>();
     }
 
     public Apartment(Apartment apartmentData) {
         this.name = apartmentData.getName();
-	this.rooms = apartmentData.getRooms();
+        this.rooms = apartmentData.getRooms();
+        this.apartmentConsumptionsFacts = apartmentData.getApartmentConsumptionsFacts();
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -59,18 +60,30 @@ public class Apartment implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public List<Room> getRooms() {
-	return rooms;
+        return rooms;
     }
 
     public void setRooms(List<Room> rooms) {
-	this.rooms = rooms;
+        this.rooms = rooms;
     }
+
     public void addRoom(Room room) {
-	this.rooms.add(room);
+        this.rooms.add(room);
     }
-    
+
+    public List<ApartmentConsumptionFact> getApartmentConsumptionsFacts() {
+        return apartmentConsumptionsFacts;
+    }
+
+    public void setApartmentConsumptionsFacts(List<ApartmentConsumptionFact> apartmentConsumptions) {
+        this.apartmentConsumptionsFacts = apartmentConsumptions;
+    }
+
+    public void addApartmentConsumptionFact(ApartmentConsumptionFact acf) {
+        this.apartmentConsumptionsFacts.add(acf);
+    }
 
     @Override
     public int hashCode() {

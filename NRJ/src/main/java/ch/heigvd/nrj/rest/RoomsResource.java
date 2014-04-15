@@ -1,11 +1,16 @@
 package ch.heigvd.nrj.rest;
 
+
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Apartment;
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
+import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
+import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.services.to.RoomsTOServiceLocal;
+import ch.heigvd.nrj.to.PublicPlugTO;
 import ch.heigvd.nrj.to.PublicRoomTOEntree;
 import ch.heigvd.nrj.to.PublicRoomTOSortie;
 import java.net.URI;
@@ -16,6 +21,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -40,7 +46,11 @@ public class RoomsResource {
     ApartmentsManagerLocal apartmentsManager;
     @EJB
     RoomsTOServiceLocal roomsTOService;
-
+    @EJB
+    PlugsManagerLocal plugsManager;
+    @EJB
+    PlugsTOServiceLocal plugsTOService;
+    
     /**
      * Creates a new instance of RoomsResource
      */
@@ -128,5 +138,32 @@ public class RoomsResource {
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
         roomsManager.delete(id);
         return Response.ok().build();
+    }
+    
+    
+    
+
+    @GET
+    @Path("{id}/plugs")
+    @Produces({"application/json"})
+    public List<PublicPlugTO> getRoomPlugs(@PathParam("id") long id) throws EntityNotFoundException {
+        Room room = roomsManager.findById(id);
+        List<Plug> plugs = room.getPlugs();
+        List<PublicPlugTO> result = new LinkedList<>();
+        for (Plug plug : plugs) {
+            result.add(plugsTOService.buildPublicPlugTO(plug));
+        }
+        return result;
+    }
+    
+    @POST
+    @Path("{id}/plugs")
+    @Consumes({"application/json"})
+    public Response createPlugInRoom(@PathParam("id") long id, PublicPlugTO newPlugTO) {
+        Plug newPlug = new Plug();
+        plugsTOService.updatePlugEntity(newPlug, newPlugTO);
+        long newPlugId = this.plugsManager.create(newPlug);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
+        return Response.created(createdURI).build();
     }
 }

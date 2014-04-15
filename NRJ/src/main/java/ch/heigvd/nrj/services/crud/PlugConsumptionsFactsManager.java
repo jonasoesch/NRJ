@@ -3,6 +3,7 @@ package ch.heigvd.nrj.services.crud;
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -66,7 +67,7 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
 
     @Override
     public PlugConsumptionFact getlastFact(Plug plug) {
-        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("plug", plug).setMaxResults(1).getResultList();
+        List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.getLastFact").setParameter("plug", plug).setMaxResults(1).getResultList();
 
         if (plugConsumptionsFacts.isEmpty()){
             return null;
@@ -74,5 +75,20 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
             return plugConsumptionsFacts.get(0);
         }
         
+    } //getLastFact
+    
+    public List<PlugConsumptionFact> getConsumptionFactsAfterTime(Plug plug, Date timestamp){
+        List<PlugConsumptionFact> factsList = new ArrayList<>();
+        
+        factsList = em.createNamedQuery("PlugConsumptionFact.getConsumptionFactsAfterTime").setParameter("plug", plug).setParameter("time", timestamp).setMaxResults(1).getResultList();
+
+        if (factsList.isEmpty()){
+            return null;
+        } else {
+            return factsList;
+        }
+        
     }
+    
+    
 }
