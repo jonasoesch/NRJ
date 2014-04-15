@@ -33,15 +33,14 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
         // Add la consommation à la plug
         Plug plug = consumption.getPlug();
         try {
-            // Rechercher l'appartement
+            // Rechercher la plug de cette consumption
             plug = plugsManager.findById(plug.getId());
         } catch (EntityNotFoundException ex) {
-            Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConsumptionsObsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         // TODO ? em.persist(plug);
 
         // Add la plug à cette consommation
-        //consumption.setPlug(plug);
         consumption.setPlug(plug);
         em.persist(consumption);
         plug.addConsumptionObs(consumption);
