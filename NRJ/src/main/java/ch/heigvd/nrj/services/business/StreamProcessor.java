@@ -6,6 +6,7 @@ import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.model.Room;
+import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.model.Warning;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
@@ -32,6 +33,7 @@ public class StreamProcessor implements StreamProcessorLocal {
     @EJB PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
     @EJB ConsumptionsObsManagerLocal consumptionsObsManager;
 
+    
     @Override
     public void onConsumption(ConsumptionObs o) {
         
@@ -65,7 +67,7 @@ public class StreamProcessor implements StreamProcessorLocal {
         historiesManager.create(history);
         
         // Check last fact for this plug
-        PlugConsumptionFact lastPlugConsumptionFact = plugConsumptionsFactsManager.getlastFact(plug);
+        PlugConsumptionFact lastPlugConsumptionFact = plugConsumptionsFactsManager.getlastPlugFact(plug);
         
         // We found a fact
         if (lastPlugConsumptionFact != null){
@@ -94,11 +96,35 @@ public class StreamProcessor implements StreamProcessorLocal {
                 createNewPlugConsumptionFact(o);
             }
             
+            updateRoomConsumptionFact(o);
+            
         } else { // no consumptionFact found, let's crete a new one
             createNewPlugConsumptionFact(o);
         }
         
     } // onConsumption
+    
+    public void updateRoomConsumptionFact(ConsumptionObs o){
+        Room room = o.getPlug().getRoom();
+        
+        RoomConsumptionFact newRoomConsumptionFact = new RoomConsumptionFact();
+        
+        newRoomConsumptionFact.setAvgKW(Double.NaN);
+        
+    }
+    
+    public void createNewRoomConsumptionFact(ConsumptionObs o){
+        Plug plug = o.getPlug();
+        Room room = plug.getRoom();
+        
+        RoomConsumptionFact newRoomConsumptionFact = new RoomConsumptionFact();
+        room.addRoomConsumptionFact(newRoomConsumptionFact);
+        
+        Date endDate = new Date(o.getTimestampMinute().getTime() + 3600000);
+        newRoomConsumptionFact.setTimestampHour(endDate);
+        
+        newRoomConsumptionFact.setAvgKW(o.getkW());
+    }
     
     /**
      * Create a new ConsumptionFact

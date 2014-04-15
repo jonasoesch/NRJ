@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
         query = "SELECT pc FROM PlugConsumptionFact pc"),
     @NamedQuery(name = "PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod",
         query = "SELECT pcp FROM PlugConsumptionFact pcp WHERE pcp.timestampHour BETWEEN :debut AND :fin"),
-    @NamedQuery(name = "PlugConsumptionFact.getLastFact",
+    @NamedQuery(name = "PlugConsumptionFact.getLastPlugFact",
         query = "SELECT lpcf FROM PlugConsumptionFact lpcf WHERE lpcf.plug = :plug ORDER BY lpcf.timestampHour DESC" ),
     @NamedQuery(name = "PlugConsumptionFact.getConsumptionFactsAfterTime",
         query = "SELECT cfat FROM PlugConsumptionFact cfat WHERE cfat.plug = :plug AND cfat.timestampHour >= :time" ),

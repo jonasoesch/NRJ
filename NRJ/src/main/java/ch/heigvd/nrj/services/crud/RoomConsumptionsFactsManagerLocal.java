@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import java.util.List;
 import javax.ejb.Local;
@@ -22,6 +23,8 @@ public interface RoomConsumptionsFactsManagerLocal {
 	RoomConsumptionFact findById(long id) throws EntityNotFoundException;
 
 	List<RoomConsumptionFact> findAll();
+        
+        RoomConsumptionFact getlastRoomFact(Room room);
 
 	
 }

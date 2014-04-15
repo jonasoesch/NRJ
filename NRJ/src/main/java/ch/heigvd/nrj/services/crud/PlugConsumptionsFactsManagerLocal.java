@@ -27,7 +27,7 @@ public interface PlugConsumptionsFactsManagerLocal {
 
 	List<PlugConsumptionFact> findAll();
         
-        PlugConsumptionFact getlastFact(Plug plug);
+        PlugConsumptionFact getlastPlugFact(Plug plug);
         
         List<PlugConsumptionFact> getConsumptionFactsAfterTime(Plug plu, Date time);
 }
