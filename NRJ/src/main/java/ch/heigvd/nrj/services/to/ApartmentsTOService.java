@@ -45,7 +45,10 @@ public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 
 	@Override
 	public void updateApartmentEntity(Apartment existingEntity, PublicApartmentTO newState) {
-		existingEntity.setName(newState.getName());	
+		existingEntity.setName(newState.getName());
+                if(existingEntity.getId() == null) {
+                    existingEntity.setId(newState.getApartmentId());
+                }
 	}
 	
 }
