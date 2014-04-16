@@ -99,7 +99,7 @@ public class TestDataGeneratorResource {
         warningp1.setMessage("Attention warning du plug1!");
         warningp1.setTimestampMinute(new Date());
         warningp1.setId(warningManager.create(warningp1));
-        p1.addWarnings(warningp1);
+        p1.addWarning(warningp1);
 
         //Création du plug 2: Télévision
         //Et l'ajoute à la pièce 1
@@ -113,7 +113,7 @@ public class TestDataGeneratorResource {
         warningp2.setMessage("Attention warning du plug2!");
         warningp2.setTimestampMinute(new Date());
         warningp2.setId(warningManager.create(warningp2));
-        p2.addWarnings(warningp2);
+        p2.addWarning(warningp2);
         m2.addPlug(p2);
         //Ajout history
         History h2 = new History();
@@ -134,7 +134,7 @@ public class TestDataGeneratorResource {
         warningp3.setMessage("Attention warning du plug3!");
         warningp3.setTimestampMinute(new Date());
         warningp3.setId(warningManager.create(warningp3));
-        p3.addWarnings(warningp3);
+        p3.addWarning(warningp3);
         m1.addPlug(p3);
         //Ajout history
         History h3 = new History();

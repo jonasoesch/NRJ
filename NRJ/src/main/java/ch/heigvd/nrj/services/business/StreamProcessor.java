@@ -68,7 +68,7 @@ public class StreamProcessor implements StreamProcessorLocal {
             if( plug.getAlwaysOn() ){ // si l'appareil doit rester allumé, on envoie une alerte
                 Warning warning = new Warning();
                 warning.setTimestampMinute(o.getTimestampMinute());
-                plug.addWarnings(warning);
+                plug.addWarning(warning);
                 warning.setMessage("The plug is not ON but should be.");
                 warning.setId(warningsManager.create(warning));
                 
