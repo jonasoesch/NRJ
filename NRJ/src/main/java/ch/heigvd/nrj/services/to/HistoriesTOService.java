@@ -31,7 +31,7 @@ public class HistoriesTOService implements HistoriesTOServiceLocal {
 	existingEntity.setStatus(newState.getStatus());
 	if (newState.getPlug() != null) {
 	    Plug p = new Plug();
-	    plugsTOService.updatePlugEntity(p, newState.getPlug());
+	    p.setId(newState.getPlug().getPlugId());
 	    existingEntity.setPlug(p);
 	}
     }

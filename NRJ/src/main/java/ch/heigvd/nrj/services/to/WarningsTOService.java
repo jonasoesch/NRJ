@@ -28,7 +28,7 @@ public class WarningsTOService implements WarningsTOServiceLocal {
 		existingEntity.setMessage(newState.getMessage());
 		if(newState.getPlug() != null){
 		    Plug p = new Plug();
-		    plugsTOService.updatePlugEntity(p, newState.getPlug());
+		    p.setId(newState.getPlug().getPlugId());
 		    existingEntity.setPlug(p);
 		}
 	}
