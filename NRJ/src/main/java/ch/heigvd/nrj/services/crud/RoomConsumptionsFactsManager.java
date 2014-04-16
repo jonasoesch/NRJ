@@ -55,8 +55,8 @@ public class RoomConsumptionsFactsManager implements RoomConsumptionsFactsManage
             return roomConsumptionsFact;
     }
 
-    public RoomConsumptionFact getlastRoomFact(Room room) {
-        List<RoomConsumptionFact> roomConsumptionsFacts = em.createNamedQuery("RoomConsumptionFact.getLastFact").setParameter("room", room).setMaxResults(1).getResultList();
+    public RoomConsumptionFact getLastRoomFact(Room room) {
+        List<RoomConsumptionFact> roomConsumptionsFacts = em.createNamedQuery("RoomConsumptionFact.getLastRoomFact").setParameter("room", room).setMaxResults(1).getResultList();
 
         if (roomConsumptionsFacts.isEmpty()){
             return null;

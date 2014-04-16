@@ -21,16 +21,15 @@ public class PublicPlugConsumptionFactsTO {
     private Long plugConsumptionFactId;
     private Date timestampHour;
     private Double avgKW;
-    private Plug plug;
+    private PublicPlugTO plug;
     
     public PublicPlugConsumptionFactsTO() {
     }
 
-    public PublicPlugConsumptionFactsTO(long plugConsumptionFactId, Date timestampHour, Double avgKW, Plug plug) {
+    public PublicPlugConsumptionFactsTO(long plugConsumptionFactId, Date timestampHour, Double avgKW) {
 	this.plugConsumptionFactId = plugConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
-	this.plug = plug;
     }
 
     public Long getPlugConsumptionFactId() {
@@ -57,11 +56,11 @@ public class PublicPlugConsumptionFactsTO {
 	this.avgKW = avgKW;
     }
     
-    public Plug getPlug() {
+    public PublicPlugTO getPlug() {
 	return plug;
     }
 
-    public void setPlug(Plug plug) {
+    public void setPlug(PublicPlugTO plug) {
 	this.plug = plug;
     }
 }

@@ -14,7 +14,7 @@ public class RoomConsumptionsFactsTOService implements RoomConsumptionsFactsTOSe
 
 	@Override
 	public PublicRoomConsumptionFactsTO buildPublicRoomConsumptionFactTO(RoomConsumptionFact source) {
-		PublicRoomConsumptionFactsTO to = new PublicRoomConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW(), source.getRoom());
+		PublicRoomConsumptionFactsTO to = new PublicRoomConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
 		return to;
 	}   
 
@@ -22,7 +22,7 @@ public class RoomConsumptionsFactsTOService implements RoomConsumptionsFactsTOSe
 	public void updateRoomConsumptionFactEntity(RoomConsumptionFact existingEntity, PublicRoomConsumptionFactsTO newState) {
 		existingEntity.setTimestampHour(newState.getTimestampHour());
 		existingEntity.setAvgKW(newState.getAvgKW());
-		existingEntity.setRoom(newState.getRoom());
+		// existingEntity.setRoom(newState.getRoom());
 	}
 	
 }

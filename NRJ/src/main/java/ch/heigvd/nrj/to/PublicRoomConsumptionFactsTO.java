@@ -17,16 +17,15 @@ public class PublicRoomConsumptionFactsTO {
     private Long roomConsumptionFactId;
     private Date timestampHour;
     private Double avgKW;
-    private Room room;
+    private PublicRoomTO room;
 
     public PublicRoomConsumptionFactsTO() {
     }
 
-    public PublicRoomConsumptionFactsTO(long roomConsumptionFactId, Date timestampHour, Double avgKW, Room room) {
+    public PublicRoomConsumptionFactsTO(long roomConsumptionFactId, Date timestampHour, Double avgKW) {
 	this.roomConsumptionFactId = roomConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
-	this.room = room;
     }
 
     public Long getRoomConsumptionFactId() {
@@ -53,11 +52,11 @@ public class PublicRoomConsumptionFactsTO {
 	this.avgKW = avgKW;
     }
     
-    public Room getRoom() {
+    public PublicRoomTO getRoom() {
 	return room;
     }
 
-    public void setRoom(Room room) {
+    public void setRoom(PublicRoomTO room) {
 	this.room = room;
     }
 }

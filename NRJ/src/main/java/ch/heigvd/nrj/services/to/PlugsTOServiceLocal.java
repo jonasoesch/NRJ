@@ -2,7 +2,7 @@ package ch.heigvd.nrj.services.to;
 
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTOSortie;
+import ch.heigvd.nrj.to.PublicPlugTO;
 import javax.ejb.Local;
 
 /**
@@ -19,7 +19,7 @@ public interface PlugsTOServiceLocal {
      * @param source the JPA entity
      * @return the TO
      */
-    public PublicPlugTOSortie buildPublicPlugTO(Plug source);
+    public PublicPlugTO buildPublicPlugTO(Plug source);
 
     /**
      * This method updates an existing JPA entity by merging the state of the

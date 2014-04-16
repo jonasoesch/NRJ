@@ -17,16 +17,15 @@ public class PublicHistoryTO {
     private long historyId;
     private Date timestampMinute;
     private boolean status;
-    private Plug plug;
+    private PublicPlugTO plug;
 
     public PublicHistoryTO() {
     }
 
-    public PublicHistoryTO(long historyId, Date timestampMinute, boolean status, Plug plug) {
+    public PublicHistoryTO(long historyId, Date timestampMinute, boolean status) {
 	this.historyId = historyId;
 	this.timestampMinute = timestampMinute;
 	this.status = status;
-	this.plug = plug;
     }
 
     public long getHistoryId() {
@@ -53,11 +52,11 @@ public class PublicHistoryTO {
 	this.status = status;
     }
     
-    public Plug getPlug() {
+    public PublicPlugTO getPlug() {
 	return plug;
     }
 
-    public void setPlug(Plug plug) {
+    public void setPlug(PublicPlugTO plug) {
 	this.plug = plug;
     }
 }

@@ -1,7 +1,9 @@
 package ch.heigvd.nrj.services.to;
 
+import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Warning;
 import ch.heigvd.nrj.to.PublicWarningTO;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
@@ -11,10 +13,12 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class WarningsTOService implements WarningsTOServiceLocal {
-
+	@EJB
+	PlugsTOServiceLocal plugsTOService; 
+	
 	@Override
 	public PublicWarningTO buildPublicWarningTO(Warning source) {
-		PublicWarningTO to = new PublicWarningTO(source.getId(), source.getTimestampMinute(), source.getMessage(), source.getPlug());
+		PublicWarningTO to = new PublicWarningTO(source.getId(), source.getTimestampMinute(), source.getMessage());
 		return to;
 	}
 
@@ -22,7 +26,11 @@ public class WarningsTOService implements WarningsTOServiceLocal {
 	public void updateWarningEntity(Warning existingEntity, PublicWarningTO newState) {
 		existingEntity.setTimestampMinute(newState.getTimestampMinute());
 		existingEntity.setMessage(newState.getMessage());
-                existingEntity.setPlug(newState.getPlug());
+		if(newState.getPlug() != null){
+		    Plug p = new Plug();
+		    plugsTOService.updatePlugEntity(p, newState.getPlug());
+		    existingEntity.setPlug(p);
+		}
 	}
 	
 }

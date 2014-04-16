@@ -9,6 +9,7 @@ package ch.heigvd.nrj.rest;
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
+import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.services.business.StreamProcessorLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
@@ -16,6 +17,7 @@ import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicRoomTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,9 +26,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
@@ -68,8 +73,7 @@ public class ConsumptionsObsResource {
     StreamProcessorLocal streamProcessor;
     @EJB
     PlugsTOServiceLocal plugsTOService;
-    @PersistenceContext private EntityManager em;
-
+    
     /**
      * Creates a new instance of ConsumptionsResource
      */
@@ -88,19 +92,19 @@ public class ConsumptionsObsResource {
         ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         
-       /* streamProcessor.onConsumption(newConsumption);
+        streamProcessor.onConsumption(newConsumption);
         
-        //em.flush();
+        long newConsId = this.consumptionsManager.create(newConsumption);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
         
         // Si la plug pour cette Consommation n'existe pas en BD
         if(newConsumption.getPlug() == null) {
             return Response.status(500).build();
         } else {
-            return Response.ok().build();
-        }*/
-        long newConsId = this.consumptionsManager.create(newConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
-        return Response.created(createdURI).build();
+            //return Response.ok().build();
+            return Response.created(createdURI).build();
+        }
+        
     }
 
     /**
@@ -113,12 +117,19 @@ public class ConsumptionsObsResource {
     public List<PublicConsumptionObsTO> getResourceList() {
         List<ConsumptionObs> consumptionsObs = consumptionsManager.findAll();
         List<PublicConsumptionObsTO> result = new LinkedList<>();
-        for (ConsumptionObs co : consumptionsObs) {
-            result.add(consumptionsTOService.buildPublicConsumptionObsTO(co));
+	for (ConsumptionObs co : consumptionsObs) {
+	    PublicConsumptionObsTO o = consumptionsTOService.buildPublicConsumptionObsTO(co);
+	    // PublicConsumptionObsTO o = new PublicConsumptionObsTO();
+
+	    result.add(o);
         }
+	/*System.out.println(result);*/
+	/*List<PublicConsumptionObsTO> result2 = new LinkedList<PublicConsumptionObsTO>();
+	PublicConsumptionObsTO o = new PublicConsumptionObsTO();
+	result.add(o);*/
         return result;
     }
-
+    
     /**
      * Retrieves representation of an ConsumptionsObs resource
      *
@@ -126,14 +137,15 @@ public class ConsumptionsObsResource {
      * @return an instance of PublicConsumptionObsTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-//    @GET
-//    @Path("{id}")
-//    @Produces({"application/json"})
-//    public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-//        ConsumptionObs consumption = consumptionsManager.findById(id);
-//        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
-//        return consumptionTO;
-//    }
+    @GET
+    @Path("{id}")
+    @Produces({"application/json"})
+    public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
+        ConsumptionObs consumption = consumptionsManager.findById(id);
+        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
+        System.out.println(consumptionTO);
+	return consumptionTO;
+    }
     
     /**
      * Updates an ConsumptionsObs resource
@@ -143,15 +155,15 @@ public class ConsumptionsObsResource {
      * @return an instance of PublicConsumptionTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@PUT
+    @PUT
     @Path("{id}")
     @Consumes({"application/json"})
-    public Response Resource(PublicPlugTO updatedPlugTO, @PathParam("id") long id) throws EntityNotFoundException {
-        Plug plugToUpdate = plugsManager.findById(id);
-        plugsTOService.updatePlugEntity(plugToUpdate, updatedPlugTO);
-        consumptionsManager.update(consumptionToUpdate);
+    public Response Resource(PublicConsumptionObsTO updatedConsumptionObsTO, @PathParam("id") long id) throws EntityNotFoundException {
+        ConsumptionObs consumptionObsToUpdate = consumptionsManager.findById(id);
+        consumptionsTOService.updateConsumptionObsEntity(consumptionObsToUpdate, updatedConsumptionObsTO);
+        consumptionsManager.update(consumptionObsToUpdate);
         return Response.ok().build();
-    }*/
+    }
 
     /**
      * Deletes an ConsumptionsObs resource
@@ -160,10 +172,10 @@ public class ConsumptionsObsResource {
      * @return an instance of PublicConsumptionTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
-    /*@DELETE
+    @DELETE
     @Path("{id}")
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
         consumptionsManager.delete(id);
         return Response.ok().build();
-    }*/
+    }
 }

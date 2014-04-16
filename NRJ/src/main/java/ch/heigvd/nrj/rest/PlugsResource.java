@@ -9,7 +9,7 @@ import ch.heigvd.nrj.services.to.HistoriesTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicHistoryTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTOSortie;
+import ch.heigvd.nrj.to.PublicPlugTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -72,6 +72,7 @@ public class PlugsResource {
     /**
      * Creates a new Plug resource from the provided representation
      *
+     * @param newPlugTO
      * @return an instance of PublicPlugTO
      */
     @POST
@@ -91,9 +92,9 @@ public class PlugsResource {
      */
     @GET
     @Produces({"application/json"})
-    public List<PublicPlugTOSortie> getResourceList() {
+    public List<PublicPlugTO> getResourceList() {
         List<Plug> plugs = plugsManager.findAll();
-        List<PublicPlugTOSortie> result = new LinkedList<>();
+        List<PublicPlugTO> result = new LinkedList<>();
         for (Plug plug : plugs) {
             result.add(plugsTOService.buildPublicPlugTO(plug));
         }
@@ -110,9 +111,9 @@ public class PlugsResource {
     @GET
     @Path("{id}")
     @Produces({"application/json"})
-    public PublicPlugTOSortie getResource(@PathParam("id") long id) throws EntityNotFoundException {
+    public PublicPlugTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         Plug plug = plugsManager.findById(id);
-        PublicPlugTOSortie plugTO = plugsTOService.buildPublicPlugTO(plug);
+        PublicPlugTO plugTO = plugsTOService.buildPublicPlugTO(plug);
         return plugTO;
     }
 

@@ -5,7 +5,7 @@ import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.to.RoomConsumptionsFactsTOServiceLocal;
-import ch.heigvd.nrj.to.PublicPlugTOSortie;
+import ch.heigvd.nrj.to.PublicPlugTO;
 import ch.heigvd.nrj.to.PublicRoomConsumptionFactsTO;
 import java.net.URI;
 import java.util.LinkedList;

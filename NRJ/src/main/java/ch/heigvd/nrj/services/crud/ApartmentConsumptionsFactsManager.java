@@ -1,7 +1,9 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ApartmentConsumptionFact;
+import ch.heigvd.nrj.model.RoomConsumptionFact;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -54,5 +56,16 @@ public class ApartmentConsumptionsFactsManager implements ApartmentConsumptionsF
 		List apartmentConsumptionsFact = em.createNamedQuery("ApartmentConsumptionFact.findAllApartmentConsumptionsFacts").getResultList();
 		return apartmentConsumptionsFact;
 	}
+        
+        @Override
+        public ApartmentConsumptionFact getLastApartmentFact(Apartment apartment) {
+        List<ApartmentConsumptionFact> apartmentConsumptionsFacts = em.createNamedQuery("ApartmentConsumptionFact.getLastApartmentFact").setParameter("apartment", apartment).setMaxResults(1).getResultList();
+
+        if (apartmentConsumptionsFacts.isEmpty()){
+            return null;
+        } else {
+            return apartmentConsumptionsFacts.get(0);
+        }
+    }
 	
 }

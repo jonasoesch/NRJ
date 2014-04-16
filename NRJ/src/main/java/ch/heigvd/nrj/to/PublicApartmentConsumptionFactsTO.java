@@ -17,16 +17,15 @@ public class PublicApartmentConsumptionFactsTO {
     private Long apartmentConsumptionFactId;
     private Date timestampHour;
     private Double avgKW;
-    private Apartment apartment;
+    private PublicApartmentTO apartment;
 
     public PublicApartmentConsumptionFactsTO() {
     }
 
-    public PublicApartmentConsumptionFactsTO(long apartmentConsumptionFactId, Date timestampHour, Double avgKW, Apartment apartment) {
+    public PublicApartmentConsumptionFactsTO(long apartmentConsumptionFactId, Date timestampHour, Double avgKW) {
 	this.apartmentConsumptionFactId = apartmentConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
-	this.apartment = apartment;
     }
 
     public Long getApartmentConsumptionFactId() {
@@ -53,11 +52,11 @@ public class PublicApartmentConsumptionFactsTO {
 	this.avgKW = avgKW;
     }
     
-    public Apartment getApartment() {
+    public PublicApartmentTO getApartment() {
 	return apartment;
     }
 
-    public void setApartment(Apartment apartment) {
+    public void setApartment(PublicApartmentTO apartment) {
 	this.apartment = apartment;
     }
 }

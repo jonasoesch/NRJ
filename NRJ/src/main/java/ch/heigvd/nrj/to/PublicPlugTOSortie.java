@@ -1,13 +1,9 @@
 package ch.heigvd.nrj.to;
 
-import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
-import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.Warning;
 import java.util.List;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
