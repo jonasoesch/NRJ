@@ -7,7 +7,7 @@
     <section class="heatmap">
         <!-- Jonas' paradise -->
         <h2>Consommation par pièces</h2>
-        <article class="map"></article>
+        <article class="map"><img src="img/fakeHeatView.jpg" alt="fausse vue"></article>
     </section>
 </section>
 <?php include 'src/foot.php';
