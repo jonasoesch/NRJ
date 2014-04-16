@@ -51,7 +51,8 @@ public class PlugsTOService implements PlugsTOServiceLocal {
 
     @Override
     public void updatePlugEntity(Plug existingEntity, PublicPlugTO newState) {
-        existingEntity.setName(newState.getName());
+        
+	existingEntity.setName(newState.getName());
         existingEntity.setAlwaysOn(newState.getAlwaysOn());
         
         if(newState.getRoom() != null){

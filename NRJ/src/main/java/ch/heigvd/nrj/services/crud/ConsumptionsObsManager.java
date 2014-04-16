@@ -30,7 +30,9 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
     public long create(ConsumptionObs consumption) {
         // Add la consommation à la plug
         Plug plug = consumption.getPlug();
-        try {
+	System.out.println("hu hu" + plug);
+
+	try {
             // Rechercher la plug de cette consumption
             plug = plugsManager.findById(plug.getId());
         } catch (EntityNotFoundException ex) {

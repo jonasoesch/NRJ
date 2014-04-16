@@ -46,18 +46,9 @@ public class StreamProcessor implements StreamProcessorLocal {
     @Override
     public void onConsumption(ConsumptionObs o) {
         
-        System.out.println("ON CONSUMPTION GOGOGO");
-        
-        // Recording observation
-        //  consumptionObsManager.create(o);
-        
-        
         // Retrieve info from plug
         Plug plug = o.getPlug();
         Room room = plug.getRoom();
-        
-        System.out.println("Sout plugName : " + plug);
-        System.out.println("Sout roomName : " + room);
         
         // create History for this Plug
         History history = new History();
