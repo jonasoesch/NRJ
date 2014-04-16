@@ -86,8 +86,9 @@ public class ConsumptionsObsResource {
         ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         //newConsumption = consumptionsTOService.buildPublicConsumptionObsTO(newConsumption);
-        
-        long newConsId = this.consumptionsManager.create(newConsumption);
+        System.out.println("coco2" + newConsumption);
+        long newConsId = consumptionsManager.create(newConsumption);
+	        System.out.println("coco3" + newConsumption);
         URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
 	streamProcessor.onConsumption(newConsumption);
         

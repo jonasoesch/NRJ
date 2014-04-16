@@ -33,8 +33,9 @@ public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
         existingEntity.setTimestampMinute(newState.getTimestampMinute());
         existingEntity.setkW(newState.getkW());
 	if(newState.getPlug() != null){
+	    
 	    Plug p = new Plug();
-	    plugsTOService.updatePlugEntity(p, newState.getPlug());
+	    p.setId(newState.getPlug().getPlugId());
 	    existingEntity.setPlug(p);
 	}
     }
