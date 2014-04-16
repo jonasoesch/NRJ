@@ -2,7 +2,6 @@ $(function () {
     /* actions au démarrage */
     createMenu();
 
-
     if ($('body>section').hasClass('home')) {
         attachApart('1');
     } else {
@@ -59,6 +58,7 @@ $(function () {
                     $('<a>').attr('href', 'room.php?id=' + room.roomId).text(room.name)
                 ).appendTo(li)
                 var ul2 = $('<ul>')
+                $(ul2).attr('id', room.roomId)
                 $.each(room.plugs, function (i, plug) {
                     ul2.append(
                         $('<li>').append(
@@ -70,6 +70,12 @@ $(function () {
                 li.appendTo(ul)
             })
             $('.menu').append(ul)
+                        //Gestion display underMenu
+            if (getURLParameter('id') != null) {
+                showUnderMenus(id);
+            } else {
+                hideUnderMenus();
+            }
         })
 
     }
@@ -127,27 +133,36 @@ $(function () {
                 }
                 $(selector).append(tempDOM);
             });
-
         });
+    }
 
 
         /*-------------------------------------*/
         /*Gestion de l'interaction Menu - Début*/
         /*-------------------------------------*/
+        function hideUnderMenus(){
+            $('.menu').css("background-color", 'pink');
+            $('.menu>ul>li>ul').hide();
+        };
+        function showUnderMenus(id){
+            $("#"+id).css("background-color", 'blue');
+            $('.menu>ul>li>ul').hide();
+            $("#"+id).show();
+        }
+        
         //Flèche sur sous menu
-        $('.menu').on('click', 'ul li', function () {
+        $('.menu').on('click', 'ul > li', function () {
             var liPosition = $(this).position();
             var liHeight = $('h2').height();
             $("#whiteArrow").css("top", liPosition.top + liHeight * 1.2);
-
-            $('.menu').children().eq(3).css("display", "none");
-            $(this).children().eq(1).css("display", "block");
+   
 
         });
         //Flèche sur home
         $('.menu').on('click', 'h1', function () {
             $("#whiteArrow").css("top", '95px');
         });
+
 
         /*-------------------------------------*/
         /*Gestion de l'interaction Menu - Fin*/
@@ -169,5 +184,4 @@ $(function () {
         /*-------------------------------------*/
 
 
-    }
 })
