@@ -27,9 +27,13 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 	PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName());
 	for (Plug plug : source.getPlugs()) {
 	    PublicPlugTO ppt = plugsTOService.buildPublicPlugTO(plug);
-	    System.out.println(ppt.getName() + " " + ppt.getAlwaysOn());
 	    to.addPlug(ppt);
 	}
+	/*for (Plug plug : source.getPlugs()) {
+	    PublicPlugTO ppt = plugsTOService.buildPublicPlugTO(plug);
+	    System.out.println(ppt.getName() + " " + ppt.getAlwaysOn());
+	    to.addPlug(ppt);
+	}*/
 	return to;
     }
     
