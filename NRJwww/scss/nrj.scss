@@ -17,12 +17,10 @@ select,
 textarea {
     color: #222;
 }
-
 html {
     font-size: 1em;
     line-height: 1.4;
 }
-
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection rule sets have to be separate.
@@ -33,12 +31,10 @@ html {
     background: #b3d4fc;
     text-shadow: none;
 }
-
 ::selection {
     background: #b3d4fc;
     text-shadow: none;
 }
-
 /*
  * A better looking default horizontal rule
  */
@@ -51,7 +47,6 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
  * their containers: h5bp.com/i/440
@@ -63,7 +58,6 @@ img,
 video {
     vertical-align: middle;
 }
-
 /*
  * Remove default fieldset styles.
  */
@@ -73,7 +67,6 @@ fieldset {
     margin: 0;
     padding: 0;
 }
-
 /*
  * Allow only vertical resizing of textareas.
  */
@@ -81,7 +74,6 @@ fieldset {
 textarea {
     resize: vertical;
 }
-
 /* ==========================================================================
    Browse Happy prompt
    ========================================================================== */
@@ -92,105 +84,110 @@ textarea {
     color: #000;
     padding: 0.2em 0;
 }
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+$darkgrey:#333333;
+ $lightgrey:#999999;
+ $green:#93C92C;
+ $red:#E34F4A;
 @font-face {
-   font-family: 'android';
-   src: url('../font/android.eot');
-   src: url('../font/android.eot?#iefix') format('embedded-opentype'),
-        url('../font/android.woff') format('woff'),
-        url('../font/android.otf') format('otf'),
-        url('../font/android.ttf') format('truetype'),
-        url('../font/android.svg#android') format('svg');
+    font-family: 'android';
+    src: url('../font/android.eot');
+    src: url('../font/android.eot?#iefix') format('embedded-opentype'), url('../font/android.woff') format('woff'), url('../font/android.otf') format('otf'), url('../font/android.ttf') format('truetype'), url('../font/android.svg#android') format('svg');
 }
-
-header{
-background-image: url(../img/logo.png);
-border-bottom: solid 2px #93C92C;
-background-position: center left;
-background-repeat: no-repeat;
-height: 90px;
-background-color: #333333;
+header {
+    background-image: url(../img/logo.png);
+    border-bottom: solid 2px $green;
+    background-position: center left;
+    background-repeat: no-repeat;
+    height: 90px;
+    width: 380px;
+    position: fixed;
+    background-color: $darkgrey;
 }
-
-nav h1{
+nav h1 {
     margin-left: 40px;
     padding-top: 30px;
 }
-.menu{
-    position:absolute;
-    top:92px;
+.menu {
+    position: fixed;
+    width: 380px;
+    top: 92px;
     left: 0%;
-    background-color: #999999;
+    background-color: $lightgrey;
     height: 100%;
-    width: 20%;
     text-decoration: none;
-    color: #333333;
-    ul li{
+    color: $darkgrey;
+    ul li {
         cursor: pointer;
     }
-    a{
-    text-decoration: none;
-    color: #333333;
+    a {
+        text-decoration: none;
+        color: $darkgrey;
     }
 }
-
-#whiteArrow{
-    position: absolute;
+#whiteArrow {
+    position: fixed;
     top: 95px;
-    right: 80%;
+    left: 320px;
 }
-
-
-.room{
+.home,
+.room {
     position: absolute;
-    margin-top: 30px;
-    width:70%;
-    right:0;
-    color: #333333;
-    .overall{
-    font-size:1.2em;
-    border-bottom: solid 4px #333333; 
-    color: #333333;
+    width: 76%;
+    left: 22%;
+    color: $darkgrey;
+    .overall {
+        font-size: 1.2em;
+        color: $darkgrey;
+    }
+    .heatmap {
+        border-top: solid 1px $green;
+        clear: both;
+    }
+    .plug {
+        border-top: solid 1px $green;
+        color: $darkgrey;
+        clear: both;
     }
 }
-
-.home{
-    position: absolute;
-    margin-top: 30px;
-    width:70%;
-    right:0;
-    color: #333333;
-    .overall{
-    font-size:1.2em;
-    border-bottom: solid 4px #333333; 
-    color: #333333;
-    }
-}
-
-
-.plug{
-    border-top: solid 1px #93C92C; 
-    margin-top: 100px;
-    color: #333333;
-}
-
-.bouton{
+.timegraph {
+    clear: both;
+    h2 {
         display: inline-block;
-        background: url('../img/on.png') center center;
-        background-repeat: no-repeat;
-        background-color: green;
-        border: none;
-        padding: 5px 7px 5px 7px;
-        width:400;
-        height:400;
-        cursor: pointer;
+        float: left;
+    }
+    .onoff {
+        display: inline-block;
+        float: right;
+        font-size: 20px;
+        ;
+        .button {
+            width: 150px;
+            border: 1px solid $lightgrey;
+            font-size: 20px;
+            height: 30px;
+        }
+        .on {
+            background: $green;
+        }
+        .off {
+            background: $red;
+        }
+    }
+    .alwayson {
+        display: inline-block;
+        float: right;
+        background: $green;
+        text-align: center;
+        width: 148px;
+        border: 1px solid $lightgrey;
+        font-size: 20px;
+        line-height: 28px;
+    }
 }
-
-
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -206,14 +203,12 @@ nav h1{
     /* IE 6/7 fallback */
     *text-indent: -9999px;
 }
-
 .ir:before {
     content: "";
     display: block;
     width: 0;
     height: 150%;
 }
-
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
@@ -222,7 +217,6 @@ nav h1{
     display: none !important;
     visibility: hidden;
 }
-
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
@@ -237,7 +231,6 @@ nav h1{
     position: absolute;
     width: 1px;
 }
-
 /*
  * Extends the .visuallyhidden class to allow the element to be focusable
  * when navigated to via the keyboard: h5bp.com/p
@@ -252,7 +245,6 @@ nav h1{
     position: static;
     width: auto;
 }
-
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
@@ -260,7 +252,6 @@ nav h1{
 .invisible {
     visibility: hidden;
 }
-
 /*
  * Clearfix: contain floats
  *
@@ -275,14 +266,14 @@ nav h1{
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
 }
-
 .clearfix:after {
     clear: both;
 }
-
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
@@ -291,7 +282,6 @@ nav h1{
 .clearfix {
     *zoom: 1;
 }
-
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -301,14 +291,12 @@ nav h1{
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 }
-
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
-
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -317,64 +305,54 @@ nav h1{
 @media print {
     * {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        color: #000 !important;
+        /* Black prints faster: h5bp.com/s */
         box-shadow: none !important;
         text-shadow: none !important;
     }
-
     a,
     a:visited {
         text-decoration: underline;
     }
-
     a[href]:after {
-        content: " (" attr(href) ")";
+        content: " (" attr(href)")";
     }
-
     abbr[title]:after {
-        content: " (" attr(title) ")";
+        content: " (" attr(title)")";
     }
-
     /*
      * Don't show links for images, or javascript/internal links
      */
-
     .ir a:after,
     a[href^="javascript:"]:after,
     a[href^="#"]:after {
         content: "";
     }
-
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
     }
-
     thead {
-        display: table-header-group; /* h5bp.com/t */
+        display: table-header-group;
+        /* h5bp.com/t */
     }
-
     tr,
     img {
         page-break-inside: avoid;
     }
-
     img {
         max-width: 100% !important;
     }
-
     @page {
         margin: 0.5cm;
     }
-
     p,
     h2,
     h3 {
         orphans: 3;
         widows: 3;
     }
-
     h2,
     h3 {
         page-break-after: avoid;

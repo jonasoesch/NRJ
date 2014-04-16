@@ -54,6 +54,7 @@ $(function () {
                     $('<a>').attr('href', 'room.php?id=' + room.roomId).text(room.name)
                 ).appendTo(li)
                 var ul2 = $('<ul>')
+                ul2.attr('id', room.roomId)
                 $.each(room.plugs, function (i, plug) {
                     ul2.append(
                         $('<li>').append(
@@ -65,6 +66,12 @@ $(function () {
                 li.appendTo(ul)
             })
             $('.menu').append(ul)
+            //Gestion display underMenu
+            if (getURLParameter('id') != null) {
+                showUnderMenus(id);
+            } else {
+                hideUnderMenus();
+            }
         })
 
     }
@@ -81,7 +88,6 @@ $(function () {
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
             $(selector).append(dom)
-            onoff();
         })
     }
 
@@ -97,7 +103,6 @@ $(function () {
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
             $(selector).append(dom);
-            onoff();
         })
     }
     //Attache le graph détaillé de la plug
@@ -123,12 +128,11 @@ $(function () {
                     tempDOM.find('.alwayson').hide();
                 }
                 $(selector).append(tempDOM);
-                onoff();
             });
-
         });
-
     }
+
+
     /*-------------------------------------*/
     /*Gestion de l'interaction Menu - Début*/
     /*-------------------------------------*/
@@ -153,21 +157,30 @@ $(function () {
     /*-------------------------------------*/
     /*Gestion du bouton On/Off - Début*/
     /*-------------------------------------*/
-    function onoff() {
 
-        $('.onoff').on('click', '.button', function () {
-            console.log($(this).val());
-            if ($(this).hasClass('on')) {
-                $(this).removeClass('on').addClass('off').val('OFF');
-            } else {
-                $(this).removeClass('off').addClass('on').val('ON');
-            }
-        });
-    }
+    $('.home, .room').on('click', '.onoff .button', function () {
+        console.log($(this).val());
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').addClass('off').val('OFF');
+        } else {
+            $(this).removeClass('off').addClass('on').val('ON');
+        }
+    });
     /*-------------------------------------*/
     /*Gestion du bouton On/Off - Fin*/
     /*-------------------------------------*/
 
+    /*-------------------------------------*/
+    /*Gestion de l'interaction Menu - Début*/
+    /*-------------------------------------*/
+    function hideUnderMenus() {
+        $('.menu>ul>li>ul').hide();
+    };
+
+    function showUnderMenus(id) {
+        $('.menu>ul>li>ul').hide();
+        $("#" + id).show();
+    }
 
 
 })

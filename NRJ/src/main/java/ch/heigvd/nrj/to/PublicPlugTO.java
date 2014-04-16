@@ -32,6 +32,9 @@ public class PublicPlugTO {
 	this.plugId = plugId;
 	this.name = name;
 	this.alwaysOn = alwaysOn;
+	this.histories = new ArrayList<>();
+        this.plugConsumptions = new ArrayList<>();
+        this.warnings = new ArrayList<>();
     }
 
     public long getPlugId() {

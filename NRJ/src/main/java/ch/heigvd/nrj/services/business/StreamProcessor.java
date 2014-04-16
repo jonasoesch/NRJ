@@ -46,6 +46,8 @@ public class StreamProcessor implements StreamProcessorLocal {
     @Override
     public void onConsumption(ConsumptionObs o) {
         
+        System.out.println("ON CONSUMPTION GOGOGO");
+        
         // Recording observation
         //  consumptionObsManager.create(o);
         
@@ -53,6 +55,9 @@ public class StreamProcessor implements StreamProcessorLocal {
         // Retrieve info from plug
         Plug plug = o.getPlug();
         Room room = plug.getRoom();
+        
+        System.out.println("Sout plugName : " + plug);
+        System.out.println("Sout roomName : " + room);
         
         // create History for this Plug
         History history = new History();
@@ -68,7 +73,7 @@ public class StreamProcessor implements StreamProcessorLocal {
             if( plug.getAlwaysOn() ){ // si l'appareil doit rester allumé, on envoie une alerte
                 Warning warning = new Warning();
                 warning.setTimestampMinute(o.getTimestampMinute());
-                plug.addWarnings(warning);
+                plug.addWarning(warning);
                 warning.setMessage("The plug is not ON but should be.");
                 warning.setId(warningsManager.create(warning));
                 

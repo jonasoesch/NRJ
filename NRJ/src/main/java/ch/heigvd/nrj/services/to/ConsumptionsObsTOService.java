@@ -1,9 +1,7 @@
 package ch.heigvd.nrj.services.to;
 
-import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
 import javax.ejb.EJB;
