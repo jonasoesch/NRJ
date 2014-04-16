@@ -4,6 +4,9 @@ import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,25 +23,27 @@ public class HistoriesManager implements HistoriesManagerLocal {
 
     @PersistenceContext
     private EntityManager em;
+    
+    @EJB
+    PlugsManagerLocal plugsManager;
 
     @Override
     public long create(History historyData) {
         History newHistory = new History(historyData);
 
         // Set la plug
-        Plug p = newPlugConsumptionFact.getPlug();
+        Plug p = newHistory.getPlug();
         try {
             // Rechercher la plug
-            p = plugConsumptionFactsManager.findById(p.getId());
+            p = plugsManager.findById(p.getId());
         } catch (EntityNotFoundException ex) {
             Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        newRoom.setApartment(a);
-        em.persist(newRoom);
-        a.addRoom(newRoom);
-
+        newHistory.setPlug(p);
         em.persist(newHistory);
+        p.addHistory(newHistory);
         em.flush();
+
         return newHistory.getId();
     }
 

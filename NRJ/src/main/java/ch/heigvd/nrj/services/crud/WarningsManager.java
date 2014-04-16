@@ -4,6 +4,9 @@ import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Warning;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +21,9 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class WarningsManager implements WarningsManagerLocal {
 
+    @EJB
+    PlugsManagerLocal plugsManager;
+    
     @PersistenceContext
     private EntityManager em;
 
@@ -26,19 +32,18 @@ public class WarningsManager implements WarningsManagerLocal {
         Warning newWarning = new Warning(warningData);
 
         // Set la plug
-        Plug p = newPlugConsumptionFact.getPlug();
+        Plug p = newWarning.getPlug();
         try {
             // Rechercher la plug
-            p = plugConsumptionFactsManager.findById(p.getId());
+            p = plugsManager.findById(p.getId());
         } catch (EntityNotFoundException ex) {
             Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        newRoom.setApartment(a);
-        em.persist(newRoom);
-        a.addRoom(newRoom);
-
+        newWarning.setPlug(p);
         em.persist(newWarning);
+        p.addWarnings(newWarning);
         em.flush();
+
         return newWarning.getId();
     }
 
