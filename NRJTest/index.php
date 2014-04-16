@@ -158,6 +158,38 @@ class AllTests extends WebTestCase {
     }
 
 
+    function testPostHistory() {
+        // 11
+        $this->post(
+            URL.'/histories', 
+            '{
+            "plug": {
+                "plugId": 6
+            },
+              "timestampMinute":"2014-04-16T14:32:43.07",
+              "status": false
+            }',
+            'application/json'
+        );
+        $this->assertResponse(201);
+        
+        // 12
+        $this->post(
+            URL.'/histories', 
+            '{
+            "plug": {
+                "plugId": 5
+            },
+              "timestampMinute":"2014-04-16T14:32:43.07",
+              "status": true
+            }',
+            'application/json'
+        );
+        $this->assertResponse(201);
+
+    }
+
+
     //--------
     // GETs
     // --------
