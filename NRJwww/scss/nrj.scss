@@ -139,15 +139,19 @@ nav h1 {
     width: 76%;
     left: 22%;
     color: $darkgrey;
-    .plug {
-        border-top: solid 1px $green;
-        margin-top: 100px;
+    .overall {
+        font-size: 1.2em;
         color: $darkgrey;
     }
-}
-.overall {
-    font-size: 1.2em;
-    color: $darkgrey;
+    .heatmap {
+        border-top: solid 1px $green;
+        clear: both;
+    }
+    .plug {
+        border-top: solid 1px $green;
+        color: $darkgrey;
+        clear: both;
+    }
 }
 .timegraph {
     clear: both;
@@ -158,8 +162,13 @@ nav h1 {
     .onoff {
         display: inline-block;
         float: right;
+        font-size: 20px;
+        ;
         .button {
-            width: 4em;
+            width: 150px;
+            border: 1px solid $lightgrey;
+            font-size: 20px;
+            height: 30px;
         }
         .on {
             background: $green;
@@ -171,6 +180,12 @@ nav h1 {
     .alwayson {
         display: inline-block;
         float: right;
+        background: $green;
+        text-align: center;
+        width: 148px;
+        border: 1px solid $lightgrey;
+        font-size: 20px;
+        line-height: 28px;
     }
 }
 /* ==========================================================================
