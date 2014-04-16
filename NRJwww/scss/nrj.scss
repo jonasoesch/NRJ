@@ -99,7 +99,7 @@ $darkgrey:#333333;
 }
 header {
     background-image: url(../img/logo.png);
-    border-bottom: solid 2px #93C92C;
+    border-bottom: solid 2px $green;
     background-position: center left;
     background-repeat: no-repeat;
     height: 90px;
@@ -138,7 +138,7 @@ nav h1 {
     right: 0;
     color: $darkgrey;
     .plug {
-        border-top: solid 1px #93C92C;
+        border-top: solid 1px $green;
         margin-top: 100px;
         color: $darkgrey;
     }
