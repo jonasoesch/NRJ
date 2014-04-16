@@ -306,7 +306,7 @@ public class TestDataGenerator2Resource {
         ConsumptionObs c6 = new ConsumptionObs();
         c6.setTimestampMinute(new Date());
         c6.setkW(1.4);
-        c6.setPlug(p3);
+        c6.setPlug(p6);
         c6.setId(consumptionsObsManager.create(c6));
 
         Warning w6 = new Warning();
@@ -349,7 +349,7 @@ public class TestDataGenerator2Resource {
         History h7 = new History();
         h7.setTimestampMinute(new Date());
         h7.setStatus(true);
-        h7.setPlug(p6);
+        h7.setPlug(p7);
         h7.setId(historiesManager.create(h7));
 
         PlugConsumptionFact pcf7 = new PlugConsumptionFact();
@@ -374,7 +374,7 @@ public class TestDataGenerator2Resource {
         Warning w8 = new Warning();
         w8.setTimestampMinute(new Date());
         w8.setMessage("Problème sur l'appareil mystère de la chambre des parents");
-        w8.setPlug(p7);
+        w8.setPlug(p8);
         w8.setId(warningsManager.create(w6));
 
         History h8 = new History();
