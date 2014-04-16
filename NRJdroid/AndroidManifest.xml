@@ -34,6 +34,14 @@
             android:name="ch.comem.nrjdroid.SimpleXYPlotActivity"
             android:label="@string/title_activity_simple_xyplot" >
         </activity>
+        <activity
+            android:name="ch.comem.nrjdroid.MainMenu"
+            android:label="@string/title_activity_main_menu"
+            android:parentActivityName="ch.comem.nrjdroid.Fragment" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Fragment" />
+        </activity>
     </application>
 
 </manifest>

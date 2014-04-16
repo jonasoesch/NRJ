@@ -78,6 +78,11 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+@font-face {
+  font-family: 'android';
+  src: url("../font/android.eot");
+  src: url("../font/android.eot?#iefix") format("embedded-opentype"), url("../font/android.woff") format("woff"), url("../font/android.otf") format("otf"), url("../font/android.ttf") format("truetype"), url("../font/android.svg#android") format("svg"); }
+
 header {
   background-image: url(../img/logo.png);
   border-bottom: solid 2px #93C92C;
@@ -96,21 +101,53 @@ nav h1 {
   left: 0%;
   background-color: #999999;
   height: 100%;
-  width: 20%; }
+  width: 20%;
+  text-decoration: none;
+  color: #333333; }
+  .menu ul li {
+    cursor: pointer; }
+  .menu a {
+    text-decoration: none;
+    color: #333333; }
 
 #whiteArrow {
   position: absolute;
   top: 95px;
   right: 80%; }
 
-.menu ul li {
-  cursor: pointer; }
+.room {
+  position: absolute;
+  margin-top: 30px;
+  width: 70%;
+  right: 0;
+  color: #333333; }
+  .room .overall {
+    font-size: 1.2em;
+    border-bottom: solid 4px #333333;
+    color: #333333; }
 
 .home {
   position: absolute;
   margin-top: 30px;
   width: 70%;
-  right: 0; }
+  right: 0;
+  color: #333333; }
+  .home .overall {
+    font-size: 1.2em;
+    border-bottom: solid 4px #333333;
+    color: #333333; }
+
+.plug {
+  border-top: solid 1px #93C92C;
+  margin-top: 100px;
+  color: #333333; }
+
+input[name=onoff] {
+  background-image: url(../img/on.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 200;
+  height: 200; }
 
 /* ==========================================================================
    Helper classes
