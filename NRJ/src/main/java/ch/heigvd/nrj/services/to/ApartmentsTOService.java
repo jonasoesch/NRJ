@@ -1,6 +1,7 @@
 package ch.heigvd.nrj.services.to;
 
 import ch.heigvd.nrj.model.Apartment;
+import ch.heigvd.nrj.model.ApartmentConsumptionFact;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicApartmentTO;
@@ -20,6 +21,9 @@ public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 
 	@EJB
 	RoomsTOServiceLocal roomsTOService;
+	
+	@EJB
+	ApartmentConsumptionsFactsTOServiceLocal apartmentConsumptionsFactsTOService;
 	/*@Override
 	public PublicApartmentTO buildPublicApartmentTO(Apartment source, boolean convertChilds) {
 	    PublicApartmentTO to = new PublicApartmentTO(source.getId(), source.getName());
@@ -36,6 +40,9 @@ public class ApartmentsTOService implements ApartmentsTOServiceLocal {
 	    PublicApartmentTO to = new PublicApartmentTO(source.getId(), source.getName());
 	    for (Room room : source.getRooms()) {			
 		to.addRoom(roomsTOService.buildPublicRoomTO(room));
+	    }
+	    for(ApartmentConsumptionFact acf : source.getApartmentConsumptionsFacts()){
+		to.addApartmentConsumptionFact(apartmentConsumptionsFactsTOService.buildPublicApartmentConsumptionFactTO(acf));
 	    }
 	    return to;
 	}

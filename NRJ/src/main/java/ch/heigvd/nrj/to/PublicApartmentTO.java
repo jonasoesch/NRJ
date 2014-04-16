@@ -17,13 +17,16 @@ public class PublicApartmentTO {
     private long apartmentId;
     private String name;
     private List<PublicRoomTO> rooms;
-
+    private List<PublicApartmentConsumptionFactsTO> apartmentConsumptionFacts; 
+    
     public PublicApartmentTO() {
 	this.rooms = new ArrayList<>();
+	this.apartmentConsumptionFacts = new ArrayList<>();
     }
 
     public PublicApartmentTO(long apartmentId, String name) {
 	this.rooms = new ArrayList<>();
+	this.apartmentConsumptionFacts = new ArrayList<>();
         this.apartmentId = apartmentId;
         this.name = name;
     }
@@ -54,6 +57,17 @@ public class PublicApartmentTO {
     
     public void addRoom(PublicRoomTO room) {
 	this.rooms.add(room);
+    }
+    
+    public List<PublicApartmentConsumptionFactsTO> getApartmentConsumptionFacts() {
+	return apartmentConsumptionFacts;
+    }
+
+    public void setApartmentConsumptionFacts(List<PublicApartmentConsumptionFactsTO> ApartmentConsumptionFacts) {
+	this.apartmentConsumptionFacts = ApartmentConsumptionFacts;
+    }
+    public void addApartmentConsumptionFact(PublicApartmentConsumptionFactsTO ApartmentConsumptionFact) {
+	this.apartmentConsumptionFacts.add(ApartmentConsumptionFact);
     }
     
 }
