@@ -2,6 +2,7 @@ $(function () {
     /* actions au démarrage */
     createMenu();
 
+    /****** Sélectionne les infos à charger au démarrage ***/
     if ($('body>section').hasClass('home')) {
         attachApart('1');
     } else {
@@ -13,11 +14,6 @@ $(function () {
             $('body > section').append('Veuillez sélectionner un appartement.')
         }
     }
-
-
-
-    /* surveillants */
-
 
     /************* fonctions générales *******************/
     /*****************************************************/
@@ -106,7 +102,7 @@ $(function () {
             dom.find('h2').text(json.name)
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
-            $(selector).append(dom)
+            $(selector).append(dom);
         })
     }
     //Attache le graph détaillé de la plug
@@ -136,6 +132,43 @@ $(function () {
         });
     }
 
+    }
+    /*-------------------------------------*/
+    /*Gestion de l'interaction Menu - Début*/
+    /*-------------------------------------*/
+    //Flèche sur sous menu
+    $('.menu').on('click', 'ul li', function () {
+        var liPosition = $(this).position();
+        var liHeight = $('h2').height();
+        $("#whiteArrow").css("top", liPosition.top + liHeight * 1.2);
+
+        $('.menu').children().eq(3).css("display", "none");
+        $(this).children().eq(1).css("display", "block");
+
+    });
+    //Flèche sur home
+    $('.menu').on('click', 'h1', function () {
+        $("#whiteArrow").css("top", '95px');
+    });
+
+    /*-------------------------------------*/
+    /*Gestion de l'interaction Menu - Fin*/
+    /*-------------------------------------*/
+    /*-------------------------------------*/
+    /*Gestion du bouton On/Off - Début*/
+    /*-------------------------------------*/
+
+    $('.home, .room').on('click', '.onoff .button', function () {
+        console.log($(this).val());
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').addClass('off').val('OFF');
+        } else {
+            $(this).removeClass('off').addClass('on').val('ON');
+        }
+    });
+    /*-------------------------------------*/
+    /*Gestion du bouton On/Off - Fin*/
+    /*-------------------------------------*/
 
         /*-------------------------------------*/
         /*Gestion de l'interaction Menu - Début*/

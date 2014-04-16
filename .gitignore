@@ -69,3 +69,7 @@ NRJwww/nbproject/private/private.xml
 #NRJdroid
 Android\MWSProject\gen\com\example\mwsproject\BuildConfig.java
 Android\MWSProject\project.properties
+
+#NRJTest
+NRJTest/config.php
+NRJwww/css/nrj.css

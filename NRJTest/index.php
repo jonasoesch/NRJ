@@ -5,12 +5,10 @@ ini_set('display_errors', 1);
 
 require_once('simpletest/autorun.php');
 require_once('simpletest/web_tester.php');
-
-define("URL", "http://localhost:8080/NRJ/api");
+require_once('config.php');
 
 class AllTests extends WebTestCase {
     
-    public $u = "http://localhost:8080/NRJ/api";
 
     function testRunning() {
         $this->get(URL.'/apartments');
@@ -77,25 +75,26 @@ class AllTests extends WebTestCase {
         $this->post(
             URL.'/plugs', 
             '{
-                 "name": "Télévision",
+                 "name": "Television",
                  "alwayson": false,
                  "room": {"roomId": 2}
              }',
             'application/json'
         );
         $this->assertResponse(201);
+    }
+
+    function testPostPlugToRoom() {
         // 6
-        /*
         $this->post(
             URL.'/rooms/3/plugs', 
             '{
-                 "name": "Lumière principale",
+                 "name": "Lumiere principale",
                  "alwayson": false
              }',
             'application/json'
         );
-        $this->assertResponse(201);
-         */
+        $this->assertResponse(201);        
     }
 
 
@@ -107,47 +106,55 @@ class AllTests extends WebTestCase {
     $this->post(
         URL.'/consumptionsObs', 
         '{
-          "timestampMinute": 1397139997864,
-          "kW": 12,
-          "plugId": 5
+        "plug": {
+            "plugId": 6
+        },
+          "timestampMinute":"2014-04-16T14:32:43.07",
+          "kW":22.6
         }',
         'application/json'
     );
-    $this->assertResponse(200);
+    $this->assertResponse(201);
 
     // 8
     $this->post(
         URL.'/consumptionsObs', 
         '{
-          "timestampMinute": 1398139997864,
-          "kW": 6,
-          "plugId": 6
+        "plug": {
+            "plugId": 4
+        },
+          "timestampMinute":"2014-04-16T14:32:43.07",
+          "kW":12.6
         }',
         'application/json'
     );
-    $this->assertResponse(200);    
+    $this->assertResponse(201);    
     // 9
     $this->post(
         URL.'/consumptionsObs', 
         '{
-          "timestampMinute": 1398139997864,
-          "kW": 7,
-          "plugId": 6
+        "plug": {
+            "plugId": 5
+        },
+          "timestampMinute":"2014-04-16T14:32:43.07",
+          "kW":17.0
         }',
         'application/json'
     );
-    $this->assertResponse(200);
+    $this->assertResponse(201);
     // 10 
     $this->post(
         URL.'/consumptionsObs', 
         '{
-          "timestampMinute": 1408139997864,
-          "kW": 9,
-          "plugId": 5
+        "plug": {
+            "plugId": 6
+        },
+          "timestampMinute":"2014-04-16T14:32:43.07",
+          "kW":2.9
         }',
         'application/json'
     );
-    $this->assertResponse(200);
+    $this->assertResponse(201);
     }
 
 
@@ -171,13 +178,13 @@ class AllTests extends WebTestCase {
     function testGetPlug() {
         $this->get(URL.'/plugs/6');
         $this->assertResponse(200);
-        $this->assertText('"name":""kW": 12"');
+        $this->assertText('Lumiere principale');
     }
 
     function testGetPlugsFromRoom() {
         $this->get(URL.'/rooms/2/plugs');
         $this->assertResponse(200);
-        $this->assertText('Télévision');
+        $this->assertText('Television');
     }
 
 

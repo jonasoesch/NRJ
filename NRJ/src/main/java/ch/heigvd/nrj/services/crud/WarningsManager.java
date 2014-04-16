@@ -41,9 +41,8 @@ public class WarningsManager implements WarningsManagerLocal {
         }
         newWarning.setPlug(p);
         em.persist(newWarning);
-        p.addWarnings(newWarning);
+        p.addWarning(newWarning);
         em.flush();
-
         return newWarning.getId();
     }
 

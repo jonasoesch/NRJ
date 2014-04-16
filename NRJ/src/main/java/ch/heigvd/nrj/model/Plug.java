@@ -110,7 +110,7 @@ public class Plug implements Serializable {
         this.warnings = warnings;
     }
     
-    public void addWarnings(Warning warning) {
+    public void addWarning(Warning warning) {
         this.warnings.add(warning);
     }
     
