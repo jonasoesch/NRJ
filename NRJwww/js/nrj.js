@@ -83,6 +83,8 @@ $(function () {
         })
         $(selector).on('getGraph', function (event, dom, json) {
             dom.find('h2').text(json.name)
+            dom.find('.onoff').show();
+            dom.find('.alwayson').hide();
             $(selector).append(dom)
         })
     }
@@ -96,6 +98,8 @@ $(function () {
         })
         $(selector).on('getGraph', function (event, dom, json) {
             dom.find('h2').text(json.name)
+            dom.find('.onoff').show();
+            dom.find('.alwayson').hide();
             $(selector).append(dom)
         })
     }
@@ -114,11 +118,17 @@ $(function () {
                 var tempDOM = html.clone();
                 tempDOM.attr('id', plug.plugId);
                 tempDOM.find('h2').text(plug.name);
+                if (plug.alwaysOn) {
+                    tempDOM.find('.onoff').hide();
+                    tempDOM.find('.alwayson').show();
+                } else {
+                    tempDOM.find('.onoff').show();
+                    tempDOM.find('.alwayson').hide();
+                }
                 $(selector).append(tempDOM);
             });
 
         });
-
 
 
         /*-------------------------------------*/
