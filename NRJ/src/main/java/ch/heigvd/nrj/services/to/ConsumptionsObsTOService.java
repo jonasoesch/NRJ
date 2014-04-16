@@ -24,7 +24,7 @@ public class ConsumptionsObsTOService implements ConsumptionsObsTOServiceLocal {
     public PublicConsumptionObsTO buildPublicConsumptionObsTO(ConsumptionObs source) {
         PublicConsumptionObsTO to = new PublicConsumptionObsTO(source.getId(), source.getkW(), source.getTimestampMinute());
 	if (source.getPlug() != null) {
-	    PublicPlugTO plug = new PublicPlugTO();
+	    PublicPlugTO plug = plugsTOService.buildPublicPlugTO(source.getPlug());
 	    to.setPlug(plug);
 	}
         return to;
