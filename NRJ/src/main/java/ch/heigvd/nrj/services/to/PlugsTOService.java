@@ -28,7 +28,7 @@ public class PlugsTOService implements PlugsTOServiceLocal {
     @Override
     public PublicPlugTO buildPublicPlugTO(Plug source) {
         PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn());
-        // RoomConsumptions
+        // PlugConsumptions
         for(PlugConsumptionFact pcf : source.getPlugConsumptionsFacts()) {
             PublicPlugConsumptionFactsTO ppcf = plugConsumptionFactsService.buildPublicPlugConsumptionFactTO(pcf);
             to.addPlugConsumption(ppcf);
@@ -59,14 +59,22 @@ public class PlugsTOService implements PlugsTOServiceLocal {
 		roomsTOService.updateRoomEntity(r, newState.getRoom());
 		existingEntity.setRoom(r);
 	 }
-        
-         if(existingEntity.getId() == null) {
-               existingEntity.setId(newState.getPlugId());
-         }
-//		existingEntity.setRoom(newState.getRoom());
-//		existingEntity.setHistories(newState.getHistories());
-//		existingEntity.setPlugConsumptionsFacts(newState.getPlugConsumptions());
-//		existingEntity.setWarnings(newState.getWarnings());
+	 
+	 for(PublicHistoryTO h : newState.getHistories()){
+		History newHistory = new History();
+		historiesService.updateHistoryEntity(newHistory, h);
+		existingEntity.addHistory(newHistory);
+	 }
+	 for(PublicWarningTO w : newState.getWarnings()){
+		Warning newWarning = new Warning();
+		warningsService.updateWarningEntity(newWarning, w);
+		existingEntity.addWarning(newWarning);
+	 }
+	 for(PublicPlugConsumptionFactsTO pcf : newState.getPlugConsumptions()){
+		PlugConsumptionFact newPCF = new PlugConsumptionFact();
+		plugConsumptionFactsService.updatePlugConsumptionFactEntity(newPCF, pcf);
+		existingEntity.addPlugConsumptionFact(newPCF);
+	 }
     }
 
 }

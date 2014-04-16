@@ -43,7 +43,6 @@ public class HistoriesManager implements HistoriesManagerLocal {
         em.persist(newHistory);
         p.addHistory(newHistory);
         em.flush();
-
         return newHistory.getId();
     }
 

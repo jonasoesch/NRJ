@@ -4,7 +4,6 @@
  */
 package ch.heigvd.nrj.to;
 
-import ch.heigvd.nrj.model.Plug;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
