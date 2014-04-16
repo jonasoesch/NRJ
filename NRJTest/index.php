@@ -85,6 +85,7 @@ class AllTests extends WebTestCase {
         );
         $this->assertResponse(201);
         // 6
+        /*
         $this->post(
             URL.'/rooms/3/plugs', 
             '{
@@ -94,6 +95,7 @@ class AllTests extends WebTestCase {
             'application/json'
         );
         $this->assertResponse(201);
+         */
     }
 
 

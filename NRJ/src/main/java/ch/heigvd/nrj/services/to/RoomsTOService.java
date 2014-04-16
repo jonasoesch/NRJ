@@ -47,5 +47,8 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 		apartmentsTOService.updateApartmentEntity(a, newState.getApartment());
 		existingEntity.setApartment(a);
 	    }
+            if(existingEntity.getId() == null) {
+                existingEntity.setId(newState.getRoomId());
+            }
     }
 }

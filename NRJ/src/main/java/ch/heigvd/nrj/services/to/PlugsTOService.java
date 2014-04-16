@@ -3,6 +3,7 @@ package ch.heigvd.nrj.services.to;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
+import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.Warning;
 import ch.heigvd.nrj.to.PublicHistoryTO;
 import ch.heigvd.nrj.to.PublicPlugConsumptionFactsTO;
@@ -19,6 +20,7 @@ import javax.ejb.Stateless;
 @Stateless
 public class PlugsTOService implements PlugsTOServiceLocal {
 
+    @EJB RoomsTOServiceLocal roomsTOService;
     @EJB PlugConsumptionsFactsTOServiceLocal plugConsumptionFactsService;
     @EJB WarningsTOServiceLocal warningsService;
     @EJB HistoriesTOServiceLocal historiesService;
@@ -51,6 +53,16 @@ public class PlugsTOService implements PlugsTOServiceLocal {
     public void updatePlugEntity(Plug existingEntity, PublicPlugTO newState) {
         existingEntity.setName(newState.getName());
         existingEntity.setAlwaysOn(newState.getAlwaysOn());
+        
+        if(newState.getRoom() != null){
+		Room r = new Room();
+		roomsTOService.updateRoomEntity(r, newState.getRoom());
+		existingEntity.setRoom(r);
+	 }
+        
+         if(existingEntity.getId() == null) {
+               existingEntity.setId(newState.getPlugId());
+         }
 //		existingEntity.setRoom(newState.getRoom());
 //		existingEntity.setHistories(newState.getHistories());
 //		existingEntity.setPlugConsumptionsFacts(newState.getPlugConsumptions());
