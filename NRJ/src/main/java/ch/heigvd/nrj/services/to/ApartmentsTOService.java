@@ -2,12 +2,8 @@ package ch.heigvd.nrj.services.to;
 
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ApartmentConsumptionFact;
-import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.to.PublicApartmentTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicRoomTO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

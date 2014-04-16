@@ -12,20 +12,20 @@ import javax.ejb.Stateless;
 @Stateless
 public class PlugsTOService implements PlugsTOServiceLocal {
 
-	@Override
-	public PublicPlugTO buildPublicPlugTO(Plug source) {
-		PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn());
-		return to;
-	}
+    @Override
+    public PublicPlugTO buildPublicPlugTO(Plug source) {
+            PublicPlugTO to = new PublicPlugTO(source.getId(), source.getName(), source.getAlwaysOn());
+            return to;
+    }
 
-	@Override
-	public void updatePlugEntity(Plug existingEntity, PublicPlugTO newState) {
-		existingEntity.setName(newState.getName());
-		existingEntity.setAlwaysOn(newState.getAlwaysOn());	
+    @Override
+    public void updatePlugEntity(Plug existingEntity, PublicPlugTO newState) {
+            existingEntity.setName(newState.getName());
+            existingEntity.setAlwaysOn(newState.getAlwaysOn());	
 //		existingEntity.setRoom(newState.getRoom());
 //		existingEntity.setHistories(newState.getHistories());
 //		existingEntity.setPlugConsumptionsFacts(newState.getPlugConsumptions());
 //		existingEntity.setWarnings(newState.getWarnings());
-	}
+    }
 	
 }

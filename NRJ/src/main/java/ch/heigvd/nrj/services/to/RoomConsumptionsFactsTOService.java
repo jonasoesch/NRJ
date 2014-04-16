@@ -12,17 +12,16 @@ import javax.ejb.Stateless;
 @Stateless
 public class RoomConsumptionsFactsTOService implements RoomConsumptionsFactsTOServiceLocal {
 
-	@Override
-	public PublicRoomConsumptionFactsTO buildPublicRoomConsumptionFactTO(RoomConsumptionFact source) {
-		PublicRoomConsumptionFactsTO to = new PublicRoomConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
-		return to;
-	}   
+    @Override
+    public PublicRoomConsumptionFactsTO buildPublicRoomConsumptionFactTO(RoomConsumptionFact source) {
+            PublicRoomConsumptionFactsTO to = new PublicRoomConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
+            return to;
+    }   
 
-	@Override
-	public void updateRoomConsumptionFactEntity(RoomConsumptionFact existingEntity, PublicRoomConsumptionFactsTO newState) {
-		existingEntity.setTimestampHour(newState.getTimestampHour());
-		existingEntity.setAvgKW(newState.getAvgKW());
-		// existingEntity.setRoom(newState.getRoom());
-	}
-	
+    @Override
+    public void updateRoomConsumptionFactEntity(RoomConsumptionFact existingEntity, PublicRoomConsumptionFactsTO newState) {
+            existingEntity.setTimestampHour(newState.getTimestampHour());
+            existingEntity.setAvgKW(newState.getAvgKW());
+            // existingEntity.setRoom(newState.getRoom());
+    }
 }

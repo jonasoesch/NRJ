@@ -3,7 +3,9 @@ package ch.heigvd.nrj.services.to;
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.Room;
+import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.to.PublicPlugTO;
+import ch.heigvd.nrj.to.PublicRoomConsumptionFactsTO;
 import ch.heigvd.nrj.to.PublicRoomTO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -16,11 +18,12 @@ import javax.ejb.Stateless;
 @Stateless
 public class RoomsTOService implements RoomsTOServiceLocal {
     
-    @EJB
-    ApartmentsTOServiceLocal apartmentsTOService;
+    @EJB ApartmentsTOServiceLocal apartmentsTOService;
     
     @EJB
     PlugsTOServiceLocal plugsTOService;
+    
+    @EJB RoomConsumptionsFactsTOServiceLocal roomConsumptionsFactsTOService;
     
     @Override
     public PublicRoomTO buildPublicRoomTO(Room source) {
@@ -29,11 +32,10 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 	    PublicPlugTO ppt = plugsTOService.buildPublicPlugTO(plug);
 	    to.addPlug(ppt);
 	}
-	/*for (Plug plug : source.getPlugs()) {
-	    PublicPlugTO ppt = plugsTOService.buildPublicPlugTO(plug);
-	    System.out.println(ppt.getName() + " " + ppt.getAlwaysOn());
-	    to.addPlug(ppt);
-	}*/
+	for (RoomConsumptionFact rcf : source.getRoomConsumptionsFacts()) {
+	    PublicRoomConsumptionFactsTO prcf = roomConsumptionsFactsTOService.buildPublicRoomConsumptionFactTO(rcf);
+	    to.addRoomConsumptionFact(prcf);
+	}
 	return to;
     }
     
