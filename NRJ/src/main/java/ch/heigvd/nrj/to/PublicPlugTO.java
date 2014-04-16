@@ -1,5 +1,6 @@
 package ch.heigvd.nrj.to;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -22,6 +23,9 @@ public class PublicPlugTO {
     private List<PublicWarningTO> warnings;
 
     public PublicPlugTO() {
+        this.histories = new ArrayList<>();
+        this.plugConsumptions = new ArrayList<>();
+        this.warnings = new ArrayList<>();
     }
 
     public PublicPlugTO(long plugId, String name, boolean alwaysOn) {
