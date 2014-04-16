@@ -17,6 +17,10 @@ class AllTests extends WebTestCase {
         $this->assertResponse(200);
     }
 
+
+    //--------
+    // Apartment
+    // --------
     function testPostApartment() {
         $this->post(
             URL.'/apartments', 
@@ -27,6 +31,9 @@ class AllTests extends WebTestCase {
     }
 
 
+    //--------
+    // Rooms
+    // --------
     function testPostRooms() {
         // 2
         $this->post(
@@ -51,6 +58,9 @@ class AllTests extends WebTestCase {
     }
 
 
+    //--------
+    // Plugs
+    // --------
     function testPostPlugs() {
         // 4
         $this->post(
@@ -76,11 +86,10 @@ class AllTests extends WebTestCase {
         $this->assertResponse(201);
         // 6
         $this->post(
-            URL.'/plugs', 
+            URL.'/rooms/3/plugs', 
             '{
                  "name": "Lumière principale",
-                 "alwayson": false,
-                 "room": {"id": 3}
+                 "alwayson": false
              }',
             'application/json'
         );
@@ -88,12 +97,28 @@ class AllTests extends WebTestCase {
     }
 
 
+    //--------
+    // Observation
+    // --------
     function testPostObservation() {
+    // 7
+    $this->post(
+        URL.'/consumptionsObs', 
+        '{
+          "timestampMinute": 1397139997864,
+          "kW": 12,
+          "plugId": 5
+        }',
+        'application/json'
+    );
+    $this->assertResponse(200);
+
+        // 8
         $this->post(
             URL.'/consumptionsObs', 
             '{
-              "timestampMinute": 1397139997864,
-              "kW": 12,
+              "timestampMinute": 1398139997864,
+              "kW": 6,
               "plugId": 6
             }',
             'application/json'
@@ -102,6 +127,9 @@ class AllTests extends WebTestCase {
     }
 
 
+    //--------
+    // GETs
+    // --------
     function testGetApartment() {
         $this->get(URL.'/apartments/1');
         $this->assertResponse(200);
@@ -120,6 +148,12 @@ class AllTests extends WebTestCase {
         $this->get(URL.'/plugs/6');
         $this->assertResponse(200);
         $this->assertText('"name":""kW": 12"');
+    }
+
+    function testGetPlugsFromRoom() {
+        $this->get(URL.'/rooms/2/plugs');
+        $this->assertResponse(200);
+        $this->assertText('Télévision');
     }
 
 
