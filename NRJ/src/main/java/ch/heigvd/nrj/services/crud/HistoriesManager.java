@@ -2,6 +2,7 @@ package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.History;
+import ch.heigvd.nrj.model.Plug;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,6 +24,19 @@ public class HistoriesManager implements HistoriesManagerLocal {
     @Override
     public long create(History historyData) {
         History newHistory = new History(historyData);
+
+        // Set la plug
+        Plug p = newPlugConsumptionFact.getPlug();
+        try {
+            // Rechercher la plug
+            p = plugConsumptionFactsManager.findById(p.getId());
+        } catch (EntityNotFoundException ex) {
+            Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        newRoom.setApartment(a);
+        em.persist(newRoom);
+        a.addRoom(newRoom);
+
         em.persist(newHistory);
         em.flush();
         return newHistory.getId();
@@ -54,7 +68,6 @@ public class HistoriesManager implements HistoriesManagerLocal {
         List apartments = em.createNamedQuery("Histories.findAllHistories").getResultList();
         return apartments;
     }
-    
 
     public History findLast() {
         List<History> last = em.createNamedQuery("Histories.findLast").getResultList();
