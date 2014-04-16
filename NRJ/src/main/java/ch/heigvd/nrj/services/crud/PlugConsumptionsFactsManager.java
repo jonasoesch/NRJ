@@ -6,6 +6,8 @@ import ch.heigvd.nrj.model.PlugConsumptionFact;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,7 +26,7 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
     @PersistenceContext
     private EntityManager em;
     
-    @EJB PlugConsumptionsFactsManagerLocal plugConsumptionFactsManager;
+    @EJB PlugsManagerLocal plugsManager;
 
     @Override
     public long create(PlugConsumptionFact plugConsumptionFactData) {
@@ -34,13 +36,13 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
         Plug p = newPlugConsumptionFact.getPlug();
         try {
             // Rechercher la plug
-            p = plugConsumptionFactsManager.findById(p.getId());
+            p = plugsManager.findById(p.getId());
         } catch (EntityNotFoundException ex) {
             Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        newRoom.setApartment(a);
-        em.persist(newRoom);
-        a.addRoom(newRoom);
+        newPlugConsumptionFact.setPlug(p);
+        em.persist(newPlugConsumptionFact);
+        p.addPlugConsumptionFact(newPlugConsumptionFact);
 
         em.persist(newPlugConsumptionFact);
         em.flush();
