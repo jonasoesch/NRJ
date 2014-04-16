@@ -2,7 +2,11 @@ package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.History;
+import ch.heigvd.nrj.model.Plug;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,12 +23,27 @@ public class HistoriesManager implements HistoriesManagerLocal {
 
     @PersistenceContext
     private EntityManager em;
+    
+    @EJB
+    PlugsManagerLocal plugsManager;
 
     @Override
     public long create(History historyData) {
         History newHistory = new History(historyData);
+
+        // Set la plug
+        Plug p = newHistory.getPlug();
+        try {
+            // Rechercher la plug
+            p = plugsManager.findById(p.getId());
+        } catch (EntityNotFoundException ex) {
+            Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        newHistory.setPlug(p);
         em.persist(newHistory);
+        p.addHistory(newHistory);
         em.flush();
+
         return newHistory.getId();
     }
 
@@ -54,7 +73,6 @@ public class HistoriesManager implements HistoriesManagerLocal {
         List apartments = em.createNamedQuery("Histories.findAllHistories").getResultList();
         return apartments;
     }
-    
 
     public History findLast() {
         List<History> last = em.createNamedQuery("Histories.findLast").getResultList();
