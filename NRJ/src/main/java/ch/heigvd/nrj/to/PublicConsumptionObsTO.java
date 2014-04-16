@@ -1,9 +1,6 @@
 package ch.heigvd.nrj.to;
 
-import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.model.Room;
 import java.util.Date;
-import javax.persistence.ManyToOne;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

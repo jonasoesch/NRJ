@@ -13,6 +13,7 @@ import ch.heigvd.nrj.services.crud.ApartmentConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
+import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
@@ -46,6 +47,8 @@ public class TestDataGenerator2Resource {
     RoomsManagerLocal roomsManager;
     @EJB
     WarningsManagerLocal warningsManager;
+    @EJB
+    HistoriesManagerLocal historiesManager;
     @EJB
     ApartmentsManagerLocal apartmentsManager;
     @EJB
@@ -109,13 +112,19 @@ public class TestDataGenerator2Resource {
         w1.setTimestampMinute(new Date());
 	w1.setMessage("AIIIIIIIIIE AIE AIE");
 	w1.setPlug(p1);
-	w1.setId(consumptionsObsManager.create(c1));
+	w1.setId(warningsManager.create(w1));
 	
 	History h1 = new History();
         h1.setTimestampMinute(new Date());
 	h1.setStatus(true);
 	h1.setPlug(p1);
-	h1.setId(consumptionsObsManager.create(c1));
+	h1.setId(historiesManager.create(h1));
+	
+	PlugConsumptionFact pcf1 = new PlugConsumptionFact();
+        pcf1.setTimestampHour(new Date());
+	pcf1.setAvgKW(20.2);
+	pcf1.setPlug(p1);
+	pcf1.setId(plugConsumptionsFactsManager.create(pcf1));
 	
 	Plug p2 = new Plug();
         p2.setName("Télévision");

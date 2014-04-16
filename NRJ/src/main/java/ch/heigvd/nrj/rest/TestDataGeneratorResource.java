@@ -92,14 +92,14 @@ public class TestDataGeneratorResource {
         History h1 = new History();
         h1.setTimestampMinute(new Date());
         h1.setStatus(false);
-        h1.setId(historiesManager.create(h1));
-        p1.addHistory(h1);
+	h1.setPlug(p1);
+	h1.setId(historiesManager.create(h1));
         //Ajout warning
         Warning warningp1 = new Warning();
         warningp1.setMessage("Attention warning du plug1!");
         warningp1.setTimestampMinute(new Date());
-        warningp1.setId(warningManager.create(warningp1));
-        p1.addWarning(warningp1);
+	warningp1.setPlug(p1);
+	warningp1.setId(warningManager.create(warningp1));
 
         //Création du plug 2: Télévision
         //Et l'ajoute à la pièce 1
@@ -112,15 +112,14 @@ public class TestDataGeneratorResource {
         Warning warningp2 = new Warning();
         warningp2.setMessage("Attention warning du plug2!");
         warningp2.setTimestampMinute(new Date());
-        warningp2.setId(warningManager.create(warningp2));
-        p2.addWarning(warningp2);
-        m2.addPlug(p2);
+	warningp2.setPlug(p2);
+	warningp2.setId(warningManager.create(warningp2));
         //Ajout history
         History h2 = new History();
         h2.setTimestampMinute(new Date());
         h2.setStatus(false);
+	h2.setPlug(p2);
         h2.setId(historiesManager.create(h2));
-        p2.addHistory(h2);
 
         //Création du plug 3: Lumière principale de la chambre de Barbie
         //Et l'ajoute à la pièce 1
@@ -133,42 +132,42 @@ public class TestDataGeneratorResource {
         Warning warningp3 = new Warning();
         warningp3.setMessage("Attention warning du plug3!");
         warningp3.setTimestampMinute(new Date());
-        warningp3.setId(warningManager.create(warningp3));
-        p3.addWarning(warningp3);
-        m1.addPlug(p3);
+        warningp3.setPlug(p3);
+	warningp3.setId(warningManager.create(warningp3));
+        
         //Ajout history
         History h3 = new History();
         h3.setTimestampMinute(new Date());
         h3.setStatus(true);
-        h3.setId(historiesManager.create(h3));
-        p3.addHistory(h3);
+	h3.setPlug(p3);
+	h3.setId(historiesManager.create(h3));
 
         //Création du fonctionnement du plug 1
         PlugConsumptionFact pc1 = new PlugConsumptionFact();
         pc1.setTimestampHour(new Date());
         pc1.setAvgKW(23.00);
-        pc1.setId(plugConsumptionsFactsManager.create(pc1));
-        p1.addPlugConsumptionFact(pc1);
+	pc1.setPlug(p1);
+	pc1.setId(plugConsumptionsFactsManager.create(pc1));
 
         //Création de la consommation de la pièce 1
         RoomConsumptionFact rc1 = new RoomConsumptionFact();
         rc1.setAvgKW(1000.34);
         rc1.setTimestampHour(new Date());
+	rc1.setRoom(m1);
         rc1.setId(roomConsumptionsFactsManager.create(rc1));
-        m1.addRoomConsumptionFact(rc1);
         
         ApartmentConsumptionFact ac1 = new ApartmentConsumptionFact();
         ac1.setAvgKW(1000.34);
         ac1.setTimestampHour(new Date());
-        ac1.setId(apartmentConsumptionsFactsManager.create(ac1));
-        a.addApartmentConsumptionFact(ac1);
+	ac1.setApartment(a);
+	ac1.setId(apartmentConsumptionsFactsManager.create(ac1));
 
         //Création de la consommation du plug 1
 //        ConsumptionObs co = new ConsumptionObs();
-//        co.setTimestampHour(new Date());
+//        co.setTimestampMinute(new Date());
 //        co.setkW(50.00);
-//        co.setId(consumptionObsManager.create(co));
-//        p1.addConsumptionObs(co);
+//	co.setPlug(p1);
+//	co.setId(consumptionObsManager.create(co));
 
         
         return "Maman, j'ai finiiii!!! <3 LMAO - LMAO";

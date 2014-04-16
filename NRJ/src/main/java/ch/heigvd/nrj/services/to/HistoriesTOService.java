@@ -21,10 +21,7 @@ public class HistoriesTOService implements HistoriesTOServiceLocal {
     @Override
     public PublicHistoryTO buildPublicHistoryTO(History source) {
 	PublicHistoryTO to = new PublicHistoryTO(source.getId(), source.getTimestampMinute(), source.getStatus());
-	if (source.getPlug() != null) {
-	    PublicPlugTO ppt = plugsTOService.buildPublicPlugTO(source.getPlug());
-	    to.setPlug(ppt);
-	}
+
 	return to;
     }
 
