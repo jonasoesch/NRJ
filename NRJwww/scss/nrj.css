@@ -105,7 +105,8 @@ nav h1 {
   text-decoration: none;
   color: #333333; }
   .menu ul li {
-    cursor: pointer; }
+    cursor: pointer;
+    display: none; }
   .menu a {
     text-decoration: none;
     color: #333333; }
@@ -143,15 +144,14 @@ nav h1 {
   color: #333333; }
 
 .bouton {
-  font-family: Verdana, Arial, sans-serif;
   display: inline-block;
-  background: #459300 url("../img/on.png") top left repeat-x;
-  border: 1px solid #459300;
+  background: url("../img/on.png") center center;
+  background-repeat: no-repeat;
+  border: none;
   padding: 5px 7px 5px 7px;
-  color: #fff;
-  font-size: 12px;
-  cursor: pointer;
-  font-size: 50px; }
+  width: 200;
+  height: 200;
+  cursor: pointer; }
 
 /* ==========================================================================
    Helper classes

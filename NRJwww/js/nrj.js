@@ -130,11 +130,9 @@ $(function () {
             var liHeight = $('h2').height();
             $("#whiteArrow").css("top", liPosition.top + liHeight * 1.2);
 
-
-
-
-
+            $('.menu').children().eq(3).css("display", "none");
             $(this).children().eq(1).css("display", "block");
+
         });
         //Flèche sur home
         $('.menu').on('click', 'h1', function () {
@@ -144,7 +142,21 @@ $(function () {
         /*-------------------------------------*/
         /*Gestion de l'interaction Menu - Fin*/
         /*-------------------------------------*/
-
+        /*-------------------------------------*/
+        /*Gestion du bouton On/Off - Début*/
+        /*-------------------------------------*/
+        $('.bouton').click(function () {
+            var value = $(this).val();
+            if(value =="ON"){
+                $(this).css("background", "url('../img/off.png') center center");
+            }else{
+                $(this).css("background", "url('../img/on.png') center center");
+            }
+            
+        });
+        /*-------------------------------------*/
+        /*Gestion du bouton On/Off - Fin*/
+        /*-------------------------------------*/
 
 
     }

@@ -130,6 +130,7 @@ nav h1{
     color: #333333;
     ul li{
         cursor: pointer;
+        display:none;
     }
     a{
     text-decoration: none;
@@ -178,15 +179,14 @@ nav h1{
 }
 
 .bouton{
-        font-family: Verdana, Arial, sans-serif;
         display: inline-block;
-        background: #459300 url('../img/on.png') top left repeat-x;
-        border: 1px solid #459300 ;
+        background: url('../img/on.png') center center;
+        background-repeat: no-repeat;
+        border: none;
         padding: 5px 7px 5px 7px;
-        color: #fff;
-        font-size: 12px;
+        width:200;
+        height:200;
         cursor: pointer;
-        font-size: 50px;
 }
 
 
