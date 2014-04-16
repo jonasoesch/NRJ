@@ -22,6 +22,7 @@ public class ApartmentConsumptionsFactsTOService implements ApartmentConsumption
 	public void updateApartmentConsumptionFactEntity(ApartmentConsumptionFact existingEntity, PublicApartmentConsumptionFactsTO newState) {
 		existingEntity.setTimestampHour(newState.getTimestampHour());
 		existingEntity.setAvgKW(newState.getAvgKW());
+		
 		// existingEntity.setApartment(newState.getApartment());
 	}
 	
