@@ -121,9 +121,9 @@ nav h1 {
   width: 70%;
   right: 0;
   color: #333333; }
-  .room .overall {
-    font-size: 1.2em;
-    border-bottom: solid 4px #333333;
+  .room .plug {
+    border-top: solid 1px #93C92C;
+    margin-top: 100px;
     color: #333333; }
 
 .home {
@@ -132,26 +132,29 @@ nav h1 {
   width: 70%;
   right: 0;
   color: #333333; }
-  .home .overall {
-    font-size: 1.2em;
-    border-bottom: solid 4px #333333;
-    color: #333333; }
 
-.plug {
-  border-top: solid 1px #93C92C;
-  margin-top: 100px;
+.overall {
+  font-size: 1.2em;
+  border-bottom: solid 4px #333333;
   color: #333333; }
 
-.bouton {
-  display: inline-block;
-  background: url("../img/on.png") center center;
-  background-repeat: no-repeat;
-  background-color: green;
-  border: none;
-  padding: 5px 7px 5px 7px;
-  width: 400;
-  height: 400;
-  cursor: pointer; }
+.timegraph {
+  clear: both; }
+  .timegraph h2 {
+    display: inline-block;
+    float: left; }
+  .timegraph .onoff {
+    display: inline-block;
+    float: right; }
+    .timegraph .onoff .button {
+      width: 4em; }
+    .timegraph .onoff .on {
+      background: #93c92c; }
+    .timegraph .onoff .off {
+      background: #e34f4a; }
+  .timegraph .alwayson {
+    display: inline-block;
+    float: right; }
 
 /* ==========================================================================
    Helper classes

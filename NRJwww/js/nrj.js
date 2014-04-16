@@ -81,7 +81,6 @@ $(function () {
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
             $(selector).append(dom)
-            onoff();
         })
     }
 
@@ -97,7 +96,6 @@ $(function () {
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
             $(selector).append(dom);
-            onoff();
         })
     }
     //Attache le graph détaillé de la plug
@@ -123,7 +121,6 @@ $(function () {
                     tempDOM.find('.alwayson').hide();
                 }
                 $(selector).append(tempDOM);
-                onoff();
             });
 
         });
@@ -153,17 +150,15 @@ $(function () {
     /*-------------------------------------*/
     /*Gestion du bouton On/Off - Début*/
     /*-------------------------------------*/
-    function onoff() {
 
-        $('.onoff').on('click', '.button', function () {
-            console.log($(this).val());
-            if ($(this).hasClass('on')) {
-                $(this).removeClass('on').addClass('off').val('OFF');
-            } else {
-                $(this).removeClass('off').addClass('on').val('ON');
-            }
-        });
-    }
+    $('.home, .room').on('click', '.onoff .button', function () {
+        console.log($(this).val());
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').addClass('off').val('OFF');
+        } else {
+            $(this).removeClass('off').addClass('on').val('ON');
+        }
+    });
     /*-------------------------------------*/
     /*Gestion du bouton On/Off - Fin*/
     /*-------------------------------------*/
