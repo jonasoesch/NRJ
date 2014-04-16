@@ -93,10 +93,16 @@ $(function () {
         /*Gestion de l'interaction Menu - Début*/
         /*-------------------------------------*/
             //Flèche sur sous menu
-          $('.menu').on('click', 'li', function(){
+          $('.menu').on('click', 'ul li',  function(){
             var liPosition=$(this).position();
-            var liHeight=$(this).height();
+            var liHeight=$('h2').height();
             $("#whiteArrow").css("top", liPosition.top+liHeight*1.2);
+
+      
+ 
+
+
+            $(this).children().eq(1).css("display", "block");
           } );
           //Flèche sur home
           $('.menu').on('click', 'h1', function(){
@@ -106,6 +112,7 @@ $(function () {
         /*-------------------------------------*/
         /*Gestion de l'interaction Menu - Fin*/
         /*-------------------------------------*/
+
 
 
     }
