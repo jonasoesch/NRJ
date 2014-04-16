@@ -106,6 +106,35 @@ header {
     width: 380px;
     position: fixed;
     background-color: $darkgrey;
+    .warning {
+        display: inline-block;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        input {
+            width: 150px;
+            border: 1px solid $lightgrey;
+            font-size: 20px;
+            height: 30px;
+            background: $red;
+            padding: 0;
+        }
+        .infoWarn {
+            margin: 0;
+            position: absolute;
+            right: -380px;
+            top: 0px;
+            background: $red;
+            border: 1px solid $darkgrey;
+            padding: 10px;
+            z-index: 100;
+            width: 300px;
+            
+            p {
+                margin: 3px 0;
+            }
+        }
+    }
 }
 nav h1 {
     margin-left: 40px;
@@ -186,6 +215,7 @@ nav h1 {
         border: 1px solid $lightgrey;
         font-size: 20px;
         line-height: 28px;
+        cursor: default;
     }
 }
 /* ==========================================================================
