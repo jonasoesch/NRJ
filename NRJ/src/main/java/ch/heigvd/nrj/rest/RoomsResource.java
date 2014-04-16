@@ -152,14 +152,18 @@ public class RoomsResource {
         return result;
     }
     
-//    @POST
-//    @Path("{id}/plugs")
-//    @Consumes({"application/json"})
-//    public Response createPlugInRoom(@PathParam("id") long id, PublicPlugTO newPlugTO) {
-//        Plug newPlug = new Plug();
-//        plugsTOService.updatePlugEntity(newPlug, newPlugTO);
-//        long newPlugId = this.plugsManager.create(newPlug);
-//        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
-//        return Response.created(createdURI).build();
-//    }
+    @POST
+    @Path("{id}/plugs")
+    @Consumes({"application/json"})
+    public Response createPlugInRoom(@PathParam("id") long id, PublicPlugTO newPlugTO) {
+        PublicRoomTO r = new PublicRoomTO();
+        r.setRoomId(id);
+        newPlugTO.setRoom(r);
+        
+        Plug newPlug = new Plug();
+        plugsTOService.updatePlugEntity(newPlug, newPlugTO);
+        long newPlugId = this.plugsManager.create(newPlug);
+        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newPlugId)).build();
+        return Response.created(createdURI).build();
+    }
 }

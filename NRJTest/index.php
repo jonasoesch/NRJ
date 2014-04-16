@@ -82,17 +82,19 @@ class AllTests extends WebTestCase {
             'application/json'
         );
         $this->assertResponse(201);
+    }
+
+    function testPostPlugToRoom() {
         // 6
         $this->post(
-            URL.'/plugs', 
+            URL.'/rooms/3/plugs', 
             '{
                  "name": "Lumiere principale",
-                     "alwayson": false,
-                     "room": {"roomId": 3}
+                 "alwayson": false
              }',
             'application/json'
         );
-        $this->assertResponse(201);
+        $this->assertResponse(201);        
     }
 
 
