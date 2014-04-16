@@ -40,7 +40,7 @@ class AllTests extends WebTestCase {
             URL.'/rooms', 
             '{
                  "name": "Chambre de Barbie",
-                 "apartment": {"id": 1}
+                 "apartment": {"apartmentId": 1}
              }',
             'application/json'
         );
@@ -50,7 +50,7 @@ class AllTests extends WebTestCase {
             URL.'/rooms', 
             '{
                  "name": "Cuisine",
-                 "apartment": {"id": 1}
+                 "apartment": {"apartmentId": 1}
              }',
             'application/json'
         );
@@ -68,7 +68,7 @@ class AllTests extends WebTestCase {
             '{
                  "name": "Frigo",
                  "alwayson": true,
-                 "room": {"id": 2}
+                 "room": {"roomId": 2}
              }',
             'application/json'
         );
@@ -79,7 +79,7 @@ class AllTests extends WebTestCase {
             '{
                  "name": "Télévision",
                  "alwayson": false,
-                 "room": {"id": 2}
+                 "room": {"roomId": 2}
              }',
             'application/json'
         );
@@ -113,17 +113,39 @@ class AllTests extends WebTestCase {
     );
     $this->assertResponse(200);
 
-        // 8
-        $this->post(
-            URL.'/consumptionsObs', 
-            '{
-              "timestampMinute": 1398139997864,
-              "kW": 6,
-              "plugId": 6
-            }',
-            'application/json'
-        );
-        $this->assertResponse(200);
+    // 8
+    $this->post(
+        URL.'/consumptionsObs', 
+        '{
+          "timestampMinute": 1398139997864,
+          "kW": 6,
+          "plugId": 6
+        }',
+        'application/json'
+    );
+    $this->assertResponse(200);    
+    // 9
+    $this->post(
+        URL.'/consumptionsObs', 
+        '{
+          "timestampMinute": 1398139997864,
+          "kW": 7,
+          "plugId": 6
+        }',
+        'application/json'
+    );
+    $this->assertResponse(200);
+    // 10 
+    $this->post(
+        URL.'/consumptionsObs', 
+        '{
+          "timestampMinute": 1408139997864,
+          "kW": 9,
+          "plugId": 5
+        }',
+        'application/json'
+    );
+    $this->assertResponse(200);
     }
 
 
