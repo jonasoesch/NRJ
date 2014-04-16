@@ -1,7 +1,6 @@
 $(function () {
     /* actions au démarrage */
     createMenu();
-
     /****** Sélectionne les infos à charger au démarrage ***/
     if ($('body>section').hasClass('home')) {
         attachApart('1');
@@ -69,6 +68,8 @@ $(function () {
             //Gestion display underMenu
             if (getURLParameter('id') != null) {
                 showUnderMenus(id);
+                var selectedUl = $('#'+id).get();
+                setWhiteArrow(selectedUl);
             } else {
                 hideUnderMenus();
             }
@@ -137,15 +138,11 @@ $(function () {
     /*Gestion de l'interaction Menu - Début*/
     /*-------------------------------------*/
     //Flèche sur sous menu
-    $('.menu').on('click', 'ul li', function () {
-        var liPosition = $(this).position();
-        var liHeight = $('h2').height();
-        $("#whiteArrow").css("top", liPosition.top + liHeight * 1.2);
+    function setWhiteArrow(ul){
+        var liPosition = $(ul).position();
+        $("#whiteArrow").css("top", liPosition.top);
+    }
 
-        $('.menu').children().eq(3).css("display", "none");
-        $(this).children().eq(1).css("display", "block");
-
-    });
     //Flèche sur home
     $('.menu').on('click', 'h1', function () {
         $("#whiteArrow").css("top", '95px');
@@ -178,7 +175,7 @@ $(function () {
     };
 
     function showUnderMenus(id) {
-        $('.menu>ul>li>ul').hide();
+        hideUnderMenus();
         $("#" + id).show();
     }
 
