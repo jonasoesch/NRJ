@@ -3,7 +3,6 @@ package ch.heigvd.nrj.services.crud;
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ApartmentConsumptionFact;
-import ch.heigvd.nrj.model.RoomConsumptionFact;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
