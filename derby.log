@@ -23,3 +23,5 @@ java.runtime.version=1.7.0_17-b02
 user.dir=C:\Program Files (x86)\Java\jdk1.7.0_17\db
 derby.system.home=E:\SiteWeb\NRJ
 Chargeur de classe de la base de données démarré - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Apr 16 11:20:27 CEST 2014 : fermeture du moteur Derby
