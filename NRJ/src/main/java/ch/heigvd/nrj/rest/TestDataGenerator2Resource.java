@@ -5,6 +5,7 @@ import ch.heigvd.nrj.model.ApartmentConsumptionFact;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.model.Room;
+import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.model.Warning;
 import ch.heigvd.nrj.services.crud.ApartmentConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
@@ -12,6 +13,7 @@ import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
+import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomsManagerLocal;
 import ch.heigvd.nrj.services.crud.WarningsManagerLocal;
 import java.text.ParseException;
@@ -46,6 +48,8 @@ public class TestDataGenerator2Resource {
     @EJB
     ApartmentConsumptionsFactsManagerLocal apartmentsConsumptionsFactsManager;
     @EJB
+    RoomConsumptionsFactsManagerLocal roomsConsumptionsFactsManager;
+    @EJB
     PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
 
     @GET
@@ -68,6 +72,12 @@ public class TestDataGenerator2Resource {
         m1.setName("Chambre de Barbie");
 	m1.setApartment(a);
 	m1.setId(roomsManager.create(m1));
+	
+	RoomConsumptionFact rcf = new RoomConsumptionFact();
+	rcf.setRoom(m1);
+	rcf.setAvgKW(25.5);
+	rcf.setTimestampHour(new Date());
+        rcf.setId(roomsConsumptionsFactsManager.create(rcf));
 
         //Création de la pièce 2: Cuisine
         //Et l'ajoute à l'appartement

@@ -1,9 +1,13 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
+import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,11 +24,24 @@ public class RoomConsumptionsFactsManager implements RoomConsumptionsFactsManage
 
     @PersistenceContext
     private EntityManager em;
+    
+    @EJB
+    RoomsManagerLocal roomsManager;
 
     @Override
     public long create(RoomConsumptionFact roomConsumptionFactData) {
             RoomConsumptionFact newRoomConsumptionFact = new RoomConsumptionFact(roomConsumptionFactData);
-            em.persist(newRoomConsumptionFact);
+            Room r = newRoomConsumptionFact.getRoom();
+	    try {	
+		// Rechercher l'appartement
+		r = roomsManager.findById(r.getId());
+	    } catch (EntityNotFoundException ex) {
+		Logger.getLogger(RoomsManager.class.getName()).log(Level.SEVERE, null, ex);
+	    }
+	    newRoomConsumptionFact.setRoom(r);
+	    em.persist(newRoomConsumptionFact);
+	    r.addRoomConsumptionFact(newRoomConsumptionFact);
+	    em.persist(newRoomConsumptionFact);
             return newRoomConsumptionFact.getId();
     }
 
