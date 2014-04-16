@@ -89,6 +89,8 @@ header {
   background-position: center left;
   background-repeat: no-repeat;
   height: 90px;
+  width: 380px;
+  position: fixed;
   background-color: #333333; }
 
 nav h1 {
@@ -96,12 +98,12 @@ nav h1 {
   padding-top: 30px; }
 
 .menu {
-  position: absolute;
+  position: fixed;
+  width: 380px;
   top: 92px;
   left: 0%;
   background-color: #999999;
   height: 100%;
-  width: 20%;
   text-decoration: none;
   color: #333333; }
   .menu ul li {
@@ -111,27 +113,21 @@ nav h1 {
     color: #333333; }
 
 #whiteArrow {
-  position: absolute;
+  position: fixed;
   top: 95px;
-  right: 80%; }
+  left: 320px; }
 
+.home,
 .room {
   position: absolute;
-  margin-top: 30px;
-  width: 70%;
-  right: 0;
+  width: 80%;
+  left: 20%;
   color: #333333; }
+  .home .plug,
   .room .plug {
     border-top: solid 1px #93c92c;
     margin-top: 100px;
     color: #333333; }
-
-.home {
-  position: absolute;
-  margin-top: 30px;
-  width: 70%;
-  right: 0;
-  color: #333333; }
 
 .overall {
   font-size: 1.2em;

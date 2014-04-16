@@ -66,7 +66,7 @@ $(function () {
                 li.appendTo(ul)
             })
             $('.menu').append(ul)
-                        //Gestion display underMenu
+            //Gestion display underMenu
             if (getURLParameter('id') != null) {
                 showUnderMenus(id);
             } else {
@@ -132,7 +132,7 @@ $(function () {
         });
     }
 
-    }
+
     /*-------------------------------------*/
     /*Gestion de l'interaction Menu - Début*/
     /*-------------------------------------*/
@@ -170,51 +170,52 @@ $(function () {
     /*Gestion du bouton On/Off - Fin*/
     /*-------------------------------------*/
 
-        /*-------------------------------------*/
-        /*Gestion de l'interaction Menu - Début*/
-        /*-------------------------------------*/
-        function hideUnderMenus(){
-            $('.menu').css("background-color", 'pink');
-            $('.menu>ul>li>ul').hide();
-        };
-        function showUnderMenus(id){
-            $("#"+id).css("background-color", 'blue');
-            $('.menu>ul>li>ul').hide();
-            $("#"+id).show();
+    /*-------------------------------------*/
+    /*Gestion de l'interaction Menu - Début*/
+    /*-------------------------------------*/
+    function hideUnderMenus() {
+        $('.menu').css("background-color", 'pink');
+        $('.menu>ul>li>ul').hide();
+    };
+
+    function showUnderMenus(id) {
+        $("#" + id).css("background-color", 'blue');
+        $('.menu>ul>li>ul').hide();
+        $("#" + id).show();
+    }
+
+    //Flèche sur sous menu
+    $('.menu').on('click', 'ul > li', function () {
+        var liPosition = $(this).position();
+        var liHeight = $('h2').height();
+        $("#whiteArrow").css("top", liPosition.top + liHeight * 1.2);
+
+
+    });
+    //Flèche sur home
+    $('.menu').on('click', 'h1', function () {
+        $("#whiteArrow").css("top", '95px');
+    });
+
+
+    /*-------------------------------------*/
+    /*Gestion de l'interaction Menu - Fin*/
+    /*-------------------------------------*/
+    /*-------------------------------------*/
+    /*Gestion du bouton On/Off - Début*/
+    /*-------------------------------------*/
+    $('.bouton').click(function () {
+        var value = $(this).val();
+        if (value == "ON") {
+            $(this).css("background", "url('../img/off.png') center center");
+        } else {
+            $(this).css("background", "url('../img/on.png') center center");
         }
-        
-        //Flèche sur sous menu
-        $('.menu').on('click', 'ul > li', function () {
-            var liPosition = $(this).position();
-            var liHeight = $('h2').height();
-            $("#whiteArrow").css("top", liPosition.top + liHeight * 1.2);
-   
 
-        });
-        //Flèche sur home
-        $('.menu').on('click', 'h1', function () {
-            $("#whiteArrow").css("top", '95px');
-        });
-
-
-        /*-------------------------------------*/
-        /*Gestion de l'interaction Menu - Fin*/
-        /*-------------------------------------*/
-        /*-------------------------------------*/
-        /*Gestion du bouton On/Off - Début*/
-        /*-------------------------------------*/
-        $('.bouton').click(function () {
-            var value = $(this).val();
-            if(value =="ON"){
-                $(this).css("background", "url('../img/off.png') center center");
-            }else{
-                $(this).css("background", "url('../img/on.png') center center");
-            }
-            
-        });
-        /*-------------------------------------*/
-        /*Gestion du bouton On/Off - Fin*/
-        /*-------------------------------------*/
+    });
+    /*-------------------------------------*/
+    /*Gestion du bouton On/Off - Fin*/
+    /*-------------------------------------*/
 
 
 })
