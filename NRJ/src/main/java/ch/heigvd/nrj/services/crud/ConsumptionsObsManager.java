@@ -1,10 +1,8 @@
 package ch.heigvd.nrj.services.crud;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.model.Room;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +37,6 @@ public class ConsumptionsObsManager implements ConsumptionsObsManagerLocal {
             System.out.println("ERREUR DANS CONSUMPTIONOBSMANAGER.CREATE(consumption)");
             Logger.getLogger(ConsumptionsObsManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        // TODO ? em.persist(plug);
-
         // Add la plug à cette consommation
         consumption.setPlug(plug);
         em.persist(consumption);
