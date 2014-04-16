@@ -66,7 +66,7 @@ $(function () {
                 li.appendTo(ul)
             })
             $('.menu').append(ul)
-                        //Gestion display underMenu
+            //Gestion display underMenu
             if (getURLParameter('id') != null) {
                 showUnderMenus(id);
             } else {
