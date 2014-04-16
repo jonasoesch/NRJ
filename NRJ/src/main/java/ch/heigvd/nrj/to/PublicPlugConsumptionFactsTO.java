@@ -24,6 +24,7 @@ public class PublicPlugConsumptionFactsTO {
     private PublicPlugTO plug;
     
     public PublicPlugConsumptionFactsTO() {
+        this.plug = new PublicPlugTO();
     }
 
     public PublicPlugConsumptionFactsTO(long plugConsumptionFactId, Date timestampHour, Double avgKW) {

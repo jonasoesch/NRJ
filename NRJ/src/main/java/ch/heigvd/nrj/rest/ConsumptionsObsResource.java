@@ -91,6 +91,7 @@ public class ConsumptionsObsResource {
     public Response createResource(PublicConsumptionObsTO newConsumptionTO){
         ConsumptionObs newConsumption = new ConsumptionObs();
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
+        //newConsumption = consumptionsTOService.buildPublicConsumptionObsTO(newConsumption);
         
         streamProcessor.onConsumption(newConsumption);
         
@@ -99,6 +100,7 @@ public class ConsumptionsObsResource {
         
         // Si la plug pour cette Consommation n'existe pas en BD
         if(newConsumption.getPlug() == null) {
+            System.out.println("2asdfélkjdabvoijevgoiOIJDAFVOIJEAOVGIJEAROVGHJEAHR DECEWCD");
             return Response.status(500).build();
         } else {
             //return Response.ok().build();
