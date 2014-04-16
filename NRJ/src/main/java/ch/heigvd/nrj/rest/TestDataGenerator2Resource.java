@@ -2,6 +2,7 @@ package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.model.Apartment;
 import ch.heigvd.nrj.model.ApartmentConsumptionFact;
+import ch.heigvd.nrj.model.ConsumptionObs;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.PlugConsumptionFact;
 import ch.heigvd.nrj.model.Room;
@@ -9,6 +10,7 @@ import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.model.Warning;
 import ch.heigvd.nrj.services.crud.ApartmentConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.ApartmentsManagerLocal;
+import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.EmployeesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManager;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
@@ -51,7 +53,9 @@ public class TestDataGenerator2Resource {
     RoomConsumptionsFactsManagerLocal roomsConsumptionsFactsManager;
     @EJB
     PlugConsumptionsFactsManagerLocal plugConsumptionsFactsManager;
-
+    @EJB
+    ConsumptionsObsManagerLocal consumptionsObsManager;
+    
     @GET
     @Produces({"text/plain"})
     public String generateEmployees() throws ParseException {
@@ -93,6 +97,12 @@ public class TestDataGenerator2Resource {
         p1.setAlwaysOn(true);
 	p1.setRoom(m1);
         p1.setId(plugsManager.create(p1));
+	
+	ConsumptionObs c1 = new ConsumptionObs();
+        c1.setTimestampMinute(new Date());
+	c1.setkW(22.2);
+	c1.setPlug(p1);
+	c1.setId(consumptionsObsManager.create(c1));
 	
 	Plug p2 = new Plug();
         p2.setName("Télévision");

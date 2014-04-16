@@ -16,6 +16,7 @@ import ch.heigvd.nrj.services.crud.HistoriesManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.crud.WarningsManagerLocal;
+import java.net.URI;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +25,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -47,7 +49,8 @@ public class StreamProcessor implements StreamProcessorLocal {
     public void onConsumption(ConsumptionObs o) {
         
         // Recording observation
-        consumptionObsManager.create(o);
+        //  consumptionObsManager.create(o);
+        
         
         // Retrieve info from plug
         Plug plug = o.getPlug();
@@ -181,7 +184,6 @@ public class StreamProcessor implements StreamProcessorLocal {
         } catch (EntityNotFoundException ex) {
             Logger.getLogger(StreamProcessor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
     
     

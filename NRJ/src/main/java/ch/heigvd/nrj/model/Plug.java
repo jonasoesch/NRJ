@@ -99,7 +99,6 @@ public class Plug implements Serializable {
     }
     
     public void addHistory(History history){
-        history.setPlug(this);
         this.histories.add(history);
     }
     
@@ -113,7 +112,6 @@ public class Plug implements Serializable {
     
     public void addWarnings(Warning warning) {
         this.warnings.add(warning);
-        warning.setPlug(this);
     }
     
     public List<PlugConsumptionFact> getPlugConsumptionsFacts(){
@@ -126,7 +124,6 @@ public class Plug implements Serializable {
     
     public void addPlugConsumptionFact(PlugConsumptionFact plugConsumptionFact){
         this.plugConsumptionsFacts.add(plugConsumptionFact);
-        plugConsumptionFact.setPlug(this);
     }
     
     public List<ConsumptionObs> getConsumptionsObs(){
@@ -139,7 +136,6 @@ public class Plug implements Serializable {
     
     public void addConsumptionObs(ConsumptionObs consumption){
         this.consumptionsObs.add(consumption);
-        consumption.setPlug(this);
     }
     
     @Override

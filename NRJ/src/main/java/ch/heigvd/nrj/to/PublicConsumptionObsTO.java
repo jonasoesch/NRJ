@@ -22,7 +22,6 @@ public class PublicConsumptionObsTO {
     private PublicPlugTO plug;
 
     public PublicConsumptionObsTO() {
-        this.plug = new PublicPlugTO();
     }
 
     public PublicConsumptionObsTO(long consumptionObsId, Double kW, Date timestampMinute) {

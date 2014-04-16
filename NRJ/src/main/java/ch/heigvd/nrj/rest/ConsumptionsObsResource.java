@@ -8,23 +8,17 @@ package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
 import ch.heigvd.nrj.model.ConsumptionObs;
-import ch.heigvd.nrj.model.Plug;
-import ch.heigvd.nrj.model.Room;
 import ch.heigvd.nrj.services.business.StreamProcessorLocal;
 import ch.heigvd.nrj.services.crud.ConsumptionsObsManagerLocal;
 import ch.heigvd.nrj.services.crud.PlugsManagerLocal;
 import ch.heigvd.nrj.services.to.ConsumptionsObsTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicConsumptionObsTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicRoomTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -93,14 +87,12 @@ public class ConsumptionsObsResource {
         consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
         //newConsumption = consumptionsTOService.buildPublicConsumptionObsTO(newConsumption);
         
-        streamProcessor.onConsumption(newConsumption);
-        
         long newConsId = this.consumptionsManager.create(newConsumption);
         URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
+	streamProcessor.onConsumption(newConsumption);
         
         // Si la plug pour cette Consommation n'existe pas en BD
         if(newConsumption.getPlug() == null) {
-            System.out.println("2asdfélkjdabvoijevgoiOIJDAFVOIJEAOVGIJEAROVGHJEAHR DECEWCD");
             return Response.status(500).build();
         } else {
             //return Response.ok().build();
