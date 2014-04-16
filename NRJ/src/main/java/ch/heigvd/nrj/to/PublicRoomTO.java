@@ -63,6 +63,10 @@ public class PublicRoomTO {
     public void setRoomConsumptionsFacts(List<PublicRoomConsumptionFactsTO> roomConsumptionsFacts) {
 	this.roomConsumptionsFacts = roomConsumptionsFacts;
     }
+    
+    public void addRoomConsumptionFact(PublicRoomConsumptionFactsTO roomConsumptionFact) {
+	this.roomConsumptionsFacts.add(roomConsumptionFact);
+    }
 
     public List<PublicPlugTO> getPlugs() {
 	return plugs;
