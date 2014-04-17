@@ -3,7 +3,6 @@ package ch.heigvd.nrj.services.to;
 import ch.heigvd.nrj.model.History;
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.to.PublicHistoryTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
