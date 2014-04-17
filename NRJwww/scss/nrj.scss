@@ -98,6 +98,7 @@ $darkgrey:#333333;
     src: url('../font/android.eot?#iefix') format('embedded-opentype'), url('../font/android.woff') format('woff'), url('../font/android.otf') format('otf'), url('../font/android.ttf') format('truetype'), url('../font/android.svg#android') format('svg');
 }
 header {
+    z-index:200;
     background-image: url(../img/logo.png);
     border-bottom: solid 2px $green;
     background-position: center left;
@@ -127,9 +128,8 @@ header {
             background: $red;
             border: 1px solid $darkgrey;
             padding: 10px;
-            z-index: 100;
+            z-index: 1000;
             width: 300px;
-            
             p {
                 margin: 3px 0;
             }
@@ -141,6 +141,8 @@ nav h1 {
     padding-top: 30px;
 }
 .menu {
+
+    z-index:70;
     position: fixed;
     width: 380px;
     top: 92px;

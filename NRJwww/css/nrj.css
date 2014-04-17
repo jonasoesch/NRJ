@@ -84,6 +84,7 @@ textarea {
   src: url("../font/android.eot?#iefix") format("embedded-opentype"), url("../font/android.woff") format("woff"), url("../font/android.otf") format("otf"), url("../font/android.ttf") format("truetype"), url("../font/android.svg#android") format("svg"); }
 
 header {
+  z-index: 200;
   background-image: url(../img/logo.png);
   border-bottom: solid 2px #93c92c;
   background-position: center left;
@@ -112,7 +113,7 @@ header {
       background: #e34f4a;
       border: 1px solid #333333;
       padding: 10px;
-      z-index: 100;
+      z-index: 1000;
       width: 300px; }
       header .warning .infoWarn p {
         margin: 3px 0; }
@@ -122,6 +123,7 @@ nav h1 {
   padding-top: 30px; }
 
 .menu {
+  z-index: 70;
   position: fixed;
   width: 380px;
   top: 92px;

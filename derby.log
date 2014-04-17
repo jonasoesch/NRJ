@@ -1,27 +1,11 @@
-Wed Apr 16 16:52:33 CEST 2014 : Apache Derby Serveur réseau - 10.8.2.2 - (1181258) démarré et prêt à accepter les connexions sur le port 1527
+Thu Apr 17 08:38:53 CEST 2014 : Apache Derby Serveur réseau - 10.8.2.2 - (1181258) démarré et prêt à accepter les connexions sur le port 1527
 ----------------------------------------------------------------
-Wed Apr 16 16:52:45 CEST 2014:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258) : instance a816c00e-0145-6b06-6733-fffffd943450 
-dans le répertoire de base de données E:\SiteWeb\NRJ\skeletonDB  avec le chargeur de classe sun.misc.Launcher$AppClassLoader@ba679e
+Thu Apr 17 08:38:53 CEST 2014:
+Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258) : instance a816c00e-0145-6e68-cc4f-fffffd943450 
+dans le répertoire de base de données E:\SiteWeb\NRJ\skeletonDB  avec le chargeur de classe sun.misc.Launcher$AppClassLoader@709db0ad
 
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_17-b02
 user.dir=C:\Program Files (x86)\Java\jdk1.7.0_17\db
 derby.system.home=E:\SiteWeb\NRJ
 Chargeur de classe de la base de données démarré - derby.database.classpath=''
-----------------------------------------------------------------
-Wed Apr 16 16:52:54 CEST 2014:
-Fermeture de l'instance a816c00e-0145-6b06-6733-fffffd943450 sur le répertoire de base de données E:\SiteWeb\NRJ\skeletonDB avec le chargeur de classe sun.misc.Launcher$AppClassLoader@ba679e
-Wed Apr 16 16:52:54 CEST 2014 Thread[DRDAConnThread_3,5,main] (DATABASE = skeletonDB), (DRDAID = {2}), Arrêt de la base de données 'skeletonDB'.
-----------------------------------------------------------------
-Wed Apr 16 16:52:59 CEST 2014:
-Amorçage de Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258) : instance 6c44409f-0145-6b06-6733-fffffd943450 
-dans le répertoire de base de données E:\SiteWeb\NRJ\skeletonDB  avec le chargeur de classe sun.misc.Launcher$AppClassLoader@ba679e
-
-java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_17-b02
-user.dir=C:\Program Files (x86)\Java\jdk1.7.0_17\db
-derby.system.home=E:\SiteWeb\NRJ
-Chargeur de classe de la base de données démarré - derby.database.classpath=''
-----------------------------------------------------------------
-Wed Apr 16 17:16:34 CEST 2014 : fermeture du moteur Derby
