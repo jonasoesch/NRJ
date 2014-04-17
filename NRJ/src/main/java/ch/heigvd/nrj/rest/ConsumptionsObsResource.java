@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
@@ -31,23 +25,14 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-
 /**
- * This is the REST API endpoint for the Consumptions resource. When REST clients
- * send HTTP requests, they will be routed to this class (because of the
+ * This is the REST API endpoint for the Consumptions resource. When REST
+ * clients send HTTP requests, they will be routed to this class (because of the
  *
  * @Path annotation). They will then be routed to the appropriate methods
  * (because of the
  * @GET,
  * @POST and other annotations).
- *
- * This class is a stateless session bean, which allows us to inject other
- * stateless session beans with annotations. That is practical, because when we
- * receive requests from REST clients, we can delegate most of the work to DAOs
- * and Transfer Object services.
- *
- * @author Olivier Liechti ======= import ch.heigvd.nrj.model.ConsumptionObs; import
- javax.ejb.Stateless; import javax.ws.rs.Path;
  *
  * @author nicolas
  */
@@ -67,7 +52,7 @@ public class ConsumptionsObsResource {
     StreamProcessorLocal streamProcessor;
     @EJB
     PlugsTOServiceLocal plugsTOService;
-    
+
     /**
      * Creates a new instance of ConsumptionsResource
      */
@@ -77,29 +62,29 @@ public class ConsumptionsObsResource {
     /**
      * Creates a new ConsumptionObs resource from the provided representation
      *
-     *   
+     *
      * @return an instance of PublicConsumptionObsTO
      */
     @POST
     @Consumes({"application/json"})
-    public Response createResource(PublicConsumptionObsTO newConsumptionTO){
-        ConsumptionObs newConsumption = new ConsumptionObs();
-        consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
-        //newConsumption = consumptionsTOService.buildPublicConsumptionObsTO(newConsumption);
-        System.out.println("coco2" + newConsumption);
-        long newConsId = consumptionsManager.create(newConsumption);
-	        System.out.println("coco3" + newConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
+    public Response createResource(PublicConsumptionObsTO newConsumptionTO) {
+	ConsumptionObs newConsumption = new ConsumptionObs();
+	consumptionsTOService.updateConsumptionObsEntity(newConsumption, newConsumptionTO);
+	//newConsumption = consumptionsTOService.buildPublicConsumptionObsTO(newConsumption);
+	System.out.println("coco2" + newConsumption);
+	long newConsId = consumptionsManager.create(newConsumption);
+	System.out.println("coco3" + newConsumption);
+	URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsId)).build();
 	streamProcessor.onConsumption(newConsumption);
-        
-        // Si la plug pour cette Consommation n'existe pas en BD
-        if(newConsumption.getPlug() == null) {
-            return Response.status(500).build();
-        } else {
-            //return Response.ok().build();
-            return Response.created(createdURI).build();
-        }
-        
+
+	// Si la plug pour cette Consommation n'existe pas en BD
+	if (newConsumption.getPlug() == null) {
+	    return Response.status(500).build();
+	} else {
+	    //return Response.ok().build();
+	    return Response.created(createdURI).build();
+	}
+
     }
 
     /**
@@ -110,21 +95,21 @@ public class ConsumptionsObsResource {
     @GET
     @Produces({"application/json"})
     public List<PublicConsumptionObsTO> getResourceList() {
-        List<ConsumptionObs> consumptionsObs = consumptionsManager.findAll();
-        List<PublicConsumptionObsTO> result = new LinkedList<>();
+	List<ConsumptionObs> consumptionsObs = consumptionsManager.findAll();
+	List<PublicConsumptionObsTO> result = new LinkedList<>();
 	for (ConsumptionObs co : consumptionsObs) {
 	    PublicConsumptionObsTO o = consumptionsTOService.buildPublicConsumptionObsTO(co);
 	    // PublicConsumptionObsTO o = new PublicConsumptionObsTO();
 
 	    result.add(o);
-        }
+	}
 	/*System.out.println(result);*/
 	/*List<PublicConsumptionObsTO> result2 = new LinkedList<PublicConsumptionObsTO>();
-	PublicConsumptionObsTO o = new PublicConsumptionObsTO();
-	result.add(o);*/
-        return result;
+	 PublicConsumptionObsTO o = new PublicConsumptionObsTO();
+	 result.add(o);*/
+	return result;
     }
-    
+
     /**
      * Retrieves representation of an ConsumptionsObs resource
      *
@@ -136,12 +121,12 @@ public class ConsumptionsObsResource {
     @Path("{id}")
     @Produces({"application/json"})
     public PublicConsumptionObsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        ConsumptionObs consumption = consumptionsManager.findById(id);
-        PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
-        System.out.println(consumptionTO);
+	ConsumptionObs consumption = consumptionsManager.findById(id);
+	PublicConsumptionObsTO consumptionTO = consumptionsTOService.buildPublicConsumptionObsTO(consumption);
+	System.out.println(consumptionTO);
 	return consumptionTO;
     }
-    
+
     /**
      * Updates an ConsumptionsObs resource
      *
@@ -154,10 +139,10 @@ public class ConsumptionsObsResource {
     @Path("{id}")
     @Consumes({"application/json"})
     public Response Resource(PublicConsumptionObsTO updatedConsumptionObsTO, @PathParam("id") long id) throws EntityNotFoundException {
-        ConsumptionObs consumptionObsToUpdate = consumptionsManager.findById(id);
-        consumptionsTOService.updateConsumptionObsEntity(consumptionObsToUpdate, updatedConsumptionObsTO);
-        consumptionsManager.update(consumptionObsToUpdate);
-        return Response.ok().build();
+	ConsumptionObs consumptionObsToUpdate = consumptionsManager.findById(id);
+	consumptionsTOService.updateConsumptionObsEntity(consumptionObsToUpdate, updatedConsumptionObsTO);
+	consumptionsManager.update(consumptionObsToUpdate);
+	return Response.ok().build();
     }
 
     /**
@@ -170,7 +155,7 @@ public class ConsumptionsObsResource {
     @DELETE
     @Path("{id}")
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
-        consumptionsManager.delete(id);
-        return Response.ok().build();
+	consumptionsManager.delete(id);
+	return Response.ok().build();
     }
 }

@@ -23,23 +23,14 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
- * This is the REST API endpoint for the Rooms resource. When REST clients
- * send HTTP requests, they will be routed to this class (because of the
+ * This is the REST API endpoint for the Apartment Consumption Fact resource.
+ * When REST clients send HTTP requests, they will be routed to this class
+ * (because of the
  *
  * @Path annotation). They will then be routed to the appropriate methods
  * (because of the
  * @GET,
  * @POST and other annotations).
- *
- * This class is a stateless session bean, which allows us to inject other
- * stateless session beans with annotations. That is practical, because when we
- * receive requests from REST clients, we can delegate most of the work to DAOs
- * and Transfer Object services.
- *
- * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Room; import
- * javax.ejb.Stateless; import javax.ws.rs.Path;
- *
- * /**
  *
  * @author nicolas
  */
@@ -61,50 +52,50 @@ public class ApartmentConsumptionsFactsResource {
     }
 
     /**
-     * Creates a new Room resource from the provided representation
+     * Creates a new Apartment Consumption Fact from the provided representation
      *
-     * @return an instance of PublicRoomTO
+     * @return an instance of PublicApartmentConsumptionFactsTO
      */
     @POST
     @Consumes({"application/json"})
     public Response createResource(PublicApartmentConsumptionFactsTO newApartmentConsumptionFactsTO) {
-        ApartmentConsumptionFact newConsumption = new ApartmentConsumptionFact();
-        apartmentConsumptionFactsTOService.updateApartmentConsumptionFactEntity(newConsumption, newApartmentConsumptionFactsTO);
-        long newConsumptionId = apartmentConsumptionFactsManager.create(newConsumption);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
-        return Response.created(createdURI).build();
+	ApartmentConsumptionFact newConsumption = new ApartmentConsumptionFact();
+	apartmentConsumptionFactsTOService.updateApartmentConsumptionFactEntity(newConsumption, newApartmentConsumptionFactsTO);
+	long newConsumptionId = apartmentConsumptionFactsManager.create(newConsumption);
+	URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newConsumptionId)).build();
+	return Response.created(createdURI).build();
     }
 
     /**
-     * Retrieves a representation of a list of Room resources
+     * Retrieves a representation of a list of ApartmentConsumptionsFacts.
      *
-     * @return an instance of PublicRoomTO
+     * @return a list of instance of PublicApartmentConsumptionFactsTO.
      */
     @GET
     @Produces({"application/json"})
     public List<PublicApartmentConsumptionFactsTO> getResourceList() {
-        List<ApartmentConsumptionFact> consumptions = apartmentConsumptionFactsManager.findAll();
-        List<PublicApartmentConsumptionFactsTO> result = new LinkedList<>();
-        for (ApartmentConsumptionFact consumption : consumptions) {
-            result.add(apartmentConsumptionFactsTOService.buildPublicApartmentConsumptionFactTO(consumption));
-        }
-        return result;
+	List<ApartmentConsumptionFact> consumptions = apartmentConsumptionFactsManager.findAll();
+	List<PublicApartmentConsumptionFactsTO> result = new LinkedList<>();
+	for (ApartmentConsumptionFact consumption : consumptions) {
+	    result.add(apartmentConsumptionFactsTOService.buildPublicApartmentConsumptionFactTO(consumption));
+	}
+	return result;
     }
 
     /**
-     * Retrieves representation of an Room resource
+     * Retrieves representation of a ApartmentConsumptionFact
      *
-     * @param id this id of the room
-     * @return an instance of PublicRoomTO
+     * @param id this id of the ApartmentConsumptionFact
+     * @return an instance of PublicApartmentConsumptionFactsTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
     @GET
     @Path("{id}")
     @Produces({"application/json"})
     public PublicApartmentConsumptionFactsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        ApartmentConsumptionFact consumption = apartmentConsumptionFactsManager.findById(id);
-        PublicApartmentConsumptionFactsTO consumptionTO = apartmentConsumptionFactsTOService.buildPublicApartmentConsumptionFactTO(consumption);
-        return consumptionTO;
+	ApartmentConsumptionFact consumption = apartmentConsumptionFactsManager.findById(id);
+	PublicApartmentConsumptionFactsTO consumptionTO = apartmentConsumptionFactsTOService.buildPublicApartmentConsumptionFactTO(consumption);
+	return consumptionTO;
     }
 
     /**
@@ -115,27 +106,36 @@ public class ApartmentConsumptionsFactsResource {
      * @return an instance of PublicRoomTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
+    /**
+     * Updates an ApartmentConsumptionFact
+     *
+     * @param updatedApartmentConsumptionFactsTO a TO containing the
+     * ApartmentConsumptionFact data
+     * @param id this id of the ApartmentConsumptionFact
+     * @return an instance of PublicApartmentConsumptionFactsTO
+     * @throws EntityNotFoundException
+     */
     @PUT
     @Path("{id}")
     @Consumes({"application/json"})
-    public Response Resource(PublicApartmentConsumptionFactsTO updatedRoomTO, @PathParam("id") long id) throws EntityNotFoundException {
-        ApartmentConsumptionFact consumptionToUpdate = apartmentConsumptionFactsManager.findById(id);
-        apartmentConsumptionFactsTOService.updateApartmentConsumptionFactEntity(consumptionToUpdate, updatedRoomTO);
-        apartmentConsumptionFactsManager.update(consumptionToUpdate);
-        return Response.ok().build();
+    public Response Resource(PublicApartmentConsumptionFactsTO updatedApartmentConsumptionFactsTO, @PathParam("id") long id) throws EntityNotFoundException {
+	ApartmentConsumptionFact consumptionToUpdate = apartmentConsumptionFactsManager.findById(id);
+	apartmentConsumptionFactsTOService.updateApartmentConsumptionFactEntity(consumptionToUpdate, updatedApartmentConsumptionFactsTO);
+	apartmentConsumptionFactsManager.update(consumptionToUpdate);
+	return Response.ok().build();
     }
 
     /**
-     * Deletes an Room resource
+     * Deletes an ApartmentConsumptionFact
      *
-     * @param id this id of the room
-     * @return an instance of PublicRoomTO
+     * @param id this id of the ApartmentConsumptionFact
+     * @return an instance of PublicApartmentConsumptionFactsTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
     @DELETE
     @Path("{id}")
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
-        apartmentConsumptionFactsManager.delete(id);
-        return Response.ok().build();
+	apartmentConsumptionFactsManager.delete(id);
+	return Response.ok().build();
     }
 }
