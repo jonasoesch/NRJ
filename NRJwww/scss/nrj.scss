@@ -141,7 +141,6 @@ nav h1 {
     padding-top: 30px;
 }
 .menu {
-
     z-index:70;
     position: fixed;
     width: 380px;
@@ -160,6 +159,7 @@ nav h1 {
     }
 }
 #whiteArrow {
+    z-index: 100000;
     position: fixed;
     top: 95px;
     left: 320px;

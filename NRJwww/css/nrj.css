@@ -139,6 +139,7 @@ nav h1 {
     color: #333333; }
 
 #whiteArrow {
+  z-index: 100000;
   position: fixed;
   top: 95px;
   left: 320px; }
