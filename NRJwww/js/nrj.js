@@ -1,6 +1,7 @@
 $(function () {
     /* actions au démarrage */
     createMenu();
+    checkWarnings();
     /****** Sélectionne les infos à charger au démarrage ***/
     if ($('body>section').hasClass('home')) {
         attachApart('1');
@@ -13,6 +14,15 @@ $(function () {
             $('body > section').append('Veuillez sélectionner un appartement.')
         }
     }
+    $('.warning input').on('click', function() {
+        if($(this).hasClass('active')){
+            $(this).removeClass('active');
+            $('.infoWarn').hide();
+        } else {
+            $(this).addClass('active');
+            $('.infoWarn').show();
+        }
+    })
 
     /************* fonctions générales *******************/
     /*****************************************************/
@@ -68,7 +78,7 @@ $(function () {
             //Gestion display underMenu
             if (getURLParameter('id') != null) {
                 showUnderMenus(id);
-                var selectedUl = $('#'+id).get();
+                var selectedUl = $('#' + id).get();
                 setWhiteArrow(selectedUl);
             } else {
                 hideUnderMenus();
@@ -133,12 +143,25 @@ $(function () {
         });
     }
 
-
+    function checkWarnings() {
+        getApi('.warning', 'warnings', '');
+        $('.warning').on('getApi', function (event, json) {
+            if (json[0]) {
+                var sec = $('<section>').addClass('infoWarn')
+                $.each(json, function (index, warning) {
+                    sec.append($('<p>').text(warning.message))
+                })
+                sec.appendTo($('.warning')).hide()
+            } else {
+                $('.warning').hide();
+            }
+        })
+    }
     /*-------------------------------------*/
     /*Gestion de l'interaction Menu - Début*/
     /*-------------------------------------*/
     //Flèche sur sous menu
-    function setWhiteArrow(ul){
+    function setWhiteArrow(ul) {
         var liPosition = $(ul).position();
         $("#whiteArrow").css("top", liPosition.top);
     }

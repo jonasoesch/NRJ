@@ -92,6 +92,30 @@ header {
   width: 380px;
   position: fixed;
   background-color: #333333; }
+  header .warning {
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+    top: 30px; }
+    header .warning input {
+      width: 150px;
+      border: 1px solid #999999;
+      font-size: 20px;
+      height: 30px;
+      background: #e34f4a;
+      padding: 0; }
+    header .warning .infoWarn {
+      margin: 0;
+      position: absolute;
+      right: -380px;
+      top: 0px;
+      background: #e34f4a;
+      border: 1px solid #333333;
+      padding: 10px;
+      z-index: 100;
+      width: 300px; }
+      header .warning .infoWarn p {
+        margin: 3px 0; }
 
 nav h1 {
   margin-left: 40px;
@@ -163,7 +187,8 @@ nav h1 {
     width: 148px;
     border: 1px solid #999999;
     font-size: 20px;
-    line-height: 28px; }
+    line-height: 28px;
+    cursor: default; }
 
 /* ==========================================================================
    Helper classes
