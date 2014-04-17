@@ -12,19 +12,19 @@ import javax.ejb.Stateless;
 
 /**
  * This class converts JPA entities into POJO transfer objects, and vice versa
- * 
+ *
  * @author rschmutz
  */
 @Stateless
 public class RoomsTOService implements RoomsTOServiceLocal {
-    
-    @EJB ApartmentsTOServiceLocal apartmentsTOService;
-    
+
+    @EJB
+    ApartmentsTOServiceLocal apartmentsTOService;
     @EJB
     PlugsTOServiceLocal plugsTOService;
-    
-    @EJB RoomConsumptionsFactsTOServiceLocal roomConsumptionsFactsTOService;
-    
+    @EJB
+    RoomConsumptionsFactsTOServiceLocal roomConsumptionsFactsTOService;
+
     @Override
     public PublicRoomTO buildPublicRoomTO(Room source) {
 	PublicRoomTO to = new PublicRoomTO(source.getId(), source.getName());
@@ -38,17 +38,17 @@ public class RoomsTOService implements RoomsTOServiceLocal {
 	}
 	return to;
     }
-    
+
     @Override
     public void updateRoomEntity(Room existingEntity, PublicRoomTO newState) {
-	    existingEntity.setName(newState.getName());
-	    if(newState.getApartment() != null){
-		Apartment a = new Apartment();
-		apartmentsTOService.updateApartmentEntity(a, newState.getApartment());
-		existingEntity.setApartment(a);
-	    }
-            if(existingEntity.getId() == null) {
-                existingEntity.setId(newState.getRoomId());
-            }
+	existingEntity.setName(newState.getName());
+	if (newState.getApartment() != null) {
+	    Apartment a = new Apartment();
+	    apartmentsTOService.updateApartmentEntity(a, newState.getApartment());
+	    existingEntity.setApartment(a);
+	}
+	if (existingEntity.getId() == null) {
+	    existingEntity.setId(newState.getRoomId());
+	}
     }
 }

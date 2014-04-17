@@ -2,7 +2,6 @@ package ch.heigvd.nrj.services.to;
 
 import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
 import javax.ejb.Local;
 
 /**
