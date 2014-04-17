@@ -44,6 +44,9 @@ $(function () {
             var dom = $(html);
             $(selector).trigger('getGraph', [dom, json])
         });
+
+                                                                
+                                                      
     }
 
     function getURLParameter(name) {
@@ -113,6 +116,7 @@ $(function () {
             dom.find('h2').text(json.name)
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
+                                                                     /*$(".graph").load('graph.html');*/
             $(selector).append(dom);
         })
     }
@@ -123,7 +127,6 @@ $(function () {
         $(selector).on('getApi', function (event, json) {
             getTimegraph(selector, json);
         });
-
         $(selector).on('getGraph', function (event, dom, json) {
             var domString = "";
             var html = dom;
@@ -131,6 +134,7 @@ $(function () {
                 var tempDOM = html.clone();
                 tempDOM.attr('id', plug.plugId);
                 tempDOM.find('h2').text(plug.name);
+                                        
                 if (plug.alwaysOn) {
                     tempDOM.find('.onoff').hide();
                     tempDOM.find('.alwayson').show();
@@ -138,9 +142,12 @@ $(function () {
                     tempDOM.find('.onoff').show();
                     tempDOM.find('.alwayson').hide();
                 }
+
                 $(selector).append(tempDOM);
+
             });
         });
+
     }
 
     function checkWarnings() {
