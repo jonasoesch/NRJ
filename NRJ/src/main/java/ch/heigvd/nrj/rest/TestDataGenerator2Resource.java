@@ -268,7 +268,7 @@ public class TestDataGenerator2Resource {
         //Lumière principale
         Plug p3 = new Plug();
         p3.setName("Lumière principale");
-        p3.setAlwaysOn(true);
+        p3.setAlwaysOn(false);
         p3.setRoom(sejour);
         p3.setId(plugsManager.create(p3));
 
@@ -299,7 +299,7 @@ public class TestDataGenerator2Resource {
         //PS3 thierry
         Plug p6 = new Plug();
         p6.setName("PS3");
-        p6.setAlwaysOn(true);
+        p6.setAlwaysOn(false);
         p6.setRoom(thierryCh);
         p6.setId(plugsManager.create(p6));
 
@@ -330,7 +330,7 @@ public class TestDataGenerator2Resource {
         //Télévision thierry
         Plug p7 = new Plug();
         p7.setName("Télévision");
-        p7.setAlwaysOn(true);
+        p7.setAlwaysOn(false);
         p7.setRoom(thierryCh);
         p7.setId(plugsManager.create(p7));
 
@@ -361,7 +361,7 @@ public class TestDataGenerator2Resource {
         //Appareil mystère
         Plug p8 = new Plug();
         p8.setName("Appareil Mystère");
-        p8.setAlwaysOn(true);
+        p8.setAlwaysOn(false);
         p8.setRoom(parentCh);
         p8.setId(plugsManager.create(p8));
 
