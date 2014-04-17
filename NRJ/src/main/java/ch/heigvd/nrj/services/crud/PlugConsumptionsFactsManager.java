@@ -25,9 +25,16 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
 
     @PersistenceContext
     private EntityManager em;
-    
-    @EJB PlugsManagerLocal plugsManager;
 
+    @EJB
+    PlugsManagerLocal plugsManager;
+
+    /**
+     * Adds a new PlugConsumptionsFacts in DB
+     *
+     * @param plugConsumptionFactData
+     * @return the id of the created PlugConsumptionsFacts
+     */
     @Override
     public long create(PlugConsumptionFact plugConsumptionFactData) {
         PlugConsumptionFact newPlugConsumptionFact = new PlugConsumptionFact(plugConsumptionFactData);
@@ -49,17 +56,36 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
         return newPlugConsumptionFact.getId();
     }
 
+    /**
+     * Updates a PlugConsumptionsFacts from DB
+     *
+     * @param newState
+     * @throws EntityNotFoundException
+     */
     @Override
     public void update(PlugConsumptionFact newState) throws EntityNotFoundException {
         em.merge(newState);
     }
 
+    /**
+     * Deletes a PlugConsumptionsFacts with the given id
+     *
+     * @param id, the PlugConsumptionsFacts's id
+     * @throws EntityNotFoundException
+     */
     @Override
     public void delete(long id) throws EntityNotFoundException {
         PlugConsumptionFact plugConsumptionFactToDelete = findById(id);
         em.remove(plugConsumptionFactToDelete);
     }
 
+    /**
+     * Returns a PlugConsumptionsFacts from DB with the given id
+     *
+     * @param id, the PlugConsumptionsFacts's id
+     * @return a PlugConsumptionsFacts
+     * @throws EntityNotFoundException
+     */
     @Override
     public PlugConsumptionFact findById(long id) throws EntityNotFoundException {
         PlugConsumptionFact existingPlugConsumptionFact = em.find(PlugConsumptionFact.class, id);
@@ -69,6 +95,11 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
         return existingPlugConsumptionFact;
     }
 
+    /**
+     * Returns all the PlugConsumptionsFacts from DB
+     *
+     * @return a List of PlugConsumptionsFacts
+     */
     @Override
     public List<PlugConsumptionFact> findAll() {
         // Note: the findAllPlugConsumptionsObs JPQL query is defined in the PlugConsumptionFact.java file
@@ -76,6 +107,14 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
         return plugConsumptionsFacts;
     }
 
+    /**
+     * Returns the PlugConsumptionsFacts in a Period
+     *
+     * @param debut, a Date of start of Period
+     * @param fin, a Date of end of Period
+     * @return a List of PlugConsumptionsFacts
+     * @throws EntityNotFoundException
+     */
     @Override
     public List<PlugConsumptionFact> findByPeriod(Date debut, Date fin) throws EntityNotFoundException {
         List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.findAllPlugConsumptionsFactsForAPeriod").setParameter("debut", debut).setParameter("fin", fin).getResultList();
@@ -83,6 +122,12 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
         return plugConsumptionsFacts;
     }
 
+    /**
+     * Returns the last PlugConsumptionsFacts of the given Plug
+     *
+     * @param plug, a Plug
+     * @return a List of PlugConsumptionsFacts
+     */
     @Override
     public PlugConsumptionFact getLastPlugFact(Plug plug) {
         List<PlugConsumptionFact> plugConsumptionsFacts = em.createNamedQuery("PlugConsumptionFact.getLastFact").setParameter("plug", plug).setMaxResults(1).getResultList();
@@ -95,6 +140,13 @@ public class PlugConsumptionsFactsManager implements PlugConsumptionsFactsManage
 
     } //getLastFact
 
+    /**
+     * Returns all the PlugConsumptionsFacts after a given Date
+     *
+     * @param plug, a Plug
+     * @param timestamp, a Time to look after
+     * @return
+     */
     @Override
     public List<PlugConsumptionFact> getConsumptionFactsAfterTime(Plug plug, Date timestamp) {
         List<PlugConsumptionFact> factsList = new ArrayList<>();

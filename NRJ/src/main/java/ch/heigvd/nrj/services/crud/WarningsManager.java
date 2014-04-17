@@ -23,10 +23,16 @@ public class WarningsManager implements WarningsManagerLocal {
 
     @EJB
     PlugsManagerLocal plugsManager;
-    
+
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Adds a new Warning in DB
+     *
+     * @param warningData
+     * @return the id of the created Warning
+     */
     @Override
     public long create(Warning warningData) {
         Warning newWarning = new Warning(warningData);
@@ -46,17 +52,36 @@ public class WarningsManager implements WarningsManagerLocal {
         return newWarning.getId();
     }
 
+    /**
+     * Updates an existant Warning from DB
+     *
+     * @param newState, le new State of the Warning
+     * @throws EntityNotFoundException
+     */
     @Override
     public void update(Warning newState) throws EntityNotFoundException {
         em.merge(newState);
     }
 
+    /**
+     * Deletes a Warning from DB
+     *
+     * @param id, the id of the Warning to delete
+     * @throws EntityNotFoundException
+     */
     @Override
     public void delete(long id) throws EntityNotFoundException {
         Warning warningToDelete = findById(id);
         em.remove(warningToDelete);
     }
 
+    /**
+     * Returns a Warning with the given id from DB
+     *
+     * @param id, the Warning's id
+     * @return a Warning
+     * @throws EntityNotFoundException
+     */
     @Override
     public Warning findById(long id) throws EntityNotFoundException {
         Warning existingWarning = em.find(Warning.class, id);
@@ -66,6 +91,11 @@ public class WarningsManager implements WarningsManagerLocal {
         return existingWarning;
     }
 
+    /**
+     * Returns a List of all the Warnings in DB
+     *
+     * @return a List of Warnings
+     */
     @Override
     public List<Warning> findAll() {
         // Note: the findAllPlugs JPQL query is defined in the Plug.java file

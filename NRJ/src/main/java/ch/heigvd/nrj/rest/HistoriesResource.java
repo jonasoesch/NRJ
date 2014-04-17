@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
@@ -28,6 +23,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
+ * This is the REST API endpoint for the Histories resource. When REST clients
+ * send HTTP requests, they will be routed to this class (because of the
+ *
+ * @Path annotation). They will then be routed to the appropriate methods
+ * (because of the
+ * @GET,
+ * @POST and other annotations).
  *
  * @author nicolas
  */
@@ -56,11 +58,11 @@ public class HistoriesResource {
     @POST
     @Consumes({"application/json"})
     public Response createResource(PublicHistoryTO newHistoryTO) {
-        History newHistory = new History();
-        historiesTOService.updateHistoryEntity(newHistory, newHistoryTO);
-        long newHistoryId = historiesManager.create(newHistory);
-        URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newHistoryId)).build();
-        return Response.created(createdURI).build();
+	History newHistory = new History();
+	historiesTOService.updateHistoryEntity(newHistory, newHistoryTO);
+	long newHistoryId = historiesManager.create(newHistory);
+	URI createdURI = context.getAbsolutePathBuilder().path(Long.toString(newHistoryId)).build();
+	return Response.created(createdURI).build();
     }
 
     /**
@@ -71,12 +73,12 @@ public class HistoriesResource {
     @GET
     @Produces({"application/json"})
     public List<PublicHistoryTO> getResourceList() {
-        List<History> histories = historiesManager.findAll();
-        List<PublicHistoryTO> result = new LinkedList<>();
-        for (History history : histories) {
-            result.add(historiesTOService.buildPublicHistoryTO(history));
-        }
-        return result;
+	List<History> histories = historiesManager.findAll();
+	List<PublicHistoryTO> result = new LinkedList<>();
+	for (History history : histories) {
+	    result.add(historiesTOService.buildPublicHistoryTO(history));
+	}
+	return result;
     }
 
     /**
@@ -90,9 +92,9 @@ public class HistoriesResource {
     @Path("{id}")
     @Produces({"application/json"})
     public PublicHistoryTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
-        History history = historiesManager.findById(id);
-        PublicHistoryTO historyTO = historiesTOService.buildPublicHistoryTO(history);
-        return historyTO;
+	History history = historiesManager.findById(id);
+	PublicHistoryTO historyTO = historiesTOService.buildPublicHistoryTO(history);
+	return historyTO;
     }
 
     /**
@@ -107,10 +109,10 @@ public class HistoriesResource {
     @Path("{id}")
     @Consumes({"application/json"})
     public Response Resource(PublicHistoryTO updatedHistoryTO, @PathParam("id") long id) throws EntityNotFoundException {
-        History historyToUpdate = historiesManager.findById(id);
-        historiesTOService.updateHistoryEntity(historyToUpdate, updatedHistoryTO);
-        historiesManager.update(historyToUpdate);
-        return Response.ok().build();
+	History historyToUpdate = historiesManager.findById(id);
+	historiesTOService.updateHistoryEntity(historyToUpdate, updatedHistoryTO);
+	historiesManager.update(historyToUpdate);
+	return Response.ok().build();
     }
 
     /**
@@ -123,7 +125,7 @@ public class HistoriesResource {
     @DELETE
     @Path("{id}")
     public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
-        historiesManager.delete(id);
-        return Response.ok().build();
+	historiesManager.delete(id);
+	return Response.ok().build();
     }
 }

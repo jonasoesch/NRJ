@@ -18,15 +18,26 @@ public class PublicApartmentConsumptionFactsTO {
     private Double avgKW;
     private PublicApartmentTO apartment;
 
+    /**
+     * Build an empty PublicApartmentConsumptionFactsTO.
+     */
     public PublicApartmentConsumptionFactsTO() {
     }
-
+/**
+ * Build a PublicApartmentConsumptionFactsTO with data.
+ * @param apartmentConsumptionFactId
+ * @param timestampHour
+ * @param avgKW 
+ */
     public PublicApartmentConsumptionFactsTO(long apartmentConsumptionFactId, Date timestampHour, Double avgKW) {
 	this.apartmentConsumptionFactId = apartmentConsumptionFactId;
 	this.timestampHour = timestampHour;
 	this.avgKW = avgKW;
     }
-
+/**
+ * 
+ * @return 
+ */
     public Long getApartmentConsumptionFactId() {
 	return this.apartmentConsumptionFactId;
     }

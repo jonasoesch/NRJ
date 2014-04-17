@@ -23,6 +23,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
+ * This is the REST API endpoint for the Warning resource. When REST clients
+ * send HTTP requests, they will be routed to this class (because of the
+ *
+ * @Path annotation). They will then be routed to the appropriate methods
+ * (because of the
+ * @GET,
+ * @POST and other annotations).
  *
  * @author nicolas
  */
@@ -44,7 +51,7 @@ public class WarningsResource {
     }
 
     /**
-     * Creates a new Warning resource from the provided representation
+     * Creates a new Warning from the provided representation
      *
      * @return an instance of PublicWarningTO
      */
@@ -59,9 +66,9 @@ public class WarningsResource {
     }
 
     /**
-     * Retrieves a representation of a list of Warning resources
+     * Retrieves a representation of a list of Warning
      *
-     * @return an instance of PublicWarningTO
+     * @return a list of PublicWarningTOs
      */
     @GET
     @Produces({"application/json"})
@@ -75,7 +82,7 @@ public class WarningsResource {
     }
 
     /**
-     * Retrieves representation of an Warning resource
+     * Retrieves a representation of a Warnin
      *
      * @param id this id of the warning
      * @return an instance of PublicWarningTO
@@ -91,7 +98,7 @@ public class WarningsResource {
     }
 
     /**
-     * Updates an Warning resource
+     * Updates a Warning
      *
      * @param id this id of the warning
      * @param updatedWarningTO a TO containing the warning data

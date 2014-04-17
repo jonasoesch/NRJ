@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 
 /**
  * This class converts JPA entities into POJO transfer objects, and vice versa
- * 
+ *
  * @author rschmutz
  */
 @Stateless
@@ -14,14 +14,14 @@ public class RoomConsumptionsFactsTOService implements RoomConsumptionsFactsTOSe
 
     @Override
     public PublicRoomConsumptionFactsTO buildPublicRoomConsumptionFactTO(RoomConsumptionFact source) {
-            PublicRoomConsumptionFactsTO to = new PublicRoomConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
-            return to;
-    }   
+	PublicRoomConsumptionFactsTO to = new PublicRoomConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
+	return to;
+    }
 
     @Override
     public void updateRoomConsumptionFactEntity(RoomConsumptionFact existingEntity, PublicRoomConsumptionFactsTO newState) {
-            existingEntity.setTimestampHour(newState.getTimestampHour());
-            existingEntity.setAvgKW(newState.getAvgKW());
-            // existingEntity.setRoom(newState.getRoom());
+	existingEntity.setTimestampHour(newState.getTimestampHour());
+	existingEntity.setAvgKW(newState.getAvgKW());
+	// existingEntity.setRoom(newState.getRoom());
     }
 }

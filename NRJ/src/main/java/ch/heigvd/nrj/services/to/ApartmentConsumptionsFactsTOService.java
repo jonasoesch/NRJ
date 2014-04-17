@@ -11,7 +11,6 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class ApartmentConsumptionsFactsTOService implements ApartmentConsumptionsFactsTOServiceLocal {
-
 	@Override
 	public PublicApartmentConsumptionFactsTO buildPublicApartmentConsumptionFactTO(ApartmentConsumptionFact source) {
 		PublicApartmentConsumptionFactsTO to = new PublicApartmentConsumptionFactsTO(source.getId(), source.getTimestampHour(), source.getAvgKW());
