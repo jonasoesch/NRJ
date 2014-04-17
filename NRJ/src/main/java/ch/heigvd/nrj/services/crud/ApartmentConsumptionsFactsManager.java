@@ -26,6 +26,13 @@ public class ApartmentConsumptionsFactsManager implements ApartmentConsumptionsF
     @EJB
     ApartmentsManagerLocal apartmentsManager;
 
+    /**
+     * Create an ApartmentConsumptionFact in the persistance database.
+     *
+     * @param apartmentConsumptionFactData the ApartmentConsumptionFact to
+     * persiste.
+     * @return the id generated
+     */
     @Override
     public long create(ApartmentConsumptionFact apartmentConsumptionFactData) {
 	ApartmentConsumptionFact newApartmentConsumptionFact = new ApartmentConsumptionFact(apartmentConsumptionFactData);
@@ -43,17 +50,36 @@ public class ApartmentConsumptionsFactsManager implements ApartmentConsumptionsF
 	return newApartmentConsumptionFact.getId();
     }
 
+    /**
+     * Update the ApartmentConsumptionFact persistant
+     *
+     * @param newState the ApartmentConsumptionFact with update data.
+     * @throws EntityNotFoundException
+     */
     @Override
     public void update(ApartmentConsumptionFact newState) throws EntityNotFoundException {
 	em.merge(newState);
     }
 
+    /**
+     * Delete a ApartmentConsumptionFact in persistance.
+     *
+     * @param id the id of the ApartmentConsumptionFact in persistance.
+     * @throws EntityNotFoundException
+     */
     @Override
     public void delete(long id) throws EntityNotFoundException {
 	ApartmentConsumptionFact apartmentConsumptionFactToDelete = findById(id);
 	em.remove(apartmentConsumptionFactToDelete);
     }
 
+    /**
+     * Find a ApartmentConsumptionFact in the persistance with it's id.
+     *
+     * @param id the id of the ApartmentConsumptionFact to find.
+     * @return the ApartmentConsumptionFact find.
+     * @throws EntityNotFoundException
+     */
     @Override
     public ApartmentConsumptionFact findById(long id) throws EntityNotFoundException {
 	ApartmentConsumptionFact existingApartmentConsumptionFact = em.find(ApartmentConsumptionFact.class, id);
@@ -63,6 +89,11 @@ public class ApartmentConsumptionsFactsManager implements ApartmentConsumptionsF
 	return existingApartmentConsumptionFact;
     }
 
+    /**
+     * Find all ApartmentConsumptionFact persitants in database.
+     *
+     * @return a list of all ApartmentConsumptionFact persistant.
+     */
     @Override
     public List<ApartmentConsumptionFact> findAll() {
 	// Note: the findAllApartmentConsumptionsObs JPQL query is defined in the ApartmentConsumptionFact.java file
@@ -70,6 +101,12 @@ public class ApartmentConsumptionsFactsManager implements ApartmentConsumptionsF
 	return apartmentConsumptionsFact;
     }
 
+    /**
+     * Get the last fact for an apartment.
+     *
+     * @param apartment the apartment.
+     * @return the last fact.
+     */
     @Override
     public ApartmentConsumptionFact getLastApartmentFact(Apartment apartment) {
 	List<ApartmentConsumptionFact> apartmentConsumptionsFacts = em.createNamedQuery("ApartmentConsumptionFact.getLastApartmentFact").setParameter("apartment", apartment).setMaxResults(1).getResultList();
