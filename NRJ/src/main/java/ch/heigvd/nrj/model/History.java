@@ -17,69 +17,127 @@ import javax.persistence.Temporal;
  * @author Robin
  */
 @NamedQueries(
-        @NamedQuery(
+@NamedQuery(
         name = "Histories.findAllHistories",
-        query = "SELECT h FROM History h"))
-        @NamedQuery(
+query = "SELECT h FROM History h"))
+@NamedQuery(
         name = "Histories.findLast",
-        query = "SELECT h from History h where h.id=(SELECT MAX(h2.id) from History h2)" 
-        )
-
+query = "SELECT h from History h where h.id=(SELECT MAX(h2.id) from History h2)")
 @Entity
 public class History implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    /**
+     * The history's id.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    /**
+     * The date of the history.
+     */
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date timestampMinute;
+    /**
+     * the boolean status of an history.
+     */
     private boolean status;
-    
-    @ManyToOne protected Plug plug;
+    /**
+     * The plug link to an history.
+     */
+    @ManyToOne
+    protected Plug plug;
 
+    /**
+     * Construct a history without data.
+     */
     public History() {
-        this.timestampMinute = new Date();
+	this.timestampMinute = new Date();
 	this.status = false;
-        
+
     }
 
+    /**
+     * Construct a history with data.
+     *
+     * @param historyData the history datas.
+     */
     public History(History historyData) {
-        this.timestampMinute = historyData.getTimestampMinute();
+	this.timestampMinute = historyData.getTimestampMinute();
 	this.status = historyData.getStatus();
 	this.plug = historyData.getPlug();
     }
-    
+
+    /**
+     * Get the id of an history.
+     *
+     * @return the history's id.
+     */
     public Long getId() {
 	return id;
     }
 
+    /**
+     * Set the id of an history.
+     *
+     * @param id the new history's id.
+     */
     public void setId(Long id) {
 	this.id = id;
     }
 
+    /**
+     * Set the date of an history.
+     *
+     * @param timestampMinute the new history's date.
+     */
     public void setTimestampMinute(Date timestampMinute) {
 	this.timestampMinute = timestampMinute;
     }
 
+    /**
+     * Get the date of an history.
+     *
+     * @return Get the history's date.
+     */
     public Date getTimestampMinute() {
 	return timestampMinute;
     }
 
+    /**
+     * Get the status of the history.
+     *
+     * @return the history's status.
+     */
     public boolean getStatus() {
 	return status;
     }
 
+    /**
+     * Set the status of the history.
+     *
+     * @param status the new history's status.
+     */
     public void setStatus(boolean status) {
 	this.status = status;
     }
 
+    /**
+     * Get the plug link to the history.
+     *
+     * @return the history's plug.
+     */
     public Plug getPlug() {
 	return plug;
     }
-    
-    public void setPlug(Plug plug){
-        this.plug = plug;
+
+    /**
+     * Set the plug link to the history.
+     *
+     * @param plug the history's plug.
+     */
+    public void setPlug(Plug plug) {
+	this.plug = plug;
     }
 
     @Override
