@@ -8,7 +8,10 @@
 
 ![Classes](schemas/class_diagram.png)
 
-## Brainstorming
+## Marche à suivre
+*Runner le projet NRJ
+*Accéder à localhost:8080/api/test2 pour peupler la BD
+*Accéder au site qui se trouve sur le localhost
 
 * Capteurs
     * Température
