@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NRJdroid</string>
+    <string name="appartment">Home</string>
+    <string name="room1">Hall et salon</string>
+    <string name="room2">Chambre à coucher</string>
+    <string name="room3">Cuisine</string>
+    <string name="room4">Bureau</string>
+    <string name="room5">Salle de bain</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_graph">Graph</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="title_room">Hello Jackass!</string>
+    
+</resources>

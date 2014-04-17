@@ -1,0 +1,282 @@
+[
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 6
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 7
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 4,
+timestampHour: "2014-04-16T12:34:48.876"
+}
+],
+roomId: 3
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 8
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 5
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 14
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 15
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 12,
+timestampHour: "2014-04-16T12:35:00.575"
+}
+],
+roomId: 11
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 16
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 13
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 22
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 23
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 20,
+timestampHour: "2014-04-16T12:35:03.177"
+}
+],
+roomId: 19
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 24
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 21
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 30
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 31
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 28,
+timestampHour: "2014-04-16T12:35:03.747"
+}
+],
+roomId: 27
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 32
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 29
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 38
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 39
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 36,
+timestampHour: "2014-04-16T12:35:04.238"
+}
+],
+roomId: 35
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 40
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 37
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 46
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 47
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 44,
+timestampHour: "2014-04-16T12:35:04.736"
+}
+],
+roomId: 43
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 48
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 45
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 54
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 55
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 52,
+timestampHour: "2014-04-16T12:35:05.205"
+}
+],
+roomId: 51
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 56
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 53
+},
+{
+name: "Chambre de Barbie",
+plugs: [
+{
+alwaysOn: true,
+name: "Frigo",
+plugId: 62
+},
+{
+alwaysOn: false,
+name: "TÃ©lÃ©vision",
+plugId: 63
+}
+],
+roomConsumptionsFacts: [
+{
+avgKW: 25.5,
+roomConsumptionFactId: 60,
+timestampHour: "2014-04-16T12:35:05.637"
+}
+],
+roomId: 59
+},
+{
+name: "Cuisine",
+plugs: [
+{
+alwaysOn: true,
+name: "LumiÃ¨re principale",
+plugId: 64
+}
+],
+roomConsumptionsFacts: [ ],
+roomId: 61
+}
+]
