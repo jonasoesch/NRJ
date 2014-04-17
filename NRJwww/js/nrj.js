@@ -14,8 +14,8 @@ $(function () {
             $('body > section').append('Veuillez sélectionner un appartement.')
         }
     }
-    $('.warning input').on('click', function() {
-        if($(this).hasClass('active')){
+    $('.warning input').on('click', function () {
+        if ($(this).hasClass('active')) {
             $(this).removeClass('active');
             $('.infoWarn').hide();
         } else {
@@ -45,8 +45,8 @@ $(function () {
             $(selector).trigger('getGraph', [dom, json])
         });
 
-                                                                
-                                                      
+
+
     }
 
     function getURLParameter(name) {
@@ -101,7 +101,10 @@ $(function () {
             dom.find('h2').text(json.name)
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
-            $(selector).append(dom)
+            dom.find('.graph').attr('id', json.apartmentId)
+            //console.log(dom.find('.graph').get())
+            $(selector).append(dom);
+            drawChart(dom);
         })
     }
 
@@ -116,7 +119,6 @@ $(function () {
             dom.find('h2').text(json.name)
             dom.find('.onoff').show();
             dom.find('.alwayson').hide();
-                                                                     /*$(".graph").load('graph.html');*/
             $(selector).append(dom);
         })
     }
@@ -134,7 +136,7 @@ $(function () {
                 var tempDOM = html.clone();
                 tempDOM.attr('id', plug.plugId);
                 tempDOM.find('h2').text(plug.name);
-                                        
+
                 if (plug.alwaysOn) {
                     tempDOM.find('.onoff').hide();
                     tempDOM.find('.alwayson').show();
@@ -142,12 +144,9 @@ $(function () {
                     tempDOM.find('.onoff').show();
                     tempDOM.find('.alwayson').hide();
                 }
-
                 $(selector).append(tempDOM);
-
             });
         });
-
     }
 
     function checkWarnings() {
@@ -186,7 +185,6 @@ $(function () {
     /*-------------------------------------*/
 
     $('.home, .room').on('click', '.onoff .button', function () {
-        console.log($(this).val());
         if ($(this).hasClass('on')) {
             $(this).removeClass('on').addClass('off').val('OFF');
         } else {
@@ -208,6 +206,5 @@ $(function () {
         hideUnderMenus();
         $("#" + id).show();
     }
-
 
 })

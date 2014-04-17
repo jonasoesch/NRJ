@@ -158,6 +158,10 @@ nav h1 {
   .room .heatmap {
     border-top: solid 1px #93c92c;
     clear: both; }
+    .home .heatmap img,
+    .room .heatmap img {
+      display: block;
+      margin: 0 auto; }
   .home .plug,
   .room .plug {
     border-top: solid 1px #93c92c;
