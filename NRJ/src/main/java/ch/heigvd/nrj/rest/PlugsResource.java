@@ -9,7 +9,6 @@ import ch.heigvd.nrj.services.to.HistoriesTOServiceLocal;
 import ch.heigvd.nrj.services.to.PlugsTOServiceLocal;
 import ch.heigvd.nrj.to.PublicHistoryTO;
 import ch.heigvd.nrj.to.PublicPlugTO;
-import ch.heigvd.nrj.to.PublicPlugTO;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -28,25 +27,15 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
- * This is the REST API endpoint for the Plugs resource. When REST clients
- * send HTTP requests, they will be routed to this class (because of the
+ * This is the REST API endpoint for the Plugs resource. When REST clients send
+ * HTTP requests, they will be routed to this class (because of the
  *
  * @Path annotation). They will then be routed to the appropriate methods
  * (because of the
  * @GET,
  * @POST and other annotations).
  *
- * This class is a stateless session bean, which allows us to inject other
- * stateless session beans with annotations. That is practical, because when we
- * receive requests from REST clients, we can delegate most of the work to DAOs
- * and Transfer Object services.
- *
- * @author Olivier Liechti ======= import ch.heigvd.nrj.model.Plug; import
- * javax.ejb.Stateless; import javax.ws.rs.Path;
- *
- * /**
- *
- * @author nicolas >>>>>>> 8466c0fc9af2e4e7adf8da0480ad6cf2077d4bae
+ * @author nicolas
  */
 @Stateless
 @Path("plugs")
@@ -102,7 +91,7 @@ public class PlugsResource {
     }
 
     /**
-     * Retrieves representation of an Plug resource
+     * Retrieves a representation of a Plug resource
      *
      * @param id this id of the plug
      * @return an instance of PublicPlugTO
@@ -148,8 +137,14 @@ public class PlugsResource {
         plugsManager.delete(id);
         return Response.ok().build();
     }
-    
-    
+
+    /**
+     * Retrieves the Status of a Plug
+     *
+     * @param id
+     * @return the Status of a Plug
+     * @throws EntityNotFoundException
+     */
     @GET
     @Path("{id}/status")
     @Produces({"application/json"})
@@ -158,7 +153,15 @@ public class PlugsResource {
         PublicHistoryTO historyTO = historiesTOService.buildPublicHistoryTO(history);
         return historyTO;
     }
-    
+
+    /**
+     * Add a History to a Plug
+     *
+     * @param id, the Plug's id
+     * @param newHistoryTO
+     * @return the createdId of the added History
+     * @throws EntityNotFoundException
+     */
     @POST
     @Path("{id}/status")
     @Consumes({"application/json"})

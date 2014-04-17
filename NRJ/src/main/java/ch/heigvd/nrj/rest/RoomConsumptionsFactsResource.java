@@ -1,11 +1,9 @@
 package ch.heigvd.nrj.rest;
 
 import ch.heigvd.nrj.exceptions.EntityNotFoundException;
-import ch.heigvd.nrj.model.Plug;
 import ch.heigvd.nrj.model.RoomConsumptionFact;
 import ch.heigvd.nrj.services.crud.RoomConsumptionsFactsManagerLocal;
 import ch.heigvd.nrj.services.to.RoomConsumptionsFactsTOServiceLocal;
-import ch.heigvd.nrj.to.PublicPlugTO;
 import ch.heigvd.nrj.to.PublicRoomConsumptionFactsTO;
 import java.net.URI;
 import java.util.LinkedList;
@@ -15,7 +13,6 @@ import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -26,21 +23,15 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
- * This is the REST API endpoint for the Plugs resource. When REST clients
- * send HTTP requests, they will be routed to this class (because of the
+ * This is the REST API endpoint for the RoomConsumptionFact resource. When REST
+ * clients send HTTP requests, they will be routed to this class (because of the
  *
  * @Path annotation). They will then be routed to the appropriate methods
  * (because of the
  * @GET,
  * @POST and other annotations).
  *
- * This class is a stateless session bean, which allows us to inject other
- * stateless session beans with annotations. That is practical, because when we
- * receive requests from REST clients, we can delegate most of the work to DAOs
- * and Transfer Object services.
- *
- * @author Olivier Liechti 
- *
+ * @author Olivier Liechti
  */
 @Stateless
 @Path("roomConsumptionsFacts")
@@ -48,10 +39,6 @@ public class RoomConsumptionsFactsResource {
 
     @Context
     private UriInfo context;
-    /*@EJB
-    PlugsManagerLocal plugsManager;
-    @EJB
-    PlugsTOServiceLocal plugsTOService;*/
     @EJB
     RoomConsumptionsFactsManagerLocal roomConsumptionsFactsManager;
     @EJB
@@ -64,7 +51,8 @@ public class RoomConsumptionsFactsResource {
     }
 
     /**
-     * Creates a new RoomConsumptionFacts resource from the provided representation
+     * Creates a new RoomConsumptionFacts resource from the provided
+     * representation
      *
      * @return an instance of PublicRoomConsumptionFactsTO
      */
@@ -79,14 +67,14 @@ public class RoomConsumptionsFactsResource {
     }
 
     /**
-     * Retrieves a representation of a list of RoomConsumptionFact resources
+     * Retrieves a representation of a list of RoomConsumptionFact
      *
      * @return a List of PublicRoomConsumptionFactsTO
      */
     @GET
     @Produces({"application/json"})
 
-    public List<PublicRoomConsumptionFactsTO> getResourceList() {       // list roomconsoFacts
+    public List<PublicRoomConsumptionFactsTO> getResourceList() {
         List<RoomConsumptionFact> consumptions = roomConsumptionsFactsManager.findAll();
         List<PublicRoomConsumptionFactsTO> result = new LinkedList<>();
         for (RoomConsumptionFact consumption : consumptions) {
@@ -96,7 +84,7 @@ public class RoomConsumptionsFactsResource {
     }
 
     /**
-     * Retrieves representation of a RoomConsumptionFact
+     * Retrieves a representation of a RoomConsumptionFact
      *
      * @param id this id of the RoomConsumptionFacts
      * @return an instance of PublicRoomConsumptionFactsTO
@@ -105,7 +93,7 @@ public class RoomConsumptionsFactsResource {
     @GET
     @Path("{id}")
     @Produces({"application/json"})
-    public PublicRoomConsumptionFactsTO getResource(@PathParam("id") long id) throws EntityNotFoundException { 
+    public PublicRoomConsumptionFactsTO getResource(@PathParam("id") long id) throws EntityNotFoundException {
         RoomConsumptionFact consumption = roomConsumptionsFactsManager.findById(id);
         PublicRoomConsumptionFactsTO consumptionTO = roomConsumptionsFactsTOService.buildPublicRoomConsumptionFactTO(consumption);
         return consumptionTO;
@@ -115,7 +103,8 @@ public class RoomConsumptionsFactsResource {
      * Updates a RoomConsumptionFact resource
      *
      * @param id this id of the RoomConsumptionFact
-     * @param updatedRoomConsumptionFactTO a TO containing the RoomConsumptionFact data
+     * @param updatedRoomConsumptionFactTO a TO containing the
+     * RoomConsumptionFact data
      * @return an instance of PublicRoomConsumptionFactTO
      * @throws ch.heigvd.skeleton.exceptions.EntityNotFoundException
      */
@@ -138,7 +127,7 @@ public class RoomConsumptionsFactsResource {
      */
     @DELETE
     @Path("{id}")
-    public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {           
+    public Response deleteResource(@PathParam("id") long id) throws EntityNotFoundException {
         roomConsumptionsFactsManager.delete(id);
         return Response.ok().build();
     }
