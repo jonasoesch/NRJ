@@ -344,7 +344,7 @@ public class TestDataGenerator2Resource {
         w7.setTimestampMinute(new Date());
         w7.setMessage("Problème sur la télévision de la chambre de thierry");
         w7.setPlug(p7);
-        w7.setId(warningsManager.create(w6));
+        w7.setId(warningsManager.create(w7));
 
         History h7 = new History();
         h7.setTimestampMinute(new Date());
@@ -375,7 +375,7 @@ public class TestDataGenerator2Resource {
         w8.setTimestampMinute(new Date());
         w8.setMessage("Problème sur l'appareil mystère de la chambre des parents");
         w8.setPlug(p8);
-        w8.setId(warningsManager.create(w6));
+        w8.setId(warningsManager.create(w8));
 
         History h8 = new History();
         h8.setTimestampMinute(new Date());
@@ -387,7 +387,7 @@ public class TestDataGenerator2Resource {
         pcf8.setTimestampHour(new Date());
         pcf8.setAvgKW(1.7);
         pcf8.setPlug(p8);
-        pcf8.setId(plugConsumptionsFactsManager.create(pcf7));
+        pcf8.setId(plugConsumptionsFactsManager.create(pcf8));
 
         return "done";
     }
